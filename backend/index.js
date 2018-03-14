@@ -20,6 +20,7 @@ const error = (request, response) => {
 app.use(bodyParser.json())
 app.use(logger)
 app.use(cors())
+app.use(express.static('build'))
 
 
 let courses = [
@@ -38,14 +39,14 @@ let courses = [
 
 
 app.get('/', (req, res) => {
-    res.send('<h1>Hello World!</h1>')
+    res.send('<p>tervetuloa backendiin</p>')
 })
 
-app.get('/courses', (req, res) => {
+app.get('/api/courses', (req, res) => {
     res.json(courses)
 })
 
-app.get('/courses/:id', (request, response) => {
+app.get('/api/courses/:id', (request, response) => {
     const id = Number(request.params.id)
     console.log(id)
     const course = courses.find(course => course.id === id)
@@ -57,14 +58,14 @@ app.get('/courses/:id', (request, response) => {
     }
 })
 
-app.delete("/courses/:id", (request, response) => {
+app.delete("/api/courses/:id", (request, response) => {
     const id = Number(request.params.id)
     courses = courses.filter(course => course.id !== id)
 
     response.status(204).end()
 })
 
-app.post('/courses/', (request, response) => {
+app.post('/api/courses/', (request, response) => {
     const maxId = courses.length > 0 ? courses.map(n => n.id).sort().reverse()[0] : 0
     const course = request.body
     course.id = maxId + 1
