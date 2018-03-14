@@ -18,6 +18,7 @@ https://polar-reaches-53311.herokuapp.com/
 2. npm install
 3. npm start
 
-| Päivä  | Aika    | Tehty työ  |
-| -------|:-------:| ----------:|
-|  14.3  | 0.5h | Git repon pystytys, readmen teko ja aiheen valinta  |
+| Päivä     | Aika      | Tehty työ  |
+| ----------|:---------:| ----------:|
+|  14.3     | 30min     | Git repon pystytys, readmen teko ja aiheen valinta  |
+|    14.3       | 1h10min   | Minimalistisen backendin toteutus, herokuun deployaus, readmen päivitys           |
