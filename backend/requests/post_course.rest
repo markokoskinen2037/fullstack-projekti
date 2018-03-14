@@ -1,0 +1,7 @@
+POST http://localhost:3001/courses
+content-type: application/json
+
+{
+    "id": 3,
+    "title": "Tietorakenteet ja algoritmit"
+}
