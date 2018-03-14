@@ -39,7 +39,7 @@ let courses = [
 
 
 app.get('/', (req, res) => {
-    res.send('<p>tervetuloa backendiin</p>')
+    res.send('<p>tervetuloa backendiin</p> <a href="/api/courses">/api/courses</p>')
 })
 
 app.get('/api/courses', (req, res) => {
