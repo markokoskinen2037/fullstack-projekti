@@ -1,7 +1,8 @@
-POST http://localhost:3001/courses
+POST http://localhost:3001/api/courses
 content-type: application/json
 
 {
-    "id": 3,
-    "title": "Tietorakenteet ja algoritmit"
+    "title": "Tietorakenteet ja algoritmit",
+    "length": 0,
+    "credits": 0
 }

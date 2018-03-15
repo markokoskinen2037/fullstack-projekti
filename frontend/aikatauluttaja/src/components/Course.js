@@ -2,7 +2,9 @@ import React from 'react'
 
 const Course = ({ course }) => {
   return (
-    <li>{course.title}</li>
+    <div>
+    <li>{course.title} {course.credits} <b>op</b> {course.length} periodia pitkä</li>
+    </div>
   )
 }
 

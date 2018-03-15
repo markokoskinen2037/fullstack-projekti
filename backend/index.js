@@ -2,6 +2,8 @@ const express = require('express')
 const app = express()
 const bodyParser = require('body-parser')
 const cors = require('cors')
+const Course = require("./models/course")
+
 
 
 
@@ -17,62 +19,101 @@ const error = (request, response) => {
     response.status(404).send({ error: 'unknown endpoint' })
 }
 
+
 app.use(bodyParser.json())
 app.use(logger)
 app.use(cors())
 app.use(express.static('build'))
 
 
-let courses = [
-    {
-        id: 1,
-        title: "Johdatus yliopistomatematiikkaan"
-    },
-    {
-        id: 2,
-        title: "Tilastotiede ja R tutuksi I"
-    }
-]
 
-
-
-
-
-app.get('/', (req, res) => {
+app.get('/api/', (req, res) => {
     res.send('<p>tervetuloa backendiin</p> <a href="/api/courses">/api/courses</p>')
 })
 
-app.get('/api/courses', (req, res) => {
-    res.json(courses)
+app.get('/api/courses', (request, response) => {
+    Course
+        .find({})
+        .then(courses => {
+            response.json(courses)
+        })
 })
 
 app.get('/api/courses/:id', (request, response) => {
-    const id = Number(request.params.id)
-    console.log(id)
-    const course = courses.find(course => course.id === id)
-
-    if (course) {
-        response.json(course)
-    } else {
-        response.status(404).end()
-    }
+    Course
+        .findById(request.params.id)
+        .then(course => {
+            if (course) {
+                response.json(course)
+            } else {
+                response.status(404).end()
+            }
+        })
+        .catch(error => {
+            console.log(error)
+            response.status(400).send({ error: 'malformatted id' })
+        })
 })
 
 app.delete("/api/courses/:id", (request, response) => {
-    const id = Number(request.params.id)
-    courses = courses.filter(course => course.id !== id)
-
-    response.status(204).end()
+    Course
+        .findByIdAndRemove(request.params.id)
+        .then(result => {
+            response.status(204).end()
+        })
+        .catch(error => {
+            response.status(400).send({ error: 'malformatted id' })
+        })
 })
 
+app.put('/api/courses/:id', (request, response) => {
+    const body = request.body
+  
+    const course = {
+        title: body.title,
+        credits: body.credits,
+        length: body.length
+    }
+  
+    Course
+      .findByIdAndUpdate(request.params.id, course, { new: true } )
+      .then(updatedCourse => {
+        response.json(updatedCourse)
+      })
+      .catch(error => {
+        console.log(error)
+        response.status(400).send({ error: 'malformatted id' })
+      })
+  })
+
 app.post('/api/courses/', (request, response) => {
-    const maxId = courses.length > 0 ? courses.map(n => n.id).sort().reverse()[0] : 0
-    const course = request.body
-    course.id = maxId + 1
 
-    courses = courses.concat(course)
+    if (request.body.title === undefined) {
+        return response.status(400).json({ error: 'Title required!' })
+    }
 
-    response.json(course)
+    if (request.body.credits === undefined) {
+        request.body.credits = 0
+    }
+
+    if (request.body.length === undefined) {
+        request.body.length = 0
+    }
+
+
+
+
+    const course = new Course({
+        title: request.body.title,
+        credits: request.body.credits,
+        length: request.body.length
+    })
+
+    course
+        .save()
+        .then(savedCourse => {
+            response.json(savedCourse)
+        })
 })
 
 
@@ -81,5 +122,5 @@ app.use(error)
 
 const PORT = process.env.PORT || 3001
 app.listen(PORT, () => {
-  console.log(`Server running on port ${PORT}`)
+    console.log(`Server running on port ${PORT}`)
 })
