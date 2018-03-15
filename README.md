@@ -28,3 +28,5 @@ https://polar-reaches-53311.herokuapp.com/
 |  14.3     | 30min     | Git repon pystytys, readmen teko ja aiheen valinta |
 |  14.3     | 1h10min   | Minimalistisen backendin toteutus, herokuun deployaus, readmen päivitys |
 |  14.3     | 30min     | Minimalistisen frontendin toteutus |
+|  15.3     | 1h15min   | Backend käyttää MongoDB:tä | 
+|  15.3     | 15min     | Fronttia voi käyttää nyt backend serverin kautta | 
