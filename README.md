@@ -7,11 +7,16 @@ Projektini tavoitteena on kehittää yliopisto-opiskelijoille suunnattu aikataul
 #### Backend:
 https://polar-reaches-53311.herokuapp.com/
 
-#### Lyhyen tähtäimen TODO:
+#### Lyhyen tähtäimen FRONTEND TODO:
 - [x] Toteuta minimalistinen front-end
-- [ ] Konfiguroi development pipeline
-- [ ] Laita backend käyttämään tietokantaa
+- [x] Laita backend käyttämään tietokantaa
 - [ ] Laita frontend käyttämään tietokantaa
+- [ ] Toteuta kurssin CRUD-nelikkö
+
+
+#### Lyhyen tähtäimen BACKEND TODO:
+- [ ] Konfiguroi development pipeline
+- [ ] Refaktoroi koodia omiin moduuleihinsa
 
 #### Backendin käyttöohje
 1. git clone
