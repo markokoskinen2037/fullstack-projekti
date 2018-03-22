@@ -8,17 +8,16 @@ Projektini tavoitteena on kehittää yliopisto-opiskelijoille suunnattu aikataul
 https://quiet-oasis-70395.herokuapp.com/
 
 #### Lyhyen tähtäimen FRONTEND TODO:
-- [x] Toteuta minimalistinen front-end
-- [x] Laita backend käyttämään tietokantaa
-- [x] Laita frontend käyttämään backendiä
-- [x] Laita pyörimään herokuun
-- [x] Toteuta kurssin CRUD-nelikkö
+- [ ] Toteuta kurssin CRUD-nelikkö
+- [ ] Toteuta kirjautuminen (nimi,salasana,käyttäjänimi,sähköpostiosoite)
+- [ ] Toteuta käyttäjäkohtainen kurssien priorisointi (haastavuus/tavoitearvosana/)
+
 
 
 #### Lyhyen tähtäimen BACKEND TODO:
 - [ ] Konfiguroi development pipeline
 - [ ] Refaktoroi koodia omiin moduuleihinsa
-- [ ] Toteuta kurssin CRUD-nelikkö
+
 
 #### Backendin käyttöohje
 1. git clone
@@ -42,7 +41,8 @@ https://quiet-oasis-70395.herokuapp.com/
 |  14.3     | 30min     | Minimalistisen frontendin toteutus |
 |  15.3     | 1h15min   | Backend käyttää MongoDB:tä | 
 |  15.3     | 15min     | Fronttia voi käyttää nyt backend serverin kautta | 
-|  22.3     | 20min   | Tietokantaa käyttävä backendin versio herokuun. Yms. heroku hommia |
-|  22.3     | 20min | Tietokannan käyttis ja salasana piiloon ympäristömuuttujiin. |
-|  22.3     | 10min | Konfiguroitu backendille eslint. |
-|  22.3     | 40min  | Frontti käyttämään backendin tarjoamaa dataa. |
+|  22.3     | 20min     | Tietokantaa käyttävä backendin versio herokuun. Yms. heroku hommia |
+|  22.3     | 20min     | Tietokannan käyttis ja salasana piiloon ympäristömuuttujiin. |
+|  22.3     | 10min     | Konfiguroitu backendille eslint. |
+|  22.3     | 40min     | Frontti käyttämään backendin tarjoamaa dataa. |
+|  22.3     | 15min     | Seuraavien vaiheiden suunnittelua | 
