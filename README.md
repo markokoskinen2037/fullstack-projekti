@@ -30,6 +30,11 @@ https://quiet-oasis-70395.herokuapp.com/
 2. npm install
 3. npm start
 
+---
+### Aikaa käytetty yhteensä noin : 5h
+---
+
+
 | Päivä     | Aika      | Tehty työ  |
 | ----------|:---------:| ----------:|
 |  14.3     | 30min     | Git repon pystytys, readmen teko ja aiheen valinta |
@@ -37,3 +42,7 @@ https://quiet-oasis-70395.herokuapp.com/
 |  14.3     | 30min     | Minimalistisen frontendin toteutus |
 |  15.3     | 1h15min   | Backend käyttää MongoDB:tä | 
 |  15.3     | 15min     | Fronttia voi käyttää nyt backend serverin kautta | 
+|  22.3     | 20min   | Tietokantaa käyttävä backendin versio herokuun. Yms. heroku hommia |
+|  22.3     | 20min | Tietokannan käyttis ja salasana piiloon ympäristömuuttujiin. |
+|  22.3     | 10min | Konfiguroitu backendille eslint. |
+|  22.3     | 40min  | Frontti käyttämään backendin tarjoamaa dataa. |
