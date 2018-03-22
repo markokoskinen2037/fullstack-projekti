@@ -5,18 +5,20 @@ Projektini tavoitteena on kehittää yliopisto-opiskelijoille suunnattu aikataul
 - Oman opiskelurytmin ja tavoitteiden asetus
 
 #### Backend:
-https://polar-reaches-53311.herokuapp.com/
+https://quiet-oasis-70395.herokuapp.com/
 
 #### Lyhyen tähtäimen FRONTEND TODO:
 - [x] Toteuta minimalistinen front-end
 - [x] Laita backend käyttämään tietokantaa
-- [ ] Laita frontend käyttämään tietokantaa
-- [ ] Toteuta kurssin CRUD-nelikkö
+- [x] Laita frontend käyttämään backendiä
+- [x] Laita pyörimään herokuun
+- [x] Toteuta kurssin CRUD-nelikkö
 
 
 #### Lyhyen tähtäimen BACKEND TODO:
 - [ ] Konfiguroi development pipeline
 - [ ] Refaktoroi koodia omiin moduuleihinsa
+- [ ] Toteuta kurssin CRUD-nelikkö
 
 #### Backendin käyttöohje
 1. git clone
