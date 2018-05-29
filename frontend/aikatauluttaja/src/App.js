@@ -1,6 +1,7 @@
 import React from 'react'
 import Course from "./components/Course"
 import courseService from "./services/courses"
+import { BrowserRouter as Router, Route, Link } from 'react-router-dom'
 
 
 
@@ -65,12 +66,6 @@ class App extends React.Component {
           })
         })
     }
-
-
-
-
-
-
   }
 
   handleCourseNameChange = (event) => {
@@ -89,32 +84,36 @@ class App extends React.Component {
   }
 
   render() {
+
     return (
       <div>
-        <h1>Kurssit</h1>
-        <ul>
-          {this.state.courses.map(course => <Course key={course._id} course={course} />)}
-        </ul>
+        <Router>
+          <div>
+          <h1>Kurssit</h1>
+          <ul>
+            {this.state.courses.map(course => <Course key={course._id} course={course} />)}
+          </ul>
 
-        <form onSubmit={this.addCourse}>
-          Name:
+          <form onSubmit={this.addCourse}>
+            Name:
           <input
-            value={this.state.newCourseName}
-            onChange={this.handleCourseNameChange}
-          />
-          Credits:
+              value={this.state.newCourseName}
+              onChange={this.handleCourseNameChange}
+            />
+            Credits:
           <input
-            value={this.state.newCourseCredits}
-            onChange={this.handleCourseCreditsChange}
-          />
-          Length (in periods):
+              value={this.state.newCourseCredits}
+              onChange={this.handleCourseCreditsChange}
+            />
+            Length (in periods):
           <input
-            value={this.state.newCourseLength}
-            onChange={this.handleCourseLengthChange}
-          />
-          <button type="submit">lisää kurssi</button>
-        </form>
-
+              value={this.state.newCourseLength}
+              onChange={this.handleCourseLengthChange}
+            />
+            <button type="submit">lisää kurssi</button>
+          </form>
+          </div>
+        </Router>
       </div>
     )
   }

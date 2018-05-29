@@ -48,3 +48,4 @@ https://quiet-oasis-70395.herokuapp.com/
 |  22.3     | 15min     | Seuraavien vaiheiden suunnittelua | 
 |  29.5     | 1h        | Palattu projektin pariin 2kk tauon jälkeen. Aluksi joutui hieman kertailemaan asoita ja komentoja jotka olivat päässee unohtumaan. |
 |  29.5     | 15min     | Lisätty tarkistukset kurssin kentille sitä luodessa. |
+|  29.5     | 1h        | Yritetty saada React Routeria toimimaan, mutta bugeista johtuen suurin osa muutoksista poistettu. |
