@@ -35,7 +35,7 @@ https://quiet-oasis-70395.herokuapp.com/
 
 
 | Päivä     | Aika      | Tehty työ  |
-| ----------|:---------:| ----------:|
+| ----------|:---------:| :---------:|
 |  14.3     | 30min     | Git repon pystytys, readmen teko ja aiheen valinta |
 |  14.3     | 1h10min   | Minimalistisen backendin toteutus, herokuun deployaus, readmen päivitys |
 |  14.3     | 30min     | Minimalistisen frontendin toteutus |
@@ -46,3 +46,4 @@ https://quiet-oasis-70395.herokuapp.com/
 |  22.3     | 10min     | Konfiguroitu backendille eslint. |
 |  22.3     | 40min     | Frontti käyttämään backendin tarjoamaa dataa. |
 |  22.3     | 15min     | Seuraavien vaiheiden suunnittelua | 
+|  29.5     | 1h        | Palattu projektin pariin 2kk tauon jälkeen. Aluksi joutui hieman kertailemaan asoita ja komentoja jotka olivat päässee unohtumaan. |
