@@ -34,21 +34,43 @@ class App extends React.Component {
       credits: this.state.newCourseCredits
     }
 
-    courseService
-      .create(courseObject)
-      .then(response => {
-        this.setState({
-          courses: this.state.courses.concat(response.data),
-          newCourseName: "",
-          newCourseCredits: 0,
-          newCourseLength: 0
+    let errors = 0
+
+
+    if (courseObject.title === "") {
+      alert("Kurssilla tulee olla nimi!")
+      errors++
+    }
+
+    if (isNaN(courseObject.length)) {
+      alert("Kurssin pituuden tulee olla numero!")
+      errors++
+    }
+
+    if (isNaN(courseObject.credits)) {
+      alert("Kurssin opintopistemäärän tulee olla numero!")
+      errors++
+    }
+
+
+    if (errors === 0) {
+      courseService
+        .create(courseObject)
+        .then(response => {
+          this.setState({
+            courses: this.state.courses.concat(response.data),
+            newCourseName: "",
+            newCourseCredits: 0,
+            newCourseLength: 0
+          })
         })
-      })
+    }
 
 
-    
 
-    console.log('helou!')
+
+
+
   }
 
   handleCourseNameChange = (event) => {
@@ -75,14 +97,17 @@ class App extends React.Component {
         </ul>
 
         <form onSubmit={this.addCourse}>
+          Name:
           <input
             value={this.state.newCourseName}
             onChange={this.handleCourseNameChange}
           />
+          Credits:
           <input
             value={this.state.newCourseCredits}
             onChange={this.handleCourseCreditsChange}
           />
+          Length (in periods):
           <input
             value={this.state.newCourseLength}
             onChange={this.handleCourseLengthChange}
