@@ -2,7 +2,7 @@ POST http://localhost:3001/api/courses
 content-type: application/json
 
 {
-    "title": "Tietorakenteet ja algoritmit",
+    "title": "2 Tietorakenteet ja algoritmit",
     "length": 0,
     "credits": 0
 }

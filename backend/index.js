@@ -28,7 +28,7 @@ app.use(express.static("build"))
 
 
 app.get("/api/", (req, res) => {
-    res.send("<p>tervetuloa backendiin</p> <a href=\"/api/courses\">/api/courses</p>")
+    res.send("<p>tervetuloa backendiiiiin</p> <a href=\"/api/courses\">/api/courses</p>")
 })
 
 app.get("/api/courses", (request, response) => {
