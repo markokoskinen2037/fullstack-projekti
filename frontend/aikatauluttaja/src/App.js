@@ -1,5 +1,6 @@
 import React from 'react'
 import Course from "./components/Course"
+import HomePage from "./components/HomePage"
 import courseService from "./services/courses"
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom'
 
@@ -89,29 +90,40 @@ class App extends React.Component {
       <div>
         <Router>
           <div>
-          <h1>Kurssit</h1>
+            <div>
+              <Link to="/">Etusivu</Link>
+              <Link to="/courses">Kurssit</Link>
+              </div>
+
+          <Route exact path="/courses" render={() =>
+          <div>
+            <h1>Kurssit</h1>
           <ul>
             {this.state.courses.map(course => <Course key={course._id} course={course} />)}
           </ul>
 
+
           <form onSubmit={this.addCourse}>
             Name:
-          <input
-              value={this.state.newCourseName}
-              onChange={this.handleCourseNameChange}
-            />
+          <input value={this.state.newCourseName} onChange={this.handleCourseNameChange}/>
             Credits:
-          <input
-              value={this.state.newCourseCredits}
-              onChange={this.handleCourseCreditsChange}
-            />
+          <input value={this.state.newCourseCredits} onChange={this.handleCourseCreditsChange}/>
             Length (in periods):
-          <input
-              value={this.state.newCourseLength}
-              onChange={this.handleCourseLengthChange}
-            />
+          <input value={this.state.newCourseLength} onChange={this.handleCourseLengthChange}/>
             <button type="submit">lisää kurssi</button>
           </form>
+            </div>
+          } />
+          
+
+          
+          <Route exact path="/" render={() => <HomePage/> } />
+
+          <Route path="/courses/:id" render={() => <h1>Tänne tulee sivu jossa voi muokata kurssin tietoja</h1>} />
+          
+
+
+
           </div>
         </Router>
       </div>
