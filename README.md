@@ -30,22 +30,14 @@ https://quiet-oasis-70395.herokuapp.com/
 3. npm start
 
 ---
-### Aikaa käytetty yhteensä noin : 5h
+### Aikaa käytetty yhteensä noin : 8h
 ---
 
 
 | Päivä     | Aika      | Tehty työ  |
 | ----------|:---------:| :---------:|
-|  14.3     | 30min     | Git repon pystytys, readmen teko ja aiheen valinta |
-|  14.3     | 1h10min   | Minimalistisen backendin toteutus, herokuun deployaus, readmen päivitys |
-|  14.3     | 30min     | Minimalistisen frontendin toteutus |
-|  15.3     | 1h15min   | Backend käyttää MongoDB:tä | 
-|  15.3     | 15min     | Fronttia voi käyttää nyt backend serverin kautta | 
-|  22.3     | 20min     | Tietokantaa käyttävä backendin versio herokuun. Yms. heroku hommia |
-|  22.3     | 20min     | Tietokannan käyttis ja salasana piiloon ympäristömuuttujiin. |
-|  22.3     | 10min     | Konfiguroitu backendille eslint. |
-|  22.3     | 40min     | Frontti käyttämään backendin tarjoamaa dataa. |
-|  22.3     | 15min     | Seuraavien vaiheiden suunnittelua | 
-|  29.5     | 1h        | Palattu projektin pariin 2kk tauon jälkeen. Aluksi joutui hieman kertailemaan asoita ja komentoja jotka olivat päässee unohtumaan. |
-|  29.5     | 15min     | Lisätty tarkistukset kurssin kentille sitä luodessa. |
-|  29.5     | 1h        | Yritetty saada React Routeria toimimaan, mutta bugeista johtuen suurin osa muutoksista poistettu. |
+|  14.3     | 2h10min     | Git repon pystytys, readmen teko ja aiheen valinta. Minimalistisen backendin toteutus, herokuun deployaus, readmen päivitys. Minimalistisen frontendin toteutus |
+|  15.3     | 1h30min   | Backend käyttää MongoDB:tä. Fronttia voi käyttää nyt backend serverin kautta. Tietokantaa käyttävä backendin versio herokuun. Yms. heroku hommia |
+|  22.3     | 1h45min     | Tietokannan käyttis ja salasana piiloon ympäristömuuttujiin. Konfiguroitu backendille eslint. Frontti käyttämään backendin tarjoamaa dataa. Seuraavien vaiheiden suunnittelua | 
+|  29.5     | 1h        | Palattu projektin pariin 2kk tauon jälkeen. Aluksi joutui hieman kertailemaan asoita ja komentoja jotka olivat päässee unohtumaan. Lisätty tarkistukset kurssin kentille sitä luodessa. Yritetty saada React Routeria toimimaan, mutta bugeista johtuen suurin osa muutoksista poistettu.  |
+|  31.5     | 1h30min   | Siirrytty kehittämään projektia windowsista ubuntulle, tässä ilmeni yllättäviä ongelmia joiden korjaaminen vaati hieman aikaa. Refaktoroitu backendin coursesRouter omaan tiedostoonsa. Korjattu tietokantayhteys MONGO-DB:hen. Siirrytty readmen ylläpidossa päiväkohtaiseen kirjanpitoon. |
