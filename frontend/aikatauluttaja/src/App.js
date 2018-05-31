@@ -1,6 +1,8 @@
 import React from 'react'
 import Course from "./components/Course"
 import HomePage from "./components/HomePage"
+import EditCourse from "./components/EditCourse"
+
 import courseService from "./services/courses"
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom'
 
@@ -84,7 +86,16 @@ class App extends React.Component {
     this.setState({ newCourseLength: event.target.value })
   }
 
+
+
   render() {
+
+    const findCourseById = (id) =>
+    this.state.courses.find(course => course._id === id)
+
+
+    
+
 
     return (
       <div>
@@ -119,7 +130,11 @@ class App extends React.Component {
           
           <Route exact path="/" render={() => <HomePage/> } />
 
-          <Route path="/courses/:id" render={() => <h1>Tänne tulee sivu jossa voi muokata kurssin tietoja</h1>} />
+          
+
+                <Route exact path="/courses/:id" render={({match}) =>
+        <EditCourse course={findCourseById(match.params.id)} />}
+      />
           
 
 
