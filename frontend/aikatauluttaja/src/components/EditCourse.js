@@ -1,7 +1,5 @@
 import React from 'react'
 
-import courseService from "../services/courses"
-
 const EditCourse = ({ course , state}) => {
 
 
@@ -9,20 +7,19 @@ const EditCourse = ({ course , state}) => {
     console.log(course)
 
 
-    console.log("----")
 
 
 
     return (
         <div>
              <form>
-                    Name:
+                    Nimi:
                 <input value={course.title}/>
-                    Credits:
+                    Laajuus (op):
                 <input value={course.credits}/>
-                    Length (in periods):
+                    Pituus (periodeissa):
                 <input value={course.length}/>
-                    <button type="submit">lisää kurssi</button>
+                    <button type="submit">Tallenna muutokset</button>
           </form>
       </div>
     )

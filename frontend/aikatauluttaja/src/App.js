@@ -14,13 +14,21 @@ class App extends React.Component {
     this.state = {
       courses: [],
       newCourseName: "",
-      newCourseCredits: 0,
-      newCourseLength: 0,
+      newCourseCredits: null,
+      newCourseLength: null,
       updatedCourseName: "test"
     }
 
   }
 
+  reloadCoursesFromBackend() {
+    courseService
+    .getAll()
+    .then(courses => {
+      this.setState({ courses })
+      console.log("reloaded " + courses.length + " courses from backend.")
+    })
+  }
 
 
   componentDidMount() {
