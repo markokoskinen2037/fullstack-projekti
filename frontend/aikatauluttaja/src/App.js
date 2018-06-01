@@ -15,9 +15,13 @@ class App extends React.Component {
       courses: [],
       newCourseName: "",
       newCourseCredits: 0,
-      newCourseLength: 0
+      newCourseLength: 0,
+      updatedCourseName: "test"
     }
+
   }
+
+
 
   componentDidMount() {
     console.log("getting courses from backend...")
@@ -86,8 +90,6 @@ class App extends React.Component {
     this.setState({ newCourseLength: event.target.value })
   }
 
-
-
   render() {
 
     const findCourseById = (id) =>
@@ -133,7 +135,7 @@ class App extends React.Component {
           
 
                 <Route exact path="/courses/:id" render={({match}) =>
-        <EditCourse course={findCourseById(match.params.id)} />}
+        <EditCourse state={this.state} course={findCourseById(match.params.id)} />}
       />
           
 
