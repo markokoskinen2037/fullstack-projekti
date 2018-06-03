@@ -3,11 +3,6 @@ const usersRouter = require('express').Router()
 const User = require('../models/user')
 
 usersRouter.post('/', async (request, response) => {
-
-
-
-
-
     try {
         const body = request.body
 
@@ -41,9 +36,11 @@ usersRouter.post('/', async (request, response) => {
 })
 
 usersRouter.get('/', async (request, response) => {
-    console.log("sup")
-    const users = await User.find({})
+    const users = await User
+      .find({})
+      .populate('courses')
+  
     response.json(users)
-})
+  })
 
 module.exports = usersRouter

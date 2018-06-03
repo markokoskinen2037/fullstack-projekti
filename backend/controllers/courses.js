@@ -1,13 +1,15 @@
-const coursesRouter = require('express').Router()
+const coursesRouter = require("express").Router()
 const Course = require("../models/course")
+const User = require("../models/user")
 
 
-coursesRouter.get("/", (request, response) => {
-    Course
+
+coursesRouter.get('/', async (request, response) => {
+    const courses = await Course
         .find({})
-        .then(courses => {
-            response.json(courses)
-        })
+        .populate('user')
+
+    response.json(courses)
 })
 
 coursesRouter.get("/:id", (request, response) => {
@@ -65,14 +67,15 @@ coursesRouter.put("/:id", (request, response) => {
         })
 })
 
-coursesRouter.post("/", (request, response) => {
+coursesRouter.post("/", async (request, response) => {
+
+    console.log(request.body)
 
     if (request.body.title === undefined) {
         return response.status(400).json({
             error: "Title required!"
         })
     }
-
     if (request.body.credits === undefined) {
         request.body.credits = 0
     }
@@ -87,7 +90,8 @@ coursesRouter.post("/", (request, response) => {
     const course = new Course({
         title: request.body.title,
         credits: request.body.credits,
-        length: request.body.length
+        length: request.body.length,
+        user: request.body.userId
     })
 
     course
@@ -95,6 +99,20 @@ coursesRouter.post("/", (request, response) => {
         .then(savedCourse => {
             response.json(savedCourse)
         })
+
+    const user = await User.findById(request.params.userId)
+
+    console.log("got userid: " + request.body.params.userId)
+    console.log("found user: " + user)
+
+    let courses = user.courses
+
+    user.courses = courses.concat(savedCourse._id)
+
+    user.save()
+
+
+
 })
 
 

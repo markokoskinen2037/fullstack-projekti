@@ -2,7 +2,6 @@ const express = require("express")
 const app = express()
 const bodyParser = require("body-parser")
 const cors = require("cors")
-const Course = require("./models/course")
 const coursesRouter = require("./controllers/courses")
 const usersRouter = require("./controllers/users")
 
@@ -18,7 +17,9 @@ const logger = (request, response, next) => {
 }
 
 const error = (request, response) => {
-    response.status(404).send({ error: "unknown endpoint" })
+    response.status(404).send({
+        error: "unknown endpoint"
+    })
 }
 
 
