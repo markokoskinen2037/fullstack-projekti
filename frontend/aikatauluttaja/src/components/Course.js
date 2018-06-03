@@ -11,7 +11,7 @@ const Course = ({ reloadCoursesFromBackend, course }) => {
     courseService.removeById(course_id)
     console.log("removal completed")
 
-    //Laita state.courses pävittymään
+    reloadCoursesFromBackend()
 
   }
 

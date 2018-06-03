@@ -14,8 +14,8 @@ class App extends React.Component {
     this.state = {
       courses: [],
       newCourseName: "",
-      newCourseCredits: null,
-      newCourseLength: null
+      newCourseCredits: "",
+      newCourseLength: ""
     }
 
   }
@@ -119,7 +119,7 @@ class App extends React.Component {
           <div>
             <h1>Kurssit</h1>
           <ul>
-            {this.state.courses.map(course => <Course key={course._id} course={course} />)}
+            {this.state.courses.map(course => <Course reloadCoursesFromBackend={this.reloadCoursesFromBackend.bind(this)} key={course._id} course={course} />)}
           </ul>
 
 
@@ -142,7 +142,7 @@ class App extends React.Component {
           
 
                 <Route exact path="/courses/:id" render={({match}) =>
-        <EditCourse state={this.state} course={findCourseById(match.params.id)} />}
+        <EditCourse reloadCoursesFromBackend={this.reloadCoursesFromBackend.bind(this)} state={this.state} course={findCourseById(match.params.id)} />}
       />
           
 

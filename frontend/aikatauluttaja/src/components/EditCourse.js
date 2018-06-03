@@ -1,5 +1,7 @@
 import React from 'react';
 import courseService from "../services/courses"
+import { withRouter } from "react-router-dom";
+
 
 class EditCourse extends React.Component {
   constructor(props) {
@@ -36,11 +38,12 @@ class EditCourse extends React.Component {
 
           courseService
           .update(editedCourse._id, editedCourse)
-          .then(reponse => {
-            console.log("course updated... redirecting...")
-            window.location.replace("/courses")
+          .then(response => {
+            console.log(response)
+            this.props.reloadCoursesFromBackend()
+            
           })
-
+          this.props.history.push("/courses");
 
     }
 
@@ -57,13 +60,13 @@ class EditCourse extends React.Component {
         <div>
         <form onSubmit={(e) => this.updateCourse(e)}>
                Nimi:
-           <input name="editedCourseTitle" value={this.state.editedCourseTitle} onChange={(event) => this.handleFormChange(event)}/>
+           <input type="text" name="editedCourseTitle" value={this.state.editedCourseTitle} onChange={(event) => this.handleFormChange(event)}/>
 
                 Laajuus (op):
-           <input name="editedCourseCredits" value={this.state.editedCourseCredits} onChange={(event) => this.handleFormChange(event)}/>
+           <input type="number" name="editedCourseCredits" value={this.state.editedCourseCredits} onChange={(event) => this.handleFormChange(event)}/>
 
               Pituus (periodeissa):
-           <input name="editedCourseLength" value={this.state.editedCourseLength} onChange={(event) => this.handleFormChange(event)}/>
+           <input type="number" name="editedCourseLength" value={this.state.editedCourseLength} onChange={(event) => this.handleFormChange(event)}/>
 
                <button type="submit">Tallenna muutokset</button>
      </form>
@@ -72,4 +75,4 @@ class EditCourse extends React.Component {
   }
 }
 
-export default EditCourse;
+export default withRouter(EditCourse);
