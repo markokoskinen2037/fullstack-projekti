@@ -1,7 +1,7 @@
 import React from 'react'
 
 import courseService from "../services/courses"
-import { BrowserRouter as Router, Route, Link } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 
 const Course = ({ reloadCoursesFromBackend, course }) => {
 
@@ -9,7 +9,9 @@ const Course = ({ reloadCoursesFromBackend, course }) => {
     console.log("Deleting course from database...")
     
     courseService.removeById(course_id)
-    console.log("removal combpleted")
+    console.log("removal completed")
+
+    //Laita state.courses pävittymään
 
   }
 

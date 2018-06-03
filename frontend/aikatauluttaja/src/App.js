@@ -15,8 +15,7 @@ class App extends React.Component {
       courses: [],
       newCourseName: "",
       newCourseCredits: null,
-      newCourseLength: null,
-      updatedCourseName: "test"
+      newCourseLength: null
     }
 
   }
