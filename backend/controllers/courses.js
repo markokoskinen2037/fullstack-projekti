@@ -22,18 +22,22 @@ coursesRouter.get("/:id", (request, response) => {
         })
         .catch(error => {
             console.log(error)
-            response.status(400).send({ error: "malformatted id" })
+            response.status(400).send({
+                error: "malformatted id"
+            })
         })
 })
 
 coursesRouter.delete("/:id", (request, response) => {
     Course
         .findByIdAndRemove(request.params.id)
-        .then((result) => {
+        .then(() => {
             response.status(204).end()
         })
         .catch(error => {
-            response.status(400).send({ error: "malformatted id" })
+            response.status(400).send({
+                error: "malformatted id"
+            })
         })
 })
 
@@ -47,20 +51,26 @@ coursesRouter.put("/:id", (request, response) => {
     }
 
     Course
-        .findByIdAndUpdate(request.params.id, course, { new: true })
+        .findByIdAndUpdate(request.params.id, course, {
+            new: true
+        })
         .then(updatedCourse => {
             response.json(updatedCourse)
         })
         .catch(error => {
             console.log(error)
-            response.status(400).send({ error: "malformatted id" })
+            response.status(400).send({
+                error: "malformatted id"
+            })
         })
 })
 
 coursesRouter.post("/", (request, response) => {
 
     if (request.body.title === undefined) {
-        return response.status(400).json({ error: "Title required!" })
+        return response.status(400).json({
+            error: "Title required!"
+        })
     }
 
     if (request.body.credits === undefined) {

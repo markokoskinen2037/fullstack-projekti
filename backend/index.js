@@ -4,6 +4,7 @@ const bodyParser = require("body-parser")
 const cors = require("cors")
 const Course = require("./models/course")
 const coursesRouter = require("./controllers/courses")
+const usersRouter = require("./controllers/users")
 
 
 
@@ -30,10 +31,11 @@ app.use(express.static("build"))
 
 
 app.get("/api/", (req, res) => {
-    res.send("<p>tervetuloa backendiiiiin</p> <a href=\"/api/courses\">/api/courses</p>")
+    res.send("<p>tervetuloa backendiiiiin</p> <a href=\"/api/courses\">/api/courses</p> <a href=\"/api/users\">/api/users</p>")
 })
 
 app.use("/api/courses", coursesRouter)
+app.use("/api/users", usersRouter)
 
 app.use(error)
 
