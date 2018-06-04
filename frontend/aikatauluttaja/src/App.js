@@ -39,6 +39,10 @@ class App extends React.Component {
     })
   }
 
+  updateCourseState = (response) => {
+    //TODO
+  }
+
 
   componentDidMount() {
     console.log("getting courses from backend...")
@@ -154,7 +158,7 @@ class App extends React.Component {
                   
 
                 <Route exact path="/courses/:id" render={({match}) =>
-                          <EditCourse reloadCoursesFromBackend={this.reloadCoursesFromBackend.bind(this)} state={this.state} course={this.findCourse(match.params.id)} />}
+                          <EditCourse updateCourseState={this.updateCourseState} reloadCoursesFromBackend={this.reloadCoursesFromBackend.bind(this)} state={this.state} course={this.findCourse(match.params.id)} />}
                 />
                   
 

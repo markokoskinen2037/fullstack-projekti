@@ -26,7 +26,7 @@ class EditCourse extends React.Component {
         e.preventDefault()
         
 
-        const editedCourse = {
+        const editedCourse = { //Luodaan uusi kurssi olio
             _id : this.state.editedCourseId,
             title: this.state.editedCourseTitle,
             length: this.state.editedCourseLength,
@@ -36,11 +36,13 @@ class EditCourse extends React.Component {
           console.log("you called ?")
           console.log(editedCourse)
 
-          courseService
-          .update(editedCourse._id, editedCourse)
+          courseService //Otetaan yhteys kurssiPalveluun
+          .update(editedCourse._id, editedCourse) //Korvataan vanhat kunssin tiedot uusilla tietokannassa
           .then(response => {
-            console.log(response)
-            this.props.reloadCoursesFromBackend()
+            console.log(response) //response sisältää kurssiolion joka tulee sijoittaa stateen
+            this.props.reloadCoursesFromBackend() //Tåmä on kömpelö ja aikaa vievä tapa päivittää tilassa olevat kurssit...
+            
+
             
           })
           this.props.history.push("/courses");
@@ -52,9 +54,6 @@ class EditCourse extends React.Component {
 
   
   render() {
-
-
-
 
     return (
         <div>

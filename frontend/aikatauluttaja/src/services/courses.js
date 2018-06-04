@@ -26,4 +26,5 @@ const removeById = (id) => {
     
 }
 
+
 export default { getAll, create, update, get, removeById }
