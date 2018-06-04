@@ -16,9 +16,17 @@ class App extends React.Component {
       courses: [],
       newCourseName: "",
       newCourseCredits: "",
-      newCourseLength: ""
+      newCourseLength: "",
+      user: null
     }
 
+  }
+
+  setLoggedInUser = (user) => {
+    alert(user.token)
+    this.setState({
+      user: user
+    })
   }
 
   reloadCoursesFromBackend() {
@@ -116,7 +124,7 @@ class App extends React.Component {
               <Link to="/courses">Kurssit</Link>
               </div>
 
-              <LoginForm/>
+              <LoginForm setLoggedInUser={this.setLoggedInUser}/>
 
           
 

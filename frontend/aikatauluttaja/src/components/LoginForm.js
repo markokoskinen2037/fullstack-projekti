@@ -20,23 +20,18 @@ class LoginForm extends React.Component {
 
     login = async (event) => {
         event.preventDefault()
-        try{
-          const user = await loginService.login({
-            username: this.state.username,
-            password: this.state.password
-          })
-          alert("logged in as" + this.state.username)
+         try{
+           const user = await loginService.login({
+             username: this.state.username,
+             password: this.state.password
+           })
+           alert("Logged in as" + this.state.username)
       
-          this.setState({ username: '', password: '', user})
-        } catch(exception) {
-            alert("virheellinen käyttäjätunnus tai salasana!")
-          this.setState({
-            error: 'käyttäjätunnus tai salasana virheellinen',
-          })
-          setTimeout(() => {
-            this.setState({ error: null })
-          }, 5000)
-        }
+           this.setState({ username: '', password: ''})
+           this.props.setLoggedInUser(user)
+         } catch(exception) {
+             alert("virheellinen käyttäjätunnus tai salasana!")
+         }
       }
 
 
