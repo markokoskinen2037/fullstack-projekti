@@ -23,7 +23,6 @@ class App extends React.Component {
   }
 
   setLoggedInUser = (user) => {
-    alert(user.token)
     this.setState({
       user: user
     })
@@ -91,30 +90,23 @@ class App extends React.Component {
     }
   }
 
-  handleCourseNameChange = (event) => {
+
+  handleFormChange(event){
     console.log(event.target.value)
-    this.setState({ newCourseName: event.target.value })
+    const name = event.target.name
+    this.setState({
+        [name] : event.target.value
+    })
+}
+
+
+  findCourse = (id) => {
+    let course = this.state.courses.find(course => course._id === id)
+    return course
   }
 
-  handleCourseCreditsChange = (event) => {
-    console.log(event.target.value)
-    this.setState({ newCourseCredits: event.target.value })
-  }
-
-  handleCourseLengthChange = (event) => {
-    console.log(event.target.value)
-    this.setState({ newCourseLength: event.target.value })
-  }
 
   render() {
-
-    const findCourseById = (id) =>
-    this.state.courses.find(course => course._id === id)
-
-
-    
-
-
     return (
       <div>
         <Router>
@@ -129,23 +121,23 @@ class App extends React.Component {
           
 
           <Route exact path="/courses" render={() =>
-          <div>
-            <h1>Kurssit</h1>
-          <ul>
-            {this.state.courses.map(course => <Course reloadCoursesFromBackend={this.reloadCoursesFromBackend.bind(this)} key={course._id} course={course} />)}
-          </ul>
+            <div>
+              <h1>Kurssit</h1>
+            <ul>
+              {this.state.courses.map(course => <Course reloadCoursesFromBackend={this.reloadCoursesFromBackend.bind(this)} key={course._id} course={course} />)}
+            </ul>
 
 
-          <form onSubmit={this.addCourse}>
-            Name:
-          <input value={this.state.newCourseName} onChange={this.handleCourseNameChange}/>
-            Credits:
-          <input value={this.state.newCourseCredits} onChange={this.handleCourseCreditsChange}/>
-            Length (in periods):
-          <input value={this.state.newCourseLength} onChange={this.handleCourseLengthChange}/>
-            <button type="submit">lisää kurssi</button>
-          </form>
-            </div>
+            <form onSubmit={this.addCourse}>
+              Name:
+            <input name="newCourseName" value={this.state.newCourseName} onChange={(e) => this.handleFormChange(e)}/>
+              Credits:
+            <input name="newCourseCredits" value={this.state.newCourseCredits} onChange={(e) => this.handleFormChange(e)}/>
+              Length (in periods):
+            <input name="newCourseLength" value={this.state.newCourseLength} onChange={(e) => this.handleFormChange(e)}/>
+              <button type="submit">lisää kurssi</button>
+            </form>
+              </div>
           } />
           
 
@@ -155,7 +147,7 @@ class App extends React.Component {
           
 
                 <Route exact path="/courses/:id" render={({match}) =>
-                  <EditCourse reloadCoursesFromBackend={this.reloadCoursesFromBackend.bind(this)} state={this.state} course={findCourseById(match.params.id)} />}
+                  <EditCourse reloadCoursesFromBackend={this.reloadCoursesFromBackend.bind(this)} state={this.state} course={this.findCourse(match.params.id)} />}
       />
           
 
