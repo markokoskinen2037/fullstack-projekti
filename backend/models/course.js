@@ -14,7 +14,7 @@ const Course = mongoose.model("Course", {
     title: String,
     credits: Number,
     length: Number,
-    user: { type: mongoose.Schema.Types.ObjectId, ref: 'User' }
+    user: { type: mongoose.Schema.Types.ObjectId, ref: "User" }
 })
 
 module.exports = Course
