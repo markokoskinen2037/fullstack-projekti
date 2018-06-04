@@ -51,7 +51,9 @@ class LoginForm extends React.Component {
             )
         } else {
             return(
-                <p>Logged in as: {this.props.user.username}</p>
+                <div>
+                    <p><p>Logged in as: {this.props.user.username}</p> <button>Log out</button></p>
+                </div>
             )
             
         }

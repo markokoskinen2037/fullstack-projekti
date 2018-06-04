@@ -63,19 +63,28 @@ class CourseForm extends React.Component {
 
 
     render() {
+
+      if(this.props.user === null){
+        return(
+          <p>Login to add courses!</p>
+        )
+      } else {
         return(
             <div>
-            <form onSubmit={this.addCourse}>
-            Name:
-          <input name="newCourseName" value={this.state.newCourseName} onChange={(e) => this.handleFormChange(e)}/>
-            Credits:
-          <input name="newCourseCredits" value={this.state.newCourseCredits} onChange={(e) => this.handleFormChange(e)}/>
-            Length (in periods):
-          <input name="newCourseLength" value={this.state.newCourseLength} onChange={(e) => this.handleFormChange(e)}/>
-            <button type="submit">lisää kurssi</button>
-          </form>
+              <form onSubmit={this.addCourse}>
+                  Name:
+                <input name="newCourseName" value={this.state.newCourseName} onChange={(e) => this.handleFormChange(e)}/>
+                  Credits:
+                <input name="newCourseCredits" value={this.state.newCourseCredits} onChange={(e) => this.handleFormChange(e)}/>
+                  Length (in periods):
+                <input name="newCourseLength" value={this.state.newCourseLength} onChange={(e) => this.handleFormChange(e)}/>
+                  <button type="submit">lisää kurssi</button>
+            </form>
             </div>
-        )
+      )
+      }
+
+
     }
 }
 

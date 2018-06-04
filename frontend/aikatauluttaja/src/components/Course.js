@@ -15,6 +15,8 @@ const Course = ({ reloadCoursesFromBackend, course }) => {
 
   }
 
+  
+
   return (
     <div>
       <li>{course.title} {course.credits} <b>op</b> {course.length} periodia pitkä <Link to={`/courses/${course._id}`}>Edit</Link> <button onClick={() => deleteCourse(course._id) }>Delete</button></li> 

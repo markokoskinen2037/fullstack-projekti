@@ -102,7 +102,7 @@ class App extends React.Component {
 }
 
 
-  updateCourseList = (newCourseData) => {
+  addCourseToCourseList = (newCourseData) => {
     this.setState({
       courses : this.state.courses.concat(newCourseData)
     })
@@ -126,27 +126,37 @@ class App extends React.Component {
 
           
 
-          <Route exact path="/courses" render={() =>
-            <div>
-              <h1>Kurssit</h1>
-            <ul>
-              {this.state.courses.map(course => <Course reloadCoursesFromBackend={this.reloadCoursesFromBackend.bind(this)} key={course._id} course={course} />)}
-              </ul>
+                <Route exact path="/courses" render={() => {
+                  if(this.state.user != null){
+                    return (
+                      <div>
+                      <h1>Kurssit</h1>
+                        <ul>
+                      {this.state.courses.map(course => <Course user={this.state.user} reloadCoursesFromBackend={this.reloadCoursesFromBackend.bind(this)} key={course._id} course={course} />)}
+                        </ul>
+  
+                      <CourseForm user={this.state.user} updateCourseList={this.addCourseToCourseList} addCourse={this.addCourse}/>
+                      </div>
+                    )
+                  } else {
+                    return (
+                      <p>Please login to view and modify courses.</p>
+                    )
+                  }
+                }
 
-        <CourseForm updateCourseList={this.updateCourseList} addCourse={this.addCourse}/>
-        </div>
-} />
+                } />
 
 
 
-<Route exact path="/" render={() => <HomePage/> } />
+                <Route exact path="/" render={() => <HomePage/> } />
 
-          
+                  
 
                 <Route exact path="/courses/:id" render={({match}) =>
-                  <EditCourse reloadCoursesFromBackend={this.reloadCoursesFromBackend.bind(this)} state={this.state} course={this.findCourse(match.params.id)} />}
-      />
-          
+                          <EditCourse reloadCoursesFromBackend={this.reloadCoursesFromBackend.bind(this)} state={this.state} course={this.findCourse(match.params.id)} />}
+                />
+                  
 
 
 
