@@ -30,7 +30,7 @@ https://quiet-oasis-70395.herokuapp.com/
 3. npm start
 
 ---
-### Aikaa käytetty yhteensä noin : 8h
+### Aikaa käytetty yhteensä noin : 18h10min
 ---
 
 
