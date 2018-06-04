@@ -2,6 +2,7 @@ import React from 'react'
 import Course from "./components/Course"
 import HomePage from "./components/HomePage"
 import EditCourse from "./components/EditCourse"
+import LoginForm from "./components/LoginForm"
 
 import courseService from "./services/courses"
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom'
@@ -115,6 +116,10 @@ class App extends React.Component {
               <Link to="/courses">Kurssit</Link>
               </div>
 
+              <LoginForm/>
+
+          
+
           <Route exact path="/courses" render={() =>
           <div>
             <h1>Kurssit</h1>
@@ -142,7 +147,7 @@ class App extends React.Component {
           
 
                 <Route exact path="/courses/:id" render={({match}) =>
-        <EditCourse reloadCoursesFromBackend={this.reloadCoursesFromBackend.bind(this)} state={this.state} course={findCourseById(match.params.id)} />}
+                  <EditCourse reloadCoursesFromBackend={this.reloadCoursesFromBackend.bind(this)} state={this.state} course={findCourseById(match.params.id)} />}
       />
           
 
