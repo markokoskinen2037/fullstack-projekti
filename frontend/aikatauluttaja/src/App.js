@@ -4,9 +4,10 @@ import HomePage from "./components/HomePage"
 import EditCourse from "./components/EditCourse"
 import LoginForm from "./components/LoginForm"
 import CourseForm from "./components/CourseForm"
+import NavBar from "./components/NavBar"
 
 import courseService from "./services/courses"
-import { BrowserRouter as Router, Route, Link } from 'react-router-dom'
+import { BrowserRouter as Router, Route } from 'react-router-dom'
 
 
 
@@ -119,10 +120,7 @@ class App extends React.Component {
       <div>
         <Router>
           <div>
-            <div>
-              <Link to="/">Etusivu</Link>
-              <Link to="/courses">Kurssit</Link>
-              </div>
+            <NavBar/>
 
               <LoginForm user={this.state.user} setLoggedInUser={this.setLoggedInUser}/>
 
