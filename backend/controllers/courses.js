@@ -69,7 +69,6 @@ coursesRouter.put("/:id", (request, response) => {
 
 coursesRouter.post("/", async (request, response) => {
 
-    console.log(request.body)
 
     if (request.body.title === undefined) {
         return response.status(400).json({
@@ -99,19 +98,6 @@ coursesRouter.post("/", async (request, response) => {
         .then(savedCourse => {
             response.json(savedCourse)
         })
-
-    const user = await User.findById(request.params.userId)
-
-    console.log("got userid: " + request.body.params.userId)
-    console.log("found user: " + user)
-
-    let courses = user.courses
-
-    user.courses = courses.concat(savedCourse._id)
-
-    user.save()
-
-
 
 })
 

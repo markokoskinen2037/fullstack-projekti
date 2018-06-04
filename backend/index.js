@@ -6,8 +6,6 @@ const coursesRouter = require("./controllers/courses")
 const usersRouter = require("./controllers/users")
 
 
-
-
 const logger = (request, response, next) => {
     console.log("Method:", request.method)
     console.log("Path:  ", request.path)
@@ -29,10 +27,8 @@ app.use(cors())
 app.use(express.static("build"))
 
 
-
-
 app.get("/api/", (req, res) => {
-    res.send("<p>tervetuloa backendiiiiin</p> <a href=\"/api/courses\">/api/courses</p> <a href=\"/api/users\">/api/users</p>")
+    res.send("<p>Tervetuloa backendiin!</p> <a href=\"/api/courses\">/api/courses</p> <a href=\"/api/users\">/api/users</p>")
 })
 
 app.use("/api/courses", coursesRouter)
