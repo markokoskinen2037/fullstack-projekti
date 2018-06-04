@@ -25,7 +25,6 @@ class LoginForm extends React.Component {
              username: this.state.username,
              password: this.state.password
            })
-           alert("Logged in as: " + this.state.username)
       
            this.setState({ username: '', password: ''})
            this.props.setLoggedInUser(user)
@@ -36,17 +35,30 @@ class LoginForm extends React.Component {
 
 
     render() {
-    return (
-        <div>
-            <form onSubmit={(e) => this.login(e)}>
-            käyttäjätunnus:
-            <input type="text" name="username" value={this.state.username} onChange={(event) => this.handleFormChange(event)}/>
-            salasana:
-            <input type="password" name="password" value={this.state.password} onChange={(event) => this.handleFormChange(event)}/>
-            <button type="submit">Kirjaudu sisään</button>
-            </form>
-        </div>
-    )
+
+
+        if(this.props.user === null){
+            return (
+                <div>
+                    <form onSubmit={(e) => this.login(e)}>
+                    käyttäjätunnus:
+                    <input type="text" name="username" value={this.state.username} onChange={(event) => this.handleFormChange(event)}/>
+                    salasana:
+                    <input type="password" name="password" value={this.state.password} onChange={(event) => this.handleFormChange(event)}/>
+                    <button type="submit">Kirjaudu sisään</button>
+                    </form>
+                </div>
+            )
+        } else {
+            return(
+                <p>Logged in as: {this.props.user.username}</p>
+            )
+            
+        }
+
+
+
+
 }
 
 }

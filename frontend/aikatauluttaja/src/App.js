@@ -3,6 +3,7 @@ import Course from "./components/Course"
 import HomePage from "./components/HomePage"
 import EditCourse from "./components/EditCourse"
 import LoginForm from "./components/LoginForm"
+import CourseForm from "./components/CourseForm"
 
 import courseService from "./services/courses"
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom'
@@ -100,6 +101,13 @@ class App extends React.Component {
 }
 
 
+  updateCourseList = (newCourseData) => {
+    this.setState({
+      courses : this.state.courses.concat(newCourseData)
+    })
+  }
+
+
   findCourse = (id) => {
     let course = this.state.courses.find(course => course._id === id)
     return course
@@ -116,7 +124,7 @@ class App extends React.Component {
               <Link to="/courses">Kurssit</Link>
               </div>
 
-              <LoginForm setLoggedInUser={this.setLoggedInUser}/>
+              <LoginForm user={this.state.user} setLoggedInUser={this.setLoggedInUser}/>
 
           
 
@@ -125,24 +133,15 @@ class App extends React.Component {
               <h1>Kurssit</h1>
             <ul>
               {this.state.courses.map(course => <Course reloadCoursesFromBackend={this.reloadCoursesFromBackend.bind(this)} key={course._id} course={course} />)}
-            </ul>
+              </ul>
+
+        <CourseForm updateCourseList={this.updateCourseList} addCourse={this.addCourse}/>
+        </div>
+} />
 
 
-            <form onSubmit={this.addCourse}>
-              Name:
-            <input name="newCourseName" value={this.state.newCourseName} onChange={(e) => this.handleFormChange(e)}/>
-              Credits:
-            <input name="newCourseCredits" value={this.state.newCourseCredits} onChange={(e) => this.handleFormChange(e)}/>
-              Length (in periods):
-            <input name="newCourseLength" value={this.state.newCourseLength} onChange={(e) => this.handleFormChange(e)}/>
-              <button type="submit">lisää kurssi</button>
-            </form>
-              </div>
-          } />
-          
 
-          
-          <Route exact path="/" render={() => <HomePage/> } />
+<Route exact path="/" render={() => <HomePage/> } />
 
           
 
