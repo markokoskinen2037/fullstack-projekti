@@ -149,7 +149,7 @@ class App extends React.Component {
 
 
 
-                <Route exact path="/" render={() => <HomePage/> } />
+                <Route exact path="/" render={() => <HomePage user={this.state.user}/> } />
 
                   
 
