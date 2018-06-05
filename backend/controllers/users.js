@@ -65,16 +65,12 @@ usersRouter.get("/:id", (request, response) => {
 })
 
 usersRouter.put("/:id", (request, response) => {
-    // console.log(request.body)
+    console.log("---------------------------------------")
 
-    const user = request.body
-
-
-
-
+    let dataObject = request.body
 
     User
-        .findByIdAndUpdate(request.params.id, user, {
+        .findByIdAndUpdate(request.params.id, dataObject, {
             new: true
         })
         .then(updatedUser => {

@@ -17,7 +17,7 @@ const create = (newObject) => {
 }
 
 const update = (id, newObject) => {
-    console.log(id) //Täällä on user id joka määrittää mihin osoitteeseen päivitys tehdään (eli mille userille)
+
     console.log(newObject) //Täällä on päivitetty user. Tämä arvo päivittyy oikein.
 
 

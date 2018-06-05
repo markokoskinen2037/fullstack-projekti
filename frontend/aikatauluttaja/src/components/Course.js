@@ -20,16 +20,19 @@ const Course = ({ reloadCoursesFromBackend, course, user}) => {
 
 
     console.log("toggling as active...")
-
-    console.log(course_id)
-    console.log(user)
-
-
-    console.log(user.activeCourses)
     user.activeCourses = user.activeCourses.concat(course_id)
-    console.log(user.activeCourses)
 
-    userService.update(course_id, user)
+    let test = {activeCourses: user.activeCourses}
+
+    console.log(user.activeCourses)
+    console.log(test)
+    
+
+    userService
+    .update(course_id, test)
+    .then(response => {
+      console.log(response)
+    })
 
   }
 

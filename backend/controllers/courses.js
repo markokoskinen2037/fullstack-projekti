@@ -44,6 +44,9 @@ coursesRouter.delete("/:id", (request, response) => {
 })
 
 coursesRouter.put("/:id", (request, response) => {
+    console.log("---------------------------------------")
+    console.log(request.body)
+    
     const body = request.body
 
     const course = {
