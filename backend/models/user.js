@@ -11,7 +11,8 @@ const User = mongoose.model('User', {
   username: String,
   name: String,
   passwordHash: String,
-  courses: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Course' }]
+  activeCourses: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Course' }],
+  email: String
 })
 
 module.exports = User

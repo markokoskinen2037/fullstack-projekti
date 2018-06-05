@@ -44,11 +44,11 @@ class App extends React.Component {
     console.log(response._id)
 
 
-     this.setState({
+     this.setState({ //Poistetaan vanha kurssi
        courses : this.state.courses.filter(course => course._id !== response._id)
      })
 
-     this.setState({
+     this.setState({ //Tallennetaan päivitetty kurssi
        courses : this.state.courses.concat(response)
      })
   }
