@@ -30,7 +30,7 @@ https://quiet-oasis-70395.herokuapp.com/
 3. npm start
 
 ---
-### Aikaa käytetty yhteensä noin : 18h10min
+### Aikaa käytetty yhteensä noin : 23h10min
 ---
 
 
@@ -44,4 +44,4 @@ https://quiet-oasis-70395.herokuapp.com/
 |  1.6   | 2h45min | Yritetty toteuttaa kurssin muokkausta (1h45min), mutta staten muokkaaminen lapsikomponenteista käsin ei meinaa alkaa toimimaan. Lisätty kurssilistaukseen poisto-nappula ja toteutettu sen toiminnallisuus. |
 |  3.6   | 3h | Toteutettu kurssin muokkaus. Korjattu kurssin poisto päivittymään heti. Kurssin muokkaus uudelleenohjaa nyt kurssilistaukseen. Toteutettu käyttäjän luominen backendissä. Aloitettu toteuttamaan käyttäjän ja kurssin välistä interaktiota backendissä. |
 | 4.6    | 3h30min | Kirjautumisen toteutus backendissä. Kirjautumisen toteuttaminen frontendissä. Kirjautuneen käyttäjän tallennus stateen. Refaktorointia. React komponenttien eriytystä omiin tiedostoihinsa. Ehdollinen renderöinti: Kirjautumaton käyttäjä saa vain lukea etusivua ja halutessaan kirjautua järjestelmään.  |
-|  5.6  | 1h30min  | Parannettu kurssin päivitysnopeutta UI:ssa. Käyttäjää luodessa otetaan talteen myös email osoite. Muokattu login pyyntö palauttamaan kaikki tiedot käyttäjästä stateen (ml. _id, email ja activeCourses lista). Lisätty backendiin GET /users/:id joka palauttaa id:n mukaisen käyttäjän. |
+|  5.6  | 4h0min  | Parannettu kurssin päivitysnopeutta UI:ssa. Käyttäjää luodessa otetaan talteen myös email osoite. Muokattu login pyyntö palauttamaan kaikki tiedot käyttäjästä stateen (ml. _id, email ja activeCourses lista). Lisätty backendiin GET /users/:id joka palauttaa id:n mukaisen käyttäjän. Yritetty toteuttaa ominaisuus, jossa käyttäjä voi valita kurssilistauksesta kursseja ja ne rekisteröityvät hänen profiilinsa kohdalle activeCourses nimiseen listaan. Tämä ominaisuus toimii postmanin kautta kyselyitä tehdessä, mutta suoraan selaimesta nappia painamalla aktiiviset kurssit eivät suostu päivittymään tietokannassa... Käytännössä tämän päivän tunneista suurin osa meni tuon ongelman kanssa kamppailuun.  |
