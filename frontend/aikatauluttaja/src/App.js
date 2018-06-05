@@ -40,7 +40,17 @@ class App extends React.Component {
   }
 
   updateCourseState = (response) => {
-    //TODO
+
+    console.log(response._id)
+
+
+     this.setState({
+       courses : this.state.courses.filter(course => course._id !== response._id)
+     })
+
+     this.setState({
+       courses : this.state.courses.concat(response)
+     })
   }
 
 

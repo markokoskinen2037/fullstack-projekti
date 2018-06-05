@@ -40,8 +40,9 @@ class EditCourse extends React.Component {
           .update(editedCourse._id, editedCourse) //Korvataan vanhat kunssin tiedot uusilla tietokannassa
           .then(response => {
             console.log(response) //response sisältää kurssiolion joka tulee sijoittaa stateen
-            this.props.reloadCoursesFromBackend() //Tåmä on kömpelö ja aikaa vievä tapa päivittää tilassa olevat kurssit...
+            // this.props.reloadCoursesFromBackend() //Tämä on kömpelö ja aikaa vievä tapa päivittää tilassa olevat kurssit...
             
+            this.props.updateCourseState(response)
 
             
           })
