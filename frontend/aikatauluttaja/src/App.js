@@ -60,8 +60,14 @@ class App extends React.Component {
 
     console.log("So far we have this info:")
     console.log(courseid)
-    console.log(user.name)
+    console.log(user.username)
+    console.log(user.id)
 
+    userService
+    .addActiveCourse(user.id,courseid)
+    .then(response => {
+      console.log(response)
+    })
     
 
 

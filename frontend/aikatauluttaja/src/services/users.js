@@ -26,5 +26,10 @@ const removeById = (id) => {
     
 }
 
+const addActiveCourse = (userid, courseid) => {
+    const request = axios.put(`${baseUrl}/${userid}`, courseid)
+    return request.then(response => response.data)
+}
 
-export default { getAll, create, update, get, removeById }
+
+export default { getAll, create, update, get, removeById, addActiveCourse }

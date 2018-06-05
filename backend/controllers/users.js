@@ -36,6 +36,12 @@ usersRouter.post('/', async (request, response) => {
     }
 })
 
+usersRouter.put("/addActiveCourse", async (request, response) => {
+    return response.status(400).json({
+        body: "You are not supposed to be here..."
+    })
+})
+
 usersRouter.get('/', async (request, response) => {
     const users = await User
       .find({})
@@ -43,5 +49,23 @@ usersRouter.get('/', async (request, response) => {
   
     response.json(users)
   })
+
+usersRouter.get("/:id", (request, response) => {
+    User
+        .findById(request.params.id)
+        .then(user => {
+            if (user) {
+                response.json(user)
+            } else {
+                response.status(404).end()
+            }
+        })
+        .catch(error => {
+            console.log(error)
+            response.status(400).send({
+                error: "malformatted id"
+            })
+        })
+})
 
 module.exports = usersRouter
