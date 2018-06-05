@@ -36,11 +36,7 @@ usersRouter.post('/', async (request, response) => {
     }
 })
 
-usersRouter.put("/addActiveCourse", async (request, response) => {
-    return response.status(400).json({
-        body: "You are not supposed to be here..."
-    })
-})
+
 
 usersRouter.get('/', async (request, response) => {
     const users = await User
@@ -59,6 +55,28 @@ usersRouter.get("/:id", (request, response) => {
             } else {
                 response.status(404).end()
             }
+        })
+        .catch(error => {
+            console.log(error)
+            response.status(400).send({
+                error: "malformatted id"
+            })
+        })
+})
+
+usersRouter.put("/:id", (request, response) => {
+    const body = request.body
+
+    const user = {
+        activeCourses: body.course
+    }
+
+    User
+        .findByIdAndUpdate(request.params.id, user, {
+            new: true
+        })
+        .then(updatedUser => {
+            response.json(updatedUser)
         })
         .catch(error => {
             console.log(error)
