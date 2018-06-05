@@ -1,8 +1,8 @@
-const bcrypt = require('bcrypt')
-const usersRouter = require('express').Router()
-const User = require('../models/user')
+const bcrypt = require("bcrypt")
+const usersRouter = require("express").Router()
+const User = require("../models/user")
 
-usersRouter.post('/', async (request, response) => {
+usersRouter.post("/", async (request, response) => {
     try {
         const body = request.body
 
@@ -11,7 +11,7 @@ usersRouter.post('/', async (request, response) => {
         })
         if (existingUser.length > 0) {
             return response.status(400).json({
-                error: 'username must be unique'
+                error: "username must be unique"
             })
         }
 
@@ -31,20 +31,20 @@ usersRouter.post('/', async (request, response) => {
     } catch (exception) {
         console.log(exception)
         response.status(500).json({
-            error: 'something went wrong...'
+            error: "something went wrong..."
         })
     }
 })
 
 
 
-usersRouter.get('/', async (request, response) => {
+usersRouter.get("/", async (request, response) => {
     const users = await User
-      .find({})
-      .populate('courses')
-  
+        .find({})
+        .populate("courses")
+
     response.json(users)
-  })
+})
 
 usersRouter.get("/:id", (request, response) => {
     User
@@ -65,16 +65,19 @@ usersRouter.get("/:id", (request, response) => {
 })
 
 usersRouter.put("/:id", (request, response) => {
-    const body = request.body
 
-    console.log("hello?")
-    console.log(body.oldActiveCourses)
-    console.log(body.course)
-    
 
-    const user = {
-        activeCourses: body.course
-    }
+    console.log("----------------------------")
+    console.log("----------------------------")
+    console.log("----------------------------")
+    console.log("----------------------------")
+    console.log("----------------------------")
+
+    console.log(request.body)
+
+    const user = request.body
+
+
 
     User
         .findByIdAndUpdate(request.params.id, user, {

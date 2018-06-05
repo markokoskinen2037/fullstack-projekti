@@ -1,9 +1,10 @@
 import React from 'react'
 
 import courseService from "../services/courses"
+import userService from "../services/users"
 import { Link } from 'react-router-dom'
 
-const Course = ({ reloadCoursesFromBackend, course, toggleActive }) => {
+const Course = ({ reloadCoursesFromBackend, course, user}) => {
 
   const deleteCourse = (course_id) => {
     console.log("Deleting course from database...")
@@ -12,6 +13,25 @@ const Course = ({ reloadCoursesFromBackend, course, toggleActive }) => {
     console.log("removal completed")
 
     reloadCoursesFromBackend()
+
+  }
+
+  const toggleActive = (course_id) => { 
+
+    //Ottaa parametrinä käyttäjälle lisättävän kurssin id:n
+    //Lisää
+
+    console.log("toggling as active...")
+
+    console.log(course_id)
+    console.log(user)
+
+
+    console.log(user.activeCourses)
+    user.activeCourses = user.activeCourses.concat(course_id)
+    console.log(user.activeCourses)
+
+    userService.update(course_id, user)
 
   }
 

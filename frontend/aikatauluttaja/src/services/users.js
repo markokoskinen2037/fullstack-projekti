@@ -16,8 +16,18 @@ const create = (newObject) => {
     return axios.post(baseUrl, newObject)
 }
 
-const update = (id, newObject) => {
-    const request = axios.put(`${baseUrl}/${id}`, newObject)
+const update = (id, updatedUser) => {
+    console.log("here we are............................................")
+    console.log("here we are............................................")
+    console.log("here we are............................................")
+    console.log("here we are............................................")
+    console.log("here we are............................................")
+
+    console.log(id) //Täällä on user id joka määrittää mihin osoitteeseen päivitys tehdään (eli mille userille)
+    console.log(updatedUser) //Täällä on päivitetty user
+
+
+    const request = axios.put(`${baseUrl}/${id}`, updatedUser) //Tää tekee backendin osoitteeseen :/id pyynnön ja lisää siihen mukaan newObjektin
     return request.then(response => response.data)
 }
 
@@ -26,10 +36,6 @@ const removeById = (id) => {
     
 }
 
-const addActiveCourse = (userid, course, oldActiveCourses) => {
-    const request = axios.put(`${baseUrl}/${userid}`, course, oldActiveCourses)
-    return request.then(response => response.data)
-}
 
 
-export default { getAll, create, update, get, removeById, addActiveCourse }
+export default { getAll, create, update, get, removeById }
