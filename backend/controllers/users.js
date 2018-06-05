@@ -67,6 +67,11 @@ usersRouter.get("/:id", (request, response) => {
 usersRouter.put("/:id", (request, response) => {
     const body = request.body
 
+    console.log("hello?")
+    console.log(body.oldActiveCourses)
+    console.log(body.course)
+    
+
     const user = {
         activeCourses: body.course
     }

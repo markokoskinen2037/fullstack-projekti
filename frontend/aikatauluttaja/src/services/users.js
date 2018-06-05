@@ -26,8 +26,8 @@ const removeById = (id) => {
     
 }
 
-const addActiveCourse = (userid, courseid) => {
-    const request = axios.put(`${baseUrl}/${userid}`, courseid)
+const addActiveCourse = (userid, course, oldActiveCourses) => {
+    const request = axios.put(`${baseUrl}/${userid}`, course, oldActiveCourses)
     return request.then(response => response.data)
 }
 

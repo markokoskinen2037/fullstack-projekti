@@ -52,19 +52,21 @@ class App extends React.Component {
      })
   }
 
-  toggleActive = (course_id) => {
+  toggleActive = (course) => {
     alert("we are here...")
 
-    const courseid = course_id
     const user = this.state.user
+    const oldActiveCourses = this.state.user.activeCourses
 
     console.log("So far we have this info:")
-    console.log(courseid)
+    console.log(course)
     console.log(user.username)
     console.log(user.id)
+    console.log(oldActiveCourses)
+
 
     userService
-    .addActiveCourse(user.id,courseid)
+    .addActiveCourse(user.id, course, oldActiveCourses)
     .then(response => {
       console.log(response)
     })
