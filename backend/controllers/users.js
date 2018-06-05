@@ -65,17 +65,11 @@ usersRouter.get("/:id", (request, response) => {
 })
 
 usersRouter.put("/:id", (request, response) => {
-
-
-    console.log("----------------------------")
-    console.log("----------------------------")
-    console.log("----------------------------")
-    console.log("----------------------------")
-    console.log("----------------------------")
-
-    console.log(request.body)
+    // console.log(request.body)
 
     const user = request.body
+
+
 
 
 

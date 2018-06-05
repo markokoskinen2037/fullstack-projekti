@@ -16,18 +16,12 @@ const create = (newObject) => {
     return axios.post(baseUrl, newObject)
 }
 
-const update = (id, updatedUser) => {
-    console.log("here we are............................................")
-    console.log("here we are............................................")
-    console.log("here we are............................................")
-    console.log("here we are............................................")
-    console.log("here we are............................................")
-
+const update = (id, newObject) => {
     console.log(id) //Täällä on user id joka määrittää mihin osoitteeseen päivitys tehdään (eli mille userille)
-    console.log(updatedUser) //Täällä on päivitetty user
+    console.log(newObject) //Täällä on päivitetty user. Tämä arvo päivittyy oikein.
 
 
-    const request = axios.put(`${baseUrl}/${id}`, updatedUser) //Tää tekee backendin osoitteeseen :/id pyynnön ja lisää siihen mukaan newObjektin
+    const request = axios.put(`${baseUrl}/${id}`, newObject) 
     return request.then(response => response.data)
 }
 

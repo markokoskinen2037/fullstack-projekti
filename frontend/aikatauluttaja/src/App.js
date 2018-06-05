@@ -144,7 +144,6 @@ class App extends React.Component {
     return course
   }
 
-
   render() {
     return (
       <div>

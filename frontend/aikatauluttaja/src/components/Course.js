@@ -18,8 +18,6 @@ const Course = ({ reloadCoursesFromBackend, course, user}) => {
 
   const toggleActive = (course_id) => { 
 
-    //Ottaa parametrinä käyttäjälle lisättävän kurssin id:n
-    //Lisää
 
     console.log("toggling as active...")
 
