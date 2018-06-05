@@ -7,6 +7,9 @@ import CourseForm from "./components/CourseForm"
 import NavBar from "./components/NavBar"
 
 import courseService from "./services/courses"
+import userService from "./services/users"
+
+
 import { BrowserRouter as Router, Route } from 'react-router-dom'
 
 
@@ -40,10 +43,6 @@ class App extends React.Component {
   }
 
   updateCourseState = (response) => {
-
-    console.log(response._id)
-
-
      this.setState({ //Poistetaan vanha kurssi
        courses : this.state.courses.filter(course => course._id !== response._id)
      })
@@ -51,6 +50,19 @@ class App extends React.Component {
      this.setState({ //Tallennetaan päivitetty kurssi
        courses : this.state.courses.concat(response)
      })
+  }
+
+  toggleActive = (course_id) => {
+    alert("we are here...")
+
+    const courseid = course_id
+    const user = this.state.user
+
+    console.log("So far we have this info:")
+    console.log(courseid)
+    console.log(user.name)
+
+
   }
 
 
@@ -146,7 +158,7 @@ class App extends React.Component {
                       <div>
                       <h1>Kurssit</h1>
                         <ul>
-                      {this.state.courses.map(course => <Course user={this.state.user} reloadCoursesFromBackend={this.reloadCoursesFromBackend.bind(this)} key={course._id} course={course} />)}
+                      {this.state.courses.map(course => <Course toggleActive={this.toggleActive} user={this.state.user} reloadCoursesFromBackend={this.reloadCoursesFromBackend.bind(this)} key={course._id} course={course} />)}
                         </ul>
   
                       <CourseForm user={this.state.user} updateCourseList={this.addCourseToCourseList} addCourse={this.addCourse}/>
