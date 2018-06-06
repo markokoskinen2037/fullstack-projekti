@@ -78,6 +78,17 @@ class App extends React.Component {
         this.setState({ courses })
         console.log("got " + courses.length + " courses from backend.")
       })
+
+
+      console.log("checking for logged in user from local storage...")
+
+      const userJSON = window.localStorage.getItem('user')
+      if (userJSON) {
+        const user = JSON.parse(userJSON)
+        this.setState({user})
+        courseService.setToken(user.token)
+  }
+
   }
 
   addCourse = (event) => {

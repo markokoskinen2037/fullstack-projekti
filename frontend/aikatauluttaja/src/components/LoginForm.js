@@ -1,6 +1,7 @@
 import React from "react"
 import loginService from "../services/login"
 import courseService from "../services/courses"
+import { withRouter } from "react-router-dom";
 
 class LoginForm extends React.Component {
     constructor(props) {
@@ -36,6 +37,15 @@ class LoginForm extends React.Component {
         }
       }
 
+      handleLogOut = (event) => {
+        event.preventDefault()
+
+        console.log("deleting all user info from local cache")
+        window.localStorage.clear()
+        this.props.history.push("/");
+        
+      }
+
 
     render() {
 
@@ -55,7 +65,7 @@ class LoginForm extends React.Component {
         } else {
             return(
                 <div>
-                    <p>Logged in as: {this.props.user.username} <button>Log out</button></p>
+                    <p>Logged in as: {this.props.user.username} <button onClick={(e) => this.handleLogOut(e)}>Log out</button></p>
                 </div>
             )
             
@@ -68,4 +78,4 @@ class LoginForm extends React.Component {
 
 }
 
-export default LoginForm
+export default withRouter(LoginForm);
