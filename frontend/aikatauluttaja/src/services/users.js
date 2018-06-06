@@ -18,7 +18,7 @@ const create = (newObject) => {
 
 const update = (id, newObject) => {
 
-    console.log(newObject) //Täällä on päivitetty user. Tämä arvo päivittyy oikein.
+    //console.log(newObject) //Täällä on päivitetty user. Tämä arvo päivittyy oikein.
 
 
     const request = axios.put(`${baseUrl}/${id}`, newObject) 

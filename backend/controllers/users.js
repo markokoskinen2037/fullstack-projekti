@@ -41,7 +41,8 @@ usersRouter.post("/", async (request, response) => {
 usersRouter.get("/", async (request, response) => {
     const users = await User
         .find({})
-        .populate("courses")
+        .populate("activeCourses")
+        
 
     response.json(users)
 })
@@ -49,8 +50,10 @@ usersRouter.get("/", async (request, response) => {
 usersRouter.get("/:id", (request, response) => {
     User
         .findById(request.params.id)
+        .populate("activeCourses")
         .then(user => {
             if (user) {
+                
                 response.json(user)
             } else {
                 response.status(404).end()

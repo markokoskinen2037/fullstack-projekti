@@ -146,7 +146,7 @@ class App extends React.Component {
 
   updateUserState = (updatedUser) => {
     this.setState({id : updatedUser._id})
-    console.log("state.user updated.")
+    //console.log("state.user updated.")
   }
   
 

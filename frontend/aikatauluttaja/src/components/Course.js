@@ -20,13 +20,13 @@ const Course = ({ reloadCoursesFromBackend, updateUserState, course, user}) => {
 
 
     if(user.activeCourses.includes(course_id)){ //Poistetaan kurssi aktiivisten listasta
-      console.log("This course already marked as active, removing it from active courses list...")
+      console.log("deactivating")
       var index = user.activeCourses.indexOf(course_id)
       if (index > -1) {
         user.activeCourses.splice(index, 1);
       }
     } else { //Lisätään kurssi aktiivisten listaan
-      console.log("Adding this course to activeCourses list...")
+      console.log("activating")
       user.activeCourses = user.activeCourses.concat(course_id)
     }
 
@@ -37,14 +37,14 @@ const Course = ({ reloadCoursesFromBackend, updateUserState, course, user}) => {
 
     let test = {activeCourses: user.activeCourses}
 
-    console.log(user.activeCourses)
-    console.log(test)
+    //console.log(user.activeCourses)
+    //console.log(test)
     
 
     userService
     .update(user.id, test)
     .then(response => {
-      console.log(response)
+      //console.log(response)
       updateUserState(response)
     })
 
