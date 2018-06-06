@@ -29,7 +29,8 @@ class LoginForm extends React.Component {
       
           this.setState({ username: '', password: ''})
           courseService.setToken(user.token)
-          this.props.setLoggedInUser(user)
+          this.props.setLoggedInUser(user) //Reactin stateen tallennettava user
+          window.localStorage.setItem('user', JSON.stringify(user)) //local storageen tallennettava user
         } catch(exception) {
             alert("virheellinen käyttäjätunnus tai salasana!")
         }
