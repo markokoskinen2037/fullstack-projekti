@@ -29,7 +29,7 @@ const Course = ({ reloadCoursesFromBackend, course, user}) => {
     
 
     userService
-    .update(course_id, test)
+    .update(user.id, test)
     .then(response => {
       console.log(response)
     })
