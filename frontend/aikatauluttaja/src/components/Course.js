@@ -4,7 +4,7 @@ import courseService from "../services/courses"
 import userService from "../services/users"
 import { Link } from 'react-router-dom'
 
-const Course = ({ reloadCoursesFromBackend, updateUserState, course, user}) => {
+const Course = ({ reloadCoursesFromBackend, updateUserState, findCourse, course, user}) => {
 
   const deleteCourse = (course_id) => {
     console.log("Deleting course from database...")
@@ -19,14 +19,28 @@ const Course = ({ reloadCoursesFromBackend, updateUserState, course, user}) => {
   const toggleActive = (course_id) => { 
 
     if(user.activeCourses.includes(course_id)){ //Poistetaan kurssi aktiivisten listasta
+
+      
+
+
       console.log("deactivating")
       var index = user.activeCourses.indexOf(course_id)
       if (index > -1) {
         user.activeCourses.splice(index, 1);
       }
+
+
+
+
+
+
+
+
     } else { //Lisätään kurssi aktiivisten listaan
       console.log("activating")
-      user.activeCourses = user.activeCourses.concat(course_id)
+
+
+      user.activeCourses = user.activeCourses.concat(course)
     }
 
     let test = {activeCourses: user.activeCourses}
@@ -38,22 +52,36 @@ const Course = ({ reloadCoursesFromBackend, updateUserState, course, user}) => {
     userService
     .update(user.id, test)
     .then(response => {
-      //console.log(response)
+      console.log(response)
       updateUserState(response)
     })
 
   }
+
+  if(user.activeCourses.find(aktiivinen => aktiivinen._id === course._id)){
+    return (
+      <div>
+        <li style={{color : 'green'}}>{course.title} {course.credits} <b>op</b> {course.length} periodia pitkä
+          <Link to={`/courses/${course._id}`}>Edit</Link>
+          <button onClick={() => deleteCourse(course._id) }>Delete</button>
+          <button onClick={() => toggleActive(course._id)}>Lisää aktiiviseksi kurssiksi</button></li> 
+        
+      </div>
+    )
+  } else {
+    return (
+      <div>
+        <li style={{color : 'red'}}>{course.title} {course.credits} <b>op</b> {course.length} periodia pitkä
+          <Link to={`/courses/${course._id}`}>Edit</Link>
+          <button onClick={() => deleteCourse(course._id) }>Delete</button>
+          <button onClick={() => toggleActive(course._id)}>Lisää aktiiviseksi kurssiksi</button></li> 
+        
+      </div>
+    )
+  }
   
 
-  return (
-    <div>
-      <li style={{color : 'green'}}>{course.title} {course.credits} <b>op</b> {course.length} periodia pitkä
-        <Link to={`/courses/${course._id}`}>Edit</Link>
-        <button onClick={() => deleteCourse(course._id) }>Delete</button>
-        <button onClick={() => toggleActive(course._id)}>Lisää aktiiviseksi kurssiksi</button></li> 
-      
-    </div>
-  )
+
 }
 
 export default Course

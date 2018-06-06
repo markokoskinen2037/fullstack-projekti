@@ -67,15 +67,14 @@ usersRouter.get("/:id", (request, response) => {
         })
 })
 
-usersRouter.put("/:id", (request, response) => {
+usersRouter.put("/:id", async (request, response) => {
     console.log("---------------------------------------")
 
     let dataObject = request.body
 
     User
-        .findByIdAndUpdate(request.params.id, dataObject, {
-            new: true
-        })
+        .findByIdAndUpdate(request.params.id, dataObject, {new: true})
+        .populate("activeCourses")
         .then(updatedUser => {
             response.json(updatedUser)
         })

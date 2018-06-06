@@ -169,6 +169,7 @@ class App extends React.Component {
                         <ul>
                       {this.state.courses.map(course => <Course
                         toggleActive={this.toggleActive}
+                        findCourse = {this.findCourse}
                         user={this.state.user}
                         reloadCoursesFromBackend={this.reloadCoursesFromBackend.bind(this)}
                         updateUserState={this.updateUserState}
