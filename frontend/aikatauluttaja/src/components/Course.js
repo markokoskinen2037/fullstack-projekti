@@ -12,12 +12,11 @@ const Course = ({ reloadCoursesFromBackend, updateUserState, course, user}) => {
     courseService.removeById(course_id)
     console.log("removal completed")
 
-    reloadCoursesFromBackend()
+    reloadCoursesFromBackend() //Tää pitää korjata lokaalilla staten manipulaatiolla
 
   }
 
   const toggleActive = (course_id) => { 
-
 
     if(user.activeCourses.includes(course_id)){ //Poistetaan kurssi aktiivisten listasta
       console.log("deactivating")
@@ -29,11 +28,6 @@ const Course = ({ reloadCoursesFromBackend, updateUserState, course, user}) => {
       console.log("activating")
       user.activeCourses = user.activeCourses.concat(course_id)
     }
-
-
-
-
-
 
     let test = {activeCourses: user.activeCourses}
 
@@ -49,14 +43,11 @@ const Course = ({ reloadCoursesFromBackend, updateUserState, course, user}) => {
     })
 
   }
-
-
-
   
 
   return (
     <div>
-      <li>{course.title} {course.credits} <b>op</b> {course.length} periodia pitkä
+      <li style={{color : 'green'}}>{course.title} {course.credits} <b>op</b> {course.length} periodia pitkä
         <Link to={`/courses/${course._id}`}>Edit</Link>
         <button onClick={() => deleteCourse(course._id) }>Delete</button>
         <button onClick={() => toggleActive(course._id)}>Lisää aktiiviseksi kurssiksi</button></li> 
