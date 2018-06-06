@@ -18,24 +18,26 @@ const Course = ({ reloadCoursesFromBackend, updateUserState, findCourse, course,
 
   const toggleActive = (course_id) => { 
 
-    if(user.activeCourses.find(course => course._id === course_id)){ //Poistetaan kurssi aktiivisten listasta
+    if(user.activeCourses.find(course => course._id === course_id)){ //Jos aktivoitava kurssi on listalla
+
+      var newList = user.activeCourses.filter(course => course._id !== course_id) //Poistetaan kurssi aktiivisten listasta
+
+
+      
+      user.activeCourses = newList
 
 
 
 
-      alert("doing nothing...")
 
 
 
 
-
-
-
-    } else { //Lisätään kurssi aktiivisten listaan
+    } else { //Jos aktivoitava kurssi ei ole listalla
       console.log("activating")
 
 
-      user.activeCourses = user.activeCourses.concat(course)
+      user.activeCourses = user.activeCourses.concat(course) //Lisätään aktivoitava kurssi listalle
     }
 
     let test = {activeCourses: user.activeCourses}
@@ -47,7 +49,7 @@ const Course = ({ reloadCoursesFromBackend, updateUserState, findCourse, course,
     userService
     .update(user.id, test)
     .then(response => {
-      console.log(response)
+      //console.log(response)
       updateUserState(response)
     })
 
