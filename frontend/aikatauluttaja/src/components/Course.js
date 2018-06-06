@@ -18,17 +18,12 @@ const Course = ({ reloadCoursesFromBackend, updateUserState, findCourse, course,
 
   const toggleActive = (course_id) => { 
 
-    if(user.activeCourses.includes(course_id)){ //Poistetaan kurssi aktiivisten listasta
-
-      
+    if(user.activeCourses.find(course => course._id === course_id)){ //Poistetaan kurssi aktiivisten listasta
 
 
-      console.log("deactivating")
-      var index = user.activeCourses.indexOf(course_id)
-      if (index > -1) {
-        user.activeCourses.splice(index, 1);
-      }
 
+
+      alert("doing nothing...")
 
 
 
