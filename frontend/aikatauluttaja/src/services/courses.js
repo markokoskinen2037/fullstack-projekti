@@ -1,6 +1,11 @@
 import axios from "axios"
 const baseUrl = "/api/courses"
 
+let token = null
+
+const setToken = (newToken) => {
+    token = `bearer ${newToken}`
+  }
 
 const getAll = () => {
     const request = axios.get(baseUrl)
@@ -12,9 +17,14 @@ const get = (id) => {
     return request.then(response => response.data)
 }
 
-const create = (newObject) => {
-    return axios.post(baseUrl, newObject)
-}
+const create = async (newObject) => {
+    const config = {
+      headers: { 'Authorization': token }
+    }
+  
+    const response = await axios.post(baseUrl, newObject, config)
+    return response
+  }
 
 const update = (id, newObject) => {
     const request = axios.put(`${baseUrl}/${id}`, newObject)
@@ -27,4 +37,4 @@ const removeById = (id) => {
 }
 
 
-export default { getAll, create, update, get, removeById }
+export default { getAll, create, update, get, removeById, setToken }

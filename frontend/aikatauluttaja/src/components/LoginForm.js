@@ -1,5 +1,6 @@
 import React from "react"
 import loginService from "../services/login"
+import courseService from "../services/courses"
 
 class LoginForm extends React.Component {
     constructor(props) {
@@ -18,19 +19,20 @@ class LoginForm extends React.Component {
         })
     }
 
-    login = async (event) => {
+      login = async (event) => {
         event.preventDefault()
-         try{
-           const user = await loginService.login({
-             username: this.state.username,
-             password: this.state.password
-           })
+        try {
+          const user = await loginService.login({
+            username: this.state.username,
+            password: this.state.password
+          })
       
-           this.setState({ username: '', password: ''})
-           this.props.setLoggedInUser(user)
-         } catch(exception) {
-             alert("virheellinen käyttäjätunnus tai salasana!")
-         }
+          this.setState({ username: '', password: ''})
+          courseService.setToken(user.token)
+          this.props.setLoggedInUser(user)
+        } catch(exception) {
+            alert("virheellinen käyttäjätunnus tai salasana!")
+        }
       }
 
 
