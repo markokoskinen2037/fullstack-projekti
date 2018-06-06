@@ -168,6 +168,10 @@ class App extends React.Component {
       courses : newCourseList
     })
   }
+
+  removeUserInfoFromState = () => {
+    this.setState({user : null})
+  }
   
 
   render() {
@@ -177,7 +181,7 @@ class App extends React.Component {
           <div>
             <NavBar/>
 
-              <LoginForm user={this.state.user} setLoggedInUser={this.setLoggedInUser}/>
+              <LoginForm clearState={this.removeUserInfoFromState}user={this.state.user} setLoggedInUser={this.setLoggedInUser}/>
 
           
 
