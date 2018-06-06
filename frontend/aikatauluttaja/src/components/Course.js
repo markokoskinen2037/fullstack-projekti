@@ -59,9 +59,9 @@ const Course = ({ reloadCoursesFromBackend, updateUserState, findCourse, course,
     return (
       <div>
         <li style={{color : 'green'}}>{course.title} {course.credits} <b>op</b> {course.length} periodia pitkä
-          <Link to={`/courses/${course._id}`}>Edit</Link>
-          <button onClick={() => deleteCourse(course._id) }>Delete</button>
-          <button onClick={() => toggleActive(course._id)}>Lisää aktiiviseksi kurssiksi</button></li> 
+          <Link to={`/courses/${course._id}`}>Muokkaa</Link>
+          <button onClick={() => deleteCourse(course._id) }>Poista</button>
+          <button onClick={() => toggleActive(course._id)}>Poista aktiivisista kursseista</button></li> 
         
       </div>
     )
@@ -69,8 +69,8 @@ const Course = ({ reloadCoursesFromBackend, updateUserState, findCourse, course,
     return (
       <div>
         <li style={{color : 'red'}}>{course.title} {course.credits} <b>op</b> {course.length} periodia pitkä
-          <Link to={`/courses/${course._id}`}>Edit</Link>
-          <button onClick={() => deleteCourse(course._id) }>Delete</button>
+          <Link to={`/courses/${course._id}`}>Muokkaa</Link>
+          <button onClick={() => deleteCourse(course._id) }>Poista</button>
           <button onClick={() => toggleActive(course._id)}>Lisää aktiiviseksi kurssiksi</button></li> 
         
       </div>
