@@ -4,15 +4,21 @@ import courseService from "../services/courses"
 import userService from "../services/users"
 import { Link } from 'react-router-dom'
 
-const Course = ({ reloadCoursesFromBackend, updateUserState, findCourse, course, user}) => {
+const Course = ({ reloadCoursesFromBackend, updateUserState, findCourse, removeCourseFromCourseListState, course, user}) => {
 
   const deleteCourse = (course_id) => {
     console.log("Deleting course from database...")
     
-    courseService.removeById(course_id)
+    courseService.removeById(course_id) //Poistetaan kurssi tietokannasta
+
+
+    //TODO Poista kurssi statesta
+    removeCourseFromCourseListState(course_id)
+
+
     console.log("removal completed")
 
-    reloadCoursesFromBackend() //Tää pitää korjata lokaalilla staten manipulaatiolla
+    //reloadCoursesFromBackend() //Tää pitää korjata lokaalilla staten manipulaatiolla
 
   }
 

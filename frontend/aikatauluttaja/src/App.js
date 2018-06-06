@@ -148,6 +148,15 @@ class App extends React.Component {
     this.setState({id : updatedUser._id})
     //console.log("state.user updated.")
   }
+
+  removeCourseFromCourseListState = (course_id) => {
+
+    let newCourseList = this.state.courses.filter(course => course._id !== course_id)
+
+    this.setState({
+      courses : newCourseList
+    })
+  }
   
 
   render() {
@@ -174,6 +183,7 @@ class App extends React.Component {
                         reloadCoursesFromBackend={this.reloadCoursesFromBackend.bind(this)}
                         updateUserState={this.updateUserState}
                         key={course._id}
+                        removeCourseFromCourseListState={this.removeCourseFromCourseListState}
                         course={course} />)}
                         </ul>
   
