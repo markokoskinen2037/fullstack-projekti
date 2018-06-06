@@ -144,6 +144,12 @@ class App extends React.Component {
     return course
   }
 
+  updateUserState = (updatedUser) => {
+    this.setState({id : updatedUser._id})
+    console.log("state.user updated.")
+  }
+  
+
   render() {
     return (
       <div>
@@ -165,6 +171,7 @@ class App extends React.Component {
                         toggleActive={this.toggleActive}
                         user={this.state.user}
                         reloadCoursesFromBackend={this.reloadCoursesFromBackend.bind(this)}
+                        updateUserState={this.updateUserState}
                         key={course._id}
                         course={course} />)}
                         </ul>
