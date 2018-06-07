@@ -1,5 +1,5 @@
 import React, { Fragment } from 'react'
-import Course from "./components/Course"
+import Course from "./mui_components/Course"
 import HomePage from "./mui_components/HomePage"
 import EditCourse from "./components/EditCourse"
 import LoginForm from "./mui_components/LoginForm"
@@ -9,11 +9,13 @@ import NavBar from "./mui_components/NavBar"
 import courseService from "./services/courses"
 import userService from "./services/users"
 
-import Grid from '@material-ui/core/Grid';
+import {Grid, List, Divider} from '@material-ui/core/';
+
 
 
 
 import { BrowserRouter as Router, Route } from 'react-router-dom'
+import { Typography } from '@material-ui/core';
 
 
 
@@ -192,9 +194,11 @@ class App extends React.Component {
                 <Route exact path="/courses" render={() => {
                   if(this.state.user != null){
                     return (
-                      <div>
-                      <h1>Kurssit</h1>
-                        <ul>
+                      <Fragment>
+                        <Grid item xs={12}>
+                        <Typography style={{marginLeft: 20}} variant="headline">Kurssit</Typography>
+                        
+                        <List style={{marginLeft: 10, marginRight: 10}}>
                       {this.state.courses.map(course => <Course
                         toggleActive={this.toggleActive}
                         findCourse = {this.findCourse}
@@ -204,10 +208,12 @@ class App extends React.Component {
                         key={course._id}
                         removeCourseFromCourseListState={this.removeCourseFromCourseListState}
                         course={course} />)}
-                        </ul>
+                        </List>
+                        </Grid>
   
                       <CourseForm user={this.state.user} updateCourseList={this.addCourseToCourseList} addCourse={this.addCourse}/>
-                      </div>
+                      
+                      </Fragment>
                     )
                   } else {
                     return (
