@@ -4,15 +4,10 @@ import courseService from "../services/courses"
 import userService from "../services/users"
 import { Link } from 'react-router-dom'
 
-import Input from '@material-ui/core/Input';
-import InputLabel from '@material-ui/core/InputLabel';
-import FormControl from '@material-ui/core/FormControl';
-import Paper from '@material-ui/core/Paper';
-import Button from '@material-ui/core/Button';
-import Grid from '@material-ui/core/Grid';
-import Toolbar from '@material-ui/core/Toolbar';
-import Typography from '@material-ui/core/Typography';
-import {List, ListItem, ListItemText, Divider} from "@material-ui/core/"
+
+import {List, ListItem, ListItemText, Divider, Input, InputLabel, FormControl, Paper, Button, Grid, Toolbar, Typography} from "@material-ui/core/"
+
+import red from '@material-ui/core/colors/red';
 
 
 const Course = ({ reloadCoursesFromBackend, updateUserState, findCourse, removeCourseFromCourseListState, course, user}) => {
@@ -86,7 +81,7 @@ const Course = ({ reloadCoursesFromBackend, updateUserState, findCourse, removeC
                     <Paper>
                         
                             <ListItem>
-                            <ListItemText primary={course.title} />
+                            <ListItemText color={red} primary={course.title} />
                             <Button onClick={() => deleteCourse(course._id)}>Delete</Button>
                             <Button onClick={() => toggleActive(course._id)}>Aktivoi</Button>
                             </ListItem>
@@ -97,13 +92,6 @@ const Course = ({ reloadCoursesFromBackend, updateUserState, findCourse, removeC
         </Fragment>
 
 
-    //   <Paper>
-    //     <li style={{color : 'green'}}>{course.title} {course.credits} <b>op</b> {course.length} periodia pitkä
-    //       <Link to={`/courses/${course._id}`}>Muokkaa</Link>
-    //       <button onClick={() => deleteCourse(course._id) }>Poista</button>
-    //       <button onClick={() => toggleActive(course._id)}>Poista aktiivisista kursseista</button></li> 
-        
-    //   </Paper>
 
 
 
