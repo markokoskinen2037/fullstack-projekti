@@ -9,7 +9,8 @@ import NavBar from "./mui_components/NavBar"
 import courseService from "./services/courses"
 import userService from "./services/users"
 
-import {Grid, List, Divider} from '@material-ui/core/';
+import {Grid, List, Divider, CssBaseline} from '@material-ui/core/';
+
 
 
 
@@ -182,7 +183,9 @@ class App extends React.Component {
 
   render() {
     return (
+      
       <Fragment>
+        <CssBaseline/>
         <Router>
         <Grid container spacing={16}>
             <NavBar user={this.state.user} removeUserInfoFromState={this.removeCourseFromCourseListState}/>
