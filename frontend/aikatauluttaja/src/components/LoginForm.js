@@ -3,7 +3,6 @@ import loginService from "../services/login"
 import courseService from "../services/courses"
 import { withRouter } from "react-router-dom";
 
-import Button from '@material-ui/core/Button';
 
 class LoginForm extends React.Component {
     constructor(props) {
@@ -61,7 +60,7 @@ class LoginForm extends React.Component {
                     <input type="text" name="username" value={this.state.username} onChange={(event) => this.handleFormChange(event)}/>
                     salasana:
                     <input type="password" name="password" value={this.state.password} onChange={(event) => this.handleFormChange(event)}/>
-                    <Button variant="contained" color="primary" type="submit">Kirjaudu sisään</Button>
+                    <button variant="contained" color="primary" type="submit">Kirjaudu sisään</button>
                     </form>
                 </div>
             )
