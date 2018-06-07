@@ -84,7 +84,7 @@ const Course = ({ reloadCoursesFromBackend, updateUserState, findCourse, removeC
                             <ListItemText color={red} primary={course.title} />
                             <Button><Link style={{color: 'inherit'}} to={`/courses/${course._id}`}>Muokkaa</Link></Button>
                             <Button onClick={() => deleteCourse(course._id)}>Poista</Button>
-                            <Button onClick={() => toggleActive(course._id)}>Aktivoi</Button>
+                            <Button onClick={() => toggleActive(course._id)}><i class="material-icons">star_border</i></Button>
                             </ListItem>
                             {/* <Divider /> */}
 
@@ -107,7 +107,7 @@ const Course = ({ reloadCoursesFromBackend, updateUserState, findCourse, removeC
                             <ListItemText primary={course.title} />
                             <Button><Link style={{color: 'inherit'}} to={`/courses/${course._id}`}>Muokkaa</Link></Button>
                             <Button onClick={() => deleteCourse(course._id)}>Poista</Button>
-                            <Button onClick={() => toggleActive(course._id)}>Deaktivoi</Button>
+                            <Button onClick={() => toggleActive(course._id)}><i class="material-icons">star</i></Button>
                             </ListItem>
                             {/* <Divider /> */}
 
