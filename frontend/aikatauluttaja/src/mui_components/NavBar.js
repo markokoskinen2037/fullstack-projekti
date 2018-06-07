@@ -26,8 +26,8 @@ class NavBar extends React.Component {
                     <Typography variant="title" color="inherit">
                         Opintojen aikatauluttaja
                     </Typography>
-                <Button color="inherit"><Link to="/">Etusivu</Link></Button>
-                <Button to="/courses" color="inherit"><Link to="/courses">Kurssit</Link></Button>
+                <Button color="inherit"><Link style={{ color: '#FFF' }} to="/">Etusivu</Link></Button>
+                <Button to="/courses" color="inherit"><Link style={{ color: '#FFF' }} to="/courses">Kurssit</Link></Button>
 
                 
                 </Toolbar>

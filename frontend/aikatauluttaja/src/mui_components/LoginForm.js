@@ -103,8 +103,8 @@ class LoginForm extends React.Component {
             return(
                 <Fragment>
                     <Grid item xs={12}>
-                <Paper style={{paddingLeft: 10, marginLeft: 10, marginRight: 10}}>
-                <p>Kirjautunut käyttäjä: {this.props.user.username} <Button color="primary" valiant="contained" onClick={(e) => this.handleLogOut(e)}>Kirjaudu ulos</Button></p>
+                <Paper style={{marginTop:10, paddingLeft: 10, marginLeft: 10, marginRight: 10, paddingTop: 1, paddingBottom: 1}}>
+                <p>Kirjautunut käyttäjä: {this.props.user.username} <Button color="primary" variant="contained" onClick={(e) => this.handleLogOut(e)}>Kirjaudu ulos</Button></p>
                 </Paper>
                 </Grid>
                 </Fragment>
