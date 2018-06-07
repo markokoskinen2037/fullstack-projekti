@@ -1,13 +1,16 @@
-import React from 'react'
+import React, { Fragment } from 'react'
 import Course from "./components/Course"
-import HomePage from "./components/HomePage"
+import HomePage from "./mui_components/HomePage"
 import EditCourse from "./components/EditCourse"
-import LoginForm from "./components/LoginForm"
+import LoginForm from "./mui_components/LoginForm"
 import CourseForm from "./components/CourseForm"
-import NavBar from "./components/NavBar"
+import NavBar from "./mui_components/NavBar"
 
 import courseService from "./services/courses"
 import userService from "./services/users"
+
+import Grid from '@material-ui/core/Grid';
+
 
 
 import { BrowserRouter as Router, Route } from 'react-router-dom'
@@ -171,15 +174,16 @@ class App extends React.Component {
 
   removeUserInfoFromState = () => {
     this.setState({user : null})
+    console.log("state.user cleared")
   }
   
 
   render() {
     return (
-      <div>
+      <Fragment>
         <Router>
-          <div>
-            <NavBar/>
+        <Grid container spacing={16}>
+            <NavBar user={this.state.user} removeUserInfoFromState={this.removeCourseFromCourseListState}/>
 
               <LoginForm clearState={this.removeUserInfoFromState}user={this.state.user} setLoggedInUser={this.setLoggedInUser}/>
 
@@ -227,9 +231,9 @@ class App extends React.Component {
 
 
 
-          </div>
+          </Grid>
         </Router>
-      </div>
+      </Fragment>
     )
   }
 
