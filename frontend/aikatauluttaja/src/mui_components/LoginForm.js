@@ -9,6 +9,7 @@ import FormControl from '@material-ui/core/FormControl';
 import Paper from '@material-ui/core/Paper';
 import Button from '@material-ui/core/Button';
 import Grid from '@material-ui/core/Grid';
+import { Typography } from "@material-ui/core";
 
 
 class LoginForm extends React.Component {
@@ -104,7 +105,7 @@ class LoginForm extends React.Component {
                 <Fragment>
                     <Grid item xs={12}>
                 <Paper style={{marginTop:10, paddingLeft: 10, marginLeft: 10, marginRight: 10, paddingTop: 1, paddingBottom: 1}}>
-                <p>Kirjautunut käyttäjä: {this.props.user.username} <Button color="primary" variant="contained" onClick={(e) => this.handleLogOut(e)}>Kirjaudu ulos</Button></p>
+                <Typography variant="body1">  Kirjautunut käyttäjä: {this.props.user.username} <Button color="primary" variant="contained" onClick={(e) => this.handleLogOut(e)}>Kirjaudu ulos</Button></Typography>
                 </Paper>
                 </Grid>
                 </Fragment>
