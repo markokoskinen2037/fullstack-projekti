@@ -5,6 +5,7 @@ import EditCourse from "./mui_components/EditCourse"
 import LoginForm from "./mui_components/LoginForm"
 import CourseForm from "./mui_components/CourseForm"
 import NavBar from "./mui_components/NavBar"
+import RegisterForm from "./mui_components/RegisterForm"
 
 import courseService from "./services/courses"
 import userService from "./services/users"
@@ -191,6 +192,7 @@ class App extends React.Component {
             <NavBar user={this.state.user} removeUserInfoFromState={this.removeCourseFromCourseListState}/>
 
               <LoginForm clearState={this.removeUserInfoFromState}user={this.state.user} setLoggedInUser={this.setLoggedInUser}/>
+              <RegisterForm user={this.state.user}/>
 
           
 
