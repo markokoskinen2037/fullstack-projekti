@@ -30,7 +30,10 @@ class LoginForm extends React.Component {
     }
 
       login = async (event) => {
-        event.preventDefault()
+          if(event){
+            event.preventDefault()
+          }
+        
         try {
           const user = await loginService.login({
             username: this.state.username,
@@ -57,6 +60,15 @@ class LoginForm extends React.Component {
       }
 
 
+
+      handleEnter = (e) => {
+        console.log(e.which)
+        if(e.which === 13){
+            this.login()
+        }
+      }
+
+
     render() {
 
 
@@ -72,17 +84,17 @@ class LoginForm extends React.Component {
                     
                      
 
-
-                            <FormControl style={{marginLeft: 10}}>
-                                <InputLabel htmlFor="name-simple">Name</InputLabel>
+                    
+                            <FormControl onKeyPress={(e) => this.handleEnter(e)}  style={{marginLeft: 10}}>
+                                <InputLabel htmlFor="name-simple">Käyttäjätunnus</InputLabel>
                                 <Input id="name-simple" type="text" name="username" value={this.state.username} onChange={(event) => this.handleFormChange(event)} />
                             </FormControl>
 
 
 
 
-                        <FormControl style={{marginLeft: 10}} >
-                            <InputLabel htmlFor="password-simple">Password</InputLabel>
+                        <FormControl onKeyPress={(e) => this.handleEnter(e)} style={{marginLeft: 10}} >
+                            <InputLabel htmlFor="password-simple">Salasana</InputLabel>
                             <Input id="password-simple" type="password" name="password" value={this.state.password} onChange={(event) => this.handleFormChange(event)} />
                         </FormControl>
                     
