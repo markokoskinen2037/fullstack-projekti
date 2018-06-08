@@ -6,7 +6,8 @@ const cors = require("cors")
 
 const coursesRouter = require("./controllers/courses")
 const usersRouter = require("./controllers/users")
-const loginRouter = require('./controllers/login')
+const loginRouter = require("./controllers/login")
+const goalsRouter = require("./controllers/goals")
 
 
 const logger = (request, response, next) => {
@@ -37,6 +38,7 @@ app.get("/api/", (req, res) => {
 app.use("/api/courses", coursesRouter)
 app.use("/api/users", usersRouter)
 app.use("/api/login", loginRouter)
+app.use("/api/goals", goalsRouter)
 
 app.use(error)
 
