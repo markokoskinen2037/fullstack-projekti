@@ -215,7 +215,9 @@ class App extends React.Component {
                         course={course} />)}
                         </List>
                         </Grid>
-  
+
+
+                      <Typography style={{marginLeft: 20}} variant="headline">Kurssin lisäys</Typography>
                       <CourseForm user={this.state.user} updateCourseList={this.addCourseToCourseList} addCourse={this.addCourse}/>
                       
                       </Fragment>
