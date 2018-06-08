@@ -18,8 +18,8 @@ goalsRouter.get("/", async (request, response) => {
 goalsRouter.get("/:id", (request, response) => {
     Goal
         .findById(request.params.id)
-         .populate("course")
-         .populate("user")
+        .populate("course")
+        .populate("user")
         .then(goal => {
             if (goal) {
                 
@@ -46,6 +46,22 @@ goalsRouter.post("/", async (request, response) => {
     })
 
     //TODO Lisää tarkistus, jos on jo kurssilla ja käyttäjällä yhteinen tavoite, päivitä se.
+
+
+    const goalsInDB = await Goal.find({})
+
+
+    
+
+    goalsInDB.forEach(goal => {
+        console.log(goal.course + "    " + request.body.courseid)
+        if(goal.course.equals(request.body.courseid)){
+            console.log("its already here!!!!!!!!!!")
+        }
+    })
+
+
+
 
     goal
         .save()
