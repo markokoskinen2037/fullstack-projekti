@@ -1,7 +1,7 @@
 import React, { Fragment } from 'react'
 import Course from "./mui_components/Course"
 import HomePage from "./mui_components/HomePage"
-import EditCourse from "./components/EditCourse"
+import EditCourse from "./mui_components/EditCourse"
 import LoginForm from "./mui_components/LoginForm"
 import CourseForm from "./mui_components/CourseForm"
 import NavBar from "./mui_components/NavBar"
