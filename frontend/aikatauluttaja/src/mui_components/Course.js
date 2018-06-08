@@ -86,7 +86,7 @@ const Course = ({ reloadCoursesFromBackend, updateUserState, findCourse, removeC
                             <Typography variant="button">{course.length} periodia</Typography>
                             <Button><Link style={{color: 'inherit'}} to={`/courses/${course._id}`}>Muokkaa</Link></Button>
                             <Button onClick={() => deleteCourse(course._id)}>Poista</Button>
-                            <Button onClick={() => toggleActive(course._id)}><i className="material-icons">star_border</i></Button>
+                            <Button onClick={() => toggleActive(course._id)}><i className="material-icons">star</i></Button>
                             </ListItem>
 
                     </Paper>
@@ -110,7 +110,7 @@ const Course = ({ reloadCoursesFromBackend, updateUserState, findCourse, removeC
                             <Typography variant="button">{course.length} periodia</Typography>
                             <Button><Link style={{color: 'inherit'}} to={`/courses/${course._id}`}>Muokkaa</Link></Button>
                             <Button onClick={() => deleteCourse(course._id)}>Poista</Button>
-                            <Button onClick={() => toggleActive(course._id)}><i className="material-icons">star</i></Button>
+                            <Button onClick={() => toggleActive(course._id)}><i className="material-icons">star_border</i></Button>
                             </ListItem>
 
                     </Paper>
