@@ -1,13 +1,12 @@
 const coursesRouter = require("express").Router()
 const Course = require("../models/course")
-const User = require("../models/user")
 
 
 
-coursesRouter.get('/', async (request, response) => {
+coursesRouter.get("/", async (request, response) => {
     const courses = await Course
         .find({})
-        .populate('user')
+        .populate("user")
 
     response.json(courses)
 })
