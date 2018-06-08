@@ -8,6 +8,8 @@ const User = require("../models/user")
 goalsRouter.get("/", async (request, response) => {
     const goals = await Goal
         .find({})
+        .populate("user")
+        .populate("course")
 
     response.json(goals)
 })
