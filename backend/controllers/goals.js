@@ -45,64 +45,88 @@ goalsRouter.post("/", async (request, response) => {
         target: request.body.target
     })
 
-    //TODO Lisää tarkistus, jos on jo kurssilla ja käyttäjällä yhteinen tavoite, päivitä se.
 
 
     const goalsInDB = await Goal.find({})
 
 
+    let result = goalsInDB.find(goal => goal.course.equals(request.body.courseid) && goal.user.equals(request.body.userid))
+    console.log(result)
+
+    if(result){//Löyty dublikaatti
+        console.log("Updating old...")
+        Goal
+            .findByIdAndUpdate(goal._id, goal, {new:true}) //Etsitään ja päivitetään kurssin tavoitearvosana
+            .then(updatedGoal => {
+                response.json(updatedGoal)
+            })
+    } else { //Uniikkia kurssi käyttäjä yhteyttä ei ole olemassa.
+        console.log("Creating new...")
+
+        goal
+            .save()
+            .then(savedGoal => {
+                response.json(savedGoal)
+            })
+
+
+    }
+
     
 
-    goalsInDB.forEach(goal => {
-        console.log(goal.course + "    " + request.body.courseid)
-        if(goal.course.equals(request.body.courseid)){
-            console.log("its already here!!!!!!!!!!")
-        }
-    })
 
 
 
-
-    goal
-        .save()
-        .then(savedGoal => {
-            //Uusi goal on nyt tietokannassa, sit pitää lisätä User:ille uus goal
-
-
-
-            User
-                .findById(request.body.userid)
-                .then(foundUser => {
-
-                    let oldGoals = foundUser.goals
-
-                    //TODO Jos oldGoals listalla on saman kurssin kohdalla goal asetettu, ylikirjoitetaan.
-
-                    const newGoals = oldGoals.concat(savedGoal._id) 
-
-                    console.log(newGoals)
-
-                
-
-                    const test = {
-                        goals : newGoals
-                    }
-        
-                    User
-                        .findByIdAndUpdate(request.body.userid, test, {new:true}) //Päivitetään user
-                        .then(response.json(savedGoal))
-
-
-
-
-
-                })
-
-
-
-
+    //         goal
+    //             .save()
+    //             .then(savedGoal => {
+    //             //Uusi goal on nyt tietokannassa, sit pitää lisätä User:ille uus goal
+    
+    
+    
+    //                 User
+    //                     .findById(request.body.userid)
+    //                     .then(foundUser => {
+    
+    //                         let oldGoals = foundUser.goals
+    
+    //                         //TODO Jos oldGoals listalla on saman kurssin kohdalla goal asetettu, ylikirjoitetaan.
+    
+    //                         const newGoals = oldGoals.concat(savedGoal._id) 
+    
+    //                         console.log(newGoals)
+    
+                    
+    
+    //                         const test = {
+    //                             goals : newGoals
+    //                         }
             
-        })
+    //                         User
+    //                             .findByIdAndUpdate(request.body.userid, test, {new:true}) //Päivitetään user
+    //                             .then(response.json(savedGoal))
+    
+    
+    
+    
+    
+    //                     })
+    
+    
+    
+    
+                
+    // })
+
+
+
+    // }
+    //})
+
+
+
+
+
 
     
 
