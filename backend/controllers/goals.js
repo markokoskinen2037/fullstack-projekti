@@ -14,6 +14,29 @@ goalsRouter.get("/", async (request, response) => {
     response.json(goals)
 })
 
+
+goalsRouter.get("/:id", (request, response) => {
+    Goal
+        .findById(request.params.id)
+         .populate("course")
+         .populate("user")
+        .then(goal => {
+            if (goal) {
+                
+                response.json(goal)
+            } else {
+                response.status(404).end()
+            }
+        })
+        .catch(error => {
+            console.log(error)
+            response.status(400).send({
+                error: "malformatted id"
+            })
+        })
+})
+
+
 goalsRouter.post("/", async (request, response) => {
 
     const goal = new Goal({
