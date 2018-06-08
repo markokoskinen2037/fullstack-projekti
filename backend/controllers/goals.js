@@ -47,95 +47,57 @@ goalsRouter.post("/", async (request, response) => {
 
 
 
-    const goalsInDB = await Goal.find({})
+    console.log("Creating new goal")
 
+    goal
+        .save()
+        .then(savedGoal => {
+            response.json(savedGoal)
+        })
 
-    let result = goalsInDB.find(goal => goal.course.equals(request.body.courseid) && goal.user.equals(request.body.userid))
-    console.log(result)
+})
 
-    if(result){//Löyty dublikaatti
-        console.log("Updating old...")
-        Goal
-            .findByIdAndUpdate(goal._id, goal, {new:true}) //Etsitään ja päivitetään kurssin tavoitearvosana
-            .then(updatedGoal => {
-                response.json(updatedGoal)
+goalsRouter.delete("/:id", (request, response) => {
+    console.log("Deleting goal...")
+    Goal
+        .findByIdAndRemove(request.params.id)
+        .then(() => {
+            response.status(204).end()
+        })
+        .catch(error => {
+            response.status(400).send({
+                error: "malformatted id"
             })
-    } else { //Uniikkia kurssi käyttäjä yhteyttä ei ole olemassa.
-        console.log("Creating new...")
+        })
+})
 
-        goal
-            .save()
-            .then(savedGoal => {
-                response.json(savedGoal)
-            })
+goalsRouter.put("/:id", (request, response) => {
+    console.log("---------------------------------------")
+    console.log(request.body)
+    
+    const body = request.body
 
+    
 
+    const updatedGoal = {
+        course: body.courseid,
+        user: body.userid,
+        target: body.target
     }
 
-    
-
-
-
-
-    //         goal
-    //             .save()
-    //             .then(savedGoal => {
-    //             //Uusi goal on nyt tietokannassa, sit pitää lisätä User:ille uus goal
-    
-    
-    
-    //                 User
-    //                     .findById(request.body.userid)
-    //                     .then(foundUser => {
-    
-    //                         let oldGoals = foundUser.goals
-    
-    //                         //TODO Jos oldGoals listalla on saman kurssin kohdalla goal asetettu, ylikirjoitetaan.
-    
-    //                         const newGoals = oldGoals.concat(savedGoal._id) 
-    
-    //                         console.log(newGoals)
-    
-                    
-    
-    //                         const test = {
-    //                             goals : newGoals
-    //                         }
-            
-    //                         User
-    //                             .findByIdAndUpdate(request.body.userid, test, {new:true}) //Päivitetään user
-    //                             .then(response.json(savedGoal))
-    
-    
-    
-    
-    
-    //                     })
-    
-    
-    
-    
-                
-    // })
-
-
-
-    // }
-    //})
-
-
-
-
-
-
-    
-
-    
-
-
-
-
-
+    Goal
+        .findByIdAndUpdate(request.params.id, updatedGoal, {
+            new: true
+        })
+        .then(updatedCourse => {
+            response.json(updatedCourse)
+        })
+        .catch(error => {
+            console.log(error)
+            response.status(400).send({
+                error: "malformatted id"
+            })
+        })
 })
 
 
