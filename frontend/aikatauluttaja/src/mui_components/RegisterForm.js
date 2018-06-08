@@ -53,7 +53,7 @@ class RegisterForm extends React.Component {
       handleEnter = (e) => {
         console.log(e.which)
         if(e.which === 13){
-            this.createUser
+            this.createUser(e)
         }
       }
 
