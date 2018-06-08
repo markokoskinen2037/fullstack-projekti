@@ -79,7 +79,7 @@ class LoginForm extends React.Component {
 
 
                 <Fragment>
-                    <Grid item xs={12}>
+                    <Grid item xl={3} md={4} sm={12} xs={12} lg={3}>
                     <Paper style={{padding: 0, marginTop: 10, marginLeft: 10, marginRight: 10}}>
                     
                      

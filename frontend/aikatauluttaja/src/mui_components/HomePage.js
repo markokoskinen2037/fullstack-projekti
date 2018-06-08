@@ -21,7 +21,7 @@ class HomePage extends React.Component {
 
 
         <Fragment>
-            <Grid item xs={12}>
+            <Grid item xs={12} lg={6} md={4}>
 
                 <Paper style={{padding: 10, marginTop: 10, marginLeft: 10, marginRight: 10}} elevation={4}>
 
