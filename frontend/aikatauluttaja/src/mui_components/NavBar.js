@@ -22,12 +22,18 @@ class NavBar extends React.Component {
     render(){
         return(
             <AppBar position="static">
-                <Toolbar>
+                <Toolbar style={{marginTop: 10}}>
                     <Typography variant="title" color="inherit">
                         Opintojen aikatauluttaja
                     </Typography>
-                <Button color="inherit"><Link style={{ color: '#FFF' }} to="/">Etusivu</Link></Button>
-                <Button to="/courses" color="inherit"><Link style={{ color: '#FFF' }} to="/courses">Kurssit</Link></Button>
+                <Button style={{marginLeft: 20}} color="inherit"><Link style={{ color: '#FFF', textDecoration: 'none' }} to="/">Etusivu</Link></Button>
+                <Button color="inherit"><Link style={{ color: '#FFF', textDecoration: 'none' }} to="/courses">Kurssit</Link></Button>
+
+                <Button color="inherit"><a style={{color : '#FFF', textDecoration: 'none'}} href="https://github.com/markokoskinen2037/fullstack-projekti">GitHub</a></Button>
+
+            
+
+
 
                 
                 </Toolbar>
