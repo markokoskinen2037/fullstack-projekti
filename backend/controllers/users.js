@@ -51,6 +51,7 @@ usersRouter.get("/:id", (request, response) => {
     User
         .findById(request.params.id)
         .populate("activeCourses")
+        .populate("goals")
         .then(user => {
             if (user) {
                 
