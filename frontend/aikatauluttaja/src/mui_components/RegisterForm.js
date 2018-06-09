@@ -1,6 +1,4 @@
 import React, { Fragment } from "react"
-import loginService from "../services/login"
-import courseService from "../services/courses"
 import userService from "../services/users"
 import { withRouter } from "react-router-dom";
 
@@ -10,7 +8,6 @@ import FormControl from '@material-ui/core/FormControl';
 import Paper from '@material-ui/core/Paper';
 import Button from '@material-ui/core/Button';
 import Grid from '@material-ui/core/Grid';
-import { Typography } from "@material-ui/core";
 
 
 class RegisterForm extends React.Component {
@@ -37,7 +34,7 @@ class RegisterForm extends React.Component {
           }
         
         try {
-          const newUser = await userService.create({
+          userService.create({
             username: this.state.username,
             password: this.state.password,
             email : this.state.email

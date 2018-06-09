@@ -10,7 +10,7 @@ import RegisterForm from "./mui_components/RegisterForm"
 import courseService from "./services/courses"
 import userService from "./services/users"
 
-import {Grid, List, Divider, CssBaseline} from '@material-ui/core/';
+import {Grid, List, CssBaseline} from '@material-ui/core/';
 
 
 
