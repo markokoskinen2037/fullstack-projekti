@@ -87,12 +87,26 @@ class App extends React.Component {
       })
 
 
+
       console.log("checking for logged in user from local storage...")
 
       const userJSON = window.localStorage.getItem('user')
       if (userJSON) {
-        const user = JSON.parse(userJSON)
-        this.setState({user})
+        console.log("found user from storage...")
+        let user = JSON.parse(userJSON)
+
+        userService
+        .get(user.id)
+        .then(upToDateUser => {
+          console.log(upToDateUser)
+          this.setState({user : upToDateUser})
+          console.log("this.state.user updated with upToDateUser")
+        })
+
+
+
+
+        
         courseService.setToken(user.token)
   }
 
