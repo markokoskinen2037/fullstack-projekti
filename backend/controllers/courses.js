@@ -36,6 +36,7 @@ coursesRouter.delete("/:id", (request, response) => {
             response.status(204).end()
         })
         .catch(error => {
+            console.log(error)
             response.status(400).send({
                 error: "malformatted id"
             })
