@@ -46,13 +46,29 @@ goalsRouter.post("/", async (request, response) => {
     })
 
 
+    const user = await User.findById(request.body.userid)
+
+
+
 
     console.log("Creating new goal")
 
     goal
         .save()
         .then(savedGoal => {
-            response.json(savedGoal)
+            //Uusi tavoite tallennettu, lisätään se userin goals listaan.
+
+            user.goals.push(savedGoal._id)
+            console.log(user)
+
+
+            User
+                .findByIdAndUpdate(request.body.userid, user)
+                .then(updatedUser => {
+                    console.log("user updated!")
+                    response.json(savedGoal)
+                })
+            
         })
 
 })
