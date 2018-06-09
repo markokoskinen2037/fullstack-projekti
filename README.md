@@ -30,7 +30,7 @@ https://quiet-oasis-70395.herokuapp.com/
 3. npm start
 
 ---
-### Aikaa käytetty yhteensä noin : 31h25min
+### Aikaa käytetty yhteensä noin : 32h40min
 ---
 
 
@@ -48,3 +48,4 @@ https://quiet-oasis-70395.herokuapp.com/
 |  6.6  | 4h00min | Korjattu kurssin lisäys/poisto aktiivisten kurssien listalta. Laitettu backend palauttamaan kursseilla populoidut userit responsen mukana. Poistettu turhat console.log komennot. Saatu kurssin aktivoinnin togglettaminen toimimaan halutulla tavalla. Laitettu kurssin poistonäppäin päivittämään statea suoraan. Kurssia luodessa lähetetään authentication token (tokenin tarkastus puuttuu vielä backendistä) Kirjautuessa user tallennetaan selaimen local storageen. Toteutettu uloskirjautuminen (poistaa local storagesta userin ja react.state.userin). Perehdytty hieman Material Designin käyttöön. Otettu Material Design tuki käyttöön projektissa.|
 |  7.6  | 4h15min | Luettu Material Designin dokumentaatiota (1h). Luotu uudet versiot komponenteista NavBar, LoginForm ja HomePage. Uudet versiot kyseisistä komponenteista käyttävät Material UI:ta ja ne on otettu käyttöön App.js:ssa. Luotu uusi versio myös komponentista Course. Lisätty Course komponenttiin siitä aiemmin unohtuneet course.credits ja course.length. Parannettu ui:ssa kaikenlaista pientä. Asetettu kurssilistauksessa kurssin aktivoinnille kiva responsiivinen tähtikuvake. |
 |  8.6  | 4h15min | Parannettu useiden eri komponenttien ulkoasuja. Lisätty mui-formeihin ominaisuus: enteriä painettaessa lähetetään lomake. Toteutettu mui-versio kurssin muokkaus lomakkeesta. Poistettu linkeistä alleviivaukset. Parannettu sovelluksen toimivuutta eri kokoisilla näytöillä. Toteutettu rekisteröintilomake ja lisätty se etusivulle. Korjattu kurssin aktivoinnin kuvakkeet oikein päin. Luotu backendiin modeli ja kontrolleri Goalille, eli käyttäjän ja kurssin yhdistävään tietoalkioon. Lisätty goalin haun palauttamaan dataan populointia userilla ja kursseilla. Lisätty yksittäisen goalin haku. Toteutettu goalin poisto, päivitys, muokkaus ja haku. Pieniä käyttöliittymä muokkauksia.|
+| 9.6 | 1h15min | Korjattu aktiiviset kurssit renderöitymään oikein kurssilistaukseen painettaessa F5:sta. Luotu fronttiin goal-service. Poistettu kaikki turhat importit. Goali luodessa goal._id tallennetaan userin goals-listaan. Alettu toteuttaa frontissa kurssikohtaisten tavoitteiden asetusta. |
