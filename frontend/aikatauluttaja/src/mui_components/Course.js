@@ -2,12 +2,13 @@ import React, { Fragment } from 'react'
 
 import courseService from "../services/courses"
 import userService from "../services/users"
+import goalService from "../services/goals"
 import { Link } from 'react-router-dom'
 
 
-import {List, ListItem, ListItemText, Divider, Input, InputLabel, FormControl, Paper, Button, Grid, Toolbar, Typography} from "@material-ui/core/"
+import {ListItem, ListItemText, Paper, Button, Grid, Typography} from "@material-ui/core/"
 
-import red from '@material-ui/core/colors/red';
+
 
 
 const Course = ({ reloadCoursesFromBackend, updateUserState, findCourse, removeCourseFromCourseListState, course, user}) => {
@@ -33,18 +34,7 @@ const Course = ({ reloadCoursesFromBackend, updateUserState, findCourse, removeC
     if(user.activeCourses.find(course => course._id === course_id)){ //Jos aktivoitava kurssi on listalla
 
       var newList = user.activeCourses.filter(course => course._id !== course_id) //Poistetaan kurssi aktiivisten listasta
-
-
-      
       user.activeCourses = newList
-
-
-
-
-
-
-
-
     } else { //Jos aktivoitava kurssi ei ole listalla
       console.log("activating")
 
@@ -52,14 +42,14 @@ const Course = ({ reloadCoursesFromBackend, updateUserState, findCourse, removeC
       user.activeCourses = user.activeCourses.concat(course) //Lisätään aktivoitava kurssi listalle
     }
 
-    let test = {activeCourses: user.activeCourses}
+    let uusiAktiivistenKurssienLista = {activeCourses: user.activeCourses}
 
     //console.log(user.activeCourses)
     //console.log(test)
     
 
     userService
-    .update(user.id, test)
+    .update(user.id, uusiAktiivistenKurssienLista)
     .then(response => {
       //console.log(response)
       updateUserState(response)
@@ -75,7 +65,12 @@ const Course = ({ reloadCoursesFromBackend, updateUserState, findCourse, removeC
                         
                             <ListItem>
                             <ListItemText primary={course.title} />
+
+                            <Button onClick={() => deleteCourse(course._id)}>TODO</Button>
+
+
                             <Typography style={{marginRight: 50}} variant="button">{course.credits} op</Typography>
+
                             <Typography variant="button">{course.length} periodia</Typography>
                             <Button><Link style={{color: 'inherit'}} to={`/courses/${course._id}`}><i className="material-icons">edit</i></Link></Button>
                             <Button onClick={() => deleteCourse(course._id)}><i className="material-icons">delete</i></Button>
