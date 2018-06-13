@@ -39,7 +39,7 @@ goalsRouter.get("/:id", (request, response) => {
 
 goalsRouter.post("/", async (request, response) => {
 
-    const goal = new Goal({
+    const newGoal = new Goal({
         course: request.body.courseid,
         user: request.body.userid,
         target: request.body.target
@@ -47,19 +47,29 @@ goalsRouter.post("/", async (request, response) => {
 
 
     const user = await User.findById(request.body.userid)
+        .populate("goals")
+
+
+    const result = user.goals.find(goal => goal.course.equals(newGoal.course) && goal.user.equals(newGoal.user))
+    console.log("and the result is: " + result)
+    
+    
+    if(result !== undefined){
+        console.log("refusing to create new goal!")
+        return response.status(204).json({ error: "this user-course combination already exists!"})
+    }
 
 
 
 
     console.log("Creating new goal")
 
-    goal
+    newGoal
         .save()
         .then(savedGoal => {
             //Uusi tavoite tallennettu, lisätään se userin goals listaan.
 
             user.goals.push(savedGoal._id)
-            console.log(user)
 
 
             User
