@@ -96,7 +96,7 @@ class App extends React.Component {
         let user = JSON.parse(userJSON)
 
         userService
-        .get(user.id)
+        .get(user._id)
         .then(upToDateUser => {
           console.log(upToDateUser)
           this.setState({user : upToDateUser})
