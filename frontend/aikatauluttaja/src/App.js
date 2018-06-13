@@ -18,6 +18,7 @@ import {Grid, List, CssBaseline} from '@material-ui/core/';
 
 import { BrowserRouter as Router, Route } from 'react-router-dom'
 import { Typography } from '@material-ui/core';
+import UserStatistics from './mui_components/UserStatistics';
 
 
 
@@ -38,6 +39,10 @@ class App extends React.Component {
     this.setState({
       user: user
     })
+  }
+
+  getLoggedInUser = () => {
+    return this.state.user
   }
 
   reloadCoursesFromBackend() {
@@ -182,6 +187,16 @@ class App extends React.Component {
     console.log("state.user updated.")
   }
 
+  addGoalToUserState = async (newGoal) => {
+    
+    const user = await userService
+    .get(this.state.user._id)
+
+    this.setState({user})
+
+
+  }
+
   removeCourseFromCourseListState = (course_id) => {
 
     let newCourseList = this.state.courses.filter(course => course._id !== course_id)
@@ -227,6 +242,7 @@ class App extends React.Component {
                         updateUserState={this.updateUserState}
                         key={course._id}
                         removeCourseFromCourseListState={this.removeCourseFromCourseListState}
+                        addGoalToUserState={this.addGoalToUserState}
                         course={course} />)}
                         </List>
                         </Grid>
@@ -249,6 +265,8 @@ class App extends React.Component {
 
 
                 <Route exact path="/" render={() => <HomePage user={this.state.user}/> } />
+
+                <Route exact path="/" render={() => <UserStatistics/> } />
 
                   
 
