@@ -69,8 +69,8 @@ class RegisterForm extends React.Component {
 
                     
                             <FormControl onKeyPress={(e) => this.handleEnter(e)}  style={{marginLeft: 10}}>
-                                <InputLabel htmlFor="name-simple">Uusi Käyttäjätunnus</InputLabel>
-                                <Input id="name-simple" type="text" name="username" value={this.state.username} onChange={(event) => this.handleFormChange(event)} />
+                                <InputLabel htmlFor="registerName-simple">Uusi Käyttäjätunnus</InputLabel>
+                                <Input id="registerName-simple" type="text" name="username" value={this.state.username} onChange={(event) => this.handleFormChange(event)} />
                             </FormControl>
 
 
