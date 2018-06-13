@@ -98,7 +98,7 @@ class App extends React.Component {
         userService
         .get(user._id)
         .then(upToDateUser => {
-          console.log(upToDateUser)
+          //console.log(upToDateUser)
           this.setState({user : upToDateUser})
           console.log("this.state.user updated with upToDateUser")
         })
@@ -176,9 +176,10 @@ class App extends React.Component {
     return course
   }
 
+
   updateUserState = (updatedUser) => {
-    this.setState({id : updatedUser._id})
-    //console.log("state.user updated.")
+    this.setState({user : updatedUser})
+    console.log("state.user updated.")
   }
 
   removeCourseFromCourseListState = (course_id) => {
