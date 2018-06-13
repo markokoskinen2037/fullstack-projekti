@@ -61,7 +61,6 @@ class LoginForm extends React.Component {
 
 
       handleEnter = (e) => {
-        console.log(e.which)
         if(e.which === 13){
             this.login()
         }
