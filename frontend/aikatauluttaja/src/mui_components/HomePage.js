@@ -5,6 +5,8 @@ import Typography from '@material-ui/core/Typography';
 import Grid from '@material-ui/core/Grid';
 import Divider from '@material-ui/core/Divider';
 
+import UserStatistics from "../mui_components/UserStatistics"
+
 class HomePage extends React.Component {
   constructor(props) {
     super(props)
@@ -28,7 +30,7 @@ class HomePage extends React.Component {
 
 
                         <Typography variant="title" >Tervetuloa suunnitelemaan opintojasi!</Typography>
-                        <Typography variant="body1" >Ennen kuin pääset aloittamaan tulee sinun rekisteröityä järjestelmään. Rekisteröitymällä
+                        <Typography paragraph={true} variant="body1" >Ennen kuin pääset aloittamaan tulee sinun rekisteröityä järjestelmään. Rekisteröitymällä
                         saat seuraavat ominaisuudet käyttöösi: 1. Kurssien lisääminen, muokkaaminen ja poistaminen. 2. Kurssien merkitseminen aktiivisiksi.</Typography>
 
 
@@ -55,22 +57,21 @@ class HomePage extends React.Component {
        return( //Etusivu, kirjatunut käyttäjä
 
         <Fragment>
-            <Grid item xs={12}>
+            <Grid item md={6} xs={12}>
 
                 <Paper style={{padding: 10, marginTop: 10, marginLeft: 10, marginRight: 10}} elevation={4}>
 
 
 
-                        <Typography variant="title" >Tervetuloa suunnitelemaan opintojasi! {this.props.user.username}</Typography>
+                        <Typography variant="title" >Tervetuloa suunnitelemaan opintojasi {this.props.user.username} !</Typography>
                         <Divider style={{marginTop: 5, marginBottom: 5}}/>
-                        <Typography variant="body1" >Sinulla on x aktiivista kurssia jotka suorittamalla saat y opintopistettä päivämäärään xx.xx.xxxx mennessä.</Typography>
                         
-                        <Typography variant="body1" >Tälle sivulle voisi lisätä esim. varoituksen jos opintoja vaikuttaa olevan liian vähän ja kehuja jos opinnot vaikuttavat sujuvan aikataulujen mukaan.</Typography>
+                        <Typography paragraph={true} variant="body1" >Sinulla on x aktiivista kurssia jotka
+                        suorittamalla saat y opintopistettä päivämäärään xx.xx.xxxx mennessä.
+                        Tälle sivulle voisi lisätä esim. varoituksen jos opintoja vaikuttaa
+                        olevan liian vähän ja kehuja jos opinnot vaikuttavat sujuvan aikataulujen mukaan.</Typography>        
 
-        
-
-
-                        
+                                     
                         
                 </Paper>
 
@@ -78,7 +79,12 @@ class HomePage extends React.Component {
 
 
                 </Grid>
+
+
+
             </Fragment>
+
+            
 
 
 
