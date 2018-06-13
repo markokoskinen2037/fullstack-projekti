@@ -31,6 +31,7 @@ const Course = ({ reloadCoursesFromBackend, updateUserState, findCourse, removeC
 
   const toggleActive = (course_id) => { 
 
+
     if(user.activeCourses.find(course => course._id === course_id)){ //Jos aktivoitava kurssi on listalla
 
       var newList = user.activeCourses.filter(course => course._id !== course_id) //Poistetaan kurssi aktiivisten listasta
@@ -49,7 +50,7 @@ const Course = ({ reloadCoursesFromBackend, updateUserState, findCourse, removeC
     
 
     userService
-    .update(user.id, uusiAktiivistenKurssienLista)
+    .update(user._id, uusiAktiivistenKurssienLista)
     .then(response => {
       //console.log(response)
       updateUserState(response)
@@ -59,7 +60,7 @@ const Course = ({ reloadCoursesFromBackend, updateUserState, findCourse, removeC
 
   const getGoalValue = () => {
 
-    console.log(user.goals)
+    console.log("Current goals in state: " + user.goals)
 
     let foundGoal
 

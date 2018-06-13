@@ -21,8 +21,7 @@ class LoginForm extends React.Component {
         }
     }
 
-    handleFormChange(event){
-        console.log(event.target.value)
+    handleFormChange(event){ //Hoidetaan kenttiin kohdistuvat muutokset stateen
         const name = event.target.name
         this.setState({
             [name] : event.target.value
@@ -35,15 +34,15 @@ class LoginForm extends React.Component {
           }
         
         try {
-          const user = await loginService.login({
+          const dataFromBackEnd = await loginService.login({ //DatafromBackEnd sisältää user olion ja token stringin.
             username: this.state.username,
             password: this.state.password
           })
       
-          this.setState({ username: '', password: ''})
-          courseService.setToken(user.token)
-          this.props.setLoggedInUser(user) //Reactin stateen tallennettava user
-          window.localStorage.setItem('user', JSON.stringify(user)) //local storageen tallennettava user
+          this.setState({ username: '', password: ''}) //Nollataan kirjautumiskenttien arvot
+          courseService.setToken(dataFromBackEnd.token) //Asetetaan courseServicelle token muistiin
+          this.props.setLoggedInUser(dataFromBackEnd.user) //Reactin stateen tallennettava user
+          window.localStorage.setItem('user', JSON.stringify(dataFromBackEnd.user)) //local storageen tallennettava user ja token!
         } catch(exception) {
             alert("virheellinen käyttäjätunnus tai salasana!")
         }
@@ -94,8 +93,8 @@ class LoginForm extends React.Component {
 
 
                         <FormControl onKeyPress={(e) => this.handleEnter(e)} style={{marginLeft: 10}} >
-                            <InputLabel htmlFor="password-simple">Salasana</InputLabel>
-                            <Input id="password-simple" type="password" name="password" value={this.state.password} onChange={(event) => this.handleFormChange(event)} />
+                            <InputLabel htmlFor="loginPassword-simple">Salasana</InputLabel>
+                            <Input id="loginPassword-simple" type="password" name="password" value={this.state.password} onChange={(event) => this.handleFormChange(event)} />
                         </FormControl>
                     
 
