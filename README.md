@@ -30,7 +30,7 @@ https://quiet-oasis-70395.herokuapp.com/
 3. npm start
 
 ---
-### Aikaa käytetty yhteensä noin : 32h40min
+### Aikaa käytetty yhteensä noin : 31h
 ---
 
 
@@ -50,3 +50,4 @@ https://quiet-oasis-70395.herokuapp.com/
 |  8.6  | 4h15min | Parannettu useiden eri komponenttien ulkoasuja. Lisätty mui-formeihin ominaisuus: enteriä painettaessa lähetetään lomake. Toteutettu mui-versio kurssin muokkaus lomakkeesta. Poistettu linkeistä alleviivaukset. Parannettu sovelluksen toimivuutta eri kokoisilla näytöillä. Toteutettu rekisteröintilomake ja lisätty se etusivulle. Korjattu kurssin aktivoinnin kuvakkeet oikein päin. Luotu backendiin modeli ja kontrolleri Goalille, eli käyttäjän ja kurssin yhdistävään tietoalkioon. Lisätty goalin haun palauttamaan dataan populointia userilla ja kursseilla. Lisätty yksittäisen goalin haku. Toteutettu goalin poisto, päivitys, muokkaus ja haku. Pieniä käyttöliittymä muokkauksia.|
 | 9.6 | 1h15min | Korjattu aktiiviset kurssit renderöitymään oikein kurssilistaukseen painettaessa F5:sta. Luotu fronttiin goal-service. Poistettu kaikki turhat importit. Goali luodessa goal._id tallennetaan userin goals-listaan. Alettu toteuttaa frontissa kurssikohtaisten tavoitteiden asetusta. |
 | 13.6 | 4h0min | Painittu edelleen kurssikohtaisten tavoitteiden asettamisen kanssa. Onnistunut kirjautuminen tallentaa stateen koko käyttäjän ja tokenin. Korjattu kurssin aktivointi ja deaktivointi toimimaan myös f5 jälkeen. Estetty backendissä goal:ien dublikaatit. Luodaan renderöitäessä kursseja jokaiselle kurssille ja kirjautuneelle käyttäjälle "Goal" yhteys jos sellaista ei vielä ole tietokannassa. Lähtötavoitteeksi asetetetaan ykkösen arvosana. Paranneltu hieman ulkoasua. Luotu UserStatistics komponentti joka renderöidään etusivulla. |
+| 14.6 | 3h0min| Refaktoroitu komponentti "Course" classiksi jotta sille sai oman staten. Estetty suoraan frontissa goalien dublikaatit. Poistettu eilen tehty ominaisuus "Luodaan renderöitäessä kursseja jokaiselle kurssille ja kirjautuneelle käyttäjälle "Goal" yhteys jos sellaista ei vielä ole tietokannassa.", koska kävi ilmi, että se rasittaa todella paljon backendiä jos sivulle renderöityy samaan aikaan esim. 20 kurssia. Tästä syystä toteutin Course komponentin uudestaan alusta alkaen. Nyt Course komponentti toimii ja sen avulla voi määrittää itselleen kurssikohtaisen tavoitearvosanan (1-5). Parannettu hieman ulkoasua. |
