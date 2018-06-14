@@ -23,9 +23,11 @@ class UserStatistics extends Component {
   render() {
 
 
-    if(this.state.user !== undefined){
+    if(this.state.user === null){
         return null
     } else {
+
+
         return (
             <Fragment>
               <Grid item md={6} xs={12}>
