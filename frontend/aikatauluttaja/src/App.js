@@ -255,7 +255,7 @@ class App extends React.Component {
                     )
                   } else {
                     return (
-                      <p>Please login to view and modify courses.</p>
+                      null
                     )
                   }
                 }
