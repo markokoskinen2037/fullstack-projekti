@@ -14,7 +14,7 @@ class CourseForm extends React.Component {
     }
 
     handleFormChange(event){
-        console.log(event.target.value)
+        //console.log(event.target.value)
         const name = event.target.name
         this.setState({
             [name] : event.target.value
@@ -64,7 +64,7 @@ class CourseForm extends React.Component {
       }
 
       handleEnter = (e) => {
-        console.log(e.which)
+        //console.log(e.which)
         if(e.which === 13){
             this.addCourse(e)
         }
