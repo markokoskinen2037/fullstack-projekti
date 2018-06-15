@@ -5,7 +5,7 @@ Projektini tavoitteena on kehittää yliopisto-opiskelijoille suunnattu aikataul
 - Oman opiskelurytmin ja tavoitteiden asetus
 
 #### Backend:
-https://quiet-oasis-70395.herokuapp.com/
+https://obscure-bayou-13604.herokuapp.com/
 
 #### Lyhyen tähtäimen FRONTEND TODO:
 - [ ] Toteuta kurssin CRUD-nelikkö
@@ -51,3 +51,4 @@ https://quiet-oasis-70395.herokuapp.com/
 | 9.6 | 1h15min | Korjattu aktiiviset kurssit renderöitymään oikein kurssilistaukseen painettaessa F5:sta. Luotu fronttiin goal-service. Poistettu kaikki turhat importit. Goali luodessa goal._id tallennetaan userin goals-listaan. Alettu toteuttaa frontissa kurssikohtaisten tavoitteiden asetusta. |
 | 13.6 | 4h0min | Painittu edelleen kurssikohtaisten tavoitteiden asettamisen kanssa. Onnistunut kirjautuminen tallentaa stateen koko käyttäjän ja tokenin. Korjattu kurssin aktivointi ja deaktivointi toimimaan myös f5 jälkeen. Estetty backendissä goal:ien dublikaatit. Luodaan renderöitäessä kursseja jokaiselle kurssille ja kirjautuneelle käyttäjälle "Goal" yhteys jos sellaista ei vielä ole tietokannassa. Lähtötavoitteeksi asetetetaan ykkösen arvosana. Paranneltu hieman ulkoasua. Luotu UserStatistics komponentti joka renderöidään etusivulla. |
 | 14.6 | 3h0min| Refaktoroitu komponentti "Course" classiksi jotta sille sai oman staten. Estetty suoraan frontissa goalien dublikaatit. Poistettu eilen tehty ominaisuus "Luodaan renderöitäessä kursseja jokaiselle kurssille ja kirjautuneelle käyttäjälle "Goal" yhteys jos sellaista ei vielä ole tietokannassa.", koska kävi ilmi, että se rasittaa todella paljon backendiä jos sivulle renderöityy samaan aikaan esim. 20 kurssia. Tästä syystä toteutin Course komponentin uudestaan alusta alkaen. Nyt Course komponentti toimii ja sen avulla voi määrittää itselleen kurssikohtaisen tavoitearvosanan (1-5). Parannettu hieman ulkoasua. |
+| 15.6 | 1h45min | Muistin että en ole puskenut herokuun uutta versiota ainakaan kuukauteen. Deployasin sovelluksen uudestaan Herokuun, jotta vanhat asetukset eivät rikkoisi mitään. Pienten ENV muuttujien asettelun jälkeen sovellus lähti toimimaan. Loin myös samalla pienen .sh skriptin joka buildaa frontista uuden version, kopioi sen backendiin, kopioi backendin sisällön erilliseen heroku-reposition kansioon, tekee uuden commitin ja puskee muutokset herokuun. Korjattu kurssilistauksen tavoitteiden renderöinti toimimaan myös ensimmäisellä renderöintikerralla. |
