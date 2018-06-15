@@ -139,9 +139,9 @@ class Course extends React.Component {
         const foundGoal = this.props.user.goals.find(goalObject => goalObject.course === this.props.course._id && goalObject.user === this.props.user._id)
 
 
-        console.log(this.props.course._id + "    " + this.props.user._id)
+        //console.log(this.props.course._id + "    " + this.props.user._id)
 
-        console.log(foundGoal)
+        //console.log(foundGoal)
 
         if(foundGoal === undefined){
             return false
