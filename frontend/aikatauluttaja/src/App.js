@@ -271,7 +271,7 @@ class App extends React.Component {
                   
 
                 <Route exact path="/courses/:id" render={({match}) =>
-                          <EditCourse updateCourseState={this.updateCourseState} reloadCoursesFromBackend={this.reloadCoursesFromBackend.bind(this)} state={this.state} course={this.findCourse(match.params.id)} />}
+                          <EditCourse updateUserState={this.updateUserState} user={this.state.user} updateCourseState={this.updateCourseState} reloadCoursesFromBackend={this.reloadCoursesFromBackend.bind(this)} state={this.state} course={this.findCourse(match.params.id)} />}
                 />
                   
 
