@@ -5,7 +5,6 @@ import Typography from '@material-ui/core/Typography';
 import Grid from '@material-ui/core/Grid';
 import Divider from '@material-ui/core/Divider';
 
-import UserStatistics from "../mui_components/UserStatistics"
 
 class HomePage extends React.Component {
   constructor(props) {

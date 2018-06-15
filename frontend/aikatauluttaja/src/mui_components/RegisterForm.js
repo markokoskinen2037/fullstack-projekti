@@ -28,8 +28,8 @@ class RegisterForm extends React.Component {
         })
     }
 
-      createUser = async (event) => { //Fixaa tää
-          if(event){
+    createUser = async (event) => { //Fixaa tää
+        if(event){
             event.preventDefault()
           }
         
@@ -47,7 +47,7 @@ class RegisterForm extends React.Component {
         }
       }
 
-      handleEnter = (e) => {
+    handleEnter = (e) => {
         console.log(e.which)
         if(e.which === 13){
             this.createUser(e)

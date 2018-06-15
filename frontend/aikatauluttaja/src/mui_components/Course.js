@@ -1,12 +1,9 @@
 import React, { Fragment } from "react"
-import loginService from "../services/login"
 import courseService from "../services/courses"
 import userService from "../services/users"
 import goalService from "../services/goals"
 
 import Input from '@material-ui/core/Input';
-import InputLabel from '@material-ui/core/InputLabel';
-import FormControl from '@material-ui/core/FormControl';
 
 import { Link } from "react-router-dom"
 
@@ -78,7 +75,7 @@ class Course extends React.Component {
         
     
 
-        const updatedUser = await userService.update(this.props.user._id, uusiAktiivistenKurssienLista)
+        await userService.update(this.props.user._id, uusiAktiivistenKurssienLista)
 
         const populatedUser = await userService.get(this.props.user._id)
 
