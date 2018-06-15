@@ -19,6 +19,7 @@ import {Grid, List, CssBaseline} from '@material-ui/core/';
 import { BrowserRouter as Router, Route } from 'react-router-dom'
 import { Typography } from '@material-ui/core';
 import UserStatistics from './mui_components/UserStatistics';
+import AdminPage from './mui_components/AdminPage';
 
 
 
@@ -267,6 +268,8 @@ class App extends React.Component {
                 <Route exact path="/" render={() => <HomePage user={this.state.user}/> } />
 
                 <Route exact path="/" render={() => <UserStatistics/> } />
+
+                <Route exact path="/supersecretadminpage" render={() => <AdminPage/>} />
 
                   
 
