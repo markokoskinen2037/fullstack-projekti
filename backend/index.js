@@ -32,8 +32,17 @@ app.use(express.static("build"))
 
 
 app.get("/api/", (req, res) => {
-    res.send("<p>Tervetuloa backendiin!</p> <a href=\"/api/courses\">/api/courses</p> <a href=\"/api/users\">/api/users</p>")
+    res.send("<p>Tervetuloa backendiin!</p> <a href=\"/api/courses\">/api/courses</a> <a href=\"/api/users\">/api/users</a> <a href=\"/api/goals\">/api/goals</a>")
 })
+
+app.get("/courses", (req, res) => {
+    res.redirect("/")
+})
+
+app.get("/courses/:id", (req, res) => {
+    res.redirect("/")
+})
+
 
 app.use("/api/courses", coursesRouter)
 app.use("/api/users", usersRouter)
