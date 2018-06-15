@@ -2,18 +2,39 @@ import {Input, InputLabel, FormControl, Paper, Button, Grid} from "@material-ui/
 
 import React, {Fragment} from 'react';
 import courseService from "../services/courses"
+import goalService from "../services/goals"
+import userService from "../services/users"
 import { withRouter } from "react-router-dom";
 
 
 class EditCourse extends React.Component {
   constructor(props) {
     super(props)
-    this.state = {
-        editedCourseId: this.props.course._id,
-        editedCourseTitle: this.props.course.title,
-        editedCourseCredits: this.props.course.credits,
-        editedCourseLength: this.props.course.length
-      }
+
+    if(this.props.course !== undefined){
+        this.state = {
+            editedCourseId: this.props.course._id,
+            editedCourseTitle: this.props.course.title,
+            editedCourseCredits: this.props.course.credits,
+            editedCourseLength: this.props.course.length,
+            editedCourseGoalTarget : "goal not found...",
+            currentGoal : undefined,
+            goalTarget : 5
+          }
+    } else {
+        this.state = {
+            editedCourseId: undefined,
+            editedCourseTitle: undefined,
+            editedCourseCredits: undefined,
+            editedCourseLength: undefined,
+            editedCourseGoalTarget : "goal not found...",
+            currentGoal : undefined,
+            goalTarget : undefined
+        }
+    }
+
+
+
     }
 
     handleFormChange(event){
@@ -24,7 +45,41 @@ class EditCourse extends React.Component {
         })
     }
 
-    updateCourse(e){
+    createNewGoal = async ()  => {
+
+        console.log("Creating a new goal for you!");
+
+        const newGoal = {
+                courseid: this.props.course._id,
+                userid: this.props.user._id,
+                target: this.state.goalTarget
+        }
+
+        if(newGoal.target >=1 && newGoal.target <=5){ //1-5 kelpaa arvosanaksi
+            console.log("Goal to be created: " + JSON.stringify(newGoal))
+            const response = await goalService
+            .create(newGoal)
+            
+            console.log("New goal saved:" + JSON.stringify(response.data))
+        } else {
+            alert("Arvosanan tulee olla väliltä 1-5!")
+        }
+
+
+        //Päivitetään lopuksi state.user
+
+        const populatedUser = await userService.get(this.props.user._id)
+        this.props.updateUserState(populatedUser) 
+
+        
+
+        this.props.history.push("/courses");
+
+        
+
+      }
+
+    updateCourse = async (e) => {
         e.preventDefault()
         
 
@@ -48,7 +103,46 @@ class EditCourse extends React.Component {
 
             
           })
+
+
+          //Kurssi on nyt päivitetty, seuraavaksi pitää päivittää goal jos tarpeellista
+
+
+
+
+
+          if(!isNaN(this.state.editedCourseGoalTarget)){
+
+            if(this.state.editedCourseGoalTarget >= 1 && this.state.editedCourseGoalTarget <= 5){
+                let tempGoal = {
+                    courseid : this.props.course._id,
+                    userid: this.props.user._id,
+                    target : this.state.editedCourseGoalTarget
+                }
+  
+                await goalService.update(this.state.currentGoal._id, tempGoal)
+  
+                let updatedUser = await userService.get(this.props.user._id)
+  
+                this.props.updateUserState(updatedUser)
+                this.props.history.push("/courses");
+
+            }else {
+                alert("Tavoitearvosanan tulee olla väliltä 1-5")
+                this.setState({editedCourseGoalTarget : 1})
+            }
+
+
+
+              
+          }
+
           this.props.history.push("/courses");
+
+
+
+
+          
 
     }
 
@@ -59,10 +153,32 @@ class EditCourse extends React.Component {
         }
       }
 
+    getGoalValue = () => {
+        const foundGoal = this.props.user.goals.find(goalObject => goalObject.course === this.props.course._id)
+
+        this.setState({currentGoal : foundGoal})
+
+        if(foundGoal !== undefined){
+            this.setState({ editedCourseGoalTarget : foundGoal.target})
+        }
+
+        
+    }
+
+    componentDidMount = () => {
+        if(this.state.editedCourseId !== undefined){
+            this.getGoalValue()
+        } else { //Jos käyttäjä painaa f5 ja tila nollaantuu mennään suosiolla takaisin kurssilistaukseen.
+            this.props.history.push("/courses");
+        }
+       
+    }
+
 
 
   
   render() {
+
 
     return (
 
@@ -78,52 +194,55 @@ class EditCourse extends React.Component {
 
                 <FormControl onKeyPress={(e) => this.handleEnter(e)} style={{marginLeft: 10}}>
                     <InputLabel htmlFor="name-simple">Kurssin nimi</InputLabel>
-                    <Input id="name-simple" type="text" name="editedCourseTitle" value={this.state.editedCourseTitle} onChange={(event) => this.handleFormChange(event)} />
+                    <Input id="name-simple" type="text" name="editedCourseTitle" value={this.state.editedCourseTitle}
+                    onChange={(event) => this.handleFormChange(event)} />
                  </FormControl>
 
                  <FormControl onKeyPress={(e) => this.handleEnter(e)} style={{marginLeft: 10}}>
                     <InputLabel htmlFor="length-simple">Pituus periodeissa</InputLabel>
-                    <Input id="length-simple" type="number" name="editedCourseLength" value={this.state.editedCourseLength} onChange={(event) => this.handleFormChange(event)} />
+                    <Input id="length-simple" type="number" name="editedCourseLength" value={this.state.editedCourseLength}
+                    onChange={(event) => this.handleFormChange(event)} />
                  </FormControl>
 
                  <FormControl onKeyPress={(e) => this.handleEnter(e)} style={{marginLeft: 10}}>
                     <InputLabel htmlFor="credits-simple">Opintopistemäärä</InputLabel>
-                    <Input id="credits-simple" type="number" name="editedCourseCredits" value={this.state.editedCourseCredits} onChange={(event) => this.handleFormChange(event)} />
+                    <Input id="credits-simple" type="number" name="editedCourseCredits" value={this.state.editedCourseCredits}
+                    onChange={(event) => this.handleFormChange(event)} />
                  </FormControl>
 
 
 
+                {isNaN(this.state.editedCourseGoalTarget) ? ( //Eli jos muokattavalla kurssilla ei ole goalia, näytetään goalin luonti lomake
+                <Fragment >                       
+                    <Input disableUnderline={true} style={{width: 40}} type="number" name="goalTarget" value={this.state.goalTarget} onChange={(event) => this.handleFormChange(event)} />
+                    <Button variant="outlined" mini={true} size="small" color="inherit"  style={{marginRight: 50}}  onClick={() => this.createNewGoal()}><i className="material-icons">save</i> aseta tavoite</Button>
+                </Fragment>
+                ) : (
+                    
+                 <FormControl onKeyPress={(e) => this.handleEnter(e)} style={{marginLeft: 10}}>
+                 <InputLabel htmlFor="goal-simple">Tavoite</InputLabel>
+                 <Input id="goal-simple" type="number" name="editedCourseGoalTarget" value={this.state.editedCourseGoalTarget}
+                 onChange={(event) => this.handleFormChange(event)} />
+              </FormControl>
+                )}
 
 
 
-                <Button onClick={(e) => this.updateCourse(e)} style={{marginLeft: 20, marginBottom: 15, marginTop: 10}} size="small" variant="contained" color="primary" type="submit">Tallenna muutokset</Button>
+
+
+
+
+
+
+
+
+                <Button onClick={(e) => this.updateCourse(e)} style={{marginLeft: 20, marginBottom: 15, marginTop: 10}}
+                size="small" variant="contained" color="primary" type="submit">Tallenna muutokset</Button>
 
             
             </Paper>
          </Grid>
     </Fragment>
-
-
-
-
-
-
-
-
-//         <div>
-//         <form onSubmit={(e) => this.updateCourse(e)}>
-//                Nimi:
-//            <input type="text" name="editedCourseTitle" value={this.state.editedCourseTitle} onChange={(event) => this.handleFormChange(event)}/>
-
-//                 Laajuus (op):
-//            <input type="number" name="editedCourseCredits" value={this.state.editedCourseCredits} onChange={(event) => this.handleFormChange(event)}/>
-
-//               Pituus (periodeissa):
-//            <input type="number" name="editedCourseLength" value={this.state.editedCourseLength} onChange={(event) => this.handleFormChange(event)}/>
-
-//                <button type="submit">Tallenna muutokset</button>
-//      </form>
-//  </div>
     );
   }
 }
