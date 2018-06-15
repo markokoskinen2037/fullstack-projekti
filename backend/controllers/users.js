@@ -87,4 +87,18 @@ usersRouter.put("/:id", async (request, response) => {
         })
 })
 
+usersRouter.delete("/:id", (request, response) => {
+    console.log("Deleting user...")
+    User
+        .findByIdAndRemove(request.params.id)
+        .then(() => {
+            response.status(204).end()
+        })
+        .catch(error => {
+            response.status(400).send({
+                error: "malformatted id"
+            })
+        })
+})
+
 module.exports = usersRouter
