@@ -30,6 +30,16 @@ const removeById = (id) => {
     
 }
 
+const deleteAllUsers = async () => {
+    const allUsers = await getAll()
 
 
-export default { getAll, create, update, get, removeById }
+    allUsers.forEach(user => {
+        removeById(user._id)
+    });
+
+}
+
+
+
+export default { getAll, create, update, get, removeById, deleteAllUsers }

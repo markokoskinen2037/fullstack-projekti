@@ -36,5 +36,15 @@ const removeById = (id) => {
     
 }
 
+const deleteAllCourses = async () => {
+    const allCourses = await getAll()
 
-export default { getAll, create, update, get, removeById, setToken }
+
+    allCourses.forEach(course => {
+        removeById(course._id)
+    });
+
+}
+
+
+export default { getAll, create, update, get, removeById, setToken, deleteAllCourses }

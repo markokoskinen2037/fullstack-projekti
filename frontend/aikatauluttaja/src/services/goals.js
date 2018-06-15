@@ -37,5 +37,15 @@ const removeById = (id) => {
     
 }
 
+const deleteAllGoals = async () => {
+    const allGoals = await getAll()
 
-export default { getAll, create, update, get, removeById, setToken }
+
+    allGoals.forEach(goal => {
+        removeById(goal._id)
+    });
+
+}
+
+
+export default { getAll, create, update, get, removeById, setToken, deleteAllGoals }
