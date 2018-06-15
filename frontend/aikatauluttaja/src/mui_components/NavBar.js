@@ -53,7 +53,9 @@ class NavBar extends React.Component {
                 {this.props.user ? (
                 <Fragment>
                     <Grid item md={12} >
-                      <Typography align="right"><Button onClick={(e) => this.handleLogOut(e)} variant="raised" color="default">{this.props.user.username} | Kirjaudu ulos</Button></Typography>
+                      <Typography align="right">
+                      <Button disabled={true} style={{marginLeft: 20}} color="inherit"><Link style={{ color: '#FFF', textDecoration: 'none' }} to="">Kirjautunut käyttäjä: {this.props.user.username}</Link></Button>
+                      <Button onClick={(e) => this.handleLogOut(e)} variant="raised" color="default"> Kirjaudu ulos</Button></Typography>
                     </Grid>
                 </Fragment>
                 ): (
