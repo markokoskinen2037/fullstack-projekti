@@ -1,18 +1,13 @@
-import React, { Component, Fragment } from 'react'
+import React, { Component } from 'react'
 
-import loginService from "../services/login"
 import userService from "../services/users"
 import courseService from "../services/courses"
 import goalService from "../services/goals"
 import { withRouter } from "react-router-dom";
 
-import Input from '@material-ui/core/Input';
-import InputLabel from '@material-ui/core/InputLabel';
-import FormControl from '@material-ui/core/FormControl';
-import Paper from '@material-ui/core/Paper';
+
 import Button from '@material-ui/core/Button';
-import Grid from '@material-ui/core/Grid';
-import { Typography } from "@material-ui/core";
+
 
 class AdminPage extends Component {
     constructor(props) {
