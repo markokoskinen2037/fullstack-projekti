@@ -219,7 +219,7 @@ class App extends React.Component {
         <CssBaseline/>
         <Router>
         <Grid container spacing={16}>
-            <NavBar user={this.state.user} removeUserInfoFromState={this.removeCourseFromCourseListState}/>
+            <NavBar clearState={this.removeUserInfoFromState} user={this.state.user} removeUserInfoFromState={this.removeCourseFromCourseListState}/>
 
               <LoginForm clearState={this.removeUserInfoFromState}user={this.state.user} setLoggedInUser={this.setLoggedInUser}/>
               <RegisterForm user={this.state.user}/>
