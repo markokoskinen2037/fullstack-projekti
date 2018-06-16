@@ -33,18 +33,27 @@ class RegisterForm extends React.Component {
             event.preventDefault()
           }
         
-        try {
-          userService.create({
-            username: this.state.username,
-            password: this.state.password,
-            email : this.state.email
-          })
+          try{
+            const response = await userService.create({
+                username: this.state.username,
+                password: this.state.password,
+                email : this.state.email
+              })
       
           this.setState({ username: '', password: '', email: ''})
-          alert("new user created!")
-        } catch(exception) {
-            alert(exception)
-        }
+          this.props.showAlert("Tunnuksen luonti onnistui!")
+
+
+          } catch (e){
+            this.props.showAlert("Ole hyvä ja valitse toinen käyttäjänimi!")
+          }
+
+
+
+
+
+
+        
       }
 
     handleEnter = (e) => {

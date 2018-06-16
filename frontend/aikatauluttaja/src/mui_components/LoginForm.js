@@ -11,6 +11,7 @@ import Button from '@material-ui/core/Button';
 import Grid from '@material-ui/core/Grid';
 
 
+
 class LoginForm extends React.Component {
     constructor(props) {
         super(props)
@@ -37,23 +38,31 @@ class LoginForm extends React.Component {
             username: this.state.username,
             password: this.state.password
           })
-      
+
           this.setState({ username: '', password: ''}) //Nollataan kirjautumiskenttien arvot
           courseService.setToken(dataFromBackEnd.token) //Asetetaan courseServicelle token muistiin
           this.props.setLoggedInUser(dataFromBackEnd.user) //Reactin stateen tallennettava user
           window.localStorage.setItem('user', JSON.stringify(dataFromBackEnd.user)) //local storageen tallennettava user ja token!
+          const greeting = "Kirjauduit sisään käyttäjällä: " + dataFromBackEnd.user.username
+          this.props.showAlert(greeting)
+      
+
         } catch(exception) {
-            alert("virheellinen käyttäjätunnus tai salasana!")
+            this.props.showAlert("Virheellinen käyttäjätunnus tai salasana.")
         }
       }
 
-      handleLogOut = (event) => {
+      handleLogOut = async (event) => {
         event.preventDefault()
 
-        console.log("deleting all user info from local cache")
+
+        
         window.localStorage.clear()
         this.props.clearState()
-        this.props.history.push("/");
+        await this.props.history.push("/");
+
+        alert("Uloskirjautuminen onnistui!")
+        
         
       }
 
@@ -67,6 +76,8 @@ class LoginForm extends React.Component {
 
 
     render() {
+
+        
 
 
         if(this.props.user === null){

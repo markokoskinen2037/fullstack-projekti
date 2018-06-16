@@ -29,6 +29,8 @@ class NavBar extends React.Component {
         window.localStorage.clear()
         this.props.clearState()
         this.props.history.push("/");
+
+        this.props.showAlert("Uloskirjautuminen onnistui!")
         
       }
 
