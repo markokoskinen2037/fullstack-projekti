@@ -6,6 +6,7 @@ import LoginForm from "./mui_components/LoginForm"
 import CourseForm from "./mui_components/CourseForm"
 import NavBar from "./mui_components/NavBar"
 import RegisterForm from "./mui_components/RegisterForm"
+import Alert from "./mui_components/Alert"
 
 import courseService from "./services/courses"
 import userService from "./services/users"
@@ -31,7 +32,8 @@ class App extends React.Component {
       newCourseName: "",
       newCourseCredits: "",
       newCourseLength: "",
-      user: null
+      user: null,
+      alert: null
     }
 
   }
@@ -207,9 +209,23 @@ class App extends React.Component {
     })
   }
 
-  removeUserInfoFromState = () => {
-    this.setState({user : null})
+  clearState = () => {
+    this.setState({
+      user : null,
+      courses: null
+  })
     console.log("state.user cleared")
+  }
+
+  showAlert = (content) => {
+
+    console.log("showing alert for 5 seconds ")
+
+    this.setState({alert : content})
+
+    setTimeout(() => {
+      this.setState({alert: null})
+    }, 5000)
   }
   
 
@@ -220,10 +236,14 @@ class App extends React.Component {
         <CssBaseline/>
         <Router>
         <Grid container spacing={16}>
-            <NavBar clearState={this.removeUserInfoFromState} user={this.state.user} removeUserInfoFromState={this.removeCourseFromCourseListState}/>
+            <NavBar showAlert={this.showAlert} clearState={this.clearState} user={this.state.user} removeUserInfoFromState={this.removeCourseFromCourseListState}/>
 
-              <LoginForm clearState={this.removeUserInfoFromState}user={this.state.user} setLoggedInUser={this.setLoggedInUser}/>
-              <RegisterForm user={this.state.user}/>
+
+              {this.state.alert && <Alert type="danger" content={this.state.alert}/>}
+
+
+              <LoginForm showAlert={this.showAlert} clearState={this.clearState}user={this.state.user} setLoggedInUser={this.setLoggedInUser}/>
+              <RegisterForm showAlert={this.showAlert} user={this.state.user}/>
 
           
 
@@ -250,7 +270,7 @@ class App extends React.Component {
 
 
                       <Typography style={{marginLeft: 20}} variant="headline">Kurssin lisäys</Typography>
-                      <CourseForm user={this.state.user} updateCourseList={this.addCourseToCourseList} addCourse={this.addCourse}/>
+                      <CourseForm showAlert={this.showAlert} user={this.state.user} updateCourseList={this.addCourseToCourseList} addCourse={this.addCourse}/>
                       
                       </Fragment>
                     )
