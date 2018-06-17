@@ -1,10 +1,11 @@
-import {Input, InputLabel, FormControl, Paper, Button, Grid} from "@material-ui/core/"
+import {Input, Select, InputLabel, FormControl, Paper, Button, Grid} from "@material-ui/core/"
 
 import React, {Fragment} from 'react';
 import courseService from "../services/courses"
 import goalService from "../services/goals"
 import userService from "../services/users"
 import { withRouter } from "react-router-dom";
+
 
 
 class EditCourse extends React.Component {
@@ -18,8 +19,10 @@ class EditCourse extends React.Component {
             editedCourseCredits: this.props.course.credits,
             editedCourseLength: this.props.course.length,
             editedCourseGoalTarget : "goal not found...",
+            editedCourseGoalDifficulty : "goal not found...",
             currentGoal : undefined,
-            goalTarget : 5
+            goalTarget : 5,
+            goalDifficulty: "Helppo"
           }
     } else {
         this.state = {
@@ -38,7 +41,7 @@ class EditCourse extends React.Component {
     }
 
     handleFormChange(event){
-        console.log(event.target.value)
+        //console.log(event.target.value)
         const name = event.target.name
         this.setState({
             [name] : event.target.value
@@ -52,7 +55,8 @@ class EditCourse extends React.Component {
         const newGoal = {
                 courseid: this.props.course._id,
                 userid: this.props.user._id,
-                target: this.state.goalTarget
+                target: this.state.goalTarget,
+                difficulty: this.state.goalDifficulty
         }
 
         if(newGoal.target >=1 && newGoal.target <=5){ //1-5 kelpaa arvosanaksi
@@ -117,7 +121,8 @@ class EditCourse extends React.Component {
                 let tempGoal = {
                     courseid : this.props.course._id,
                     userid: this.props.user._id,
-                    target : this.state.editedCourseGoalTarget
+                    target : this.state.editedCourseGoalTarget,
+                    difficulty: this.state.goalDifficulty
                 }
   
                 await goalService.update(this.state.currentGoal._id, tempGoal)
@@ -214,8 +219,35 @@ class EditCourse extends React.Component {
 
                 {isNaN(this.state.editedCourseGoalTarget) ? ( //Eli jos muokattavalla kurssilla ei ole goalia, näytetään goalin luonti lomake
                 <Fragment >                       
-                    <Input disableUnderline={true} style={{width: 40}} type="number" name="goalTarget" value={this.state.goalTarget} onChange={(event) => this.handleFormChange(event)} />
-                    <Button variant="outlined" mini={true} size="small" color="inherit"  style={{marginRight: 50}}  onClick={() => this.createNewGoal()}><i className="material-icons">save</i> aseta tavoite</Button>
+                                            <InputLabel htmlFor="target-native-simple">Tavoitearvosana</InputLabel>
+                                            <Select
+                                                native
+                                                name="goalTarget"
+                                                value={this.state.goalTarget}
+                                                onChange={(event) => this.handleFormChange(event)}
+                                            >
+                                                <option value={1}>1</option>
+                                                <option value={2}>2</option>
+                                                <option value={3}>3</option>
+                                                <option value={4}>4</option>
+                                                <option value={5}>5</option>
+                                            </Select>
+
+                                            <InputLabel htmlFor="difficulty-native-simple">Haastavuus</InputLabel>
+                                            <Select
+                                                native
+                                                name="goalDifficulty"
+                                                value={this.state.goalDifficulty}
+                                                onChange={(event) => this.handleFormChange(event)}
+                                            >
+                                                <option value="Helppo">Helppo</option>
+                                                <option value="Haastava">Haastava</option>
+                                                <option value="Vaikea">Vaikea</option>
+                                            </Select>
+
+                                                                            
+                                        <Button variant="outlined" mini={true} size="small" color="inherit"  style={{marginRight: 50}}  onClick={() => this.createNewGoal()}><i className="material-icons">save</i></Button>
+
                 </Fragment>
                 ) : (
                     
