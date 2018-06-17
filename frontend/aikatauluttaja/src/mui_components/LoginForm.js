@@ -45,6 +45,10 @@ class LoginForm extends React.Component {
           window.localStorage.setItem('user', JSON.stringify(dataFromBackEnd.user)) //local storageen tallennettava user ja token!
           const greeting = "Kirjauduit sisään käyttäjällä: " + dataFromBackEnd.user.username
           this.props.showAlert(greeting)
+
+          
+
+
       
 
         } catch(exception) {
@@ -52,19 +56,7 @@ class LoginForm extends React.Component {
         }
       }
 
-      handleLogOut = async (event) => {
-        event.preventDefault()
 
-
-        
-        window.localStorage.clear()
-        this.props.clearState()
-        await this.props.history.push("/");
-
-        alert("Uloskirjautuminen onnistui!")
-        
-        
-      }
 
 
 

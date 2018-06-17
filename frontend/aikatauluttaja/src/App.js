@@ -230,7 +230,16 @@ class App extends React.Component {
   
 
   render() {
+
+
+    if(this.state.courses === null){
+        this.reloadCoursesFromBackend()
+    }
+
+
     return (
+
+
       
       <Fragment>
         <CssBaseline/>
@@ -242,7 +251,7 @@ class App extends React.Component {
               {this.state.alert && <Alert type="danger" content={this.state.alert}/>}
 
 
-              <LoginForm showAlert={this.showAlert} clearState={this.clearState}user={this.state.user} setLoggedInUser={this.setLoggedInUser}/>
+              <LoginForm reloadCoursesFromBackend={this.reloadCoursesFromBackend} showAlert={this.showAlert} clearState={this.clearState}user={this.state.user} setLoggedInUser={this.setLoggedInUser}/>
               <RegisterForm showAlert={this.showAlert} user={this.state.user}/>
 
           
