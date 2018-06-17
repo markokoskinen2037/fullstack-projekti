@@ -34,7 +34,7 @@ class RegisterForm extends React.Component {
           }
         
           try{
-            const response = await userService.create({
+            await userService.create({
                 username: this.state.username,
                 password: this.state.password,
                 email : this.state.email
@@ -71,7 +71,7 @@ class RegisterForm extends React.Component {
             return (
 
                 <Fragment>
-                    <Grid item xl={3} md={4} sm={12} lg={3}>
+                    <Grid item md={12} sm={12} lg={8}>
                     <Paper style={{padding: 0, marginTop: 10, marginLeft: 10, marginRight: 10,}}>
                     
                      
@@ -97,7 +97,7 @@ class RegisterForm extends React.Component {
                     
 
 
-                    <Button onClick={(e) => this.createUser(e)} style={{marginLeft: 20, marginBottom: 15, marginTop: 10}} size="small" variant="contained" color="primary" type="submit">Luo tunnus</Button>
+                    <Button onClick={(e) => this.createUser(e)} style={{marginLeft: 20, marginBottom: 15, marginTop: 10, paddingLeft: 30, paddingRight: 30}} size="small" variant="contained" color="primary" type="submit">Luo tunnus</Button>
 
                 
                 </Paper>

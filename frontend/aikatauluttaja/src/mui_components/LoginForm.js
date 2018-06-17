@@ -87,16 +87,16 @@ class LoginForm extends React.Component {
 
 
                 <Fragment>
-                    <Grid item xl={3} md={4} sm={12} xs={12} lg={3}>
+                    <Grid item md={12} sm={12} xs={12} lg={8}>
                     <Paper style={{padding: 0, marginTop: 10, marginLeft: 10, marginRight: 10}}>
                     
                      
 
                     
-                            <FormControl onKeyPress={(e) => this.handleEnter(e)}  style={{marginLeft: 10}}>
-                                <InputLabel htmlFor="name-simple">Käyttäjätunnus</InputLabel>
-                                <Input id="name-simple" type="text" name="username" value={this.state.username} onChange={(event) => this.handleFormChange(event)} />
-                            </FormControl>
+                        <FormControl onKeyPress={(e) => this.handleEnter(e)}  style={{marginLeft: 10}}>
+                            <InputLabel htmlFor="name-simple">Käyttäjätunnus</InputLabel>
+                            <Input id="name-simple" type="text" name="username" value={this.state.username} onChange={(event) => this.handleFormChange(event)} />
+                        </FormControl>
 
 
 
@@ -108,7 +108,7 @@ class LoginForm extends React.Component {
                     
 
 
-                    <Button onClick={(e) => this.login(e)} style={{marginLeft: 20, marginBottom: 15, marginTop: 10}} size="small" variant="contained" color="primary" type="submit">Kirjaudu sisään</Button>
+                    <Button  onClick={(e) => this.login(e)} style={{marginLeft: 20, marginBottom: 15, marginTop: 10, paddingLeft: 30, paddingRight: 30}} size="small" variant="contained" color="primary" type="submit">Kirjaudu sisään</Button>
 
                 
                 </Paper>

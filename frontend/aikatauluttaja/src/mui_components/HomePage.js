@@ -22,15 +22,21 @@ class HomePage extends React.Component {
 
 
         <Fragment>
-            <Grid item xs={12} lg={6} md={4}>
+            <Grid item xs={12} lg={8} md={12}>
 
                 <Paper style={{padding: 10, marginTop: 10, marginLeft: 10, marginRight: 10}} elevation={4}>
 
 
 
                         <Typography variant="title" >Tervetuloa suunnitelemaan opintojasi!</Typography>
-                        <Typography paragraph={true} variant="body1" >Ennen kuin pääset aloittamaan tulee sinun rekisteröityä järjestelmään. Rekisteröitymällä
-                        saat seuraavat ominaisuudet käyttöösi: 1. Kurssien lisääminen, muokkaaminen ja poistaminen. 2. Kurssien merkitseminen aktiivisiksi.</Typography>
+                        <Typography paragraph={true} variant="body1" >Ennen kuin pääset aloittamaan tulee sinun rekisteröityä järjestelmään.
+                          Rekisteröitymällä
+                          saat seuraavat ominaisuudet käyttöösi:
+                          <br></br>
+                          1. Kurssien lisääminen, muokkaaminen ja poistaminen.
+                          <br></br>
+                          2. Kurssien merkitseminen aktiivisiksi.
+                        </Typography>
 
 
 
