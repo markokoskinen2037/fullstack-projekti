@@ -39,12 +39,12 @@ goalsRouter.post("/", async (request, response) => {
     const newGoal = new Goal({
         course: request.body.courseid,
         user: request.body.userid,
-        target: request.body.target
+        target: request.body.target,
+        difficulty: request.body.difficulty
     })
 
 
-    const user = await User.findById(request.body.userid)
-        .populate("goals")
+    const user = await User.findById(request.body.userid).populate("goals")
 
 
     const result = user.goals.find(goal => goal.course.equals(newGoal.course) && goal.user.equals(newGoal.user))
@@ -105,7 +105,8 @@ goalsRouter.put("/:id", (request, response) => {
     const updatedGoal = {
         course: body.courseid,
         user: body.userid,
-        target: body.target
+        target: body.target,
+        difficulty: body.difficulty
     }
 
     Goal
