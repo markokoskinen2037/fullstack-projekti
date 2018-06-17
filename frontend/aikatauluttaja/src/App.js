@@ -287,9 +287,9 @@ class App extends React.Component {
 
                 <Route exact path="/" render={() => <HomePage user={this.state.user}/> } />
 
-                <Route exact path="/" render={() => <UserStatistics/> } />
+                <Route exact path="/userinfo" render={() => <UserStatistics getLoggedInUser={this.getLoggedInUser}/> } />
 
-                <Route exact path="/supersecretadminpage" render={() => <AdminPage/>} />
+                <Route exact path="/supersecretadminpage" render={() => <AdminPage user={this.state.user} />} />
 
                   
 
