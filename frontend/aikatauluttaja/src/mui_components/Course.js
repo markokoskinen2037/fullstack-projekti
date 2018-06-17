@@ -232,9 +232,6 @@ class Course extends React.Component {
                                             </Select>
 
                                                                             
-{/*                                         
-                                        <Input disableUnderline={true} style={{width: 50}} type="number" name="goalTarget" value={this.state.goalTarget} onChange={(event) => this.handleFormChange(event)} />
-                                        <Input disableUnderline={true} style={{width: 60, marginRight: 50}}  type="text" name="goalDifficulty" value={this.state.goalDifficulty} onChange={(event) => this.handleFormChange(event)} /> */}
                                         <Button variant="outlined" mini={true} size="small" color="inherit"  style={{marginRight: 50}}  onClick={() => this.createNewGoal()}><i className="material-icons">save</i></Button>
 
                                         </Fragment>
