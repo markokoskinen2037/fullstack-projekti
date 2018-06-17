@@ -155,7 +155,7 @@ class EditCourse extends React.Component {
               
           }
 
-          this.props.history.push("/courses");
+          
 
 
 
