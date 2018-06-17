@@ -269,7 +269,7 @@ class App extends React.Component {
                         </Grid>
 
 
-                      <Typography style={{marginLeft: 20}} variant="headline">Kurssin lisäys</Typography>
+                      <Typography style={{marginLeft: 30}} variant="headline">Kurssin lisäys</Typography>
                       <CourseForm showAlert={this.showAlert} user={this.state.user} updateCourseList={this.addCourseToCourseList} addCourse={this.addCourse}/>
                       
                       </Fragment>
