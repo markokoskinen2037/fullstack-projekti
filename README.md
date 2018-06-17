@@ -30,7 +30,7 @@ https://obscure-bayou-13604.herokuapp.com/
 3. npm start
 
 ---
-### Aikaa käytetty yhteensä noin : 31h
+### Aikaa käytetty yhteensä noin : 52h45min
 ---
 
 
