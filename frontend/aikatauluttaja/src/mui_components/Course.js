@@ -3,7 +3,7 @@ import courseService from "../services/courses"
 import userService from "../services/users"
 import goalService from "../services/goals"
 
-import Input from '@material-ui/core/Input';
+import {Input, FormControl, InputLabel, Select} from '@material-ui/core/';
 
 import { Link } from "react-router-dom"
 
@@ -19,18 +19,14 @@ class Course extends React.Component {
         super(props)
         this.state = {
             goalTarget: 5,
+            goalDifficulty: "Helppo",
             goalExists : false,
             isActive : false
 
         }
     }
 
-    handleFormChange(event){ //Hoidetaan kenttiin kohdistuvat muutokset stateen
-        const name = event.target.name
-        this.setState({
-            [name] : event.target.value
-        })
-    }
+
 
     handleEnter = (e) => {
         if(e.which === 13){
@@ -101,7 +97,8 @@ class Course extends React.Component {
         const newGoal = {
                 courseid: this.props.course._id,
                 userid: this.props.user._id,
-                target: this.state.goalTarget
+                target: this.state.goalTarget,
+                difficulty: this.state.goalDifficulty
         }
 
         if(newGoal.target >=1 && newGoal.target <=5){ //1-5 kelpaa arvosanaksi
@@ -163,12 +160,21 @@ class Course extends React.Component {
         }
     }
 
-    getGoalTarget = () => {
+    getGoal = () => {
         const foundGoal = this.props.user.goals.find(goalObject => goalObject.course === this.props.course._id && goalObject.user === this.props.user._id)
 
-        return foundGoal.target
+        return foundGoal
 
 
+    }
+
+    handleFormChange(event){ //Hoidetaan kenttiin kohdistuvat muutokset stateen
+        console.log("called handleFormChange")
+        console.log(event.target.name)
+        const name = event.target.name
+        this.setState({
+            [name] : event.target.value
+        })
     }
 
 
@@ -190,20 +196,49 @@ class Course extends React.Component {
                                         <ListItemText  primary={this.props.course.title} />
 
 
-                                {this.goalExists() ? (
-                                    <Typography style={{marginRight: 50}} variant="body1">Tavoitearvosana {this.getGoalTarget()}</Typography>
-                                ) : (
+                                {this.goalExists() ? ( //Jos goal on olemassa, renderöidään sen tiedot:
+                                    <Fragment>
+                                        <Typography style={{marginRight: 50}} variant="body1">Tavoitearvosana {this.getGoal().target}</Typography>
+                                        <Typography style={{marginRight: 50}} variant="body1">{this.getGoal().difficulty}</Typography>
+                                    </Fragment>
+                                ) : ( //Jos goalia ei ole olemassa, renderöidään kentät tavoitearvosanalle ja vaikeusarviolle. Sekä lisäyspainikkeelle
                                     <Fragment >
-                                        
-                                        
-                                        <Input disableUnderline={true} style={{width: 40}} type="number" name="goalTarget" value={this.state.goalTarget} onChange={(event) => this.handleFormChange(event)} />
-                                        <Button variant="outlined" mini={true} size="small" color="inherit"  style={{marginRight: 50}}  onClick={() => this.createNewGoal()}><i className="material-icons">save</i> aseta tavoite</Button>
+
+
+                                            <InputLabel htmlFor="target-native-simple">Tavoitearvosana</InputLabel>
+                                            <Select
+                                                native
+                                                name="goalTarget"
+                                                value={this.state.goalTarget}
+                                                onChange={(event) => this.handleFormChange(event)}
+                                            >
+                                                <option value={1}>1</option>
+                                                <option value={2}>2</option>
+                                                <option value={3}>3</option>
+                                                <option value={4}>4</option>
+                                                <option value={5}>5</option>
+                                            </Select>
+
+                                            <InputLabel htmlFor="difficulty-native-simple">Haastavuus</InputLabel>
+                                            <Select
+                                                native
+                                                name="goalDifficulty"
+                                                value={this.state.goalDifficulty}
+                                                onChange={(event) => this.handleFormChange(event)}
+                                            >
+                                                <option value="Helppo">Helppo</option>
+                                                <option value="Haastava">Haastava</option>
+                                                <option value="Vaikea">Vaikea</option>
+                                            </Select>
+
+                                                                            
+{/*                                         
+                                        <Input disableUnderline={true} style={{width: 50}} type="number" name="goalTarget" value={this.state.goalTarget} onChange={(event) => this.handleFormChange(event)} />
+                                        <Input disableUnderline={true} style={{width: 60, marginRight: 50}}  type="text" name="goalDifficulty" value={this.state.goalDifficulty} onChange={(event) => this.handleFormChange(event)} /> */}
+                                        <Button variant="outlined" mini={true} size="small" color="inherit"  style={{marginRight: 50}}  onClick={() => this.createNewGoal()}><i className="material-icons">save</i></Button>
 
                                         </Fragment>
                                 )}
-        
-
-        
         
                                         <Typography style={{marginRight: 50}} variant="body1">{this.props.course.credits} op</Typography>
         
