@@ -169,8 +169,8 @@ class Course extends React.Component {
     }
 
     handleFormChange(event){ //Hoidetaan kenttiin kohdistuvat muutokset stateen
-        console.log("called handleFormChange")
-        console.log(event.target.name)
+        //console.log("called handleFormChange")
+        //console.log(event.target.name)
         const name = event.target.name
         this.setState({
             [name] : event.target.value
@@ -204,35 +204,29 @@ class Course extends React.Component {
                                 ) : ( //Jos goalia ei ole olemassa, renderöidään kentät tavoitearvosanalle ja vaikeusarviolle. Sekä lisäyspainikkeelle
                                     <Fragment >
 
+                                        <FormControl onKeyPress={(e) => this.handleEnter(e)} style={{marginLeft: 10, width: 100}}>
+                                            <InputLabel htmlFor="goal-simple">Tavoitearvosana</InputLabel>
+                                            <Input id="goal-simple" type="number" name="goalTarget" value={this.state.goalTarget}
+                                            onChange={(event) => this.handleFormChange(event)} />
+                                        </FormControl>
 
-                                            <InputLabel htmlFor="target-native-simple">Tavoitearvosana</InputLabel>
-                                            <Select
-                                                native
-                                                name="goalTarget"
-                                                value={this.state.goalTarget}
-                                                onChange={(event) => this.handleFormChange(event)}
-                                            >
-                                                <option value={1}>1</option>
-                                                <option value={2}>2</option>
-                                                <option value={3}>3</option>
-                                                <option value={4}>4</option>
-                                                <option value={5}>5</option>
-                                            </Select>
 
+                                        <FormControl onKeyPress={(e) => this.handleEnter(e)} style={{marginLeft: 10, marginRight: 10}}>
                                             <InputLabel htmlFor="difficulty-native-simple">Haastavuus</InputLabel>
-                                            <Select
-                                                native
-                                                name="goalDifficulty"
-                                                value={this.state.goalDifficulty}
-                                                onChange={(event) => this.handleFormChange(event)}
+                                        <Select
+                                            native
+                                            name="goalDifficulty"
+                                            value={this.state.goalDifficulty}
+                                            onChange={(event) => this.handleFormChange(event)}
                                             >
-                                                <option value="Helppo">Helppo</option>
-                                                <option value="Haastava">Haastava</option>
-                                                <option value="Vaikea">Vaikea</option>
+                                            <option value="Helppo">Helppo</option>
+                                            <option value="Haastava">Haastava</option>
+                                            <option value="Vaikea">Vaikea</option>
                                             </Select>
+                                        </FormControl>
 
                                                                             
-                                        <Button variant="outlined" mini={true} size="small" color="inherit"  style={{marginRight: 50}}  onClick={() => this.createNewGoal()}><i className="material-icons">save</i></Button>
+                                        <Button  mini={true} size="small" color="inherit"  style={{marginRight: 50}}  onClick={() => this.createNewGoal()}><i className="material-icons">save</i></Button>
 
                                         </Fragment>
                                 )}
