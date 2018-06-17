@@ -49,14 +49,18 @@ class NavBar extends React.Component {
                 <Button style={{marginLeft: 20}} color="inherit"><Link style={{ color: '#FFF', textDecoration: 'none' }} to="/">Etusivu</Link></Button>
                 <Button color="inherit"><Link style={{ color: '#FFF', textDecoration: 'none' }} to="/courses">Kurssit</Link></Button>
 
+
                 <Button color="inherit"><a style={{color : '#FFF', textDecoration: 'none'}} href="https://github.com/markokoskinen2037/fullstack-projekti">GitHub</a></Button>
+
+                {this.props.user !== null && this.props.user.username === "admin" && <Button style={{marginLeft: 20}} color="inherit"><Link style={{ color: '#FFF', textDecoration: 'none' }} to="/supersecretadminpage">SuperSecretAdminPage</Link></Button>}
+                
 
 
                 {this.props.user ? (
                 <Fragment>
                     <Grid item md={12} >
                       <Typography align="right">
-                      <Button disabled={true} style={{marginLeft: 20}} color="inherit"><Link style={{ color: '#FFF', textDecoration: 'none' }} to="">Kirjautunut käyttäjä: {this.props.user.username}</Link></Button>
+                      <Button disabled={false} style={{marginRight: 10}} color="inherit"><Link to="/userinfo" style={{ color: '#FFF', textDecoration: 'none' }}>{this.props.user.username}</Link></Button>
                       <Button onClick={(e) => this.handleLogOut(e)} variant="raised" color="default"> Kirjaudu ulos</Button></Typography>
                     </Grid>
                 </Fragment>
