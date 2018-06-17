@@ -77,14 +77,22 @@ class EditCourse extends React.Component {
 
         
 
-        this.props.history.push("/courses");
 
         
 
       }
 
     updateCourse = async (e) => {
+        
+
+        //console.log(JSON.stringify(this.state));
+
+        
+
+
         e.preventDefault()
+
+        //alert(this.state.editedCourseId)
         
 
         const editedCourse = { //Luodaan uusi kurssi olio
@@ -94,13 +102,13 @@ class EditCourse extends React.Component {
             credits: this.state.editedCourseCredits
           }
 
-          console.log("you called ?")
-          console.log(editedCourse)
+          //console.log("you called ?")
+          //console.log(editedCourse)
 
           courseService //Otetaan yhteys kurssiPalveluun
           .update(editedCourse._id, editedCourse) //Korvataan vanhat kunssin tiedot uusilla tietokannassa
           .then(response => {
-            console.log(response) //response sisältää kurssiolion joka tulee sijoittaa stateen
+            //console.log(response) //response sisältää kurssiolion joka tulee sijoittaa stateen
             // this.props.reloadCoursesFromBackend() //Tämä on kömpelö ja aikaa vievä tapa päivittää tilassa olevat kurssit...
             
             this.props.updateCourseState(response)
@@ -110,18 +118,23 @@ class EditCourse extends React.Component {
 
 
           //Kurssi on nyt päivitetty, seuraavaksi pitää päivittää goal jos tarpeellista
+          //alert("hello")
+
+          if(this.state.editedCourseGoalTarget === "goal not found..."){
+              //alert("creating new goal...")
+              this.createNewGoal()
+          }
 
 
 
 
-
-          if(!isNaN(this.state.editedCourseGoalTarget)){
-
+          if(!isNaN(this.state.editedCourseGoalTarget)){    
+             
             if(this.state.editedCourseGoalTarget >= 1 && this.state.editedCourseGoalTarget <= 5){
                 let tempGoal = {
                     courseid : this.props.course._id,
                     userid: this.props.user._id,
-                    target : this.state.editedCourseGoalTarget,
+                    target : this.state.goalTarget,
                     difficulty: this.state.goalDifficulty
                 }
   
@@ -152,7 +165,7 @@ class EditCourse extends React.Component {
     }
 
     handleEnter = (e) => {
-        console.log(e.which)
+        //console.log(e.which)
         if(e.which === 13){
             this.updateCourse(e)
         }
@@ -164,7 +177,7 @@ class EditCourse extends React.Component {
         this.setState({currentGoal : foundGoal})
 
         if(foundGoal !== undefined){
-            this.setState({ editedCourseGoalTarget : foundGoal.target})
+            this.setState({ editedCourseGoalTarget : foundGoal.target, goalDifficulty : foundGoal.difficulty, goalTarget : foundGoal.target})
         }
 
         
@@ -217,54 +230,27 @@ class EditCourse extends React.Component {
 
 
 
-                {isNaN(this.state.editedCourseGoalTarget) ? ( //Eli jos muokattavalla kurssilla ei ole goalia, näytetään goalin luonti lomake
-                <Fragment >                       
-                                            <InputLabel htmlFor="target-native-simple">Tavoitearvosana</InputLabel>
-                                            <Select
-                                                native
-                                                name="goalTarget"
-                                                value={this.state.goalTarget}
-                                                onChange={(event) => this.handleFormChange(event)}
-                                            >
-                                                <option value={1}>1</option>
-                                                <option value={2}>2</option>
-                                                <option value={3}>3</option>
-                                                <option value={4}>4</option>
-                                                <option value={5}>5</option>
-                                            </Select>
-
-                                            <InputLabel htmlFor="difficulty-native-simple">Haastavuus</InputLabel>
-                                            <Select
-                                                native
-                                                name="goalDifficulty"
-                                                value={this.state.goalDifficulty}
-                                                onChange={(event) => this.handleFormChange(event)}
-                                            >
-                                                <option value="Helppo">Helppo</option>
-                                                <option value="Haastava">Haastava</option>
-                                                <option value="Vaikea">Vaikea</option>
-                                            </Select>
-
-                                                                            
-                                        <Button variant="outlined" mini={true} size="small" color="inherit"  style={{marginRight: 50}}  onClick={() => this.createNewGoal()}><i className="material-icons">save</i></Button>
-
-                </Fragment>
-                ) : (
-                    
+                     
                  <FormControl onKeyPress={(e) => this.handleEnter(e)} style={{marginLeft: 10}}>
-                 <InputLabel htmlFor="goal-simple">Tavoite</InputLabel>
-                 <Input id="goal-simple" type="number" name="editedCourseGoalTarget" value={this.state.editedCourseGoalTarget}
-                 onChange={(event) => this.handleFormChange(event)} />
-              </FormControl>
-                )}
+                    <InputLabel htmlFor="goal-simple">Tavoitearvosana</InputLabel>
+                    <Input id="goal-simple" type="number" name="goalTarget" value={this.state.goalTarget}
+                    onChange={(event) => this.handleFormChange(event)} />
+                 </FormControl>
 
 
-
-
-
-
-
-
+                <FormControl onKeyPress={(e) => this.handleEnter(e)} style={{marginLeft: 10}}>
+                    <InputLabel htmlFor="difficulty-native-simple">Haastavuus</InputLabel>
+                        <Select
+                            native
+                            name="goalDifficulty"
+                            value={this.state.goalDifficulty}
+                            onChange={(event) => this.handleFormChange(event)}
+                            >
+                            <option value="Helppo">Helppo</option>
+                            <option value="Haastava">Haastava</option>
+                            <option value="Vaikea">Vaikea</option>
+                       </Select>
+                </FormControl>
 
 
 
