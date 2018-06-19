@@ -270,7 +270,7 @@ class App extends React.Component {
                         <List style={{marginLeft: 10, marginRight: 10}}>
 
 
-                        <Paper style={{marginBottom: "10px"}}>
+                        <Paper style={{marginBottom: "35px"}}>
                             <ListItem>
                                 <ListItemText  primary="Nimi" />
 
