@@ -11,7 +11,7 @@ import Alert from "./mui_components/Alert"
 import courseService from "./services/courses"
 import userService from "./services/users"
 
-import {Grid, List, CssBaseline} from '@material-ui/core/';
+import {Grid, List, CssBaseline, Paper, ListItem, ListItemText} from '@material-ui/core/';
 
 
 
@@ -261,9 +261,35 @@ class App extends React.Component {
                     return (
                       <Fragment>
                         <Grid style={{margin:"20px"}} item xs={12}>
-                        <Typography style={{textAlign : "center", paddingBottom: "20px"}} variant="headline">Kurssit</Typography>
+                        <Typography style={{ paddingBottom: "20px"}} variant="headline">Kurssit</Typography>
                         
+
+
+
+
                         <List style={{marginLeft: 10, marginRight: 10}}>
+
+
+                        <Paper style={{marginBottom: "10px"}}>
+                            <ListItem>
+                                <ListItemText  primary="Nimi" />
+
+                                <Fragment ><Typography style={{marginRight: "9px"}}>Työmäärä/arkipäivä</Typography></Fragment>
+                                <Fragment ><Typography style={{marginRight: "28px"}}>Tavoite</Typography></Fragment>
+                                <Fragment ><Typography style={{marginRight: "35px"}}>Vaikeus</Typography></Fragment>
+                                <Fragment ><Typography style={{marginRight: "20px"}}>Op. määrä</Typography></Fragment>
+                                <Fragment ><Typography style={{marginRight: "30px"}}>Pituus</Typography></Fragment>
+
+                                
+                                <Fragment ><Typography style={{marginRight: "42px"}}>Muokkaa</Typography></Fragment>
+                                <Fragment ><Typography style={{marginRight: "45px"}}>Poista</Typography></Fragment>
+                                <Fragment ><Typography style={{marginRight: "20px"}}>Aktivoi</Typography></Fragment>
+
+
+                            </ListItem>
+                        </Paper>
+
+
                       {this.state.courses.map(course => <Course
                         toggleActive={this.toggleActive}
                         findCourse = {this.findCourse}
@@ -278,7 +304,7 @@ class App extends React.Component {
                         </Grid>
 
 
-                      <Typography style={{textAlign: "center", width:"100%", paddingBottom: "20px"}} variant="headline">Kurssin lisäys</Typography>
+                      <Typography style={{marginLeft: "30px", width:"100%"}} variant="headline">Kurssin lisäys</Typography>
                       <CourseForm showAlert={this.showAlert} user={this.state.user} updateCourseList={this.addCourseToCourseList} addCourse={this.addCourse}/>
                       
                       </Fragment>
