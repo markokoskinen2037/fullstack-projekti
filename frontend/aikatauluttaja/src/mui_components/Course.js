@@ -196,13 +196,20 @@ class Course extends React.Component {
                                         <ListItemText  primary={this.props.course.title} />
 
 
+
+                                        
+
+
                                 {this.goalExists() ? ( //Jos goal on olemassa, renderöidään sen tiedot:
                                     <Fragment>
-                                        <Typography style={{marginRight: 25}} variant="body1">Tavoitearvosana {this.getGoal().target}</Typography>
+                                        <Typography variant="body1" style={{marginRight: "50px"}}>
+                                            {Math.floor ((this.props.course.credits * 20) / (this.props.course.length*7*5) * 10) / 10}h
+                                        </Typography>
+                                        <Typography style={{marginRight: 25}} variant="body1">{this.getGoal().target}</Typography>
 
-                                        {this.getGoal().difficulty === "Vaikea" && <Typography style={{marginRight: 15, width: "64px", color :"red"}} variant="body1">{this.getGoal().difficulty}</Typography>}
-                                        {this.getGoal().difficulty === "Haastava" && <Typography style={{marginRight: 15, width: "64px", color :"yellow"}} variant="body1">{this.getGoal().difficulty}</Typography>}
-                                        {this.getGoal().difficulty === "Helppo" && <Typography style={{marginRight: 15, width: "64px", color :"green"}} variant="body1">{this.getGoal().difficulty}</Typography>}
+                                        {this.getGoal().difficulty === "Vaikea" && <Button disabled={true}  mini={true}  size="small" variant="outlined" style={{marginRight: "20px", backgroundColor : "black"}}><Typography style={{width: "80px", color :"red", fontWeight: "bold"}} variant="body1">{this.getGoal().difficulty}</Typography></Button>}
+                                        {this.getGoal().difficulty === "Haastava" && <Button  mini={true} size="small" variant="outlined" style={{marginRight: "20px", backgroundColor : "black"}}><Typography style={{width: "80px", color :"yellow", fontWeight: "bold"}} variant="body1">{this.getGoal().difficulty}</Typography></Button>}
+                                        {this.getGoal().difficulty === "Helppo" && <Button  mini={true} size="small" variant="outlined" style={{marginRight: "20px", backgroundColor : "black"}}><Typography style={{width: "80px", color :"green", fontWeight: "bold"}} variant="body1">{this.getGoal().difficulty}</Typography></Button>}
 
 
 
