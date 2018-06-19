@@ -207,9 +207,9 @@ class Course extends React.Component {
                                         </Typography>
                                         <Typography style={{marginRight: 25}} variant="body1">{this.getGoal().target}</Typography>
 
-                                        {this.getGoal().difficulty === "Vaikea" && <Button disabled={true}  mini={true}  size="small" variant="outlined" style={{marginRight: "20px", backgroundColor : "black"}}><Typography style={{width: "80px", color :"red", fontWeight: "bold"}} variant="body1">{this.getGoal().difficulty}</Typography></Button>}
-                                        {this.getGoal().difficulty === "Haastava" && <Button  mini={true} size="small" variant="outlined" style={{marginRight: "20px", backgroundColor : "black"}}><Typography style={{width: "80px", color :"yellow", fontWeight: "bold"}} variant="body1">{this.getGoal().difficulty}</Typography></Button>}
-                                        {this.getGoal().difficulty === "Helppo" && <Button  mini={true} size="small" variant="outlined" style={{marginRight: "20px", backgroundColor : "black"}}><Typography style={{width: "80px", color :"green", fontWeight: "bold"}} variant="body1">{this.getGoal().difficulty}</Typography></Button>}
+                                        {this.getGoal().difficulty === "Vaikea" && <Button disabled={true}  mini={true}  size="small" variant="outlined" style={{marginRight: "20px", backgroundColor : "red"}}><Typography style={{width: "80px", color :"white", fontWeight: "bold"}} variant="body1">{this.getGoal().difficulty}</Typography></Button>}
+                                        {this.getGoal().difficulty === "Haastava" && <Button disabled={true}  mini={true} size="small" variant="outlined" style={{marginRight: "20px", backgroundColor : "#ff8100"}}><Typography style={{width: "80px", color :"white", fontWeight: "bold"}} variant="body1">{this.getGoal().difficulty}</Typography></Button>}
+                                        {this.getGoal().difficulty === "Helppo" && <Button disabled={true}  mini={true} size="small" variant="outlined" style={{marginRight: "20px", backgroundColor : "green"}}><Typography style={{width: "80px", color :"white", fontWeight: "bold"}} variant="body1">{this.getGoal().difficulty}</Typography></Button>}
 
 
 
