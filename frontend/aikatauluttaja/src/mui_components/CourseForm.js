@@ -93,15 +93,15 @@ class CourseForm extends React.Component {
 
                         <FormControl onKeyPress={(e) => this.handleEnter(e)} style={{marginLeft: 10}}>
                             <InputLabel htmlFor="name-simple">Kurssin nimi</InputLabel>
-                            <Input id="name-simple" type="text" name="newCourseName" value={this.state.newCourseName} onChange={(event) => this.handleFormChange(event)} />
+                            <Input  id="name-simple" type="text" name="newCourseName" value={this.state.newCourseName} onChange={(event) => this.handleFormChange(event)} />
                          </FormControl>
 
-                         <FormControl onKeyPress={(e) => this.handleEnter(e)} style={{marginLeft: 10}}>
+                         <FormControl onKeyPress={(e) => this.handleEnter(e)} style={{marginLeft: 10, width: "135px"}}>
                             <InputLabel htmlFor="length-simple">Pituus periodeissa</InputLabel>
                             <Input id="length-simple" type="number" name="newCourseLength" value={this.state.newCourseLength} onChange={(event) => this.handleFormChange(event)} />
                          </FormControl>
 
-                         <FormControl onKeyPress={(e) => this.handleEnter(e)} style={{marginLeft: 10}}>
+                         <FormControl onKeyPress={(e) => this.handleEnter(e)} style={{marginLeft: 10, width: "132px"}}>
                             <InputLabel htmlFor="credits-simple">Opintopistemäärä</InputLabel>
                             <Input id="credits-simple" type="number" name="newCourseCredits" value={this.state.newCourseCredits} onChange={(event) => this.handleFormChange(event)} />
                          </FormControl>
