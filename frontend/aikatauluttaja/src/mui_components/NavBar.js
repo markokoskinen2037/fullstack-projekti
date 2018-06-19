@@ -43,7 +43,7 @@ class NavBar extends React.Component {
         return(
             <AppBar position="static">
                 <Toolbar style={{marginTop: 10}}>
-                    <Typography style={{width: "40%"}} variant="title" color="inherit">
+                    <Typography  variant="title" color="inherit">
                         Opintojen aikatauluttaja
                     </Typography>
                 <Button style={{marginLeft: 20}} color="inherit"><Link style={{ color: '#FFF', textDecoration: 'none' }} to="/">Etusivu</Link></Button>
@@ -58,11 +58,12 @@ class NavBar extends React.Component {
 
                 {this.props.user ? (
                 <Fragment>
-                    <Grid item md={12} >
+                    <Grid item style={{position: "absolute", right: "20px"}}>
                       <Typography align="right">
-                      <Button disabled={false} style={{marginRight: 10}} color="inherit"><Link to="/userinfo" style={{ color: '#FFF', textDecoration: 'none' }}>{this.props.user.username}</Link></Button>
-                      <Button onClick={(e) => this.handleLogOut(e)} variant="raised" color="default"> Kirjaudu ulos</Button></Typography>
-                    </Grid>
+                          <Button disabled={false} style={{marginRight: 10}} color="inherit"><Link to="/userinfo" style={{ color: '#FFF', textDecoration: 'none' }}>{this.props.user.username}</Link></Button>
+                          <Button onClick={(e) => this.handleLogOut(e)} variant="raised" color="default"> Kirjaudu ulos</Button>
+                      </Typography>
+                      </Grid>
                 </Fragment>
                 ): (
                     null
