@@ -198,8 +198,14 @@ class Course extends React.Component {
 
                                 {this.goalExists() ? ( //Jos goal on olemassa, renderöidään sen tiedot:
                                     <Fragment>
-                                        <Typography style={{marginRight: 50}} variant="body1">Tavoitearvosana {this.getGoal().target}</Typography>
-                                        <Typography style={{marginRight: 50}} variant="body1">{this.getGoal().difficulty}</Typography>
+                                        <Typography style={{marginRight: 25}} variant="body1">Tavoitearvosana {this.getGoal().target}</Typography>
+
+                                        {this.getGoal().difficulty === "Vaikea" && <Typography style={{marginRight: 15, width: "64px", color :"red"}} variant="body1">{this.getGoal().difficulty}</Typography>}
+                                        {this.getGoal().difficulty === "Haastava" && <Typography style={{marginRight: 15, width: "64px", color :"yellow"}} variant="body1">{this.getGoal().difficulty}</Typography>}
+                                        {this.getGoal().difficulty === "Helppo" && <Typography style={{marginRight: 15, width: "64px", color :"green"}} variant="body1">{this.getGoal().difficulty}</Typography>}
+
+
+
                                     </Fragment>
                                 ) : ( //Jos goalia ei ole olemassa, renderöidään kentät tavoitearvosanalle ja vaikeusarviolle. Sekä lisäyspainikkeelle
                                     <Fragment >
@@ -231,9 +237,9 @@ class Course extends React.Component {
                                         </Fragment>
                                 )}
         
-                                        <Typography style={{marginRight: 50}} variant="body1">{this.props.course.credits} op</Typography>
+                                        <Typography style={{marginRight: 15, width: "50px"}} variant="body1">{this.props.course.credits} op</Typography>
         
-                                        <Typography variant="body1">{this.props.course.length} periodia</Typography>
+                                        <Typography style={{width: "7%%"}} variant="body1">{this.props.course.length} periodia</Typography>
                                         <Button><Link style={{color: 'inherit'}} to={`/courses/${this.props.course._id}`}><i className="material-icons">edit</i></Link></Button>
                                         <Button onClick={() => this.deleteCourse(this.props.course._id)}><i className="material-icons">delete</i></Button>
 

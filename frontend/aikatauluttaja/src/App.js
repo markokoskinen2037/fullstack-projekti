@@ -244,15 +244,15 @@ class App extends React.Component {
       <Fragment>
         <CssBaseline/>
         <Router>
-        <Grid container spacing={16}>
+        <Grid  container spacing={16}>
             <NavBar showAlert={this.showAlert} clearState={this.clearState} user={this.state.user} removeUserInfoFromState={this.removeCourseFromCourseListState}/>
 
 
               {this.state.alert && <Alert type="danger" content={this.state.alert}/>}
 
-
-              <LoginForm reloadCoursesFromBackend={this.reloadCoursesFromBackend} showAlert={this.showAlert} clearState={this.clearState}user={this.state.user} setLoggedInUser={this.setLoggedInUser}/>
-              <RegisterForm showAlert={this.showAlert} user={this.state.user}/>
+              <Route exact path="/" render={() => <LoginForm reloadCoursesFromBackend={this.reloadCoursesFromBackend} showAlert={this.showAlert} clearState={this.clearState}user={this.state.user} setLoggedInUser={this.setLoggedInUser}/>}/>
+              
+              <Route exact path="/" render={() => <RegisterForm showAlert={this.showAlert} user={this.state.user}/>}/>
 
           
 
@@ -260,8 +260,8 @@ class App extends React.Component {
                   if(this.state.user != null){
                     return (
                       <Fragment>
-                        <Grid item xs={12}>
-                        <Typography style={{marginLeft: 20}} variant="headline">Kurssit</Typography>
+                        <Grid style={{margin:"20px"}} item xs={12}>
+                        <Typography style={{textAlign : "center", paddingBottom: "20px"}} variant="headline">Kurssit</Typography>
                         
                         <List style={{marginLeft: 10, marginRight: 10}}>
                       {this.state.courses.map(course => <Course
@@ -278,7 +278,7 @@ class App extends React.Component {
                         </Grid>
 
 
-                      <Typography style={{marginLeft: 30}} variant="headline">Kurssin lisäys</Typography>
+                      <Typography style={{textAlign: "center", width:"100%", paddingBottom: "20px"}} variant="headline">Kurssin lisäys</Typography>
                       <CourseForm showAlert={this.showAlert} user={this.state.user} updateCourseList={this.addCourseToCourseList} addCourse={this.addCourse}/>
                       
                       </Fragment>

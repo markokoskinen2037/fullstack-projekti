@@ -43,7 +43,7 @@ class NavBar extends React.Component {
         return(
             <AppBar position="static">
                 <Toolbar style={{marginTop: 10}}>
-                    <Typography variant="title" color="inherit">
+                    <Typography style={{width: "40%"}} variant="title" color="inherit">
                         Opintojen aikatauluttaja
                     </Typography>
                 <Button style={{marginLeft: 20}} color="inherit"><Link style={{ color: '#FFF', textDecoration: 'none' }} to="/">Etusivu</Link></Button>

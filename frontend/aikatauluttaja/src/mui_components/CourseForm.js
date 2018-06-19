@@ -85,7 +85,7 @@ class CourseForm extends React.Component {
 
 
             <Fragment>
-                <Grid item xs={12}>
+                <Grid style={{margin: "20px"}} item xs={12}>
                     <Paper style={{padding: 0, marginTop: 10, marginLeft: 10, marginRight: 10, paddingTop: 10}}>
                 
                 

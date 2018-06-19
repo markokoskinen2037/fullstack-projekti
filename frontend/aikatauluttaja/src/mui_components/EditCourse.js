@@ -216,22 +216,19 @@ class EditCourse extends React.Component {
                     onChange={(event) => this.handleFormChange(event)} />
                  </FormControl>
 
-                 <FormControl onKeyPress={(e) => this.handleEnter(e)} style={{marginLeft: 10}}>
+                 <FormControl onKeyPress={(e) => this.handleEnter(e)} style={{marginLeft: 10, width: "135px"}}>
                     <InputLabel htmlFor="length-simple">Pituus periodeissa</InputLabel>
                     <Input id="length-simple" type="number" name="editedCourseLength" value={this.state.editedCourseLength}
                     onChange={(event) => this.handleFormChange(event)} />
                  </FormControl>
 
-                 <FormControl onKeyPress={(e) => this.handleEnter(e)} style={{marginLeft: 10}}>
+                 <FormControl onKeyPress={(e) => this.handleEnter(e)} style={{marginLeft: 10, width: "135px"}}>
                     <InputLabel htmlFor="credits-simple">Opintopistemäärä</InputLabel>
                     <Input id="credits-simple" type="number" name="editedCourseCredits" value={this.state.editedCourseCredits}
                     onChange={(event) => this.handleFormChange(event)} />
                  </FormControl>
 
-
-
-                     
-                 <FormControl onKeyPress={(e) => this.handleEnter(e)} style={{marginLeft: 10}}>
+                 <FormControl onKeyPress={(e) => this.handleEnter(e)} style={{marginLeft: 10, width: "135px"}}>
                     <InputLabel htmlFor="goal-simple">Tavoitearvosana</InputLabel>
                     <Input id="goal-simple" type="number" name="goalTarget" value={this.state.goalTarget}
                     onChange={(event) => this.handleFormChange(event)} />

@@ -47,7 +47,7 @@ class LoginForm extends React.Component {
           this.props.showAlert(greeting)
 
           
-
+          this.props.history.push("/courses")
 
       
 
