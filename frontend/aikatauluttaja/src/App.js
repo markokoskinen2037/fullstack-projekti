@@ -7,6 +7,7 @@ import CourseForm from "./mui_components/CourseForm"
 import NavBar from "./mui_components/NavBar"
 import RegisterForm from "./mui_components/RegisterForm"
 import Alert from "./mui_components/Alert"
+import SimpleSnackbar from "./mui_components/SimpleSnackbar"
 
 import courseService from "./services/courses"
 import userService from "./services/users"
@@ -35,7 +36,8 @@ class App extends React.Component {
       user: null,
       alert: null,
       filter: "",
-      showOnlyActiveCourses: false
+      showOnlyActiveCourses: false,
+      timeoutFunction: undefined
     }
 
   }
@@ -221,13 +223,19 @@ class App extends React.Component {
 
   showAlert = (content) => {
 
-    console.log("showing alert for 5 seconds ")
+        
 
-    this.setState({alert : content})
 
-    setTimeout(() => {
-      this.setState({alert: null})
-    }, 5000)
+
+
+
+      this.setState({alert : null})
+      console.log("Old alert cleared from state. Setting new...")
+      this.setState({alert : content})
+    
+
+
+
   }
 
   toggleActiveCourses = () => {
@@ -255,7 +263,8 @@ class App extends React.Component {
             <NavBar showAlert={this.showAlert} clearState={this.clearState} user={this.state.user} removeUserInfoFromState={this.removeCourseFromCourseListState}/>
 
 
-              {this.state.alert && <Alert type="danger" content={this.state.alert}/>}
+              
+              {this.state.alert &&  <SimpleSnackbar content={this.state.alert}/>}
 
               <Route exact path="/" render={() => <LoginForm reloadCoursesFromBackend={this.reloadCoursesFromBackend} showAlert={this.showAlert} clearState={this.clearState}user={this.state.user} setLoggedInUser={this.setLoggedInUser}/>}/>
               
