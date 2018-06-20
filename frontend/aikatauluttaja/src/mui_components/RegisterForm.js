@@ -28,25 +28,38 @@ class RegisterForm extends React.Component {
         })
     }
 
-    createUser = async (event) => { //Fixaa tää
+    createUser = async (event) => { 
         if(event){
             event.preventDefault()
+        }
+        let errors = 0;
+
+          if(this.state.password.length < 5){
+              this.props.showAlert("Salasanan tulee olla ainakin 5 merkkiä pitkä!")
+              errors++;
+          } else if(!this.state.email.includes("@")){
+              this.props.showAlert("Sähköpostissa tulee olla @-merkki!")
+              errors++;
+          }
+
+          if(errors === 0){
+            try{
+                await userService.create({
+                    username: this.state.username,
+                    password: this.state.password,
+                    email : this.state.email
+                  })
+          
+              this.setState({ username: '', password: '', email: ''})
+              this.props.showAlert("Tunnuksen luonti onnistui!")
+    
+    
+              } catch (e){
+                this.props.showAlert("Ole hyvä ja valitse toinen käyttäjänimi!")
+              }
+    
           }
         
-          try{
-            await userService.create({
-                username: this.state.username,
-                password: this.state.password,
-                email : this.state.email
-              })
-      
-          this.setState({ username: '', password: '', email: ''})
-          this.props.showAlert("Tunnuksen luonti onnistui!")
-
-
-          } catch (e){
-            this.props.showAlert("Ole hyvä ja valitse toinen käyttäjänimi!")
-          }
 
 
 
