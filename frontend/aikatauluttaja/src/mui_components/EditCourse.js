@@ -89,7 +89,10 @@ class EditCourse extends React.Component {
 
         //console.log(JSON.stringify(this.state));
 
-        
+
+        if(this.state.editedCourseTitle === "" || this.state.editedCourseLength < 1 || this.state.editedCourseLength > 4 || this.state.editedCourseCredits < 1 || this.state.editedCourseCredits > 100 || this.state.goalTarget < 1 || this.state.goalTarget > 5){
+            this.props.showAlert("Ole hyvä ja tarkista muokkaamasi kentät.")
+        } else {
 
 
         e.preventDefault()
@@ -156,6 +159,10 @@ class EditCourse extends React.Component {
 
               
           }
+
+        }
+
+        
 
           
 
