@@ -6,7 +6,6 @@ import LoginForm from "./mui_components/LoginForm"
 import CourseForm from "./mui_components/CourseForm"
 import NavBar from "./mui_components/NavBar"
 import RegisterForm from "./mui_components/RegisterForm"
-import Alert from "./mui_components/Alert"
 import SimpleSnackbar from "./mui_components/SimpleSnackbar"
 
 import courseService from "./services/courses"
