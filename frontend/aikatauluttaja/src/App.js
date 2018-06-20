@@ -11,7 +11,7 @@ import Alert from "./mui_components/Alert"
 import courseService from "./services/courses"
 import userService from "./services/users"
 
-import {Grid, List, CssBaseline, Paper, ListItem, ListItemText} from '@material-ui/core/';
+import {Grid, List, CssBaseline, Paper, ListItem, ListItemText, Input, FormControl, InputLabel, Checkbox, FormControlLabel} from '@material-ui/core/';
 
 
 
@@ -33,7 +33,9 @@ class App extends React.Component {
       newCourseCredits: "",
       newCourseLength: "",
       user: null,
-      alert: null
+      alert: null,
+      filter: "",
+      showOnlyActiveCourses: false
     }
 
   }
@@ -227,6 +229,11 @@ class App extends React.Component {
       this.setState({alert: null})
     }, 5000)
   }
+
+  toggleActiveCourses = () => {
+    const value = !this.state.showOnlyActiveCourses
+    this.setState({showOnlyActiveCourses : value})
+  }
   
 
   render() {
@@ -264,6 +271,7 @@ class App extends React.Component {
                         <Typography style={{ paddingBottom: "20px"}} variant="headline">Kurssit</Typography>
                         
 
+                        
 
 
 
@@ -291,6 +299,24 @@ class App extends React.Component {
                         </Paper>
 
 
+                        <FormControl style={{marginLeft: 10, marginBottom: 15}}>
+                            <InputLabel htmlFor="name-simple">Hae kurssia nimeltä</InputLabel>
+                            <Input  id="name-simple" type="text" name="filter" value={this.state.filter} onChange={(event) => this.handleFormChange(event)} />
+                        </FormControl>
+
+
+
+                              <FormControlLabel style={{position: "absolute", float: "right", right: "5px"}}
+                                control={
+                                  <Checkbox
+                                  checked={this.state.showOnlyActiveCourses}
+                                  onClick={() => this.toggleActiveCourses()}
+                                />
+                                }
+                                label="Näytä vain aktiiviset kurssit"
+                              />
+
+
                       {this.state.courses.map(course => <Course
                         toggleActive={this.toggleActive}
                         findCourse = {this.findCourse}
@@ -300,6 +326,8 @@ class App extends React.Component {
                         key={course._id}
                         removeCourseFromCourseListState={this.removeCourseFromCourseListState}
                         addGoalToUserState={this.addGoalToUserState}
+                        filter={this.state.filter}
+                        showOnlyActiveCourses={this.state.showOnlyActiveCourses}
                         course={course} />)}
                         </List>
                         </Grid>

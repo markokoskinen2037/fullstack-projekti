@@ -197,91 +197,110 @@ class Course extends React.Component {
 
     render() {
 
+        
+
+        
+
+        if(this.props.course.title.toLowerCase().includes(this.props.filter.toLowerCase())){ // Jos filter sopii tähän kurssiin...
 
 
 
-            return (
-                <Fragment>
-                    <Grid item xs={12}>
-                            <Paper style={{marginBottom: 10}}>
-                                    <ListItem>
-                                        <ListItemText  primary={this.props.course.title} />
-
-
-
-                                        
-
-
-                                {this.goalExists() ? ( //Jos goal on olemassa, renderöidään sen tiedot:
-                                    <Fragment>
-                                        <Typography variant="body1" style={{marginRight: "107px"}}> 
-                                            {Math.floor ((this.props.course.credits * 20) / (this.props.course.length*7*5) * 10) / 10}h
-                                        </Typography>
-                                        <Typography variant="body1" style={{marginRight: "50px", width: "25px"}}>
-                                            {Math.floor ((this.props.course.credits * this.getCourseHourValue()) / (this.props.course.length*7*5) * 10) / 10}h
-                                        </Typography>
-
-                                        <Typography style={{marginRight: 25}} variant="body1">{this.getGoal().target}</Typography>
-
-                                        {this.getGoal().difficulty === "Vaikea" && <Button disabled={true}  mini={true}  size="small" variant="outlined" style={{marginRight: "20px", backgroundColor : "red"}}><Typography style={{width: "80px", color :"white", fontWeight: "bold"}} variant="body1">{this.getGoal().difficulty}</Typography></Button>}
-                                        {this.getGoal().difficulty === "Haastava" && <Button disabled={true}  mini={true} size="small" variant="outlined" style={{marginRight: "20px", backgroundColor : "#ff8100"}}><Typography style={{width: "80px", color :"white", fontWeight: "bold"}} variant="body1">{this.getGoal().difficulty}</Typography></Button>}
-                                        {this.getGoal().difficulty === "Helppo" && <Button disabled={true}  mini={true} size="small" variant="outlined" style={{marginRight: "20px", backgroundColor : "green"}}><Typography style={{width: "80px", color :"white", fontWeight: "bold"}} variant="body1">{this.getGoal().difficulty}</Typography></Button>}
-
-
-
-                                    </Fragment>
-                                ) : ( //Jos goalia ei ole olemassa, renderöidään kentät tavoitearvosanalle ja vaikeusarviolle. Sekä lisäyspainikkeelle
-                                    <Fragment >
-
-                                        <FormControl onKeyPress={(e) => this.handleEnter(e)} style={{marginLeft: 10, width: 100}}>
-                                            <InputLabel htmlFor="goal-simple">Tavoitearvosana</InputLabel>
-                                            <Input id="goal-simple" type="number" name="goalTarget" value={this.state.goalTarget}
-                                            onChange={(event) => this.handleFormChange(event)} />
-                                        </FormControl>
-
-
-                                        <FormControl onKeyPress={(e) => this.handleEnter(e)} style={{marginLeft: 10, marginRight: 10}}>
-                                            <InputLabel htmlFor="difficulty-native-simple">Haastavuus</InputLabel>
-                                        <Select
-                                            native
-                                            name="goalDifficulty"
-                                            value={this.state.goalDifficulty}
-                                            onChange={(event) => this.handleFormChange(event)}
-                                            >
-                                            <option value="Helppo">Helppo</option>
-                                            <option value="Haastava">Haastava</option>
-                                            <option value="Vaikea">Vaikea</option>
-                                            </Select>
-                                        </FormControl>
-
-                                                                            
-                                        <Button  mini={true} size="small" color="inherit"  style={{marginRight: 50}}  onClick={() => this.createNewGoal()}><i className="material-icons">save</i></Button>
-
+            if(this.props.showOnlyActiveCourses && this.isActive() || this.props.showOnlyActiveCourses === false){
+                return (
+                    <Fragment>
+                        <Grid item xs={12}>
+                                <Paper style={{marginBottom: 10}}>
+                                        <ListItem>
+                                            <ListItemText  primary={this.props.course.title} />
+    
+    
+    
+                                            
+    
+    
+                                    {this.goalExists() ? ( //Jos goal on olemassa, renderöidään sen tiedot:
+                                        <Fragment>
+                                            <Typography variant="body1" style={{marginRight: "107px"}}> 
+                                                {Math.floor ((this.props.course.credits * 20) / (this.props.course.length*7*5) * 10) / 10}h
+                                            </Typography>
+                                            <Typography variant="body1" style={{marginRight: "50px", width: "25px"}}>
+                                                {Math.floor ((this.props.course.credits * this.getCourseHourValue()) / (this.props.course.length*7*5) * 10) / 10}h
+                                            </Typography>
+    
+                                            <Typography style={{marginRight: 25}} variant="body1">{this.getGoal().target}</Typography>
+    
+                                            {this.getGoal().difficulty === "Vaikea" && <Button disabled={true}  mini={true}  size="small" variant="outlined" style={{marginRight: "20px", backgroundColor : "red"}}><Typography style={{width: "80px", color :"white", fontWeight: "bold"}} variant="body1">{this.getGoal().difficulty}</Typography></Button>}
+                                            {this.getGoal().difficulty === "Haastava" && <Button disabled={true}  mini={true} size="small" variant="outlined" style={{marginRight: "20px", backgroundColor : "#ff8100"}}><Typography style={{width: "80px", color :"white", fontWeight: "bold"}} variant="body1">{this.getGoal().difficulty}</Typography></Button>}
+                                            {this.getGoal().difficulty === "Helppo" && <Button disabled={true}  mini={true} size="small" variant="outlined" style={{marginRight: "20px", backgroundColor : "green"}}><Typography style={{width: "80px", color :"white", fontWeight: "bold"}} variant="body1">{this.getGoal().difficulty}</Typography></Button>}
+    
+    
+    
                                         </Fragment>
-                                )}
-        
-                                        <Typography style={{marginRight: 15, width: "50px"}} variant="body1">{this.props.course.credits} op</Typography>
-        
-                                        <Typography style={{width: "7%%"}} variant="body1">{this.props.course.length} periodia</Typography>
-                                        <Button><Link style={{color: 'inherit'}} to={`/courses/${this.props.course._id}`}><i className="material-icons">edit</i></Link></Button>
-                                        <Button onClick={() => this.deleteCourse(this.props.course._id)}><i className="material-icons">delete</i></Button>
+                                    ) : ( //Jos goalia ei ole olemassa, renderöidään kentät tavoitearvosanalle ja vaikeusarviolle. Sekä lisäyspainikkeelle
+                                        <Fragment >
+    
+                                            <FormControl onKeyPress={(e) => this.handleEnter(e)} style={{marginLeft: 10, width: 100}}>
+                                                <InputLabel htmlFor="goal-simple">Tavoitearvosana</InputLabel>
+                                                <Input id="goal-simple" type="number" name="goalTarget" value={this.state.goalTarget}
+                                                onChange={(event) => this.handleFormChange(event)} />
+                                            </FormControl>
+    
+    
+                                            <FormControl onKeyPress={(e) => this.handleEnter(e)} style={{marginLeft: 10, marginRight: 10}}>
+                                                <InputLabel htmlFor="difficulty-native-simple">Haastavuus</InputLabel>
+                                            <Select
+                                                native
+                                                name="goalDifficulty"
+                                                value={this.state.goalDifficulty}
+                                                onChange={(event) => this.handleFormChange(event)}
+                                                >
+                                                <option value="Helppo">Helppo</option>
+                                                <option value="Haastava">Haastava</option>
+                                                <option value="Vaikea">Vaikea</option>
+                                                </Select>
+                                            </FormControl>
+    
+                                                                                
+                                            <Button  mini={true} size="small" color="inherit"  style={{marginRight: 50}}  onClick={() => this.createNewGoal()}><i className="material-icons">save</i></Button>
+    
+                                            </Fragment>
+                                    )}
+            
+                                            <Typography style={{marginRight: 15, width: "50px"}} variant="body1">{this.props.course.credits} op</Typography>
+            
+                                            <Typography style={{width: "7%%"}} variant="body1">{this.props.course.length} periodia</Typography>
+                                            <Button><Link style={{color: 'inherit'}} to={`/courses/${this.props.course._id}`}><i className="material-icons">edit</i></Link></Button>
+                                            <Button onClick={() => this.deleteCourse(this.props.course._id)}><i className="material-icons">delete</i></Button>
+    
+    
+                                    {this.isActive() ? (
+                                        <Button onClick={() => this.toggleActive(this.props.course._id)}><i className="material-icons">check_circle</i></Button>
+                                    ) : (
+                                        <Button onClick={() => this.toggleActive(this.props.course._id)}><i className="material-icons">check_circle_outline</i></Button>
+                                    )}
+    
+    
+    
+    
+                                            
+                                        </ListItem>
+                                </Paper>
+                        </Grid>
+                    </Fragment>
+                )
+            } else {
+                return null
+            }
 
 
-                                {this.isActive() ? (
-                                    <Button onClick={() => this.toggleActive(this.props.course._id)}><i className="material-icons">check_circle</i></Button>
-                                ) : (
-                                    <Button onClick={() => this.toggleActive(this.props.course._id)}><i className="material-icons">check_circle_outline</i></Button>
-                                )}
 
 
 
-
-                                        
-                                    </ListItem>
-                            </Paper>
-                    </Grid>
-                </Fragment>
-            )
+            
+          } else {
+              return null
+          }
+        }
 
 
 
@@ -292,5 +311,7 @@ class Course extends React.Component {
 
 
 
-}}
+
+
+}
 export default Course
