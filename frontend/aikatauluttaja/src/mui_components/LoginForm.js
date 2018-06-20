@@ -25,35 +25,41 @@ class LoginForm extends React.Component {
         const name = event.target.name
         this.setState({
             [name] : event.target.value
-        })
-    }
+            })
+        }
 
-      login = async (event) => {
+    login = async (event) => {
           if(event){
             event.preventDefault()
           }
-        
-        try {
-          const dataFromBackEnd = await loginService.login({ //DatafromBackEnd sisältää user olion ja token stringin.
-            username: this.state.username,
-            password: this.state.password
-          })
 
-          this.setState({ username: '', password: ''}) //Nollataan kirjautumiskenttien arvot
-          courseService.setToken(dataFromBackEnd.token) //Asetetaan courseServicelle token muistiin
-          this.props.setLoggedInUser(dataFromBackEnd.user) //Reactin stateen tallennettava user
-          window.localStorage.setItem('user', JSON.stringify(dataFromBackEnd.user)) //local storageen tallennettava user ja token!
-          const greeting = "Kirjauduit sisään käyttäjällä: " + dataFromBackEnd.user.username
-          this.props.showAlert(greeting)
-
-          
-          this.props.history.push("/courses")
-
+        if(this.state.username.length > 0 && this.state.password.length > 0){
+            try {
+                const dataFromBackEnd = await loginService.login({ //DatafromBackEnd sisältää user olion ja token stringin.
+                  username: this.state.username,
+                  password: this.state.password
+                })
       
-
-        } catch(exception) {
-            this.props.showAlert("Virheellinen käyttäjätunnus tai salasana.")
+                this.setState({ username: '', password: ''}) //Nollataan kirjautumiskenttien arvot
+                courseService.setToken(dataFromBackEnd.token) //Asetetaan courseServicelle token muistiin
+                this.props.setLoggedInUser(dataFromBackEnd.user) //Reactin stateen tallennettava user
+                window.localStorage.setItem('user', JSON.stringify(dataFromBackEnd.user)) //local storageen tallennettava user ja token!
+                const greeting = "Kirjauduit sisään käyttäjällä: " + dataFromBackEnd.user.username
+                this.props.showAlert(greeting)
+      
+                
+                this.props.history.push("/courses")
+      
+            
+      
+              } catch(exception) {
+                  this.props.showAlert("Virheellinen käyttäjätunnus tai salasana.")
+              }
+        } else {
+            this.props.showAlert("Älä jätä mitään kenttää tyhjäksi!")
         }
+        
+
       }
 
 
