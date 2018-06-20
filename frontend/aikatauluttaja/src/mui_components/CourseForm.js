@@ -38,13 +38,13 @@ class CourseForm extends React.Component {
           errors++
         }
     
-        if (isNaN(courseObject.length)) {
-          alert("Kurssin pituuden tulee olla numero!")
+        if (courseObject.length < 1 || courseObject.length > 4) {
+          alert("Kurssin pituuden tulee olla väliltä 1-4!")
           errors++
         }
     
-        if (isNaN(courseObject.credits)) {
-          alert("Kurssin opintopistemäärän tulee olla numero!")
+        if (courseObject.credits <= 0 || courseObject.credits >= 100) {
+          alert("Kurssin opintopistemäärän tulee olla väliltä 1-99!")
           errors++
         }
     
