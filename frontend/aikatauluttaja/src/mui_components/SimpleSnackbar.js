@@ -13,7 +13,7 @@ const styles = theme => ({
 });
 
 class SimpleSnackbar extends React.Component {
-  state = {
+  state = { //Alusssa open === false, eli komponenttia ei renderöidä.
     open: false,
   };
 
@@ -27,10 +27,15 @@ class SimpleSnackbar extends React.Component {
     }
 
     this.setState({ open: false });
+    this.props.resetAlert()
+    console.log("Resetting alert  from SnackBar-component!")
   };
 
   componentDidMount(){
-    this.setState({open : true})
+    if(this.props.content !== ""){
+      this.setState({open : true})
+    }
+
   }
 
   render() {

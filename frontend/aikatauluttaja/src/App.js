@@ -33,7 +33,7 @@ class App extends React.Component {
       newCourseCredits: "",
       newCourseLength: "",
       user: null,
-      alert: null,
+      alert: "",
       filter: "",
       showOnlyActiveCourses: false,
       timeoutFunction: undefined
@@ -222,14 +222,10 @@ class App extends React.Component {
 
   showAlert = (content) => {
 
-        
+  
 
-
-
-
-
-      this.setState({alert : null})
-      console.log("Old alert cleared from state. Setting new...")
+      this.setState({alert : ""})
+      console.log("Setting alert")
       this.setState({alert : content})
     
 
@@ -242,6 +238,9 @@ class App extends React.Component {
     this.setState({showOnlyActiveCourses : value})
   }
   
+  resetAlert = () => {
+    this.setState({alert : ""})
+  }
 
   render() {
 
@@ -263,7 +262,7 @@ class App extends React.Component {
 
 
               
-              {this.state.alert &&  <SimpleSnackbar content={this.state.alert}/>}
+              {this.state.alert && <SimpleSnackbar resetAlert={this.resetAlert} content={this.state.alert}/>}
 
               <Route exact path="/" render={() => <LoginForm reloadCoursesFromBackend={this.reloadCoursesFromBackend} showAlert={this.showAlert} clearState={this.clearState}user={this.state.user} setLoggedInUser={this.setLoggedInUser}/>}/>
               
