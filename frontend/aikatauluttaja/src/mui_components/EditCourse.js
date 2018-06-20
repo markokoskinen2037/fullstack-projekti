@@ -75,6 +75,8 @@ class EditCourse extends React.Component {
         const populatedUser = await userService.get(this.props.user._id)
         this.props.updateUserState(populatedUser) 
 
+        this.props.history.push("/courses")
+
         
 
 
@@ -128,7 +130,7 @@ class EditCourse extends React.Component {
 
 
 
-          if(!isNaN(this.state.editedCourseGoalTarget)){    
+          if(!isNaN(this.state.editedCourseGoalTarget)){    //Jos kurssilla on jo olemassa goal päivitetään olemassaolevaa
              
             if(this.state.editedCourseGoalTarget >= 1 && this.state.editedCourseGoalTarget <= 5){
                 let tempGoal = {
