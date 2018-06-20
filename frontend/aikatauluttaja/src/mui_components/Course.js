@@ -204,8 +204,10 @@ class Course extends React.Component {
         if(this.props.course.title.toLowerCase().includes(this.props.filter.toLowerCase())){ // Jos filter sopii tähän kurssiin...
 
 
-
-            if(this.props.showOnlyActiveCourses && this.isActive() || this.props.showOnlyActiveCourses === false){
+            
+            if((this.props.showOnlyActiveCourses && this.isActive()) || this.props.showOnlyActiveCourses === false){
+                //Ylläoleva if menee läpi jos (1) halutaan näyttää vain aktiiviset kurssit ja tämä on yksi niistä.
+                //(2) Jos halutaan näyttää kaikki kurssit, jatketaan renderöintiä...
                 return (
                     <Fragment>
                         <Grid item xs={12}>
@@ -288,18 +290,10 @@ class Course extends React.Component {
                         </Grid>
                     </Fragment>
                 )
-            } else {
-                return null
             }
 
-
-
-
-
-            
-          } else {
-              return null
-          }
+          } 
+            return null //Jos filter ei sovi kurssiin palautetaan null.
         }
 
 
