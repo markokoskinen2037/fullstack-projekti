@@ -275,6 +275,7 @@ class App extends React.Component {
                                 <ListItemText  primary="Nimi" />
 
                                 <Fragment ><Typography style={{marginRight: "9px"}}>Työmäärä/arkipäivä</Typography></Fragment>
+                                <Fragment ><Typography style={{marginRight: "9px"}}>Yksilöity työaika</Typography></Fragment>
                                 <Fragment ><Typography style={{marginRight: "28px"}}>Tavoite</Typography></Fragment>
                                 <Fragment ><Typography style={{marginRight: "35px"}}>Vaikeus</Typography></Fragment>
                                 <Fragment ><Typography style={{marginRight: "20px"}}>Op. määrä</Typography></Fragment>

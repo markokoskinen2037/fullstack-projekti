@@ -177,6 +177,18 @@ class Course extends React.Component {
         })
     }
 
+    getCourseHourValue(){
+        switch(this.getGoal().difficulty){
+            case "Helppo":
+                return 15;
+            case "Haastava":
+                return 25;
+            case "Vaikea":
+                return 30;
+            default:
+                return "Unknown goal.difficulty!"
+        }
+    }
 
 
 
@@ -202,9 +214,13 @@ class Course extends React.Component {
 
                                 {this.goalExists() ? ( //Jos goal on olemassa, renderöidään sen tiedot:
                                     <Fragment>
-                                        <Typography variant="body1" style={{marginRight: "50px"}}>
+                                        <Typography variant="body1" style={{marginRight: "107px"}}> 
                                             {Math.floor ((this.props.course.credits * 20) / (this.props.course.length*7*5) * 10) / 10}h
                                         </Typography>
+                                        <Typography variant="body1" style={{marginRight: "50px", width: "25px"}}>
+                                            {Math.floor ((this.props.course.credits * this.getCourseHourValue()) / (this.props.course.length*7*5) * 10) / 10}h
+                                        </Typography>
+
                                         <Typography style={{marginRight: 25}} variant="body1">{this.getGoal().target}</Typography>
 
                                         {this.getGoal().difficulty === "Vaikea" && <Button disabled={true}  mini={true}  size="small" variant="outlined" style={{marginRight: "20px", backgroundColor : "red"}}><Typography style={{width: "80px", color :"white", fontWeight: "bold"}} variant="body1">{this.getGoal().difficulty}</Typography></Button>}
