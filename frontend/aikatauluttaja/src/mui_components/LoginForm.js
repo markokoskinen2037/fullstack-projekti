@@ -9,7 +9,7 @@ import FormControl from '@material-ui/core/FormControl';
 import Paper from '@material-ui/core/Paper';
 import Button from '@material-ui/core/Button';
 import Grid from '@material-ui/core/Grid';
-import { Typography } from "@material-ui/core";
+import { CircularProgress,Typography, FormControlLabel, Checkbox } from "@material-ui/core";
 
 
 
@@ -18,7 +18,8 @@ class LoginForm extends React.Component {
         super(props)
         this.state = {
             username: "",
-            password: ""
+            password: "",
+            stayLoggedIn: true
         }
     }
 
@@ -30,12 +31,15 @@ class LoginForm extends React.Component {
         }
 
     login = async (event) => {
+        
           if(event){
             event.preventDefault()
           }
 
         if(this.state.username.length > 0 && this.state.password.length > 0){
+            
             try {
+                document.getElementById("loginButton").innerHTML="Kirjaudutaan sisään..."
                 const dataFromBackEnd = await loginService.login({ //DatafromBackEnd sisältää user olion ja token stringin.
                   username: this.state.username,
                   password: this.state.password
@@ -44,7 +48,11 @@ class LoginForm extends React.Component {
                 this.setState({ username: '', password: ''}) //Nollataan kirjautumiskenttien arvot
                 courseService.setToken(dataFromBackEnd.token) //Asetetaan courseServicelle token muistiin
                 this.props.setLoggedInUser(dataFromBackEnd.user) //Reactin stateen tallennettava user
-                window.localStorage.setItem('user', JSON.stringify(dataFromBackEnd.user)) //local storageen tallennettava user ja token!
+
+                if(this.state.stayLoggedIn){ //Jos checkbox on true, tallennetaan user talteen locastorageen
+                    window.localStorage.setItem('user', JSON.stringify(dataFromBackEnd.user)) //local storageen tallennettava user ja token!
+                }
+
                 const greeting = "Kirjauduit sisään käyttäjällä: " + dataFromBackEnd.user.username
                 this.props.showAlert(greeting)
       
@@ -55,6 +63,7 @@ class LoginForm extends React.Component {
       
               } catch(exception) {
                   this.props.showAlert("Virheellinen käyttäjätunnus tai salasana.")
+                  document.getElementById("loginButton").innerHTML="Kirjaudu sisään"
               }
         } else {
             this.props.showAlert("Älä jätä mitään kenttää tyhjäksi!")
@@ -73,6 +82,10 @@ class LoginForm extends React.Component {
         }
       }
 
+      toggleLoggedIn = () => {
+          let newVal = !this.state.stayLoggedIn
+          this.setState({stayLoggedIn: newVal})
+      }
 
     render() {
 
@@ -106,10 +119,21 @@ class LoginForm extends React.Component {
                             <InputLabel htmlFor="loginPassword-simple">Salasana</InputLabel>
                             <Input id="loginPassword-simple" type="password" name="password" value={this.state.password} onChange={(event) => this.handleFormChange(event)} />
                         </FormControl>
+
+                              <FormControlLabel style={{marginLeft: 10}}
+                                control={
+                                  <Checkbox
+                                  checked={this.state.stayLoggedIn}
+                                  onClick={() => this.toggleLoggedIn()}
+                                />
+                                }
+                                label="Pysy kirjautuneena?"
+                              />
                     
 
 
-                    <Button onClick={(e) => this.login(e)} style={{marginLeft: 20, marginBottom: 15, marginTop: 10, paddingLeft: 30, paddingRight: 30}} size="small" variant="contained" color="primary" type="submit">Kirjaudu sisään</Button>
+                    <Button id="loginButton" onClick={(e) => this.login(e)} style={{marginLeft: 20, marginBottom: 15, marginTop: 10, paddingLeft: 30, paddingRight: 30}}
+                    size="small" variant="contained" color="primary" type="submit">Kirjaudu sisään</Button>
 
                 
                 </Paper>
