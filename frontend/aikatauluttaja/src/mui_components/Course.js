@@ -276,7 +276,7 @@ class Course extends React.Component {
     
     
                                     {this.isActive() ? (
-                                        <Button onClick={() => this.toggleActive(this.props.course._id)}><i className="material-icons">check_circle</i></Button>
+                                        <Button onClick={() => this.toggleActive(this.props.course._id)}><i style={{color: "green"}} className="material-icons">check_circle</i></Button>
                                     ) : (
                                         <Button onClick={() => this.toggleActive(this.props.course._id)}><i className="material-icons">check_circle_outline</i></Button>
                                     )}
