@@ -85,12 +85,12 @@ coursesRouter.put("/:id", (request, response) => {
 coursesRouter.post("/", async (request, response) => {
 
     try {
-        const token = getTokenFrom(request)
-        const decodedToken = jwt.verify(token, process.env.SECRET)
+        // const token = getTokenFrom(request)
+        // const decodedToken = jwt.verify(token, process.env.SECRET)
     
-        if (!token || !decodedToken.id) {
-            return response.status(401).json({ error: "token missing or invalid" })
-        }
+        // if (!token || !decodedToken.id) {
+        //     return response.status(401).json({ error: "token missing or invalid" })
+        // }
 
         if (request.body.title === undefined) {
             return response.status(400).json({
@@ -123,7 +123,7 @@ coursesRouter.post("/", async (request, response) => {
 
 
     } catch(e) {
-        response.status(500).json({ error: "something went wrong... maybe token is missing or bad?" })
+        response.status(500).json({ error: "something went wrong..." })
     }
 
 
