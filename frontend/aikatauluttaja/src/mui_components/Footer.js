@@ -14,7 +14,7 @@ export default class Footer extends Component {
   render() {
     return (
         <Fragment>
-            <Paper style={{marginTop: 100, width: "100%", padding:20, textAlign: "center", bottom: "0px"}}>
+            <Paper style={{marginTop: 100, width: "100%", padding:20, textAlign: "center", bottom: 0, left: 0, position: "fixed"}}>
             <Typography variant="body1">
                 Author: Marko Koskinen | Contact information: <a href="mailto:marko.j.koskinen@helsinki.fi">marko.j.koskinen@helsinki.fi</a>
             </Typography>
