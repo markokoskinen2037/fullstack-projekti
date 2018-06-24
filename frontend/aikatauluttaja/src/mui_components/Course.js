@@ -21,7 +21,8 @@ class Course extends React.Component {
             goalTarget: 5,
             goalDifficulty: "Helppo",
             goalExists : false,
-            isActive : false
+            isActive : false,
+            courseMedian: undefined
 
         }
     }
@@ -120,7 +121,7 @@ class Course extends React.Component {
 
         }
 
-
+        this.getDifficultyMedian()
         console.log("goalExists => " + this.goalExists())
         
 
@@ -190,12 +191,67 @@ class Course extends React.Component {
         }
     }
 
+    getDifficultyMedian = () => {
+        
+        goalService
+        .getAll()
+        .then(allGoals => {
+            let relevantGoals = []
+            allGoals.forEach(goal => {
+                if(goal.course === this.props.course._id){
+                    console.log(goal.difficulty);
+                    relevantGoals.push(goal)
+                }
+            });
+
+
+            let sum = 0
+            relevantGoals.forEach(goal => {
+                if(goal.difficulty === "Helppo"){
+                    sum+= 1;
+                } else if (goal.difficulty === "Haastava"){
+                    sum+= 2;
+                } else if (goal.difficulty === "Vaikea"){
+                    sum+=3;
+                }
+            });
+
+            let median = sum / relevantGoals.length
+
+
+            console.log("Median is:  " + median);
+
+
+            let result = ""
+            if(median < 1.5){
+                result =  "Helppo (" + relevantGoals.length + ")"
+            } else if (median < 2.5){
+                result = "Haastava (" + relevantGoals.length + ")"
+            } else {
+                result = "Vaikea (" + relevantGoals.length + ")"
+            }
+
+            this.setState({courseMedian : result })
+        })
+        
+
+
+
+        
+    }
+
+    componentDidMount(){
+        this.getDifficultyMedian()
+    }
+
 
 
     
 
 
     render() {
+
+        
 
         
 
@@ -213,11 +269,8 @@ class Course extends React.Component {
                         <Grid item xs={12}>
                                 <Paper style={{marginBottom: 10}}>
                                         <ListItem>
-                                            <ListItemText  primary={this.props.course.title} />
-    
-    
-    
-                                            
+                                            <ListItemText  primary={this.props.course.title} />    
+                                                
     
     
                                     {this.goalExists() ? ( //Jos goal on olemassa, renderöidään sen tiedot:
@@ -230,10 +283,14 @@ class Course extends React.Component {
                                             </Typography>
     
                                             <Typography style={{marginRight: 25}} variant="body1">{this.getGoal().target}</Typography>
-    
-                                            {this.getGoal().difficulty === "Vaikea" && <Button disabled={true}  mini={true}  size="small" variant="outlined" style={{marginRight: "20px", backgroundColor : "red"}}><Typography style={{width: "80px", color :"white", fontWeight: "bold"}} variant="body1">{this.getGoal().difficulty}</Typography></Button>}
-                                            {this.getGoal().difficulty === "Haastava" && <Button disabled={true}  mini={true} size="small" variant="outlined" style={{marginRight: "20px", backgroundColor : "#ff8100"}}><Typography style={{width: "80px", color :"white", fontWeight: "bold"}} variant="body1">{this.getGoal().difficulty}</Typography></Button>}
-                                            {this.getGoal().difficulty === "Helppo" && <Button disabled={true}  mini={true} size="small" variant="outlined" style={{marginRight: "20px", backgroundColor : "green"}}><Typography style={{width: "80px", color :"white", fontWeight: "bold"}} variant="body1">{this.getGoal().difficulty}</Typography></Button>}
+
+
+                                            
+
+
+                                            {this.getGoal().difficulty === "Vaikea" && <Button disabled={true}  mini={true}  size="small" variant="outlined" style={{marginRight: "20px", backgroundColor : "red"}}><Typography style={{width: "80px", color :"white", fontWeight: "bold"}} variant="body1">{this.getGoal().difficulty} / {this.state.courseMedian}</Typography></Button>}
+                                            {this.getGoal().difficulty === "Haastava" && <Button disabled={true}  mini={true} size="small" variant="outlined" style={{marginRight: "20px", backgroundColor : "#ff8100"}}><Typography style={{width: "80px", color :"white", fontWeight: "bold"}} variant="body1">{this.getGoal().difficulty} / {this.state.courseMedian}</Typography></Button>}
+                                            {this.getGoal().difficulty === "Helppo" && <Button disabled={true}  mini={true} size="small" variant="outlined" style={{marginRight: "20px", backgroundColor : "green"}}><Typography style={{width: "80px", color :"white", fontWeight: "bold"}} variant="body1">{this.getGoal().difficulty} / {this.state.courseMedian}</Typography></Button>}
     
     
     
