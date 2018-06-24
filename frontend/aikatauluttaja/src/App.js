@@ -268,7 +268,7 @@ class App extends React.Component {
             <Fragment> 
               <Route exact path="/" render={() => <HomePage user={this.state.user}/> } />
               <Route exact path="/" render={() => <LoginForm reloadCoursesFromBackend={this.reloadCoursesFromBackend} showAlert={this.showAlert} clearState={this.clearState}user={this.state.user} setLoggedInUser={this.setLoggedInUser}/>}/>
-              <Route exact path="/" render={() => <RegisterForm showAlert={this.showAlert} user={this.state.user}/>}/>
+              <Route exact path="/" render={() => <RegisterForm setLoggedInUser={this.setLoggedInUser} showAlert={this.showAlert} user={this.state.user}/>}/>
             </Fragment>
 
           
