@@ -48,7 +48,7 @@ class RegisterForm extends React.Component {
 
           if(errors === 0){
             try{
-                let createdUser = await userService.create({
+                let createdUser = await userService.create({ //Kokeillaan luoda user, onnistuu jos username on vapaana.
                     username: this.state.username,
                     password: this.state.password,
                     email : this.state.email
@@ -62,7 +62,7 @@ class RegisterForm extends React.Component {
           
     
     
-              } catch (e){
+              } catch (e){ //Username ei ollut vapaa joten näytään error
                 this.props.showAlert("Ole hyvä ja valitse toinen käyttäjänimi!")
               }
 
