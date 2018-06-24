@@ -7,6 +7,7 @@ import CourseForm from "./mui_components/CourseForm"
 import NavBar from "./mui_components/NavBar"
 import RegisterForm from "./mui_components/RegisterForm"
 import SimpleSnackbar from "./mui_components/SimpleSnackbar"
+import Footer from "./mui_components/Footer"
 
 import courseService from "./services/courses"
 import userService from "./services/users"
@@ -369,6 +370,9 @@ class App extends React.Component {
                 <Route exact path="/courses/:id" render={({match}) =>
                           <EditCourse showAlert={this.showAlert} updateUserState={this.updateUserState} user={this.state.user} updateCourseState={this.updateCourseState} reloadCoursesFromBackend={this.reloadCoursesFromBackend.bind(this)} state={this.state} course={this.findCourse(match.params.id)} />}
                 />
+
+
+                <Footer/>
                   
 
 
