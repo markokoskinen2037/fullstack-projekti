@@ -9,6 +9,7 @@ import FormControl from '@material-ui/core/FormControl';
 import Paper from '@material-ui/core/Paper';
 import Button from '@material-ui/core/Button';
 import Grid from '@material-ui/core/Grid';
+import { Typography } from "@material-ui/core";
 
 
 
@@ -85,13 +86,15 @@ class LoginForm extends React.Component {
 
 
                 <Fragment>
-                    <Grid item md={12} sm={12} xs={12} lg={8}>
+                    <Grid item sm={6} md={6}>
+                    
                     <Paper style={{padding: 0, marginTop: 10, marginLeft: 10, marginRight: 10}}>
+                         <Typography style={{marginLeft: 20, paddingTop: 20}} variant="display1">Kirjaudu sisään</Typography>
                     
                      
 
                     
-                        <FormControl onKeyPress={(e) => this.handleEnter(e)}  style={{marginLeft: 10}}>
+                        <FormControl onKeyPress={(e) => this.handleEnter(e)}  style={{marginLeft: 20}}>
                             <InputLabel htmlFor="name-simple">Käyttäjätunnus</InputLabel>
                             <Input id="name-simple" type="text" name="username" value={this.state.username} onChange={(event) => this.handleFormChange(event)} />
                         </FormControl>
@@ -99,14 +102,14 @@ class LoginForm extends React.Component {
 
 
 
-                        <FormControl onKeyPress={(e) => this.handleEnter(e)} style={{marginLeft: 10}} >
+                        <FormControl onKeyPress={(e) => this.handleEnter(e)} style={{marginLeft: 20}} >
                             <InputLabel htmlFor="loginPassword-simple">Salasana</InputLabel>
                             <Input id="loginPassword-simple" type="password" name="password" value={this.state.password} onChange={(event) => this.handleFormChange(event)} />
                         </FormControl>
                     
 
 
-                    <Button  onClick={(e) => this.login(e)} style={{marginLeft: 20, marginBottom: 15, marginTop: 10, paddingLeft: 30, paddingRight: 30}} size="small" variant="contained" color="primary" type="submit">Kirjaudu sisään</Button>
+                    <Button onClick={(e) => this.login(e)} style={{marginLeft: 20, marginBottom: 15, marginTop: 10, paddingLeft: 30, paddingRight: 30}} size="small" variant="contained" color="primary" type="submit">Kirjaudu sisään</Button>
 
                 
                 </Paper>

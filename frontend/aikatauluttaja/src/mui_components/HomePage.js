@@ -22,20 +22,29 @@ class HomePage extends React.Component {
 
 
         <Fragment>
-            <Grid item xs={12} lg={8} md={12}>
+            <Grid item xs={12} lg={12} md={12}>
 
                 <Paper style={{padding: 10, marginTop: 10, marginLeft: 10, marginRight: 10}} elevation={4}>
 
 
 
-                        <Typography variant="title" >Tervetuloa suunnitelemaan opintojasi!</Typography>
-                        <Typography paragraph={true} variant="body1" >Ennen kuin pääset aloittamaan tulee sinun rekisteröityä järjestelmään.
-                          Rekisteröitymällä
-                          saat seuraavat ominaisuudet käyttöösi:
+                        <Typography style={{padding: "10px"}} variant="headline" >Tervetuloa suunnitelemaan opintojasi!</Typography>
+                        <Typography style={{marginLeft: "10px"}} paragraph={true} variant="body1" >
+                          Ennen kuin pääset aloittamaan tulee sinun rekisteröityä järjestelmään.
+                          Rekisteröityminen vaatii vain käyttäjätunnuksen, salasanan ja sähköpostin.
+                          Rekisteröitymisen jälkeen voit kirjautua sisään ja testata seuraavia ominaisuuksia:
                           <br></br>
-                          1. Kurssien lisääminen, muokkaaminen ja poistaminen.
                           <br></br>
-                          2. Kurssien merkitseminen aktiivisiksi.
+                          Kurssin lisäys, muokkaus ja poisto.
+                          <br></br>
+                          Kurssilistauksen tarkastelu, haku ja aktiivisuuden perusteella filtteröinti.
+                          <br></br>
+                          Kurssikohtaisten tavoitteiden asettaminen ja haastavuuksien määrittäminen ja muokkaus.
+                          <br></br>
+                          Automaattiset opintoaikasuositukset kurssille asettaman vaikeusasteen perusteella
+                      
+
+
                         </Typography>
 
 

@@ -264,9 +264,11 @@ class App extends React.Component {
               
               {this.state.alert && <SimpleSnackbar resetAlert={this.resetAlert} content={this.state.alert}/>}
 
+            <Fragment> 
+              <Route exact path="/" render={() => <HomePage user={this.state.user}/> } />
               <Route exact path="/" render={() => <LoginForm reloadCoursesFromBackend={this.reloadCoursesFromBackend} showAlert={this.showAlert} clearState={this.clearState}user={this.state.user} setLoggedInUser={this.setLoggedInUser}/>}/>
-              
               <Route exact path="/" render={() => <RegisterForm showAlert={this.showAlert} user={this.state.user}/>}/>
+            </Fragment>
 
           
 
@@ -356,7 +358,7 @@ class App extends React.Component {
 
 
 
-                <Route exact path="/" render={() => <HomePage user={this.state.user}/> } />
+                
 
                 <Route exact path="/userinfo" render={() => <UserStatistics getLoggedInUser={this.getLoggedInUser}/> } />
 
