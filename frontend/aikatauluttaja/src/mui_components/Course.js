@@ -288,9 +288,9 @@ class Course extends React.Component {
                                             
 
 
-                                            {this.getGoal().difficulty === "Vaikea" && <Button disabled={true}  mini={true}  size="small" variant="outlined" style={{marginRight: "20px", backgroundColor : "red"}}><Typography style={{width: "80px", color :"white", fontWeight: "bold"}} variant="body1">{this.getGoal().difficulty} / {this.state.courseMedian}</Typography></Button>}
-                                            {this.getGoal().difficulty === "Haastava" && <Button disabled={true}  mini={true} size="small" variant="outlined" style={{marginRight: "20px", backgroundColor : "#ff8100"}}><Typography style={{width: "80px", color :"white", fontWeight: "bold"}} variant="body1">{this.getGoal().difficulty} / {this.state.courseMedian}</Typography></Button>}
-                                            {this.getGoal().difficulty === "Helppo" && <Button disabled={true}  mini={true} size="small" variant="outlined" style={{marginRight: "20px", backgroundColor : "green"}}><Typography style={{width: "80px", color :"white", fontWeight: "bold"}} variant="body1">{this.getGoal().difficulty} / {this.state.courseMedian}</Typography></Button>}
+                                            {this.getGoal().difficulty === "Vaikea" && <Button disabled={true}  mini={true}  size="small" variant="outlined" style={{marginRight: "20px", backgroundColor : "red"}}><Typography style={{width: "200px", color :"white", fontWeight: "bold"}} variant="body1">{this.getGoal().difficulty} / {this.state.courseMedian}</Typography></Button>}
+                                            {this.getGoal().difficulty === "Haastava" && <Button disabled={true}  mini={true} size="small" variant="outlined" style={{marginRight: "20px", backgroundColor : "#ff8100"}}><Typography style={{width: "200px", color :"white", fontWeight: "bold"}} variant="body1">{this.getGoal().difficulty} / {this.state.courseMedian}</Typography></Button>}
+                                            {this.getGoal().difficulty === "Helppo" && <Button disabled={true}  mini={true} size="small" variant="outlined" style={{marginRight: "20px", backgroundColor : "green"}}><Typography style={{width: "200px", color :"white", fontWeight: "bold"}} variant="body1">{this.getGoal().difficulty} / {this.state.courseMedian}</Typography></Button>}
     
     
     
