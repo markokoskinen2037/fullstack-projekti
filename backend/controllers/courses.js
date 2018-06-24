@@ -1,6 +1,18 @@
 const coursesRouter = require("express").Router()
 const Course = require("../models/course")
+const jwt = require("jsonwebtoken")
 
+
+
+
+const getTokenFrom = (request) => {
+    const authorization = request.get("authorization")
+    if (authorization && authorization.toLowerCase().startsWith("bearer ")) {
+        return authorization.substring(7)
+    }
+    return null
+}
+  
 
 
 coursesRouter.get("/", async (request, response) => {
@@ -72,35 +84,48 @@ coursesRouter.put("/:id", (request, response) => {
 
 coursesRouter.post("/", async (request, response) => {
 
+    try {
+        const token = getTokenFrom(request)
+        const decodedToken = jwt.verify(token, process.env.SECRET)
+    
+        if (!token || !decodedToken.id) {
+            return response.status(401).json({ error: "token missing or invalid" })
+        }
 
-    if (request.body.title === undefined) {
-        return response.status(400).json({
-            error: "Title required!"
+        if (request.body.title === undefined) {
+            return response.status(400).json({
+                error: "Title required!"
+            })
+        }
+
+        if (request.body.credits === undefined) {
+            request.body.credits = 0
+        }
+    
+        if (request.body.length === undefined) {
+            request.body.length = 0
+        }
+
+        const course = new Course({
+            title: request.body.title,
+            credits: request.body.credits,
+            length: request.body.length,
+            user: request.body.userId
         })
+    
+        course
+            .save()
+            .then(savedCourse => {
+                response.json(savedCourse)
+            })
+
+
+
+
+    } catch(e) {
+        response.status(500).json({ error: "something went wrong... maybe token is missing or bad?" })
     }
-    if (request.body.credits === undefined) {
-        request.body.credits = 0
-    }
 
-    if (request.body.length === undefined) {
-        request.body.length = 0
-    }
-
-
-
-
-    const course = new Course({
-        title: request.body.title,
-        credits: request.body.credits,
-        length: request.body.length,
-        user: request.body.userId
-    })
-
-    course
-        .save()
-        .then(savedCourse => {
-            response.json(savedCourse)
-        })
 
 })
 
