@@ -10,6 +10,9 @@ import Button from '@material-ui/core/Button';
 import Grid from '@material-ui/core/Grid';
 import Typography from "@material-ui/core/Typography"
 
+import loginService from "../services/login"
+import courseService from "../services/courses"
+
 
 class RegisterForm extends React.Component {
     constructor(props) {
@@ -45,19 +48,42 @@ class RegisterForm extends React.Component {
 
           if(errors === 0){
             try{
-                await userService.create({
+                let createdUser = await userService.create({
                     username: this.state.username,
                     password: this.state.password,
                     email : this.state.email
                   })
           
-              this.setState({ username: '', password: '', email: ''})
-              this.props.showAlert("Tunnuksen luonti onnistui!")
+              
+              this.props.showAlert("Tunnuksen luonti onnistui! Sinut kirjataan automaattisesti sisään!")
+
+
+    
+          
     
     
               } catch (e){
                 this.props.showAlert("Ole hyvä ja valitse toinen käyttäjänimi!")
               }
+
+              //Jos tunnuksen luonti onnistui, kirjataan käyttäjä samantien sisään.
+              const dataFromBackEnd = await loginService.login({ //DatafromBackEnd sisältää user olion ja token stringin.
+                username: this.state.username,
+                password: this.state.password
+              })
+              this.setState({ username: '', password: '', email: ''})
+    
+              
+              courseService.setToken(dataFromBackEnd.token) //Asetetaan courseServicelle token muistiin
+              this.props.setLoggedInUser(dataFromBackEnd.user) //Reactin stateen tallennettava user
+              window.localStorage.setItem('user', JSON.stringify(dataFromBackEnd.user)) //local storageen tallennettava user ja token!
+              const greeting = "Kirjauduit sisään käyttäjällä: " + dataFromBackEnd.user.username
+              this.props.showAlert(greeting)
+    
+              
+              this.props.history.push("/courses")
+
+
     
           }
         
