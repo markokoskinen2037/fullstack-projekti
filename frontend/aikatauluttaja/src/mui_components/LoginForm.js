@@ -31,6 +31,7 @@ class LoginForm extends React.Component {
         }
 
     login = async (event) => {
+        this.props.showAlert("Kirjaudutaan sisään...")
         
           if(event){
             event.preventDefault()
@@ -39,7 +40,6 @@ class LoginForm extends React.Component {
         if(this.state.username.length > 0 && this.state.password.length > 0){
             
             try {
-                document.getElementById("loginButton").innerHTML="Kirjaudutaan sisään..."
                 const dataFromBackEnd = await loginService.login({ //DatafromBackEnd sisältää user olion ja token stringin.
                   username: this.state.username,
                   password: this.state.password
@@ -63,7 +63,6 @@ class LoginForm extends React.Component {
       
               } catch(exception) {
                   this.props.showAlert("Virheellinen käyttäjätunnus tai salasana.")
-                  document.getElementById("loginButton").innerHTML="Kirjaudu sisään"
               }
         } else {
             this.props.showAlert("Älä jätä mitään kenttää tyhjäksi!")
