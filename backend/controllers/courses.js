@@ -48,9 +48,6 @@ coursesRouter.delete("/:id", async (request, response) => {
     const temp = await Course.findById(request.params.id)
     const authorization = request.get("authorization")
 
-    console.log("test:::")
-    console.log(temp.user)
-    console.log(authorization)
 
 
 
