@@ -11,7 +11,7 @@ import { Link } from "react-router-dom"
 
 
 
-import {ListItem, ListItemText, Paper, Button, Grid, Typography} from "@material-ui/core/"
+import {ListItem, ListItemText, Paper, Button, Grid, Typography, Tooltip} from "@material-ui/core/"
 
 
 class Course extends React.Component {
@@ -284,23 +284,31 @@ class Course extends React.Component {
     
                                     {this.goalExists() ? ( //Jos goal on olemassa, renderöidään sen tiedot:
                                         <Fragment>
-                                            <Typography variant="body1" style={{marginRight: "107px"}}> 
+
+                                            <Tooltip title="Laskettu aika (20h/opintopiste)">
+                                            <Typography variant="body1" style={{marginRight: "0px"}}> 
                                                 {Math.floor ((this.props.course.credits * 20) / (this.props.course.length*7*5) * 10) / 10}h
                                             </Typography>
+                                            </Tooltip>
+
+                                            
+                                            <Fragment><i className="material-icons">arrow_right_alt</i></Fragment>
+                                            <Tooltip title="Henkilökohtainen haastavuuden perusteella painotettu opiskeluaika">
                                             <Typography variant="body1" style={{marginRight: "50px", width: "25px"}}>
                                                 {Math.floor ((this.props.course.credits * this.getCourseHourValue()) / (this.props.course.length*7*5) * 10) / 10}h
                                             </Typography>
+                                            </Tooltip>
     
-                                            <Typography style={{marginRight: 25}} variant="body1">{this.getGoal().target}</Typography>
+                                            <Tooltip title="Tavoitearvosana"><Typography style={{marginRight: 25}} variant="body1">{this.getGoal().target}</Typography></Tooltip>
 
 
                                             
 
-
+                                            
                                             {this.getGoal().difficulty === "Vaikea" && <Button disabled={true}  mini={true}  size="small" variant="outlined" style={{marginRight: "20px", backgroundColor : "red"}}><Typography style={{width: "200px", color :"white", fontWeight: "bold"}} variant="body1">{this.getGoal().difficulty} / {this.state.courseMedian}</Typography></Button>}
                                             {this.getGoal().difficulty === "Haastava" && <Button disabled={true}  mini={true} size="small" variant="outlined" style={{marginRight: "20px", backgroundColor : "#ff8100"}}><Typography style={{width: "200px", color :"white", fontWeight: "bold"}} variant="body1">{this.getGoal().difficulty} / {this.state.courseMedian}</Typography></Button>}
                                             {this.getGoal().difficulty === "Helppo" && <Button disabled={true}  mini={true} size="small" variant="outlined" style={{marginRight: "20px", backgroundColor : "green"}}><Typography style={{width: "200px", color :"white", fontWeight: "bold"}} variant="body1">{this.getGoal().difficulty} / {this.state.courseMedian}</Typography></Button>}
-    
+                                            
     
     
                                         </Fragment>
@@ -333,18 +341,30 @@ class Course extends React.Component {
     
                                             </Fragment>
                                     )}
-            
+                                            <Tooltip title="Kurssista saatavat opintopisteet">
                                             <Typography style={{marginRight: 15, width: "50px"}} variant="body1">{this.props.course.credits} op</Typography>
+                                            </Tooltip>
             
+                                            <Tooltip title="Kurssin pituus">
                                             <Typography style={{width: "7%%"}} variant="body1">{this.props.course.length} periodia</Typography>
+                                            </Tooltip>
+
+                                            <Tooltip title="Muokkaa kurssia">
                                             <Button><Link style={{color: 'inherit'}} to={`/courses/${this.props.course._id}`}><i className="material-icons">edit</i></Link></Button>
+                                            </Tooltip>
+                                            <Tooltip title="Poista kurssi">
                                             <Button onClick={() => this.deleteCourse(this.props.course._id)}><i className="material-icons">delete</i></Button>
+                                            </Tooltip>
     
     
                                     {this.isActive() ? (
+                                        <Tooltip title="Deaktivoi">
                                         <Button onClick={() => this.toggleActive(this.props.course._id)}><i style={{color: "green"}} className="material-icons">check_circle</i></Button>
+                                        </Tooltip>
                                     ) : (
+                                        <Tooltip title="Aktivoi">
                                         <Button onClick={() => this.toggleActive(this.props.course._id)}><i className="material-icons">check_circle_outline</i></Button>
+                                        </Tooltip>
                                     )}
     
     
