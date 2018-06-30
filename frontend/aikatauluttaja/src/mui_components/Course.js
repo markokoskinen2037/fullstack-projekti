@@ -69,7 +69,8 @@ class Course extends React.Component {
     
         let uusiAktiivistenKurssienLista = {activeCourses: this.props.user.activeCourses}
     
-    
+        let temp = !this.isActive
+        this.setState({isActive : temp})
         
     
 
