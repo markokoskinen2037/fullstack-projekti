@@ -41,18 +41,40 @@ coursesRouter.get("/:id", (request, response) => {
         })
 })
 
-coursesRouter.delete("/:id", (request, response) => {
-    Course
-        .findByIdAndRemove(request.params.id)
-        .then(() => {
-            response.status(204).end()
-        })
-        .catch(error => {
-            console.log(error)
-            response.status(400).send({
-                error: "malformatted id"
+coursesRouter.delete("/:id", async (request, response) => {
+
+
+
+    const temp = await Course.findById(request.params.id)
+    const authorization = request.get("authorization")
+
+    console.log("test:::")
+    console.log(temp.user)
+    console.log(authorization)
+
+
+
+
+    if(authorization.includes(temp.user)){
+        console.log("its true")
+        Course
+            .findByIdAndRemove(request.params.id)
+            .then(() => {
+                response.status(204).end()
             })
-        })
+            .catch(error => {
+                console.log(error)
+                response.status(400).send({
+                    error: "malformatted id"
+                })
+            })
+    } else {
+        response.status(400).send({error: "You have no permission to delete thsi course!"})
+        
+    }
+    
+
+
 })
 
 coursesRouter.put("/:id", (request, response) => {

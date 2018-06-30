@@ -31,8 +31,13 @@ const update = (id, newObject) => {
     return request.then(response => response.data)
 }
 
-const removeById = (id) => {
-    axios.delete(`${baseUrl}/${id}`)
+const removeById = (id, userId) => {
+
+    const config = {
+        headers: { 'Authorization': userId }
+      }
+
+    axios.delete(`${baseUrl}/${id}`, config)
     
 }
 

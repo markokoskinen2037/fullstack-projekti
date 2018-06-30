@@ -36,19 +36,23 @@ class Course extends React.Component {
         }
       }
 
-     deleteCourse = (course_id) => {
+     deleteCourse = async (course_id) => {
         console.log("Deleting course from database...")
+
+        if(this.props.user._id === this.props.course.user || this.props.user._id === this.props.course.user._id){ //Matchaa, sallitaan poisto
+            //Poistetaan kurssi tietokannasta
+            courseService.removeById(course_id, this.props.user._id) 
+            //TODO Poista kurssi statesta
+            this.props.removeCourseFromCourseListState(course_id)
+            console.log("removal completed")
+            //reloadCoursesFromBackend() //Tää pitää korjata lokaalilla staten manipulaatiolla
+        }else {
+            this.props.showAlert("Sinulla ei oikeuksia poistaa tätä kurssia!")
+            //alert(this.props.user._id + "   " + this.props.course.user._id)
+        }
         
-        courseService.removeById(course_id) //Poistetaan kurssi tietokannasta
-    
-    
-        //TODO Poista kurssi statesta
-        this.props.removeCourseFromCourseListState(course_id)
-    
-    
-        console.log("removal completed")
-    
-        //reloadCoursesFromBackend() //Tää pitää korjata lokaalilla staten manipulaatiolla
+
+
     
       }
     
