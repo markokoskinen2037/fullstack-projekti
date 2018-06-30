@@ -27,7 +27,8 @@ class CourseForm extends React.Component {
         const courseObject = {
           title: this.state.newCourseName,
           length: this.state.newCourseLength,
-          credits: this.state.newCourseCredits
+          credits: this.state.newCourseCredits,
+          userId: this.props.user._id
         }
     
         let errors = 0
