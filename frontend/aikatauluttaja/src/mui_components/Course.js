@@ -22,7 +22,8 @@ class Course extends React.Component {
             goalDifficulty: "Helppo",
             goalExists : false,
             isActive : false,
-            courseMedian: undefined
+            courseMedian: undefined,
+            goals : undefined
 
         }
     }
@@ -193,16 +194,15 @@ class Course extends React.Component {
 
     getDifficultyMedian = () => {
         
-        goalService
-        .getAll()
-        .then(allGoals => {
+
+            const allGoals = this.props.goals
             let relevantGoals = []
             allGoals.forEach(goal => {
                 if(goal.course === this.props.course._id){
                     console.log(goal.difficulty);
                     relevantGoals.push(goal)
                 }
-            });
+
 
 
             let sum = 0
@@ -250,6 +250,8 @@ class Course extends React.Component {
 
 
     render() {
+
+        console.info("Rendering a course.")
 
         
 

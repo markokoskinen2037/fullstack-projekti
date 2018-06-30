@@ -11,6 +11,7 @@ import Footer from "./mui_components/Footer"
 
 import courseService from "./services/courses"
 import userService from "./services/users"
+import goalService from "./services/goals"
 
 import {Grid, List, CssBaseline, Paper, ListItem, ListItemText, Input, FormControl, InputLabel, Checkbox, FormControlLabel} from '@material-ui/core/';
 
@@ -98,6 +99,14 @@ class App extends React.Component {
         console.log("got " + courses.length + " courses from backend.")
       })
 
+    console.log("getting all goals from backend...")
+    goalService
+      .getAll()
+      .then( goals => {
+        this.setState({goals})
+        console.log("got " + goals.length + " goals from backend.")
+      })
+    
 
 
       console.log("checking for logged in user from local storage...")
@@ -337,6 +346,7 @@ class App extends React.Component {
                         removeCourseFromCourseListState={this.removeCourseFromCourseListState}
                         addGoalToUserState={this.addGoalToUserState}
                         filter={this.state.filter}
+                        goals={this.state.goals}
                         showOnlyActiveCourses={this.state.showOnlyActiveCourses}
                         course={course} />)}
                         </List>
