@@ -93,6 +93,8 @@ class Course extends React.Component {
             alert("You already have a goal for this course!")
         } else { //Goalia ei ole olemassa, joten pitää luoda uusi sellainen
 
+        this.props.showAlert("Tallennetaan uutta tavoitetta tietokantaan...")
+
         
 
         console.log("Creating a new goal for you!");
@@ -125,7 +127,7 @@ class Course extends React.Component {
 
         this.getDifficultyMedian()
         console.log("goalExists => " + this.goalExists())
-        
+        this.props.showAlert("Tavoite tallennettu!")
 
       }
 

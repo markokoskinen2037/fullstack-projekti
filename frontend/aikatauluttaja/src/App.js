@@ -347,6 +347,7 @@ class App extends React.Component {
                         addGoalToUserState={this.addGoalToUserState}
                         filter={this.state.filter}
                         goals={this.state.goals}
+                        showAlert={this.showAlert}
                         showOnlyActiveCourses={this.state.showOnlyActiveCourses}
                         course={course} />)}
                         </List>
