@@ -304,7 +304,7 @@ class App extends React.Component {
                                 <Fragment ><Typography style={{marginRight: "9px"}}>Työmäärä/arkipäivä</Typography></Fragment>
                                 <Fragment ><Typography style={{marginRight: "9px"}}>Yksilöity työaika</Typography></Fragment>
                                 <Fragment ><Typography style={{marginRight: "50px"}}>Tavoite</Typography></Fragment>
-                                <Fragment ><Typography style={{marginRight: "54px"}}>Vaikeus/keskiarvo</Typography></Fragment>
+                                <Fragment ><Typography style={{marginRight: "54px"}}>Oma arvio/keskiarvo</Typography></Fragment>
                                 <Fragment ><Typography style={{marginRight: "20px"}}>Op. määrä</Typography></Fragment>
                                 <Fragment ><Typography style={{marginRight: "30px"}}>Pituus</Typography></Fragment>
 
