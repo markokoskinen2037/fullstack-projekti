@@ -97,7 +97,7 @@ class Course extends React.Component {
             alert("You already have a goal for this course!")
         } else { //Goalia ei ole olemassa, joten pitää luoda uusi sellainen
 
-        this.props.showAlert("Tallennetaan uutta tavoitetta tietokantaan...")
+        this.props.showAlert("Tallennetaan uutta tavoitetta tietokantaan...", true)
 
         
 
@@ -202,7 +202,11 @@ class Course extends React.Component {
     getDifficultyMedian = async () => {
         
 
-            const allGoals = await goalService.getAll()
+            let allGoals = this.props.goals //Saadaan allGoals propsina niin ei tarvitse hakea joka kurssin kohdalla uusia tietokannasta
+
+
+
+
             let relevantGoals = []
             allGoals.forEach(goal => {
                 if(goal.course === this.props.course._id){
