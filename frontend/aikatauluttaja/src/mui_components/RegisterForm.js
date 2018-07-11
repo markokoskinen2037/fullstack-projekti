@@ -32,7 +32,18 @@ class RegisterForm extends React.Component {
         })
     }
 
+
+
     createUser = async (event) => { 
+
+
+        function validateEmail(email) { //Löydetty netistä : https://stackoverflow.com/questions/46155/how-to-validate-an-email-address-in-javascript
+            var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+            return re.test(String(email).toLowerCase());
+        }
+
+
+
         if(event){
             event.preventDefault()
         }
@@ -41,8 +52,8 @@ class RegisterForm extends React.Component {
           if(this.state.password.length < 5){
               this.props.showAlert("Salasanan tulee olla ainakin 5 merkkiä pitkä!")
               errors++;
-          } else if(!this.state.email.includes("@")){
-              this.props.showAlert("Sähköpostissa tulee olla @-merkki!")
+          }else if (validateEmail(this.state.email) === false){
+              this.props.showAlert("Sähköpostiosoitteesi ei kelvannut.")
               errors++;
           }
 
