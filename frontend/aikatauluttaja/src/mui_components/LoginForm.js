@@ -9,7 +9,7 @@ import FormControl from '@material-ui/core/FormControl';
 import Paper from '@material-ui/core/Paper';
 import Button from '@material-ui/core/Button';
 import Grid from '@material-ui/core/Grid';
-import { CircularProgress,Typography, FormControlLabel, Checkbox } from "@material-ui/core";
+import {Typography, FormControlLabel, Checkbox } from "@material-ui/core";
 
 
 
@@ -31,7 +31,7 @@ class LoginForm extends React.Component {
         }
 
     login = async (event) => {
-        this.props.showAlert("Kirjaudutaan sisään...")
+        this.props.showAlert("Kirjaudutaan sisään...", true)
         
           if(event){
             event.preventDefault()
