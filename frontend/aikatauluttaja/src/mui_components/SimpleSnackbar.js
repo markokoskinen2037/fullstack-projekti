@@ -4,6 +4,8 @@ import { withStyles } from '@material-ui/core/styles';
 import Snackbar from '@material-ui/core/Snackbar';
 import IconButton from '@material-ui/core/IconButton';
 import CloseIcon from '@material-ui/icons/Close';
+import { CircularProgress} from "@material-ui/core";
+
 
 const styles = theme => ({
   close: {
@@ -38,10 +40,9 @@ class SimpleSnackbar extends React.Component {
 
   }
 
+
   render() {
     const { classes } = this.props;
-
-    
 
 
     return (
@@ -58,7 +59,9 @@ class SimpleSnackbar extends React.Component {
           ContentProps={{
             'aria-describedby': 'message-id',
           }}
-          message={<span id="message-id">{this.props.content}</span>}
+          message={<span id="message-id">{this.props.content}
+                  {this.props.inProgress &&
+                  <CircularProgress className={classes.progress} style={{ color:"white" }} thickness={7} />}</span>}
           action={[
             <IconButton
               key="close"
