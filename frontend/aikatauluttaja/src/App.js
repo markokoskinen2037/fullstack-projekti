@@ -8,12 +8,13 @@ import NavBar from "./mui_components/NavBar"
 import RegisterForm from "./mui_components/RegisterForm"
 import SimpleSnackbar from "./mui_components/SimpleSnackbar"
 import Footer from "./mui_components/Footer"
+import CourseListingInfo from "./mui_components/CourseListingInfo"
 
 import courseService from "./services/courses"
 import userService from "./services/users"
 import goalService from "./services/goals"
 
-import {Grid, List, CssBaseline, Paper, ListItem, ListItemText, Input, FormControl, InputLabel, Checkbox, FormControlLabel} from '@material-ui/core/';
+import {Grid, List, CssBaseline, Input, FormControl, InputLabel, Checkbox, FormControlLabel} from '@material-ui/core/';
 
 
 
@@ -36,6 +37,7 @@ class App extends React.Component {
       newCourseLength: "",
       user: null,
       alert: "",
+      inProgress: undefined,
       filter: "",
       showOnlyActiveCourses: false,
       timeoutFunction: undefined
@@ -230,16 +232,12 @@ class App extends React.Component {
     console.log("state.user cleared")
   }
 
-  showAlert = (content) => {
-
-  
-
+  showAlert = (content, inProgress) => {
       this.setState({alert : ""})
       console.log("Setting alert")
       this.setState({alert : content})
-    
-
-
+            
+      this.setState({inProgress})
 
   }
 
@@ -272,7 +270,7 @@ class App extends React.Component {
 
 
               
-              {this.state.alert && <SimpleSnackbar resetAlert={this.resetAlert} content={this.state.alert}/>}
+              {this.state.alert && <SimpleSnackbar resetAlert={this.resetAlert} content={this.state.alert} inProgress={this.state.inProgress}/>}
 
             <Fragment> 
               <Route exact path="/" render={() => <HomePage user={this.state.user}/> } />
@@ -297,25 +295,7 @@ class App extends React.Component {
                         <List style={{marginLeft: 10, marginRight: 10}}>
 
 
-                        <Paper style={{marginBottom: "35px"}}>
-                            <ListItem>
-                                <ListItemText  primary="Nimi" />
-
-                                <Fragment ><Typography style={{marginRight: "9px"}}>Työmäärä/arkipäivä</Typography></Fragment>
-                                <Fragment ><Typography style={{marginRight: "9px"}}>Yksilöity työaika</Typography></Fragment>
-                                <Fragment ><Typography style={{marginRight: "50px"}}>Tavoite</Typography></Fragment>
-                                <Fragment ><Typography style={{marginRight: "54px"}}>Oma arvio/keskiarvo</Typography></Fragment>
-                                <Fragment ><Typography style={{marginRight: "20px"}}>Op. määrä</Typography></Fragment>
-                                <Fragment ><Typography style={{marginRight: "30px"}}>Pituus</Typography></Fragment>
-
-                                
-                                <Fragment ><Typography style={{marginRight: "42px"}}>Muokkaa</Typography></Fragment>
-                                <Fragment ><Typography style={{marginRight: "45px"}}>Poista</Typography></Fragment>
-                                <Fragment ><Typography style={{marginRight: "20px"}}>Aktivoi</Typography></Fragment>
-
-
-                            </ListItem>
-                        </Paper>
+                      <CourseListingInfo/>
 
 
                         <FormControl style={{marginLeft: 10, marginBottom: 15}}>
