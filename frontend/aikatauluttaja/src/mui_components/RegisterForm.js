@@ -48,14 +48,14 @@ class RegisterForm extends React.Component {
 
           if(errors === 0){
             try{
-                let createdUser = await userService.create({ //Kokeillaan luoda user, onnistuu jos username on vapaana.
+                await userService.create({ //Kokeillaan luoda user, onnistuu jos username on vapaana.
                     username: this.state.username,
                     password: this.state.password,
                     email : this.state.email
                   })
           
               
-              this.props.showAlert("Tunnuksen luonti onnistui! Sinut kirjataan automaattisesti sisään!")
+              alert("Tunnuksen luonti onnistui! Sinut kirjataan automaattisesti sisään!")
 
 
     
