@@ -3,7 +3,8 @@ import React, { Fragment } from 'react'
 import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
 import Grid from '@material-ui/core/Grid';
-import Divider from '@material-ui/core/Divider';
+
+import { List, ListItem } from "@material-ui/core"
 
 
 import userService from "../services/users"
@@ -87,20 +88,27 @@ class HomePage extends React.Component {
       return (
         <Fragment>
           <Grid item md={6} xs={12}>
-            <Paper style={{ padding: 10, marginTop: 10, marginLeft: 10, marginRight: 10 }} elevation={1}>
-              <Typography variant="title" >Tervetuloa suunnitelemaan opintojasi {this.state.user.username} !</Typography>
-              <Divider style={{ marginTop: 5, marginBottom: 5 }} />
+            <Paper style={{ padding: 20, marginTop: 10, marginLeft: 10, marginRight: 10 }} elevation={1}>
+              <Typography variant="display1" >Tervetuloa, {this.state.user.username}!</Typography>
 
-              <ul>
-                <li>Sinulla on <b>{this.props.user.activeCourses.length}</b> aktiivista kurssia.</li>
-                <li>Kyseiset kurssit suorittamalla ansaitset yhteensä <b>{this.state.totalCredits}</b> opintopistettä.</li>
-                <li>Olet määrittänyt <b>{this.state.user.goals.length}</b> kurssitavoitetta </li>
-              </ul>
+              <List >
+                <ListItem style={{ paddingTop: 0, paddingBottom: 0 }}>
+                  <Typography>Sinulla on {this.props.user.activeCourses.length} aktiivista kurssia.</Typography>
+                </ListItem>
+
+                <ListItem style={{ paddingTop: 0, paddingBottom: 0 }}>
+                  <Typography>Kyseiset kurssit suorittamalla ansaitset yhteensä {this.state.totalCredits} opintopistettä.</Typography>
+                </ListItem>
+
+                <ListItem style={{ paddingTop: 0, paddingBottom: 0 }}>
+                  <Typography>Olet määrittänyt {this.state.user.goals.length} kurssitavoitetta </Typography>
+                </ListItem>
+              </List>
             </Paper>
           </Grid>
 
           <Grid item md={6} xs={12}>
-            <Paper style={{ padding: 10, marginTop: 10, marginLeft: 10, marginRight: 10 }} elevation={1}>
+            <Paper style={{ padding: 30, marginTop: 10, marginLeft: 10, marginRight: 10 }} elevation={1}>
               <Typography paragraph={true} variant="body1">
                 Vuosittainen tavoiteopintopistemäärä on 60 op. <br></br>
                 Pakollinen opintojen suoritusmäärä lukuvuotta kohden 1.8-31.7 on 20 op. <br></br>
@@ -112,7 +120,7 @@ class HomePage extends React.Component {
           </Grid>
 
           <Grid item md={6} xs={12}>
-            <Paper style={{ padding: 10, marginTop: 10, marginLeft: 10, marginRight: 10 }} elevation={1}>
+            <Paper style={{ padding: 30, marginTop: 10, marginLeft: 10, marginRight: 10 }} elevation={1}>
               <Typography paragraph={true} variant="body1">
                 <a target="_blank" rel="noopener noreferrer" href="https://www.cs.helsinki.fi/courses">Tietojenkäsittelytieteen laitoksen kurssitarjonta</a>
                 <br></br>
@@ -120,7 +128,7 @@ class HomePage extends React.Component {
               </Typography>
             </Paper>
           </Grid>
-        </Fragment>
+        </Fragment >
       )
     } else {
       return (null)
