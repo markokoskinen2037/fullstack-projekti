@@ -1,5 +1,5 @@
-import React, {Fragment} from "react"
-import {Link} from "react-router-dom"
+import React, { Fragment } from "react"
+import { Link } from "react-router-dom"
 
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
@@ -15,9 +15,9 @@ import { withRouter } from "react-router-dom";
 
 
 class NavBar extends React.Component {
-    constructor(props){
+    constructor(props) {
         super(props)
-        this.state={
+        this.state = {
 
         }
     }
@@ -29,52 +29,52 @@ class NavBar extends React.Component {
         console.log("deleting all user info from local cache")
         window.localStorage.clear()
         this.props.clearState()
-        
+
         this.props.history.push("/");
 
-        
-        
-      }
+
+
+    }
 
 
 
-    render(){
+    render() {
 
 
 
-        return(
+        return (
             <AppBar position="static">
-                <Toolbar style={{marginTop: 10}}>
-                    <Typography  variant="title" color="inherit">
+                <Toolbar style={{ marginTop: 10 }}>
+                    <Typography variant="title" color="inherit">
                         Opintojen aikatauluttaja
                     </Typography>
-                <Button style={{marginLeft: 20}} color="inherit"><Link style={{ color: '#FFF', textDecoration: 'none' }} to="/">Etusivu</Link></Button>
-                <Button color="inherit"><Link style={{ color: '#FFF', textDecoration: 'none' }} to="/courses">Kurssit</Link></Button>
+                    <Button style={{ marginLeft: 20 }} color="inherit"><Link style={{ color: '#FFF', textDecoration: 'none' }} to="/">Etusivu</Link></Button>
+                    <Button color="inherit"><Link style={{ color: '#FFF', textDecoration: 'none' }} to="/courses">Kurssit</Link></Button>
 
 
-                <Button color="inherit"><a style={{color : '#FFF', textDecoration: 'none'}} href="https://github.com/markokoskinen2037/fullstack-projekti">GitHub</a></Button>
+                    <Button color="inherit"><a style={{ color: '#FFF', textDecoration: 'none' }} href="https://github.com/markokoskinen2037/fullstack-projekti">GitHub</a></Button>
 
-                {this.props.user !== null && this.props.user.username === "admin" && <Button style={{marginLeft: 20}} color="inherit"><Link style={{ color: '#FFF', textDecoration: 'none' }} to="/supersecretadminpage">SuperSecretAdminPage</Link></Button>}
-                
-
-
-                {this.props.user ? (
-                <Fragment>
-                    <Grid item style={{position: "absolute", right: "20px"}}>
-                      <Typography align="right">
-                          <Button disabled={false} style={{marginRight: 10}} color="inherit"><Link to="/userinfo" style={{ color: '#FFF', textDecoration: 'none' }}>{this.props.user.username}</Link></Button>
-                          <Button onClick={(e) => this.handleLogOut(e)} variant="raised" color="default"> Kirjaudu ulos</Button>
-                      </Typography>
-                      </Grid>
-                </Fragment>
-                ): (
-                    null
-                )}
-                
+                    {this.props.user !== null && this.props.user.username === "admin" && <Button style={{ marginLeft: 20 }} color="inherit"><Link style={{ color: '#FFF', textDecoration: 'none' }} to="/supersecretadminpage">SuperSecretAdminPage</Link></Button>}
 
 
 
-                
+                    {this.props.user ? (
+                        <Fragment>
+                            <Grid item style={{ position: "absolute", right: "20px" }}>
+                                <Typography align="right">
+                                    <Button disabled={false} style={{ marginRight: 10 }} color="inherit"><Link to="/userinfo" style={{ color: '#FFF', textDecoration: 'none' }}>{this.props.user.username}</Link></Button>
+                                    <Button onClick={(e) => this.handleLogOut(e)} variant="raised" color="default"> Kirjaudu ulos</Button>
+                                </Typography>
+                            </Grid>
+                        </Fragment>
+                    ) : (
+                            null
+                        )}
+
+
+
+
+
                 </Toolbar>
             </AppBar>
         )

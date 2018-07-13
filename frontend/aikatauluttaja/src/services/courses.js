@@ -5,7 +5,7 @@ let token = null
 
 const setToken = (newToken) => {
     token = `bearer ${newToken}`
-  }
+}
 
 const getAll = () => {
     const request = axios.get(baseUrl)
@@ -19,12 +19,12 @@ const get = (id) => {
 
 const create = async (newObject) => {
     const config = {
-      headers: { 'Authorization': token }
+        headers: { 'Authorization': token }
     }
-  
+
     const response = await axios.post(baseUrl, newObject, config)
     return response
-  }
+}
 
 const update = (id, newObject) => {
     const request = axios.put(`${baseUrl}/${id}`, newObject)
@@ -35,10 +35,10 @@ const removeById = (id, userId) => {
 
     const config = {
         headers: { 'Authorization': userId }
-      }
+    }
 
     axios.delete(`${baseUrl}/${id}`, config)
-    
+
 }
 
 const deleteAllCourses = async () => {

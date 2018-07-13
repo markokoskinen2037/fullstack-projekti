@@ -21,13 +21,13 @@ const update = (id, newObject) => {
     //console.log(newObject) //Täällä on päivitetty user. Tämä arvo päivittyy oikein.
 
 
-    const request = axios.put(`${baseUrl}/${id}`, newObject) 
+    const request = axios.put(`${baseUrl}/${id}`, newObject)
     return request.then(response => response.data)
 }
 
 const removeById = (id) => {
     axios.delete(`${baseUrl}/${id}`)
-    
+
 }
 
 const deleteAllUsers = async () => {

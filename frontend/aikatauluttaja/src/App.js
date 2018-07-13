@@ -14,7 +14,7 @@ import courseService from "./services/courses"
 import userService from "./services/users"
 import goalService from "./services/goals"
 
-import {Grid, List, CssBaseline, Input, FormControl, InputLabel, Checkbox, FormControlLabel} from '@material-ui/core/';
+import { Grid, List, CssBaseline, Input, FormControl, InputLabel, Checkbox, FormControlLabel } from '@material-ui/core/';
 
 
 
@@ -57,36 +57,36 @@ class App extends React.Component {
 
   reloadCoursesFromBackend() {
     courseService
-    .getAll()
-    .then(courses => {
-      this.setState({ courses })
-      console.log("reloaded " + courses.length + " courses from backend.")
-    })
+      .getAll()
+      .then(courses => {
+        this.setState({ courses })
+        console.log("reloaded " + courses.length + " courses from backend.")
+      })
   }
 
   updateCourseState = (response) => {
-     this.setState({ //Poistetaan vanha kurssi
-       courses : this.state.courses.filter(course => course._id !== response._id)
-     })
+    this.setState({ //Poistetaan vanha kurssi
+      courses: this.state.courses.filter(course => course._id !== response._id)
+    })
 
-     this.setState({ //Tallennetaan päivitetty kurssi
-       courses : this.state.courses.concat(response)
-     })
+    this.setState({ //Tallennetaan päivitetty kurssi
+      courses: this.state.courses.concat(response)
+    })
   }
 
   toggleActive = (courseid) => {
 
     const course = this.findCourse(courseid)
     const userid = this.state.user.id
-    
+
 
 
     userService
-    .update(userid, course)
-    .then(response => {
-      console.log(response)
-    })
-    
+      .update(userid, course)
+      .then(response => {
+        console.log(response)
+      })
+
 
 
   }
@@ -104,34 +104,34 @@ class App extends React.Component {
     console.log("getting all goals from backend...")
     goalService
       .getAll()
-      .then( goals => {
-        this.setState({goals})
+      .then(goals => {
+        this.setState({ goals })
         console.log("got " + goals.length + " goals from backend.")
       })
-    
 
 
-      console.log("checking for logged in user from local storage...")
 
-      const userJSON = window.localStorage.getItem('user')
-      if (userJSON) {
-        console.log("found user from storage...")
-        let user = JSON.parse(userJSON)
+    console.log("checking for logged in user from local storage...")
 
-        userService
+    const userJSON = window.localStorage.getItem('user')
+    if (userJSON) {
+      console.log("found user from storage...")
+      let user = JSON.parse(userJSON)
+
+      userService
         .get(user._id)
         .then(upToDateUser => {
           //console.log(upToDateUser)
-          this.setState({user : upToDateUser})
+          this.setState({ user: upToDateUser })
           console.log("this.state.user updated with upToDateUser")
         })
 
 
 
 
-        
-        courseService.setToken(user.token)
-  }
+
+      courseService.setToken(user.token)
+    }
 
   }
 
@@ -178,18 +178,18 @@ class App extends React.Component {
   }
 
 
-  handleFormChange(event){
+  handleFormChange(event) {
     console.log(event.target.value)
     const name = event.target.name
     this.setState({
-        [name] : event.target.value
+      [name]: event.target.value
     })
-}
+  }
 
 
   addCourseToCourseList = (newCourseData) => {
     this.setState({
-      courses : this.state.courses.concat(newCourseData)
+      courses: this.state.courses.concat(newCourseData)
     })
   }
 
@@ -201,16 +201,16 @@ class App extends React.Component {
 
 
   updateUserState = (updatedUser) => {
-    this.setState({user : updatedUser})
+    this.setState({ user: updatedUser })
     console.log("state.user updated.")
   }
 
   addGoalToUserState = async (newGoal) => {
-    
-    const user = await userService
-    .get(this.state.user._id)
 
-    this.setState({user})
+    const user = await userService
+      .get(this.state.user._id)
+
+    this.setState({ user })
 
 
   }
@@ -220,151 +220,151 @@ class App extends React.Component {
     let newCourseList = this.state.courses.filter(course => course._id !== course_id)
 
     this.setState({
-      courses : newCourseList
+      courses: newCourseList
     })
   }
 
   clearState = () => {
     this.setState({
-      user : null,
+      user: null,
       courses: null
-  })
+    })
     console.log("state.user cleared")
   }
 
   showAlert = (content, inProgress) => {
-      this.setState({alert : ""})
-      console.log("Setting alert")
-      this.setState({alert : content})
-            
-      this.setState({inProgress})
+    this.setState({ alert: "" })
+    console.log("Setting alert")
+    this.setState({ alert: content })
+
+    this.setState({ inProgress })
 
   }
 
   toggleActiveCourses = () => {
     const value = !this.state.showOnlyActiveCourses
-    this.setState({showOnlyActiveCourses : value})
+    this.setState({ showOnlyActiveCourses: value })
   }
-  
+
   resetAlert = () => {
-    this.setState({alert : ""})
+    this.setState({ alert: "" })
   }
 
   render() {
 
 
-    if(this.state.courses === null){
-        this.reloadCoursesFromBackend()
+    if (this.state.courses === null) {
+      this.reloadCoursesFromBackend()
     }
 
 
     return (
 
 
-      
+
       <Fragment>
-        <CssBaseline/>
+        <CssBaseline />
         <Router>
-        <Grid  container spacing={16}>
-            <NavBar showAlert={this.showAlert} clearState={this.clearState} user={this.state.user} removeUserInfoFromState={this.removeCourseFromCourseListState}/>
+          <Grid container spacing={16}>
+            <NavBar showAlert={this.showAlert} clearState={this.clearState} user={this.state.user} removeUserInfoFromState={this.removeCourseFromCourseListState} />
 
 
-              
-              {this.state.alert && <SimpleSnackbar resetAlert={this.resetAlert} content={this.state.alert} inProgress={this.state.inProgress}/>}
 
-            <Fragment> 
-              <Route exact path="/" render={() => <HomePage user={this.state.user}/> } />
-              <Route exact path="/" render={() => <LoginForm reloadCoursesFromBackend={this.reloadCoursesFromBackend} showAlert={this.showAlert} clearState={this.clearState}user={this.state.user} setLoggedInUser={this.setLoggedInUser}/>}/>
-              <Route exact path="/" render={() => <RegisterForm setLoggedInUser={this.setLoggedInUser} showAlert={this.showAlert} user={this.state.user}/>}/>
+            {this.state.alert && <SimpleSnackbar resetAlert={this.resetAlert} content={this.state.alert} inProgress={this.state.inProgress} />}
+
+            <Fragment>
+              <Route exact path="/" render={() => <HomePage user={this.state.user} />} />
+              <Route exact path="/" render={() => <LoginForm reloadCoursesFromBackend={this.reloadCoursesFromBackend} showAlert={this.showAlert} clearState={this.clearState} user={this.state.user} setLoggedInUser={this.setLoggedInUser} />} />
+              <Route exact path="/" render={() => <RegisterForm setLoggedInUser={this.setLoggedInUser} showAlert={this.showAlert} user={this.state.user} />} />
             </Fragment>
 
-          
 
-                <Route exact path="/courses" render={() => {
-                  if(this.state.user != null){
-                    return (
-                      <Fragment>
-                        <Grid style={{margin:"20px"}} item xs={12}>
-                        <Typography style={{ paddingBottom: "20px"}} variant="headline">Kurssit</Typography>
-                        
 
-                        
+            <Route exact path="/courses" render={() => {
+              if (this.state.user != null) {
+                return (
+                  <Fragment>
+                    <Grid style={{ margin: "20px" }} item xs={12}>
+                      <Typography style={{ paddingBottom: "20px" }} variant="headline">Kurssit</Typography>
 
 
 
-                        <List style={{marginLeft: 10, marginRight: 10}}>
 
 
-                      <CourseListingInfo/>
+
+                      <List style={{ marginLeft: 10, marginRight: 10 }}>
 
 
-                        <FormControl style={{marginLeft: 10, marginBottom: 15}}>
-                            <InputLabel htmlFor="name-simple">Hae kurssia nimeltä</InputLabel>
-                            <Input  id="name-simple" type="text" name="filter" value={this.state.filter} onChange={(event) => this.handleFormChange(event)} />
+                        <CourseListingInfo />
+
+
+                        <FormControl style={{ marginLeft: 10, marginBottom: 15 }}>
+                          <InputLabel htmlFor="name-simple">Hae kurssia nimeltä</InputLabel>
+                          <Input id="name-simple" type="text" name="filter" value={this.state.filter} onChange={(event) => this.handleFormChange(event)} />
                         </FormControl>
 
 
 
-                              <FormControlLabel style={{position: "absolute", float: "right", right: "5px"}}
-                                control={
-                                  <Checkbox
-                                  checked={this.state.showOnlyActiveCourses}
-                                  onClick={() => this.toggleActiveCourses()}
-                                />
-                                }
-                                label="Näytä vain aktiiviset kurssit"
-                              />
+                        <FormControlLabel style={{ position: "absolute", float: "right", right: "5px" }}
+                          control={
+                            <Checkbox
+                              checked={this.state.showOnlyActiveCourses}
+                              onClick={() => this.toggleActiveCourses()}
+                            />
+                          }
+                          label="Näytä vain aktiiviset kurssit"
+                        />
 
 
-                      {this.state.courses.map(course => <Course
-                        toggleActive={this.toggleActive}
-                        findCourse = {this.findCourse}
-                        user={this.state.user}
-                        reloadCoursesFromBackend={this.reloadCoursesFromBackend.bind(this)}
-                        updateUserState={this.updateUserState}
-                        key={course._id}
-                        removeCourseFromCourseListState={this.removeCourseFromCourseListState}
-                        addGoalToUserState={this.addGoalToUserState}
-                        filter={this.state.filter}
-                        goals={this.state.goals}
-                        showAlert={this.showAlert}
-                        showOnlyActiveCourses={this.state.showOnlyActiveCourses}
-                        course={course} />)}
-                        </List>
-                        </Grid>
+                        {this.state.courses.map(course => <Course
+                          toggleActive={this.toggleActive}
+                          findCourse={this.findCourse}
+                          user={this.state.user}
+                          reloadCoursesFromBackend={this.reloadCoursesFromBackend.bind(this)}
+                          updateUserState={this.updateUserState}
+                          key={course._id}
+                          removeCourseFromCourseListState={this.removeCourseFromCourseListState}
+                          addGoalToUserState={this.addGoalToUserState}
+                          filter={this.state.filter}
+                          goals={this.state.goals}
+                          showAlert={this.showAlert}
+                          showOnlyActiveCourses={this.state.showOnlyActiveCourses}
+                          course={course} />)}
+                      </List>
+                    </Grid>
 
 
-                      <Typography style={{marginLeft: "30px", width:"100%"}} variant="headline">Kurssin lisäys</Typography>
-                      <CourseForm showAlert={this.showAlert} user={this.state.user} updateCourseList={this.addCourseToCourseList} addCourse={this.addCourse}/>
-                      
-                      </Fragment>
-                    )
-                  } else {
-                    return (
-                      null
-                    )
-                  }
-                }
+                    <Typography style={{ marginLeft: "30px", width: "100%" }} variant="headline">Kurssin lisäys</Typography>
+                    <CourseForm showAlert={this.showAlert} user={this.state.user} updateCourseList={this.addCourseToCourseList} addCourse={this.addCourse} />
 
-                } />
+                  </Fragment>
+                )
+              } else {
+                return (
+                  null
+                )
+              }
+            }
 
-
-
-                
-
-                <Route exact path="/userinfo" render={() => <UserStatistics getLoggedInUser={this.getLoggedInUser}/> } />
-
-                <Route exact path="/supersecretadminpage" render={() => <AdminPage user={this.state.user} />} />
-
-                  
-
-                <Route exact path="/courses/:id" render={({match}) =>
-                          <EditCourse showAlert={this.showAlert} updateUserState={this.updateUserState} user={this.state.user} updateCourseState={this.updateCourseState} reloadCoursesFromBackend={this.reloadCoursesFromBackend.bind(this)} state={this.state} course={this.findCourse(match.params.id)} />}
-                />
+            } />
 
 
-                <Footer/>
-                  
+
+
+
+            <Route exact path="/userinfo" render={() => <UserStatistics getLoggedInUser={this.getLoggedInUser} />} />
+
+            <Route exact path="/supersecretadminpage" render={() => <AdminPage user={this.state.user} />} />
+
+
+
+            <Route exact path="/courses/:id" render={({ match }) =>
+              <EditCourse showAlert={this.showAlert} updateUserState={this.updateUserState} user={this.state.user} updateCourseState={this.updateCourseState} reloadCoursesFromBackend={this.reloadCoursesFromBackend.bind(this)} state={this.state} course={this.findCourse(match.params.id)} />}
+            />
+
+
+            <Footer />
+
 
 
 
