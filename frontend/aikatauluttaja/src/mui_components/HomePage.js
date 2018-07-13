@@ -89,7 +89,7 @@ class HomePage extends React.Component {
         <Fragment>
           <Grid item md={6} xs={12}>
             <Paper style={{ padding: 20, marginTop: 10, marginLeft: 10, marginRight: 10 }} elevation={1}>
-              <Typography variant="display1" >Tervetuloa, {this.state.user.username}!</Typography>
+              <Typography style={{ textAlign: "center", marginBottom: 20 }} variant="display1" >Tervetuloa, {this.state.user.username}!</Typography>
 
               <List >
                 <ListItem style={{ paddingTop: 0, paddingBottom: 0 }}>
