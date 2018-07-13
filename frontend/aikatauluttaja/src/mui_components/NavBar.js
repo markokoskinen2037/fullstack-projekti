@@ -48,13 +48,11 @@ class NavBar extends React.Component {
                     <Typography variant="title" color="inherit">
                         Opintojen aikatauluttaja
                     </Typography>
-                    <Button style={{ marginLeft: 20 }} color="inherit"><Link style={{ color: '#FFF', textDecoration: 'none' }} to="/">Etusivu</Link></Button>
-                    <Button color="inherit"><Link style={{ color: '#FFF', textDecoration: 'none' }} to="/courses">Kurssit</Link></Button>
+                    <Link style={{ padding: 20, fontFamily: 'Roboto', color: '#FFF', textDecoration: 'none' }} to="/">ETUSIVU</Link>
+                    <Link style={{ padding: 20, fontFamily: 'Roboto', color: '#FFF', textDecoration: 'none' }} to="/courses">KURSSIT</Link>
+                    <a style={{ padding: 20, fontFamily: 'Roboto', color: '#FFF', textDecoration: 'none' }} href="https://github.com/markokoskinen2037/fullstack-projekti">GITHUB</a>
 
-
-                    <Button color="inherit"><a style={{ color: '#FFF', textDecoration: 'none' }} href="https://github.com/markokoskinen2037/fullstack-projekti">GitHub</a></Button>
-
-                    {this.props.user !== null && this.props.user.username === "admin" && <Button style={{ marginLeft: 20 }} color="inherit"><Link style={{ color: '#FFF', textDecoration: 'none' }} to="/supersecretadminpage">SuperSecretAdminPage</Link></Button>}
+                    {this.props.user !== null && this.props.user.username === "admin" && <Link style={{ padding: 20, fontFamily: 'Roboto', color: '#FFF', textDecoration: 'none' }} to="/supersecretadminpage">SUPERSECRETADMINPAGE</Link>}
 
 
 
@@ -62,7 +60,7 @@ class NavBar extends React.Component {
                         <Fragment>
                             <Grid item style={{ position: "absolute", right: "20px" }}>
                                 <Typography align="right">
-                                    <Button disabled={false} style={{ marginRight: 10 }} color="inherit"><Link to="/userinfo" style={{ color: '#FFF', textDecoration: 'none' }}>{this.props.user.username}</Link></Button>
+                                    <Link to="/userinfo" style={{ color: '#FFF', textDecoration: 'none', padding: 20 }}>{this.props.user.username}</Link>
                                     <Button onClick={(e) => this.handleLogOut(e)} variant="raised" color="default"> Kirjaudu ulos</Button>
                                 </Typography>
                             </Grid>
@@ -76,7 +74,7 @@ class NavBar extends React.Component {
 
 
                 </Toolbar>
-            </AppBar>
+            </AppBar >
         )
     }
 }

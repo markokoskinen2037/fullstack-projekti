@@ -354,7 +354,7 @@ class Course extends React.Component {
                                     </Tooltip>
 
                                     <Tooltip title="Muokkaa kurssia">
-                                        <Button><Link style={{ color: 'inherit' }} to={`/courses/${this.props.course._id}`}><i className="material-icons">edit</i></Link></Button>
+                                        <Link style={{ color: 'inherit', paddingLeft: 20, paddingRight: 20 }} to={`/courses/${this.props.course._id}`}><i className="material-icons">edit</i></Link>
                                     </Tooltip>
                                     <Tooltip title="Poista kurssi">
                                         <Button onClick={() => this.deleteCourse(this.props.course._id)}><i className="material-icons">delete</i></Button>
