@@ -4,19 +4,8 @@ Projektini tavoitteena on kehittää yliopisto-opiskelijoille suunnattu aikataul
 - Meneillään olevien kurssien valinta
 - Oman opiskelurytmin ja tavoitteiden asetus
 
-#### Backend:
-https://obscure-bayou-13604.herokuapp.com/
-
-#### Lyhyen tähtäimen FRONTEND TODO:
-- [ ] Toteuta kurssin CRUD-nelikkö
-- [ ] Toteuta kirjautuminen (nimi,salasana,käyttäjänimi,sähköpostiosoite)
-- [ ] Toteuta käyttäjäkohtainen kurssien priorisointi (haastavuus/tavoitearvosana/)
-
-
-
-#### Lyhyen tähtäimen BACKEND TODO:
-- [ ] Konfiguroi development pipeline
-- [ ] Refaktoroi koodia omiin moduuleihinsa
+#### Sovelluksen osoite:
+https://opintojenaikatauluttaja.herokuapp.com/
 
 
 #### Backendin käyttöohje
