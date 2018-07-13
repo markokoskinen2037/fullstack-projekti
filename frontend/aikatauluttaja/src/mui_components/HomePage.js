@@ -22,34 +22,43 @@ class HomePage extends React.Component {
 
 
   componentDidMount() {
-    if (window.localStorage.getItem("user") !== null) {
-      const userFromLocalStorage = JSON.parse(window.localStorage.getItem("user"));
-      console.log(userFromLocalStorage._id)
-      console.log("Getting user info from backend");
-      userService
-        .get(userFromLocalStorage._id)
-        .then(user => {
-          this.setState({ user })
-          console.log("Got user from backend!")
-          console.table(this.state.user)
-        })
-        .then(res => {
 
-          //Lasketaan paljonko on aktiivisten kurssien opintopisteiden summa ja tallennetaan tulos stateen
-          let sum = 0;
-          this.state.user.activeCourses.map(course => {
-            sum = sum + course.credits;
-            return sum;
+    if (this.props.user === null) {
+      if (window.localStorage.getItem("user") !== null) {
+        const userFromLocalStorage = JSON.parse(window.localStorage.getItem("user"));
+        console.log(userFromLocalStorage._id)
+        console.log("Getting user info from backend");
+        userService
+          .get(userFromLocalStorage._id)
+          .then(user => {
+            this.setState({ user })
+            console.log("Got user from backend!")
+            console.table(this.state.user)
           })
-          this.setState({ totalCredits: sum })
+          .then(res => {
+
+            //Lasketaan paljonko on aktiivisten kurssien opintopisteiden summa ja tallennetaan tulos stateen
+            let sum = 0;
+            this.state.user.activeCourses.map(course => {
+              sum = sum + course.credits;
+              return sum;
+            })
+            this.setState({ totalCredits: sum })
 
 
 
 
 
-        })
+          })
 
+      }
+    } else { //Saatiin user olio propsina joten käytetään sitä.
+      this.setState({ user: this.props.user })
     }
+
+
+
+
 
 
 
