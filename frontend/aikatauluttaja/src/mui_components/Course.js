@@ -190,6 +190,8 @@ class Course extends React.Component {
         switch (this.getGoal().difficulty) {
             case "Helppo":
                 return 15;
+            case "Normaali":
+                return 20;
             case "Haastava":
                 return 25;
             case "Vaikea":
@@ -312,6 +314,7 @@ class Course extends React.Component {
                                             {this.getGoal().difficulty === "Vaikea" && <Button disabled={true} mini={true} size="small" variant="outlined" style={{ marginRight: "20px", backgroundColor: "red" }}><Typography style={{ width: "200px", color: "white", fontWeight: "bold" }} variant="body1">{this.getGoal().difficulty} / {this.state.courseMedian}</Typography></Button>}
                                             {this.getGoal().difficulty === "Haastava" && <Button disabled={true} mini={true} size="small" variant="outlined" style={{ marginRight: "20px", backgroundColor: "#ff8100" }}><Typography style={{ width: "200px", color: "white", fontWeight: "bold" }} variant="body1">{this.getGoal().difficulty} / {this.state.courseMedian}</Typography></Button>}
                                             {this.getGoal().difficulty === "Helppo" && <Button disabled={true} mini={true} size="small" variant="outlined" style={{ marginRight: "20px", backgroundColor: "green" }}><Typography style={{ width: "200px", color: "white", fontWeight: "bold" }} variant="body1">{this.getGoal().difficulty} / {this.state.courseMedian}</Typography></Button>}
+                                            {this.getGoal().difficulty === "Normaali" && <Button disabled={true} mini={true} size="small" variant="outlined" style={{ marginRight: "20px", backgroundColor: "#ffe000" }}><Typography style={{ width: "200px", color: "white", fontWeight: "bold" }} variant="body1">{this.getGoal().difficulty} / {this.state.courseMedian}</Typography></Button>}
 
 
 
@@ -335,6 +338,7 @@ class Course extends React.Component {
                                                         onChange={(event) => this.handleFormChange(event)}
                                                     >
                                                         <option value="Helppo">Helppo</option>
+                                                        <option value="Normaali">Normaali</option>
                                                         <option value="Haastava">Haastava</option>
                                                         <option value="Vaikea">Vaikea</option>
                                                     </Select>
