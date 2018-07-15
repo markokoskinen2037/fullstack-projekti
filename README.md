@@ -31,10 +31,10 @@ Käyttäen **samaa** juuri kloonaamaasi repositiota, asennetaan myös **frontend
 1. Mene hakemistossa ylös kansioon ```../fullstack-projekti/frontend/aikatauluttaja```
 2. Aja komento ```npm install```
 3. Aja komento ```npm start```
-4. Jos kaikki meni hyvin, näkyy konsolissa ilmoitus ```"Compiled successfully!"```, ja aiemmin asentamaasi backendia käyttävä  React sovellus aukeaa oletusselaimessasi automaattisesti.
+4. Jos kaikki meni hyvin, näkyy konsolissa ilmoitus ```"Compiled successfully!"```, ja aiemmin asentamaasi backendia käyttävä React sovellus aukeaa oletusselaimessasi automaattisesti.
 
 ---
-### Aikaa käytetty yhteensä noin : 69h0min
+### Aikaa käytetty yhteensä noin : 69h30min
 ---
 
 
@@ -64,3 +64,4 @@ Käyttäen **samaa** juuri kloonaamaasi repositiota, asennetaan myös **frontend
 | 30.6 | 2h25min | Poistettu vanhat, käyttämättömät, React-komponentit. Parannettu kurssilistauksen renderöintinopeutta ja kurssin aktivointinopeutta (selaimessa). Korjattu virheellinen looppi joka teki paljon turhia kyselyitä backendiin. Näytetään SnackBar ilmoitus selaimen alareunassa kun tietokantaoperaatio on kesken, esim. kurssin muokkausten tallennus tai uuden tavoitteen asetus. Tallennetaan tietokantaan kurssin luomishetkellä myös kurssin luonut käyttäjä ja annetaan vain tälle käyttäjälle mahdollisuus poistaa itse lisäämänsä kurssi. Parannettu hieman ulkoasua ja lisätty tooltipit kurssilistauksen arvoille. |
 | 11.7 | 2h30min | Eriytetty kurssilistauksen inforivi omaksi komponentikseen. Parannettu kurssien renderöintinopeutta. Parannettu hieman ulkoasua. Lisätty Snackbarille optionaalinen parametri inProgress, jonka ollessa true näytetään ilmoituksessa CircularProgress komponentti jotta käyttäjä tietää, että operaatio on vielä kesken. Otettu käyttöön parempi emailin tarkistus. Lisätty ennen tyhjälle kirjautuneen käyttäjän etusivulle tietoja aktiivisista kursseista ja niistä saatavista opintopisteistä. Lisätty pari linkkiä tietojenkäsittelytieteen ja matematiikan ja tilastotieteenlaitoksen sivuille. Lisätty etuvisulle ehdollisia suosituksia jotka renderöityvät jos käyttäjä ei ole esim. valinnut vielä 60op:n edestä kursseja. |
 | 13.7 | 2h10min | Korjattu automaattinen koodin formatointi (beautify) ja formatoitu sen avulla kaikki tiedostot. Deployatty herokussa parempaan osoitteeseen https://opintojenaikatauluttaja.herokuapp.com/. Korjattu Link komponentit toimimaan myös firefoxilla. Parannettu kirjautuneen käyttäjän etusivun ulkoasua. Korjattu etusivun renderöitymisen hitaus.|
+| 15.7 | 30min | Luotu tarkka sovelluksen käyttöohje. |
