@@ -29,7 +29,7 @@ class UserStatistics extends Component {
             return null
         } else {
 
-            console.log(JSON.stringify(this.state.user))
+            //console.log(JSON.stringify(this.state.user))
 
 
             return (
