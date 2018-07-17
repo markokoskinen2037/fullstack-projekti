@@ -10,8 +10,8 @@ import { Link } from "react-router-dom"
 
 
 
-
 import { ListItem, ListItemText, Paper, Button, Grid, Typography, Tooltip } from "@material-ui/core/"
+import DifficultyDisplay from "./DifficultyDisplay"
 
 
 class Course extends React.Component {
@@ -50,10 +50,6 @@ class Course extends React.Component {
             this.props.showAlert("Sinulla ei oikeuksia poistaa tätä kurssia!")
             //alert(this.props.user._id + "   " + this.props.course.user._id)
         }
-
-
-
-
     }
 
     toggleActive = async (course_id) => {
@@ -136,12 +132,6 @@ class Course extends React.Component {
     }
 
     goalExists = () => {
-
-
-
-
-
-
         const foundGoal = this.props.user.goals.find(goalObject => goalObject.course === this.props.course._id && goalObject.user === this.props.user._id)
 
 
@@ -160,8 +150,6 @@ class Course extends React.Component {
     isActive = () => {
         const result = this.props.user.activeCourses.find(courseObject => courseObject._id === this.props.course._id)
 
-
-
         if (result === undefined) {
             return false
         } else {
@@ -173,8 +161,6 @@ class Course extends React.Component {
         const foundGoal = this.props.user.goals.find(goalObject => goalObject.course === this.props.course._id && goalObject.user === this.props.user._id)
 
         return foundGoal
-
-
     }
 
     handleFormChange(event) { //Hoidetaan kenttiin kohdistuvat muutokset stateen
@@ -202,17 +188,12 @@ class Course extends React.Component {
     }
 
     getDifficultyMedian = async () => {
-
-
         let allGoals = this.props.goals //Saadaan allGoals propsina niin ei tarvitse hakea joka kurssin kohdalla uusia tietokannasta
-
-
-
 
         let relevantGoals = []
         allGoals.forEach(goal => {
             if (goal.course === this.props.course._id) {
-                console.log(goal.difficulty);
+                //console.log(goal.difficulty);
                 relevantGoals.push(goal)
             }
         })
@@ -232,7 +213,7 @@ class Course extends React.Component {
         let median = sum / relevantGoals.length
 
 
-        console.log("Median is:  " + median);
+        //console.log("Median is:  " + median);
 
 
         let result = ""
@@ -245,12 +226,6 @@ class Course extends React.Component {
         }
 
         this.setState({ courseMedian: result })
-
-
-
-
-
-
     }
 
     componentDidMount() {
@@ -260,17 +235,9 @@ class Course extends React.Component {
 
 
 
-
-
     render() {
 
-        console.info("Rendering a course.")
-
-
-
-
-
-
+        //console.info("Rendering a course.")
 
         if (this.props.course.title.toLowerCase().includes(this.props.filter.toLowerCase())) { // Jos filter sopii tähän kurssiin...
 
@@ -310,11 +277,7 @@ class Course extends React.Component {
 
 
 
-
-                                            {this.getGoal().difficulty === "Vaikea" && <Button disabled={true} mini={true} size="small" variant="outlined" style={{ marginRight: "20px", backgroundColor: "red" }}><Typography style={{ width: "200px", color: "white", fontWeight: "bold" }} variant="body1">{this.getGoal().difficulty} / {this.state.courseMedian}</Typography></Button>}
-                                            {this.getGoal().difficulty === "Haastava" && <Button disabled={true} mini={true} size="small" variant="outlined" style={{ marginRight: "20px", backgroundColor: "#ff8100" }}><Typography style={{ width: "200px", color: "white", fontWeight: "bold" }} variant="body1">{this.getGoal().difficulty} / {this.state.courseMedian}</Typography></Button>}
-                                            {this.getGoal().difficulty === "Helppo" && <Button disabled={true} mini={true} size="small" variant="outlined" style={{ marginRight: "20px", backgroundColor: "green" }}><Typography style={{ width: "200px", color: "white", fontWeight: "bold" }} variant="body1">{this.getGoal().difficulty} / {this.state.courseMedian}</Typography></Button>}
-                                            {this.getGoal().difficulty === "Normaali" && <Button disabled={true} mini={true} size="small" variant="outlined" style={{ marginRight: "20px", backgroundColor: "yellow" }}><Typography style={{ width: "200px", color: "white", fontWeight: "bold" }} variant="body1">{this.getGoal().difficulty} / {this.state.courseMedian}</Typography></Button>}
+                                            <DifficultyDisplay difficulty={this.getGoal().difficulty} courseMedian={this.state.courseMedian} />
 
 
 
@@ -358,20 +321,21 @@ class Course extends React.Component {
                                     </Tooltip>
 
                                     <Tooltip title="Muokkaa kurssia">
-                                        <Link style={{ color: 'inherit', paddingLeft: 20, paddingRight: 20 }} to={`/courses/${this.props.course._id}`}><i className="material-icons">edit</i></Link>
+                                        <Link to={`/courses/${this.props.course._id}`}><i style={{ color: "black", padding: 5, marginLeft: 20, marginRight: 20 }} className="material-icons">edit</i></Link>
                                     </Tooltip>
                                     <Tooltip title="Poista kurssi">
-                                        <Button onClick={() => this.deleteCourse(this.props.course._id)}><i className="material-icons">delete</i></Button>
+                                        <i className="material-icons" onClick={() => this.deleteCourse(this.props.course._id)}>delete</i>
                                     </Tooltip>
 
 
                                     {this.isActive() ? (
                                         <Tooltip title="Deaktivoi">
-                                            <Button onClick={() => this.toggleActive(this.props.course._id)}><i style={{ color: "green" }} className="material-icons">check_circle</i></Button>
+                                            <i style={{ color: "green", padding: 5, marginLeft: 20, marginRight: 0 }} onClick={() => this.toggleActive(this.props.course._id)} className="material-icons">check_circle</i>
                                         </Tooltip>
                                     ) : (
                                             <Tooltip title="Aktivoi">
-                                                <Button onClick={() => this.toggleActive(this.props.course._id)}><i className="material-icons">check_circle_outline</i></Button>
+
+                                                <i style={{ color: "green", padding: 5, marginLeft: 20, marginRight: 0 }} onClick={() => this.toggleActive(this.props.course._id)} className="material-icons">check_circle_outline</i>
                                             </Tooltip>
                                         )}
 
@@ -382,7 +346,7 @@ class Course extends React.Component {
                                 </ListItem>
                             </Paper>
                         </Grid>
-                    </Fragment>
+                    </Fragment >
                 )
             }
 
