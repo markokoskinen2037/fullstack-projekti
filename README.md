@@ -34,7 +34,7 @@ Käyttäen **samaa** juuri kloonaamaasi repositiota, asennetaan myös **frontend
 4. Jos kaikki meni hyvin, näkyy konsolissa ilmoitus ```"Compiled successfully!"```, ja aiemmin asentamaasi backendia käyttävä React sovellus aukeaa oletusselaimessasi automaattisesti.
 
 ---
-### Aikaa käytetty yhteensä noin : 71h5min
+### Aikaa käytetty yhteensä noin : 72h5min
 ---
 
 
@@ -65,4 +65,4 @@ Käyttäen **samaa** juuri kloonaamaasi repositiota, asennetaan myös **frontend
 | 11.7 | 2h30min | Eriytetty kurssilistauksen inforivi omaksi komponentikseen. Parannettu kurssien renderöintinopeutta. Parannettu hieman ulkoasua. Lisätty Snackbarille optionaalinen parametri inProgress, jonka ollessa true näytetään ilmoituksessa CircularProgress komponentti jotta käyttäjä tietää, että operaatio on vielä kesken. Otettu käyttöön parempi emailin tarkistus. Lisätty ennen tyhjälle kirjautuneen käyttäjän etusivulle tietoja aktiivisista kursseista ja niistä saatavista opintopisteistä. Lisätty pari linkkiä tietojenkäsittelytieteen ja matematiikan ja tilastotieteenlaitoksen sivuille. Lisätty etuvisulle ehdollisia suosituksia jotka renderöityvät jos käyttäjä ei ole esim. valinnut vielä 60op:n edestä kursseja. |
 | 13.7 | 2h10min | Korjattu automaattinen koodin formatointi (beautify) ja formatoitu sen avulla kaikki tiedostot. Deployatty herokussa parempaan osoitteeseen https://opintojenaikatauluttaja.herokuapp.com/. Korjattu Link komponentit toimimaan myös firefoxilla. Parannettu kirjautuneen käyttäjän etusivun ulkoasua. Korjattu etusivun renderöitymisen hitaus.|
 | 15.7 | 45min | Luotu tarkka sovelluksen käyttöohje. Lisätty uusi vaikeustaso "Normaali". |
-| 17.7 | 1h20min | Yhdenmukaistettu kurssilistauksen kuvakkeiden alkoasua. Refaktoroitu toistuvaa css koodia omaan tiedostoonsa. Parannettu navbarin ulkoasua. Refaktoroitu DifficultyDisplay omaksi komponentikseen. |
+| 17.7 | 2h20min | Yhdenmukaistettu kurssilistauksen kuvakkeiden alkoasua. Refaktoroitu toistuvaa css koodia omaan tiedostoonsa. Parannettu navbarin ulkoasua. Refaktoroitu DifficultyDisplay omaksi komponentikseen. Parannettu ulkoasua lisää sieltä sun täältä. Korjattu bugi uuden tavoitteen asettamisessa. Lisätty ilmoitus kun kurssiin kohdistuvat muutokset on tallennettu.  |
