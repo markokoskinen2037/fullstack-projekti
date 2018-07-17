@@ -1,6 +1,6 @@
 import React, { Component, Fragment } from 'react'
 
-import { Button, Typography } from "@material-ui/core"
+import { Button, Typography, Tooltip } from "@material-ui/core"
 
 export class DifficultyDisplay extends Component {
     constructor(props) {
@@ -17,7 +17,7 @@ export class DifficultyDisplay extends Component {
 
         switch (this.props.difficulty) {
             case "Helppo":
-                color = "green"
+                color = "#00bf00"
                 break;
             case "Normaali":
                 color = "yellow"
@@ -37,8 +37,14 @@ export class DifficultyDisplay extends Component {
 
         return (
             <Fragment>
-                <Button disabled={true} mini={true} size="small" variant="outlined" style={{ marginRight: "20px", backgroundColor: color }}><Typography style={{ width: "200px", color: "black", fontWeight: 100 }} variant="body1">{this.props.difficulty} / {this.props.courseMedian}</Typography></Button>
-            </Fragment>
+
+
+                <Tooltip title="Oma vaikeustaso / Vaikeustason keskiarvo (otoksen koko)">
+                    <Typography style={{ marginRight: 10, borderRadius: 20, padding: 10, width: 200, textAlign: "center", color: "black", backgroundColor: color, fontWeight: 100 }} variant="body1">{this.props.difficulty} / {this.props.courseMedian}</Typography>
+                </Tooltip>
+
+
+            </Fragment >
         )
     }
 }
