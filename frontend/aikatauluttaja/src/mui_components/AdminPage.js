@@ -53,9 +53,7 @@ class AdminPage extends Component {
             )
         } else {
             return (
-                <div>
-                    <img alt="watch out" width={window.innerWidth} style={{ display: "block", marginLeft: "auto", marginRight: "auto" }} src="https://cdn-images-1.medium.com/max/2000/1*-m_hxcxFCO0_-ND-FBFz6g.jpeg" />
-                </div>
+                null
             )
         }
 
