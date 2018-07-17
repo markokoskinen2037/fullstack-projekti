@@ -8,6 +8,8 @@ import Button from '@material-ui/core/Button';
 import Grid from '@material-ui/core/Grid';
 import { withRouter } from "react-router-dom";
 
+import "../styles/NavBarStyle.css"
+
 
 
 
@@ -46,13 +48,14 @@ class NavBar extends React.Component {
             <AppBar position="static">
                 <Toolbar style={{ marginTop: 10 }}>
                     <Typography variant="title" color="inherit">
-                        Opintojen aikatauluttaja
-                    </Typography>
-                    <Link style={{ padding: 20, fontFamily: 'Roboto', color: '#FFF', textDecoration: 'none' }} to="/">ETUSIVU</Link>
-                    <Link style={{ padding: 20, fontFamily: 'Roboto', color: '#FFF', textDecoration: 'none' }} to="/courses">KURSSIT</Link>
-                    <a style={{ padding: 20, fontFamily: 'Roboto', color: '#FFF', textDecoration: 'none' }} href="https://github.com/markokoskinen2037/fullstack-projekti">GITHUB</a>
 
-                    {this.props.user !== null && this.props.user.username === "admin" && <Link style={{ padding: 20, fontFamily: 'Roboto', color: '#FFF', textDecoration: 'none' }} to="/supersecretadminpage">SUPERSECRETADMINPAGE</Link>}
+                        <Link className="Link" to="/">Opintojen aikatauluttaja</Link>
+                    </Typography>
+
+                    <Link className="Link" to="/courses">KURSSIT</Link>
+
+
+                    {this.props.user !== null && this.props.user.username === "admin" && <Link className="Link" to="/supersecretadminpage">SUPERSECRETADMINPAGE</Link>}
 
 
 
@@ -60,7 +63,7 @@ class NavBar extends React.Component {
                         <Fragment>
                             <Grid item style={{ position: "absolute", right: "20px" }}>
                                 <Typography align="right">
-                                    <Link to="/userinfo" style={{ color: '#FFF', textDecoration: 'none', padding: 20 }}>{this.props.user.username}</Link>
+                                    <Link className="Link_username" to="/userinfo">{this.props.user.username}</Link>
                                     <Button onClick={(e) => this.handleLogOut(e)} variant="raised" color="default"> Kirjaudu ulos</Button>
                                 </Typography>
                             </Grid>
