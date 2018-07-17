@@ -285,7 +285,7 @@ class App extends React.Component {
                 return (
                   <Fragment>
                     <Grid style={{ margin: "20px" }} item xs={12}>
-                      <Typography style={{ paddingBottom: "20px" }} variant="headline">Kurssit</Typography>
+                      <Typography variant="display1">Kurssit</Typography>
 
 
 
@@ -295,7 +295,7 @@ class App extends React.Component {
                       <List style={{ marginLeft: 10, marginRight: 10 }}>
 
 
-                        <CourseListingInfo />
+                        {/* <CourseListingInfo /> */}
 
 
                         <FormControl style={{ marginLeft: 10, marginBottom: 15 }}>
@@ -334,7 +334,7 @@ class App extends React.Component {
                     </Grid>
 
 
-                    <Typography style={{ marginLeft: "30px", width: "100%" }} variant="headline">Kurssin lisäys</Typography>
+                    <Typography style={{ marginLeft: "30px", width: "100%" }} variant="display1">Kurssin lisäys</Typography>
                     <CourseForm showAlert={this.showAlert} user={this.state.user} updateCourseList={this.addCourseToCourseList} addCourse={this.addCourse} />
 
                   </Fragment>
