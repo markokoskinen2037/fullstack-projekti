@@ -93,7 +93,7 @@ class Course extends React.Component {
             alert("You already have a goal for this course!")
         } else { //Goalia ei ole olemassa, joten pitää luoda uusi sellainen
 
-            this.props.showAlert("Tallennetaan uutta tavoitetta tietokantaan...", true)
+
 
 
 
@@ -108,26 +108,30 @@ class Course extends React.Component {
 
             if (newGoal.target >= 1 && newGoal.target <= 5) { //1-5 kelpaa arvosanaksi
                 console.log("Goal to be created: " + JSON.stringify(newGoal))
+                this.props.showAlert("Tallennetaan uutta tavoitetta tietokantaan...", true)
 
 
                 const response = await goalService
                     .create(newGoal)
 
+                this.props.showAlert("Tavoite tallennettu!")
+
                 console.log("New goal saved:" + JSON.stringify(response.data))
+                //Päivitetään lopuksi state.user
+                const populatedUser = await userService.get(this.props.user._id)
+                this.props.updateUserState(populatedUser)
             } else {
-                alert("Arvosanan tulee olla väliltä 1-5!")
+                this.props.showAlert("Tavoitearvosanan tulee olla väliltä 1-5!")
             }
 
 
-            //Päivitetään lopuksi state.user
-            const populatedUser = await userService.get(this.props.user._id)
-            this.props.updateUserState(populatedUser)
+
 
         }
 
         this.getDifficultyMedian()
         console.log("goalExists => " + this.goalExists())
-        this.props.showAlert("Tavoite tallennettu!")
+
 
     }
 
@@ -249,7 +253,7 @@ class Course extends React.Component {
                 return (
                     <Fragment>
                         <Grid item xs={12}>
-                            <Paper style={{ marginBottom: 10 }}>
+                            <Paper style={{ marginBottom: 15 }}>
                                 <ListItem>
                                     <ListItemText primary={this.props.course.title} />
 
@@ -334,7 +338,6 @@ class Course extends React.Component {
                                         </Tooltip>
                                     ) : (
                                             <Tooltip title="Aktivoi">
-
                                                 <i style={{ color: "green", padding: 5, marginLeft: 20, marginRight: 0 }} onClick={() => this.toggleActive(this.props.course._id)} className="material-icons">check_circle_outline</i>
                                             </Tooltip>
                                         )}
