@@ -90,7 +90,7 @@ class EditCourse extends React.Component {
         //console.log(JSON.stringify(this.state));
 
 
-        if (this.state.editedCourseTitle === "" || this.state.editedCourseLength < 1 || this.state.editedCourseLength > 4 || this.state.editedCourseCredits < 1 ||  this.state.editedCourseCredits > 100 || this.state.goalTarget < 1 || this.state.goalTarget > 5) {
+        if (this.state.editedCourseTitle === "" || this.state.editedCourseLength < 1 || this.state.editedCourseLength > 4 || this.state.editedCourseCredits < 1 || this.state.editedCourseCredits > 100 || this.state.goalTarget < 1 || this.state.goalTarget > 5) {
             this.props.showAlert("Ole hyvä ja tarkista muokkaamasi kentät.")
         } else {
             this.props.showAlert("Muutoksiasi tallennetaan...", true)
@@ -121,6 +121,8 @@ class EditCourse extends React.Component {
 
 
                 })
+
+
 
 
             //Kurssi on nyt päivitetty, seuraavaksi pitää päivittää goal jos tarpeellista
@@ -167,7 +169,7 @@ class EditCourse extends React.Component {
 
 
 
-
+        this.props.showAlert("Muutokset tallennettu!")
 
 
 
@@ -255,6 +257,7 @@ class EditCourse extends React.Component {
                                 onChange={(event) => this.handleFormChange(event)}
                             >
                                 <option value="Helppo">Helppo</option>
+                                <option value="Normaali">Normaali</option>
                                 <option value="Haastava">Haastava</option>
                                 <option value="Vaikea">Vaikea</option>
                             </Select>
