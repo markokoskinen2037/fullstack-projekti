@@ -52,7 +52,7 @@ class NavBar extends React.Component {
                         <Link className="Link" to="/">Opintojen aikatauluttaja</Link>
                     </Typography>
 
-                    <Link className="Link" to="/courses">KURSSIT</Link>
+                    <Link className="Link" to="/courses">Kurssilistaus</Link>
 
 
                     {this.props.user !== null && this.props.user.username === "admin" && <Link className="Link" to="/supersecretadminpage">SUPERSECRETADMINPAGE</Link>}
