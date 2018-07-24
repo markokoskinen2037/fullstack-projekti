@@ -1,15 +1,21 @@
 # Opintojen aikatauluttaja
 Projektini tavoitteena on kehittää yliopisto-opiskelijoille suunnattu aikataulutus järjestelmä auttamaan ajankäytön hallinnassa ja tavoitteiden asettamisessa.
 #### Tärkeimpiä ominaisuuksia ovat:
-- Kurssien luominen,tarkastelu, muokkaus ja poisto
+- Kurssien luominen, tarkastelu, muokkaus ja poisto
+- Tunnuksen luominen ja sovellukseen kirjautuminen
 - Meneillään olevien kurssien valinta
 - Kurssikohtainen vaikeustason ja tavoitteiden määrittely
 - Automaattiset työpäiväkohtaiset tuntiarviot jotka painotetaan käyttäjän kurssille asettaman vaikeustason perusteella.
 
 
+![Kurssilistaus](https://github.com/markokoskinen2037/fullstack-projekti/blob/master/readme_images/kurssilistaus.png?raw=true)
 
-#### Sovelluksen osoite:
+---
+
+#### Sovellus löytyy osoitteesta:
 https://opintojenaikatauluttaja.herokuapp.com/
+
+---
 
 ### Asennusohjeet:
 Ennen kuin aloitat asennusprosessin, varmista, että päätelaitteellasi on asennettu ```npm``` ja ```git```.
@@ -32,6 +38,9 @@ Käyttäen **samaa** juuri kloonaamaasi repositiota, asennetaan myös **frontend
 2. Aja komento ```npm install```
 3. Aja komento ```npm start```
 4. Jos kaikki meni hyvin, näkyy konsolissa ilmoitus ```"Compiled successfully!"```, ja aiemmin asentamaasi backendia käyttävä React sovellus aukeaa oletusselaimessasi automaattisesti.
+
+- Backendiin pääset omalla koneellasi menemällä osoitteeseen: [localhost:3000/api](http://localhost:3001/api)
+- Vastaavasti frontend löytyyy osoitteesta: [localhost:3000](http://localhost:3000)
 
 ---
 ### Aikaa käytetty yhteensä noin : 72h5min
