@@ -1,4 +1,7 @@
 # Opintojen aikatauluttaja
+- [Linkki tuntikirjanpitoon](../)
+- [Linkki asennusohjeisiin](../)
+
 Projektini tavoitteena on kehittää yliopisto-opiskelijoille suunnattu aikataulutus järjestelmä auttamaan ajankäytön hallinnassa ja tavoitteiden asettamisessa.
 #### Tärkeimpiä ominaisuuksia ovat:
 - Kurssien luominen, tarkastelu, muokkaus ja poisto
