@@ -1,6 +1,6 @@
 import React, { Component, Fragment } from 'react'
 
-import { Button, Typography, Tooltip } from "@material-ui/core"
+import { Typography, Tooltip } from "@material-ui/core"
 
 export class DifficultyDisplay extends Component {
     constructor(props) {

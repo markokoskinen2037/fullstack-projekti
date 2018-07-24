@@ -8,7 +8,6 @@ import NavBar from "./mui_components/NavBar"
 import RegisterForm from "./mui_components/RegisterForm"
 import SimpleSnackbar from "./mui_components/SimpleSnackbar"
 import Footer from "./mui_components/Footer"
-import CourseListingInfo from "./mui_components/CourseListingInfo"
 
 import courseService from "./services/courses"
 import userService from "./services/users"
