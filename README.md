@@ -1,9 +1,16 @@
 # Opintojen aikatauluttaja
-- [Linkki asennusohjeisiin (erillinen tiedosto)](https://github.com/markokoskinen2037/fullstack-projekti/blob/master/installation_instructions.md)
-- Koska sovellus toimii kuten mikä tahansa muu nettisivu, ei erillistä käyttöohjetta asennusohjeiden lisäksi tarvita.
-- Tuntikirjanpito ja kokonaistunnit löytyvät tämän tiedoston loppupäästä!
-
 Projektini tavoitteena on kehittää yliopisto-opiskelijoille suunnattu aikataulutus järjestelmä auttamaan ajankäytön hallinnassa ja tavoitteiden asettamisessa.
+
+---
+#### Huomioita lukijalle:
+
+- [Linkki asennusohjeisiin (erillinen tiedosto)](https://github.com/markokoskinen2037/fullstack-projekti/blob/master/installation_instructions.md)
+- Koska sovellus toimii kuten mikä tahansa muu nettisivu, ei erillistä käyttöohjetta asennusohjeiden lisäksi mielestäni tarvita.
+- ***Tuntikirjanpito ja kokonaistunnit** löytyvät tämän tiedoston loppupäästä!
+- Sovellus löytyy osoitteesta: https://opintojenaikatauluttaja.herokuapp.com/
+- ja sen backend: https://opintojenaikatauluttaja.herokuapp.com/api/
+
+
 #### Tärkeimpiä ominaisuuksia ovat:
 - Kurssien luominen, tarkastelu, muokkaus ja poisto
 - Tunnuksen luominen ja sovellukseen kirjautuminen
@@ -14,11 +21,7 @@ Projektini tavoitteena on kehittää yliopisto-opiskelijoille suunnattu aikataul
 
 ![Kurssilistaus](https://github.com/markokoskinen2037/fullstack-projekti/blob/master/readme_images/kurssilistaus.png?raw=true)
 
----
 
-#### Sovellus löytyy osoitteesta:
-https://opintojenaikatauluttaja.herokuapp.com/
-ja sen backend https://opintojenaikatauluttaja.herokuapp.com/api/
 
 
 
