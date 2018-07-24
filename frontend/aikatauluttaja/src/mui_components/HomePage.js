@@ -44,24 +44,19 @@ class HomePage extends React.Component {
               return sum;
             })
             this.setState({ totalCredits: sum })
-
-
-
-
-
           })
 
       }
     } else { //Saatiin user olio propsina joten käytetään sitä.
       this.setState({ user: this.props.user })
+
+      let sum = 0;
+      this.props.user.activeCourses.map(course => {
+        sum = sum + course.credits;
+        return sum;
+      })
+      this.setState({ totalCredits: sum })
     }
-
-
-
-
-
-
-
   }
 
 
