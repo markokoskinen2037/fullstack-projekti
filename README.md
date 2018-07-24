@@ -6,7 +6,7 @@ Projektini tavoitteena on kehittää yliopisto-opiskelijoille suunnattu aikataul
 
 - [Linkki asennusohjeisiin (erillinen tiedosto)](https://github.com/markokoskinen2037/fullstack-projekti/blob/master/installation_instructions.md)
 - Koska sovellus toimii kuten mikä tahansa muu nettisivu, ei erillistä käyttöohjetta asennusohjeiden lisäksi mielestäni tarvita.
-- ***Tuntikirjanpito ja kokonaistunnit** löytyvät tämän tiedoston loppupäästä!
+- **Tuntikirjanpito ja kokonaistunnit** löytyvät tämän tiedoston loppupäästä!
 - Sovellus löytyy osoitteesta: https://opintojenaikatauluttaja.herokuapp.com/
 - ja sen backend: https://opintojenaikatauluttaja.herokuapp.com/api/
 
@@ -29,7 +29,7 @@ Projektini tavoitteena on kehittää yliopisto-opiskelijoille suunnattu aikataul
 
 
 ---
-### Aikaa käytetty yhteensä noin : 72h5min
+### Aikaa käytetty yhteensä noin : 73h20min
 ---
 
 
@@ -61,3 +61,4 @@ Projektini tavoitteena on kehittää yliopisto-opiskelijoille suunnattu aikataul
 | 13.7 | 2h10min | Korjattu automaattinen koodin formatointi (beautify) ja formatoitu sen avulla kaikki tiedostot. Deployatty herokussa parempaan osoitteeseen https://opintojenaikatauluttaja.herokuapp.com/. Korjattu Link komponentit toimimaan myös firefoxilla. Parannettu kirjautuneen käyttäjän etusivun ulkoasua. Korjattu etusivun renderöitymisen hitaus.|
 | 15.7 | 45min | Luotu tarkka sovelluksen käyttöohje. Lisätty uusi vaikeustaso "Normaali". |
 | 17.7 | 2h20min | Yhdenmukaistettu kurssilistauksen kuvakkeiden alkoasua. Refaktoroitu toistuvaa css koodia omaan tiedostoonsa. Parannettu navbarin ulkoasua. Refaktoroitu DifficultyDisplay omaksi komponentikseen. Parannettu ulkoasua lisää sieltä sun täältä. Korjattu bugi uuden tavoitteen asettamisessa. Lisätty ilmoitus kun kurssiin kohdistuvat muutokset on tallennettu.  |
+| 24.7 | 1h15min | Korvattu tietokannan "puppudata" oikealla datalla. Viimeistelty README.md palautuskuntoon laittamalla tiedot loogiseen järjestykseen ja eriyttämällä asennusohjeet omaan tiedostoonsa. Korjattu bugi, jonka johdosta etusivun opintopistemäärää ei näytetty oikein. Poistettu käyttämättömät importit. Tarkistettu ja päivitetty työhön käytetyt kokonaistunnit.  |
