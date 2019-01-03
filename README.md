@@ -1,6 +1,25 @@
 # Opintojen aikatauluttaja
 Projektini tavoitteena on kehittää yliopisto-opiskelijoille suunnattu aikataulutus järjestelmä auttamaan ajankäytön hallinnassa ja tavoitteiden asettamisessa.
 
+-------------------
+
+#### Docker
+Sovellus koostuu backendistä ja frontendistä, molemmille on alikansioissaan olemassa omat Dockerfilet.
+Lisäksi backistä ja frontista on olemassa valmiit imaget:
+- *frontend* https://hub.docker.com/r/markokoskinen2019/opintojenaikatauluttaja_frontend
+- *backend* https://hub.docker.com/r/markokoskinen2019/opintojenaikatauluttaja_backend
+
+Näitä imageita käyttävä docker-compose konfiguraatio löytyy reposition juuresta.
+
+Sovellus on helppo asentaa dockerin avulla seuraavasti:
+1. Asenna docker https://docs.docker.com/install/
+2. Asenna docker-compose https://docs.docker.com/compose/install/
+2. ```wget https://github.com/markokoskinen2037/fullstack-projekti/raw/master/docker-compose.yml```
+3. ```docker-compose up```
+
+Frontend on nyt käynnissä osoitteessa localhost:3000 ja backend osoitteessa localhost:3001.
+
+
 ---
 #### Huomioita lukijalle:
 
