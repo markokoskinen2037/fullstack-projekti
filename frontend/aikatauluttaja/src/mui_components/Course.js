@@ -266,7 +266,7 @@ class Course extends React.Component {
 
                   {this.goalExists() ? ( //Jos goal on olemassa, renderöidään sen tiedot:
                     <Fragment>
-                      <Tooltip title="Laskettu aika (20h/opintopiste)">
+                      <Tooltip title="Laskettu aika, eli päiväkohtainen opiskeluaika (20h/opintopiste)">
                         <Typography
                           variant="body1"
                           style={{ marginRight: "0px" }}
@@ -348,17 +348,20 @@ class Course extends React.Component {
                         </Select>
                       </FormControl>
 
-                      <Button
-                        mini={true}
-                        size="small"
-                        color="inherit"
-                        style={{ marginRight: 50 }}
-                        onClick={() => this.createNewGoal()}
-                      >
-                        <i className="material-icons">save</i>
-                      </Button>
+                      <Tooltip title="Tallenna henkilökohtainen tavoite">
+                        <Button
+                          mini={true}
+                          size="small"
+                          color="inherit"
+                          style={{ marginRight: 50 }}
+                          onClick={() => this.createNewGoal()}
+                        >
+                          <i className="material-icons">save</i>
+                        </Button>
+                      </Tooltip>
                     </Fragment>
                   )}
+
                   <Tooltip title="Kurssista saatavat opintopisteet">
                     <Typography
                       style={{ marginRight: 15, width: "50px" }}
@@ -391,6 +394,7 @@ class Course extends React.Component {
                   </Tooltip>
                   <Tooltip title="Poista kurssi">
                     <i
+                      style={{ cursor: "pointer" }}
                       className="material-icons"
                       onClick={() => this.deleteCourse(this.props.course._id)}
                     >
@@ -402,6 +406,7 @@ class Course extends React.Component {
                     <Tooltip title="Deaktivoi">
                       <i
                         style={{
+                          cursor: "pointer",
                           color: "green",
                           padding: 5,
                           marginLeft: 20,
@@ -417,6 +422,7 @@ class Course extends React.Component {
                     <Tooltip title="Aktivoi">
                       <i
                         style={{
+                          cursor: "pointer",
                           color: "green",
                           padding: 5,
                           marginLeft: 20,
