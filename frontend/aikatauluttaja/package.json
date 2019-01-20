@@ -19,7 +19,7 @@
     "eject": "react-scripts eject",
     "watch": "nodemon index.js"
   },
-  "proxy": "http://localhost:3001",
+  "proxy": "http://backend:3001",
   "devDependencies": {
     "nodemon": "^1.18.1"
   },
