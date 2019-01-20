@@ -1,11 +1,11 @@
-import React, { Fragment } from "react";
-import courseService from "../services/courses";
-import userService from "../services/users";
-import goalService from "../services/goals";
+import React, { Fragment } from 'react'
+import courseService from '../services/courses'
+import userService from '../services/users'
+import goalService from '../services/goals'
 
-import { Input, FormControl, InputLabel, Select } from "@material-ui/core/";
+import { Input, FormControl, InputLabel, Select } from '@material-ui/core/'
 
-import { Link } from "react-router-dom";
+import { Link } from 'react-router-dom'
 
 import {
   ListItem,
@@ -14,28 +14,28 @@ import {
   Button,
   Grid,
   Typography,
-  Tooltip
-} from "@material-ui/core/";
-import DifficultyDisplay from "./DifficultyDisplay";
+  Tooltip,
+} from '@material-ui/core/'
+import DifficultyDisplay from './DifficultyDisplay'
 
 class Course extends React.Component {
   constructor(props) {
-    super(props);
+    super(props)
     this.state = {
       goalTarget: 5,
-      goalDifficulty: "Helppo",
+      goalDifficulty: 'Helppo',
       goalExists: false,
       isActive: false,
       courseMedian: undefined,
-      goals: undefined
-    };
+      goals: undefined,
+    }
   }
 
   handleEnter = e => {
     if (e.which === 13) {
-      alert("todo");
+      alert('todo')
     }
-  };
+  }
 
   deleteCourse = async course_id => {
     if (
@@ -44,15 +44,15 @@ class Course extends React.Component {
     ) {
       //Matchaa, sallitaan poisto
       //Poistetaan kurssi tietokannasta
-      courseService.removeById(course_id, this.props.user._id);
+      courseService.removeById(course_id, this.props.user._id)
       //TODO Poista kurssi statesta
-      this.props.removeCourseFromCourseListState(course_id);
+      this.props.removeCourseFromCourseListState(course_id)
       //reloadCoursesFromBackend() //Tää pitää korjata lokaalilla staten manipulaatiolla
     } else {
-      this.props.showAlert("Sinulla ei oikeuksia poistaa tätä kurssia!");
+      this.props.showAlert('Sinulla ei oikeuksia poistaa tätä kurssia!')
       //alert(this.props.user._id + "   " + this.props.course.user._id)
     }
-  };
+  }
 
   toggleActive = async course_id => {
     if (
@@ -62,34 +62,34 @@ class Course extends React.Component {
 
       var newList = this.props.user.activeCourses.filter(
         course => course._id !== course_id
-      ); //Poistetaan kurssi aktiivisten listasta
-      this.props.user.activeCourses = newList;
+      ) //Poistetaan kurssi aktiivisten listasta
+      this.props.user.activeCourses = newList
     } else {
       //Jos aktivoitava kurssi ei ole listalla
 
       this.props.user.activeCourses = this.props.user.activeCourses.concat(
         this.props.course
-      ); //Lisätään aktivoitava kurssi listalle
+      ) //Lisätään aktivoitava kurssi listalle
     }
 
     let uusiAktiivistenKurssienLista = {
-      activeCourses: this.props.user.activeCourses
-    };
+      activeCourses: this.props.user.activeCourses,
+    }
 
-    let temp = !this.isActive;
-    this.setState({ isActive: temp });
+    let temp = !this.isActive
+    this.setState({ isActive: temp })
 
-    await userService.update(this.props.user._id, uusiAktiivistenKurssienLista);
+    await userService.update(this.props.user._id, uusiAktiivistenKurssienLista)
 
-    const populatedUser = await userService.get(this.props.user._id);
+    const populatedUser = await userService.get(this.props.user._id)
 
-    this.props.updateUserState(populatedUser);
-  };
+    this.props.updateUserState(populatedUser)
+  }
 
   createNewGoal = async () => {
     if (this.goalExists()) {
       //Jos goal on jo olemassa, ei edes yritetä luoda uutta koska se veisi aikaa ja resursseja.
-      alert("You already have a goal for this course!");
+      alert('You already have a goal for this course!')
     } else {
       //Goalia ei ole olemassa, joten pitää luoda uusi sellainen
 
@@ -97,127 +97,127 @@ class Course extends React.Component {
         courseid: this.props.course._id,
         userid: this.props.user._id,
         target: this.state.goalTarget,
-        difficulty: this.state.goalDifficulty
-      };
+        difficulty: this.state.goalDifficulty,
+      }
 
       if (newGoal.target >= 1 && newGoal.target <= 5) {
         //1-5 kelpaa arvosanaksi
         this.props.showAlert(
-          "Tallennetaan uutta tavoitetta tietokantaan...",
+          'Tallennetaan uutta tavoitetta tietokantaan...',
           true
-        );
+        )
 
-        await goalService.create(newGoal);
+        await goalService.create(newGoal)
 
-        this.props.showAlert("Tavoite tallennettu!");
+        this.props.showAlert('Tavoite tallennettu!')
 
         //Päivitetään lopuksi state.user
-        const populatedUser = await userService.get(this.props.user._id);
-        this.props.updateUserState(populatedUser);
+        const populatedUser = await userService.get(this.props.user._id)
+        this.props.updateUserState(populatedUser)
       } else {
-        this.props.showAlert("Tavoitearvosanan tulee olla väliltä 1-5!");
+        this.props.showAlert('Tavoitearvosanan tulee olla väliltä 1-5!')
       }
     }
 
-    this.getDifficultyMedian();
-  };
+    this.getDifficultyMedian()
+  }
 
   goalExists = () => {
     const foundGoal = this.props.user.goals.find(
       goalObject =>
         goalObject.course === this.props.course._id &&
         goalObject.user === this.props.user._id
-    );
+    )
 
     if (foundGoal === undefined) {
-      return false;
+      return false
     } else {
-      return true;
+      return true
     }
-  };
+  }
 
   isActive = () => {
     const result = this.props.user.activeCourses.find(
       courseObject => courseObject._id === this.props.course._id
-    );
+    )
 
     if (result === undefined) {
-      return false;
+      return false
     } else {
-      return true;
+      return true
     }
-  };
+  }
 
   getGoal = () => {
     const foundGoal = this.props.user.goals.find(
       goalObject =>
         goalObject.course === this.props.course._id &&
         goalObject.user === this.props.user._id
-    );
+    )
 
-    return foundGoal;
-  };
+    return foundGoal
+  }
 
   handleFormChange(event) {
     //Hoidetaan kenttiin kohdistuvat muutokset stateen
-    const name = event.target.name;
+    const name = event.target.name
     this.setState({
-      [name]: event.target.value
-    });
+      [name]: event.target.value,
+    })
   }
 
   getCourseHourValue() {
     switch (this.getGoal().difficulty) {
-      case "Helppo":
-        return 15;
-      case "Normaali":
-        return 20;
-      case "Haastava":
-        return 25;
-      case "Vaikea":
-        return 30;
+      case 'Helppo':
+        return 15
+      case 'Normaali':
+        return 20
+      case 'Haastava':
+        return 25
+      case 'Vaikea':
+        return 30
       default:
-        return "Unknown goal.difficulty!";
+        return 'Unknown goal.difficulty!'
     }
   }
 
   getDifficultyMedian = async () => {
-    let allGoals = this.props.goals; //Saadaan allGoals propsina niin ei tarvitse hakea joka kurssin kohdalla uusia tietokannasta
+    let allGoals = this.props.goals //Saadaan allGoals propsina niin ei tarvitse hakea joka kurssin kohdalla uusia tietokannasta
 
-    let relevantGoals = [];
+    let relevantGoals = []
     allGoals.forEach(goal => {
       if (goal.course === this.props.course._id) {
-        relevantGoals.push(goal);
+        relevantGoals.push(goal)
       }
-    });
+    })
 
-    let sum = 0;
+    let sum = 0
     relevantGoals.forEach(goal => {
-      if (goal.difficulty === "Helppo") {
-        sum += 1;
-      } else if (goal.difficulty === "Haastava") {
-        sum += 2;
-      } else if (goal.difficulty === "Vaikea") {
-        sum += 3;
+      if (goal.difficulty === 'Helppo') {
+        sum += 1
+      } else if (goal.difficulty === 'Haastava') {
+        sum += 2
+      } else if (goal.difficulty === 'Vaikea') {
+        sum += 3
       }
-    });
+    })
 
-    let median = sum / relevantGoals.length;
+    let median = sum / relevantGoals.length
 
-    let result = "";
+    let result = ''
     if (median < 1.5) {
-      result = "Helppo (" + relevantGoals.length + ")";
+      result = 'Helppo (' + relevantGoals.length + ')'
     } else if (median < 2.5) {
-      result = "Haastava (" + relevantGoals.length + ")";
+      result = 'Haastava (' + relevantGoals.length + ')'
     } else {
-      result = "Vaikea (" + relevantGoals.length + ")";
+      result = 'Vaikea (' + relevantGoals.length + ')'
     }
 
-    this.setState({ courseMedian: result });
-  };
+    this.setState({ courseMedian: result })
+  }
 
   componentDidMount() {
-    this.getDifficultyMedian();
+    this.getDifficultyMedian()
   }
 
   render() {
@@ -248,7 +248,7 @@ class Course extends React.Component {
                       <Tooltip title="Laskettu aika, eli päiväkohtainen opiskeluaika (20h/opintopiste)">
                         <Typography
                           variant="body1"
-                          style={{ marginRight: "0px" }}
+                          style={{ marginRight: '0px' }}
                         >
                           {Math.floor(
                             ((this.props.course.credits * 20) /
@@ -265,7 +265,7 @@ class Course extends React.Component {
                       <Tooltip title="Henkilökohtainen haastavuuden perusteella painotettu opiskeluaika">
                         <Typography
                           variant="body1"
-                          style={{ marginRight: "50px", width: "25px" }}
+                          style={{ marginRight: '50px', width: '25px' }}
                         >
                           {Math.floor(
                             ((this.props.course.credits *
@@ -343,7 +343,7 @@ class Course extends React.Component {
 
                   <Tooltip title="Kurssista saatavat opintopisteet">
                     <Typography
-                      style={{ marginRight: 15, width: "50px" }}
+                      style={{ marginRight: 15, width: '50px' }}
                       variant="body1"
                     >
                       {this.props.course.credits} op
@@ -351,7 +351,7 @@ class Course extends React.Component {
                   </Tooltip>
 
                   <Tooltip title="Kurssin pituus">
-                    <Typography style={{ width: "7%%" }} variant="body1">
+                    <Typography style={{ width: '7%%' }} variant="body1">
                       {this.props.course.length} periodia
                     </Typography>
                   </Tooltip>
@@ -360,10 +360,10 @@ class Course extends React.Component {
                     <Link to={`/courses/${this.props.course._id}`}>
                       <i
                         style={{
-                          color: "black",
+                          color: 'black',
                           padding: 5,
                           marginLeft: 20,
-                          marginRight: 20
+                          marginRight: 20,
                         }}
                         className="material-icons"
                       >
@@ -373,7 +373,7 @@ class Course extends React.Component {
                   </Tooltip>
                   <Tooltip title="Poista kurssi">
                     <i
-                      style={{ cursor: "pointer" }}
+                      style={{ cursor: 'pointer' }}
                       className="material-icons"
                       onClick={() => this.deleteCourse(this.props.course._id)}
                     >
@@ -385,11 +385,11 @@ class Course extends React.Component {
                     <Tooltip title="Deaktivoi">
                       <i
                         style={{
-                          cursor: "pointer",
-                          color: "green",
+                          cursor: 'pointer',
+                          color: 'green',
                           padding: 5,
                           marginLeft: 20,
-                          marginRight: 0
+                          marginRight: 0,
                         }}
                         onClick={() => this.toggleActive(this.props.course._id)}
                         className="material-icons"
@@ -401,11 +401,11 @@ class Course extends React.Component {
                     <Tooltip title="Aktivoi">
                       <i
                         style={{
-                          cursor: "pointer",
-                          color: "green",
+                          cursor: 'pointer',
+                          color: 'green',
                           padding: 5,
                           marginLeft: 20,
-                          marginRight: 0
+                          marginRight: 0,
                         }}
                         onClick={() => this.toggleActive(this.props.course._id)}
                         className="material-icons"
@@ -418,10 +418,10 @@ class Course extends React.Component {
               </Paper>
             </Grid>
           </Fragment>
-        );
+        )
       }
     }
-    return null; //Jos filter ei sovi kurssiin palautetaan null.
+    return null //Jos filter ei sovi kurssiin palautetaan null.
   }
 }
-export default Course;
+export default Course

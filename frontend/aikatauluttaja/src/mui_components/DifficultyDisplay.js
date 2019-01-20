@@ -1,32 +1,32 @@
-import React, { Component, Fragment } from "react";
+import React, { Component, Fragment } from 'react'
 
-import { Typography, Tooltip } from "@material-ui/core";
+import { Typography, Tooltip } from '@material-ui/core'
 
 export class DifficultyDisplay extends Component {
   constructor(props) {
-    super(props);
+    super(props)
 
-    this.state = {};
+    this.state = {}
   }
 
   render() {
-    let color = undefined;
+    let color = undefined
 
     switch (this.props.difficulty) {
-      case "Helppo":
-        color = "#00bf00";
-        break;
-      case "Normaali":
-        color = "yellow";
-        break;
-      case "Haastava":
-        color = "#ff8100";
-        break;
-      case "Vaikea":
-        color = "red";
-        break;
+      case 'Helppo':
+        color = '#00bf00'
+        break
+      case 'Normaali':
+        color = 'yellow'
+        break
+      case 'Haastava':
+        color = '#ff8100'
+        break
+      case 'Vaikea':
+        color = 'red'
+        break
       default:
-        color = "black";
+        color = 'black'
     }
 
     return (
@@ -38,10 +38,10 @@ export class DifficultyDisplay extends Component {
               borderRadius: 20,
               padding: 10,
               width: 200,
-              textAlign: "center",
-              color: "black",
+              textAlign: 'center',
+              color: 'black',
               backgroundColor: color,
-              fontWeight: 100
+              fontWeight: 100,
             }}
             variant="body1"
           >
@@ -49,8 +49,8 @@ export class DifficultyDisplay extends Component {
           </Typography>
         </Tooltip>
       </Fragment>
-    );
+    )
   }
 }
 
-export default DifficultyDisplay;
+export default DifficultyDisplay

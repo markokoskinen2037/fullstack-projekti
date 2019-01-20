@@ -1,30 +1,30 @@
-import React, { Fragment } from "react";
-import { Link } from "react-router-dom";
+import React, { Fragment } from 'react'
+import { Link } from 'react-router-dom'
 
-import AppBar from "@material-ui/core/AppBar";
-import Toolbar from "@material-ui/core/Toolbar";
-import Typography from "@material-ui/core/Typography";
-import Button from "@material-ui/core/Button";
-import Grid from "@material-ui/core/Grid";
-import { withRouter } from "react-router-dom";
+import AppBar from '@material-ui/core/AppBar'
+import Toolbar from '@material-ui/core/Toolbar'
+import Typography from '@material-ui/core/Typography'
+import Button from '@material-ui/core/Button'
+import Grid from '@material-ui/core/Grid'
+import { withRouter } from 'react-router-dom'
 
-import "../styles/NavBarStyle.css";
+import '../styles/NavBarStyle.css'
 
 class NavBar extends React.Component {
   constructor(props) {
-    super(props);
-    this.state = {};
+    super(props)
+    this.state = {}
   }
 
   handleLogOut = event => {
-    event.preventDefault();
-    this.props.showAlert("Uloskirjautuminen onnistui!");
+    event.preventDefault()
+    this.props.showAlert('Uloskirjautuminen onnistui!')
 
-    window.localStorage.clear();
-    this.props.clearState();
+    window.localStorage.clear()
+    this.props.clearState()
 
-    this.props.history.push("/");
-  };
+    this.props.history.push('/')
+  }
 
   render() {
     return (
@@ -42,7 +42,7 @@ class NavBar extends React.Component {
             </Link>
           )}
 
-          {this.props.user !== null && this.props.user.username === "admin" && (
+          {this.props.user !== null && this.props.user.username === 'admin' && (
             <Link className="Link" to="/supersecretadminpage">
               SUPERSECRETADMINPAGE
             </Link>
@@ -50,7 +50,7 @@ class NavBar extends React.Component {
 
           {this.props.user ? (
             <Fragment>
-              <Grid item style={{ position: "absolute", right: "20px" }}>
+              <Grid item style={{ position: 'absolute', right: '20px' }}>
                 <Typography align="right">
                   <Link className="Link_username" to="/userinfo">
                     {this.props.user.username}
@@ -60,7 +60,7 @@ class NavBar extends React.Component {
                     variant="raised"
                     color="default"
                   >
-                    {" "}
+                    {' '}
                     Kirjaudu ulos
                   </Button>
                 </Typography>
@@ -69,8 +69,8 @@ class NavBar extends React.Component {
           ) : null}
         </Toolbar>
       </AppBar>
-    );
+    )
   }
 }
 
-export default withRouter(NavBar);
+export default withRouter(NavBar)

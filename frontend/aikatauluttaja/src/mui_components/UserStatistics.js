@@ -1,21 +1,21 @@
-import React, { Component, Fragment } from "react";
+import React, { Component, Fragment } from 'react'
 
-import Paper from "@material-ui/core/Paper";
-import Typography from "@material-ui/core/Typography";
-import Grid from "@material-ui/core/Grid";
+import Paper from '@material-ui/core/Paper'
+import Typography from '@material-ui/core/Typography'
+import Grid from '@material-ui/core/Grid'
 
 class UserStatistics extends Component {
   constructor(props) {
-    super(props);
+    super(props)
 
     this.state = {
-      user: this.props.getLoggedInUser()
-    };
+      user: this.props.getLoggedInUser(),
+    }
   }
 
   render() {
     if (this.state.user === null) {
-      return null;
+      return null
     } else {
       return (
         <Fragment>
@@ -25,7 +25,7 @@ class UserStatistics extends Component {
                 padding: 10,
                 marginTop: 10,
                 marginLeft: 10,
-                marginRight: 10
+                marginRight: 10,
               }}
               elevation={4}
             >
@@ -55,9 +55,9 @@ class UserStatistics extends Component {
             </Paper>
           </Grid>
         </Fragment>
-      );
+      )
     }
   }
 }
 
-export default UserStatistics;
+export default UserStatistics

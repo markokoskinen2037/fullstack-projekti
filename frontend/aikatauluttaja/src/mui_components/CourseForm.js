@@ -4,88 +4,88 @@ import {
   FormControl,
   Paper,
   Button,
-  Grid
-} from "@material-ui/core/";
+  Grid,
+} from '@material-ui/core/'
 
-import React, { Fragment } from "react";
-import courseService from "../services/courses";
+import React, { Fragment } from 'react'
+import courseService from '../services/courses'
 
 class CourseForm extends React.Component {
   constructor(props) {
-    super(props);
+    super(props)
     this.state = {
-      newCourseName: "",
+      newCourseName: '',
       newCourseCredits: 0,
-      newCourseLength: 0
-    };
+      newCourseLength: 0,
+    }
   }
 
   handleFormChange(event) {
-    const name = event.target.name;
+    const name = event.target.name
     this.setState({
-      [name]: event.target.value
-    });
+      [name]: event.target.value,
+    })
   }
 
   addCourse = event => {
-    event.preventDefault();
+    event.preventDefault()
 
     const courseObject = {
       title: this.state.newCourseName,
       length: this.state.newCourseLength,
       credits: this.state.newCourseCredits,
-      userId: this.props.user._id
-    };
+      userId: this.props.user._id,
+    }
 
-    let errors = 0;
+    let errors = 0
 
-    if (courseObject.title === "") {
-      alert("Kurssilla tulee olla nimi!");
-      errors++;
+    if (courseObject.title === '') {
+      alert('Kurssilla tulee olla nimi!')
+      errors++
     }
 
     if (courseObject.length < 1 || courseObject.length > 4) {
-      alert("Kurssin pituuden tulee olla väliltä 1-4!");
-      errors++;
+      alert('Kurssin pituuden tulee olla väliltä 1-4!')
+      errors++
     }
 
     if (courseObject.credits <= 0 || courseObject.credits >= 100) {
-      alert("Kurssin opintopistemäärän tulee olla väliltä 1-99!");
-      errors++;
+      alert('Kurssin opintopistemäärän tulee olla väliltä 1-99!')
+      errors++
     }
 
     if (errors === 0) {
       courseService.create(courseObject).then(response => {
         this.setState({
-          newCourseName: "",
+          newCourseName: '',
           newCourseCredits: 0,
-          newCourseLength: 0
-        });
-        this.props.updateCourseList(response.data);
-      });
+          newCourseLength: 0,
+        })
+        this.props.updateCourseList(response.data)
+      })
     }
-  };
+  }
 
   handleEnter = e => {
     if (e.which === 13) {
-      this.addCourse(e);
+      this.addCourse(e)
     }
-  };
+  }
 
   render() {
     if (this.props.user === null) {
-      return null;
+      return null
     } else {
       return (
         <Fragment>
-          <Grid style={{ margin: "20px", marginBottom: 100 }} item xs={12}>
+          <Grid style={{ margin: '20px', marginBottom: 100 }} item xs={12}>
             <Paper
               style={{
                 padding: 0,
                 marginTop: 10,
                 marginLeft: 10,
                 marginRight: 10,
-                paddingTop: 10
+                paddingTop: 10,
               }}
             >
               <FormControl
@@ -104,7 +104,7 @@ class CourseForm extends React.Component {
 
               <FormControl
                 onKeyPress={e => this.handleEnter(e)}
-                style={{ marginLeft: 10, width: "135px" }}
+                style={{ marginLeft: 10, width: '135px' }}
               >
                 <InputLabel htmlFor="length-simple">
                   Pituus periodeissa
@@ -120,7 +120,7 @@ class CourseForm extends React.Component {
 
               <FormControl
                 onKeyPress={e => this.handleEnter(e)}
-                style={{ marginLeft: 10, width: "132px" }}
+                style={{ marginLeft: 10, width: '132px' }}
               >
                 <InputLabel htmlFor="credits-simple">
                   Opintopistemäärä
@@ -147,9 +147,9 @@ class CourseForm extends React.Component {
             </Paper>
           </Grid>
         </Fragment>
-      );
+      )
     }
   }
 }
 
-export default CourseForm;
+export default CourseForm

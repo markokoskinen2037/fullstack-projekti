@@ -5,18 +5,18 @@ import {
   FormControl,
   Paper,
   Button,
-  Grid
-} from "@material-ui/core/";
+  Grid,
+} from '@material-ui/core/'
 
-import React, { Fragment } from "react";
-import courseService from "../services/courses";
-import goalService from "../services/goals";
-import userService from "../services/users";
-import { withRouter } from "react-router-dom";
+import React, { Fragment } from 'react'
+import courseService from '../services/courses'
+import goalService from '../services/goals'
+import userService from '../services/users'
+import { withRouter } from 'react-router-dom'
 
 class EditCourse extends React.Component {
   constructor(props) {
-    super(props);
+    super(props)
 
     if (this.props.course !== undefined) {
       this.state = {
@@ -24,30 +24,30 @@ class EditCourse extends React.Component {
         editedCourseTitle: this.props.course.title,
         editedCourseCredits: this.props.course.credits,
         editedCourseLength: this.props.course.length,
-        editedCourseGoalTarget: "goal not found...",
-        editedCourseGoalDifficulty: "goal not found...",
+        editedCourseGoalTarget: 'goal not found...',
+        editedCourseGoalDifficulty: 'goal not found...',
         currentGoal: undefined,
         goalTarget: 5,
-        goalDifficulty: "Helppo"
-      };
+        goalDifficulty: 'Helppo',
+      }
     } else {
       this.state = {
         editedCourseId: undefined,
         editedCourseTitle: undefined,
         editedCourseCredits: undefined,
         editedCourseLength: undefined,
-        editedCourseGoalTarget: "goal not found...",
+        editedCourseGoalTarget: 'goal not found...',
         currentGoal: undefined,
-        goalTarget: undefined
-      };
+        goalTarget: undefined,
+      }
     }
   }
 
   handleFormChange(event) {
-    const name = event.target.name;
+    const name = event.target.name
     this.setState({
-      [name]: event.target.value
-    });
+      [name]: event.target.value,
+    })
   }
 
   createNewGoal = async () => {
@@ -55,27 +55,27 @@ class EditCourse extends React.Component {
       courseid: this.props.course._id,
       userid: this.props.user._id,
       target: this.state.goalTarget,
-      difficulty: this.state.goalDifficulty
-    };
+      difficulty: this.state.goalDifficulty,
+    }
 
     if (newGoal.target >= 1 && newGoal.target <= 5) {
       //1-5 kelpaa arvosanaksi
-      await goalService.create(newGoal);
+      await goalService.create(newGoal)
     } else {
-      alert("Arvosanan tulee olla väliltä 1-5!");
+      alert('Arvosanan tulee olla väliltä 1-5!')
     }
 
     //Päivitetään lopuksi state.user
 
-    const populatedUser = await userService.get(this.props.user._id);
-    this.props.updateUserState(populatedUser);
+    const populatedUser = await userService.get(this.props.user._id)
+    this.props.updateUserState(populatedUser)
 
-    this.props.history.push("/courses");
-  };
+    this.props.history.push('/courses')
+  }
 
   updateCourse = async e => {
     if (
-      this.state.editedCourseTitle === "" ||
+      this.state.editedCourseTitle === '' ||
       this.state.editedCourseLength < 1 ||
       this.state.editedCourseLength > 4 ||
       this.state.editedCourseCredits < 1 ||
@@ -83,11 +83,11 @@ class EditCourse extends React.Component {
       this.state.goalTarget < 1 ||
       this.state.goalTarget > 5
     ) {
-      this.props.showAlert("Ole hyvä ja tarkista muokkaamasi kentät.");
+      this.props.showAlert('Ole hyvä ja tarkista muokkaamasi kentät.')
     } else {
-      this.props.showAlert("Muutoksiasi tallennetaan...", true);
+      this.props.showAlert('Muutoksiasi tallennetaan...', true)
 
-      e.preventDefault();
+      e.preventDefault()
 
       //alert(this.state.editedCourseId)
 
@@ -96,23 +96,23 @@ class EditCourse extends React.Component {
         _id: this.state.editedCourseId,
         title: this.state.editedCourseTitle,
         length: this.state.editedCourseLength,
-        credits: this.state.editedCourseCredits
-      };
+        credits: this.state.editedCourseCredits,
+      }
 
       courseService //Otetaan yhteys kurssiPalveluun
         .update(editedCourse._id, editedCourse) //Korvataan vanhat kunssin tiedot uusilla tietokannassa
         .then(response => {
           // this.props.reloadCoursesFromBackend() //Tämä on kömpelö ja aikaa vievä tapa päivittää tilassa olevat kurssit...
 
-          this.props.updateCourseState(response);
-        });
+          this.props.updateCourseState(response)
+        })
 
       //Kurssi on nyt päivitetty, seuraavaksi pitää päivittää goal jos tarpeellista
       //alert("hello")
 
-      if (this.state.editedCourseGoalTarget === "goal not found...") {
+      if (this.state.editedCourseGoalTarget === 'goal not found...') {
         //alert("creating new goal...")
-        this.createNewGoal();
+        this.createNewGoal()
       }
 
       if (!isNaN(this.state.editedCourseGoalTarget)) {
@@ -126,56 +126,56 @@ class EditCourse extends React.Component {
             courseid: this.props.course._id,
             userid: this.props.user._id,
             target: this.state.goalTarget,
-            difficulty: this.state.goalDifficulty
-          };
+            difficulty: this.state.goalDifficulty,
+          }
 
-          await goalService.update(this.state.currentGoal._id, tempGoal);
+          await goalService.update(this.state.currentGoal._id, tempGoal)
 
-          let updatedUser = await userService.get(this.props.user._id);
-          this.props.showAlert("Muutokset tallennettu!");
+          let updatedUser = await userService.get(this.props.user._id)
+          this.props.showAlert('Muutokset tallennettu!')
 
-          this.props.updateUserState(updatedUser);
-          this.props.history.push("/courses");
+          this.props.updateUserState(updatedUser)
+          this.props.history.push('/courses')
         } else {
-          alert("Tavoitearvosanan tulee olla väliltä 1-5");
-          this.setState({ editedCourseGoalTarget: 1 });
+          alert('Tavoitearvosanan tulee olla väliltä 1-5')
+          this.setState({ editedCourseGoalTarget: 1 })
         }
       }
     }
 
-    this.props.showAlert("Muutokset tallennettu!");
-  };
+    this.props.showAlert('Muutokset tallennettu!')
+  }
 
   handleEnter = e => {
     if (e.which === 13) {
-      this.updateCourse(e);
+      this.updateCourse(e)
     }
-  };
+  }
 
   getGoalValue = () => {
     const foundGoal = this.props.user.goals.find(
       goalObject => goalObject.course === this.props.course._id
-    );
+    )
 
-    this.setState({ currentGoal: foundGoal });
+    this.setState({ currentGoal: foundGoal })
 
     if (foundGoal !== undefined) {
       this.setState({
         editedCourseGoalTarget: foundGoal.target,
         goalDifficulty: foundGoal.difficulty,
-        goalTarget: foundGoal.target
-      });
+        goalTarget: foundGoal.target,
+      })
     }
-  };
+  }
 
   componentDidMount = () => {
     if (this.state.editedCourseId !== undefined) {
-      this.getGoalValue();
+      this.getGoalValue()
     } else {
       //Jos käyttäjä painaa f5 ja tila nollaantuu mennään suosiolla takaisin kurssilistaukseen.
-      this.props.history.push("/courses");
+      this.props.history.push('/courses')
     }
-  };
+  }
 
   render() {
     return (
@@ -187,7 +187,7 @@ class EditCourse extends React.Component {
               marginTop: 10,
               marginLeft: 10,
               marginRight: 10,
-              paddingTop: 10
+              paddingTop: 10,
             }}
           >
             <FormControl
@@ -206,7 +206,7 @@ class EditCourse extends React.Component {
 
             <FormControl
               onKeyPress={e => this.handleEnter(e)}
-              style={{ marginLeft: 10, width: "135px" }}
+              style={{ marginLeft: 10, width: '135px' }}
             >
               <InputLabel htmlFor="length-simple">
                 Pituus periodeissa
@@ -222,7 +222,7 @@ class EditCourse extends React.Component {
 
             <FormControl
               onKeyPress={e => this.handleEnter(e)}
-              style={{ marginLeft: 10, width: "135px" }}
+              style={{ marginLeft: 10, width: '135px' }}
             >
               <InputLabel htmlFor="credits-simple">Opintopistemäärä</InputLabel>
               <Input
@@ -236,7 +236,7 @@ class EditCourse extends React.Component {
 
             <FormControl
               onKeyPress={e => this.handleEnter(e)}
-              style={{ marginLeft: 10, width: "135px" }}
+              style={{ marginLeft: 10, width: '135px' }}
             >
               <InputLabel htmlFor="goal-simple">Tavoitearvosana</InputLabel>
               <Input
@@ -281,8 +281,8 @@ class EditCourse extends React.Component {
           </Paper>
         </Grid>
       </Fragment>
-    );
+    )
   }
 }
 
-export default withRouter(EditCourse);
+export default withRouter(EditCourse)
