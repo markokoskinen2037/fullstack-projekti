@@ -20,7 +20,6 @@ class NavBar extends React.Component {
     event.preventDefault();
     this.props.showAlert("Uloskirjautuminen onnistui!");
 
-    console.log("deleting all user info from local cache");
     window.localStorage.clear();
     this.props.clearState();
 

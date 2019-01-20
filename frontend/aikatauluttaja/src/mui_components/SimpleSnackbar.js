@@ -30,7 +30,6 @@ class SimpleSnackbar extends React.Component {
 
     this.setState({ open: false });
     this.props.resetAlert();
-    console.log("Resetting alert  from SnackBar-component!");
   };
 
   componentDidMount() {

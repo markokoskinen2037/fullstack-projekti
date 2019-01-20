@@ -38,8 +38,6 @@ class Course extends React.Component {
   };
 
   deleteCourse = async course_id => {
-    console.log("Deleting course from database...");
-
     if (
       this.props.user._id === this.props.course.user ||
       this.props.user._id === this.props.course.user._id
@@ -49,7 +47,6 @@ class Course extends React.Component {
       courseService.removeById(course_id, this.props.user._id);
       //TODO Poista kurssi statesta
       this.props.removeCourseFromCourseListState(course_id);
-      console.log("removal completed");
       //reloadCoursesFromBackend() //Tää pitää korjata lokaalilla staten manipulaatiolla
     } else {
       this.props.showAlert("Sinulla ei oikeuksia poistaa tätä kurssia!");
@@ -62,7 +59,6 @@ class Course extends React.Component {
       this.props.user.activeCourses.find(course => course._id === course_id)
     ) {
       //Jos aktivoitava kurssi on listalla
-      console.log("deactivating...");
 
       var newList = this.props.user.activeCourses.filter(
         course => course._id !== course_id
@@ -70,7 +66,6 @@ class Course extends React.Component {
       this.props.user.activeCourses = newList;
     } else {
       //Jos aktivoitava kurssi ei ole listalla
-      console.log("activating...");
 
       this.props.user.activeCourses = this.props.user.activeCourses.concat(
         this.props.course
@@ -92,15 +87,11 @@ class Course extends React.Component {
   };
 
   createNewGoal = async () => {
-    console.log("goalExists => " + this.goalExists());
-
     if (this.goalExists()) {
       //Jos goal on jo olemassa, ei edes yritetä luoda uutta koska se veisi aikaa ja resursseja.
       alert("You already have a goal for this course!");
     } else {
       //Goalia ei ole olemassa, joten pitää luoda uusi sellainen
-
-      console.log("Creating a new goal for you!");
 
       const newGoal = {
         courseid: this.props.course._id,
@@ -111,17 +102,15 @@ class Course extends React.Component {
 
       if (newGoal.target >= 1 && newGoal.target <= 5) {
         //1-5 kelpaa arvosanaksi
-        console.log("Goal to be created: " + JSON.stringify(newGoal));
         this.props.showAlert(
           "Tallennetaan uutta tavoitetta tietokantaan...",
           true
         );
 
-        const response = await goalService.create(newGoal);
+        await goalService.create(newGoal);
 
         this.props.showAlert("Tavoite tallennettu!");
 
-        console.log("New goal saved:" + JSON.stringify(response.data));
         //Päivitetään lopuksi state.user
         const populatedUser = await userService.get(this.props.user._id);
         this.props.updateUserState(populatedUser);
@@ -131,7 +120,6 @@ class Course extends React.Component {
     }
 
     this.getDifficultyMedian();
-    console.log("goalExists => " + this.goalExists());
   };
 
   goalExists = () => {
@@ -140,10 +128,6 @@ class Course extends React.Component {
         goalObject.course === this.props.course._id &&
         goalObject.user === this.props.user._id
     );
-
-    //console.log(this.props.course._id + "    " + this.props.user._id)
-
-    //console.log(foundGoal)
 
     if (foundGoal === undefined) {
       return false;
@@ -176,8 +160,6 @@ class Course extends React.Component {
 
   handleFormChange(event) {
     //Hoidetaan kenttiin kohdistuvat muutokset stateen
-    //console.log("called handleFormChange")
-    //console.log(event.target.name)
     const name = event.target.name;
     this.setState({
       [name]: event.target.value
@@ -205,7 +187,6 @@ class Course extends React.Component {
     let relevantGoals = [];
     allGoals.forEach(goal => {
       if (goal.course === this.props.course._id) {
-        //console.log(goal.difficulty);
         relevantGoals.push(goal);
       }
     });
@@ -222,8 +203,6 @@ class Course extends React.Component {
     });
 
     let median = sum / relevantGoals.length;
-
-    //console.log("Median is:  " + median);
 
     let result = "";
     if (median < 1.5) {

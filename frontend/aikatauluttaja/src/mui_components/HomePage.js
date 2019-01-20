@@ -21,13 +21,11 @@ class HomePage extends React.Component {
         const userFromLocalStorage = JSON.parse(
           window.localStorage.getItem("user")
         );
-        console.log(userFromLocalStorage._id);
-        console.log("Getting user info from backend");
+
         userService
           .get(userFromLocalStorage._id)
           .then(user => {
             this.setState({ user });
-            console.log("Got user from backend!");
             console.table(this.state.user);
           })
           .then(res => {

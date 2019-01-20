@@ -26,7 +26,7 @@ export class DifficultyDisplay extends Component {
         color = "red";
         break;
       default:
-        console.log("Undefined color");
+        color = "black";
     }
 
     return (

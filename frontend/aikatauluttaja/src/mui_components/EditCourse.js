@@ -44,7 +44,6 @@ class EditCourse extends React.Component {
   }
 
   handleFormChange(event) {
-    //console.log(event.target.value)
     const name = event.target.name;
     this.setState({
       [name]: event.target.value
@@ -52,8 +51,6 @@ class EditCourse extends React.Component {
   }
 
   createNewGoal = async () => {
-    console.log("Creating a new goal for you!");
-
     const newGoal = {
       courseid: this.props.course._id,
       userid: this.props.user._id,
@@ -63,10 +60,7 @@ class EditCourse extends React.Component {
 
     if (newGoal.target >= 1 && newGoal.target <= 5) {
       //1-5 kelpaa arvosanaksi
-      console.log("Goal to be created: " + JSON.stringify(newGoal));
-      const response = await goalService.create(newGoal);
-
-      console.log("New goal saved:" + JSON.stringify(response.data));
+      await goalService.create(newGoal);
     } else {
       alert("Arvosanan tulee olla väliltä 1-5!");
     }
@@ -80,8 +74,6 @@ class EditCourse extends React.Component {
   };
 
   updateCourse = async e => {
-    //console.log(JSON.stringify(this.state));
-
     if (
       this.state.editedCourseTitle === "" ||
       this.state.editedCourseLength < 1 ||
@@ -107,13 +99,9 @@ class EditCourse extends React.Component {
         credits: this.state.editedCourseCredits
       };
 
-      //console.log("you called ?")
-      //console.log(editedCourse)
-
       courseService //Otetaan yhteys kurssiPalveluun
         .update(editedCourse._id, editedCourse) //Korvataan vanhat kunssin tiedot uusilla tietokannassa
         .then(response => {
-          //console.log(response) //response sisältää kurssiolion joka tulee sijoittaa stateen
           // this.props.reloadCoursesFromBackend() //Tämä on kömpelö ja aikaa vievä tapa päivittää tilassa olevat kurssit...
 
           this.props.updateCourseState(response);
@@ -159,7 +147,6 @@ class EditCourse extends React.Component {
   };
 
   handleEnter = e => {
-    //console.log(e.which)
     if (e.which === 13) {
       this.updateCourse(e);
     }

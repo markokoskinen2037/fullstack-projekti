@@ -17,8 +17,6 @@ class UserStatistics extends Component {
     if (this.state.user === null) {
       return null;
     } else {
-      //console.log(JSON.stringify(this.state.user))
-
       return (
         <Fragment>
           <Grid item md={6} xs={12}>
