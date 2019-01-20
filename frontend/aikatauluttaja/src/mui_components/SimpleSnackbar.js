@@ -1,22 +1,22 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import { withStyles } from '@material-ui/core/styles';
-import Snackbar from '@material-ui/core/Snackbar';
-import IconButton from '@material-ui/core/IconButton';
-import CloseIcon from '@material-ui/icons/Close';
+import React from "react";
+import PropTypes from "prop-types";
+import { withStyles } from "@material-ui/core/styles";
+import Snackbar from "@material-ui/core/Snackbar";
+import IconButton from "@material-ui/core/IconButton";
+import CloseIcon from "@material-ui/icons/Close";
 import { CircularProgress } from "@material-ui/core";
-
 
 const styles = theme => ({
   close: {
     width: theme.spacing.unit * 4,
-    height: theme.spacing.unit * 4,
-  },
+    height: theme.spacing.unit * 4
+  }
 });
 
 class SimpleSnackbar extends React.Component {
-  state = { //Alusssa open === false, eli komponenttia ei renderöidä.
-    open: false,
+  state = {
+    //Alusssa open === false, eli komponenttia ei renderöidä.
+    open: false
   };
 
   handleClick = () => {
@@ -24,44 +24,48 @@ class SimpleSnackbar extends React.Component {
   };
 
   handleClose = (event, reason) => {
-    if (reason === 'clickaway') {
+    if (reason === "clickaway") {
       return;
     }
 
     this.setState({ open: false });
-    this.props.resetAlert()
-    console.log("Resetting alert  from SnackBar-component!")
+    this.props.resetAlert();
   };
 
   componentDidMount() {
     if (this.props.content !== "") {
-      this.setState({ open: true })
+      this.setState({ open: true });
     }
-
   }
-
 
   render() {
     const { classes } = this.props;
 
-
     return (
       <div>
-
         <Snackbar
           anchorOrigin={{
-            vertical: 'bottom',
-            horizontal: 'center',
+            vertical: "bottom",
+            horizontal: "center"
           }}
           open={this.state.open}
           autoHideDuration={5000}
           onClose={this.handleClose}
           ContentProps={{
-            'aria-describedby': 'message-id',
+            "aria-describedby": "message-id"
           }}
-          message={<span id="message-id">{this.props.content}
-            {this.props.inProgress &&
-              <CircularProgress className={classes.progress} style={{ color: "white" }} thickness={7} />}</span>}
+          message={
+            <span id="message-id">
+              {this.props.content}
+              {this.props.inProgress && (
+                <CircularProgress
+                  className={classes.progress}
+                  style={{ color: "white" }}
+                  thickness={7}
+                />
+              )}
+            </span>
+          }
           action={[
             <IconButton
               key="close"
@@ -71,7 +75,7 @@ class SimpleSnackbar extends React.Component {
               onClick={this.handleClose}
             >
               <CloseIcon />
-            </IconButton>,
+            </IconButton>
           ]}
         />
       </div>
@@ -80,7 +84,7 @@ class SimpleSnackbar extends React.Component {
 }
 
 SimpleSnackbar.propTypes = {
-  classes: PropTypes.object.isRequired,
+  classes: PropTypes.object.isRequired
 };
 
 export default withStyles(styles)(SimpleSnackbar);
