@@ -1,18 +1,5 @@
 import React, { Fragment } from "react";
-import Course from "./mui_components/Course";
-import HomePage from "./mui_components/HomePage";
-import EditCourse from "./mui_components/EditCourse";
-import LoginForm from "./mui_components/LoginForm";
-import CourseForm from "./mui_components/CourseForm";
-import NavBar from "./mui_components/NavBar";
-import RegisterForm from "./mui_components/RegisterForm";
-import SimpleSnackbar from "./mui_components/SimpleSnackbar";
-import Footer from "./mui_components/Footer";
-
-import courseService from "./services/courses";
-import userService from "./services/users";
-import goalService from "./services/goals";
-
+import { BrowserRouter as Router, Route } from "react-router-dom";
 import {
   Grid,
   List,
@@ -24,10 +11,22 @@ import {
   FormControlLabel
 } from "@material-ui/core/";
 
-import { BrowserRouter as Router, Route } from "react-router-dom";
+import Course from "./mui_components/Course";
+import HomePage from "./mui_components/HomePage";
+import EditCourse from "./mui_components/EditCourse";
+import LoginForm from "./mui_components/LoginForm";
+import CourseForm from "./mui_components/CourseForm";
+import NavBar from "./mui_components/NavBar";
+import RegisterForm from "./mui_components/RegisterForm";
+import SimpleSnackbar from "./mui_components/SimpleSnackbar";
+import Footer from "./mui_components/Footer";
 import { Typography } from "@material-ui/core";
 import UserStatistics from "./mui_components/UserStatistics";
 import AdminPage from "./mui_components/AdminPage";
+
+import courseService from "./services/courses";
+import userService from "./services/users";
+import goalService from "./services/goals";
 
 class App extends React.Component {
   constructor(props) {
