@@ -105,8 +105,7 @@ class HomePage extends React.Component {
             <Paper style={{ padding: 30, marginTop: 20 }} elevation={1}>
               <Typography paragraph={true} variant="body1">
                 Sinulla on {this.props.user.activeCourses.length} aktiivista
-                kurssia. Sinulla on {this.props.user.activeCourses.length}{" "}
-                aktiivista kurssia.
+                kurssia.
                 <br />
                 Kyseiset kurssit suorittamalla ansaitset yhteensä{" "}
                 {this.state.totalCredits} opintopistettä. Olet määrittänyt{" "}
