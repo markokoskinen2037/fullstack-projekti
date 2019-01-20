@@ -269,8 +269,6 @@ class App extends React.Component {
                           <Typography variant="display1">Kurssit</Typography>
 
                           <List style={{ marginLeft: 10, marginRight: 10 }}>
-                            {/* <CourseListingInfo /> */}
-
                             <FormControl
                               style={{ marginLeft: 10, marginBottom: 15 }}
                             >
