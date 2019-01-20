@@ -4,8 +4,6 @@ import Paper from "@material-ui/core/Paper";
 import Typography from "@material-ui/core/Typography";
 import Grid from "@material-ui/core/Grid";
 
-import { List, ListItem } from "@material-ui/core";
-
 import userService from "../services/users";
 
 class HomePage extends React.Component {
