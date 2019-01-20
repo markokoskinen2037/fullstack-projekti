@@ -19,7 +19,7 @@
   },
   "homepage": "https://github.com/markokoskinen2037/fullstack-projekti#readme",
   "dependencies": {
-    "bcrypt": "^2.0.1",
+    "bcrypt": "^3.0.3",
     "cors": "^2.8.4",
     "dotenv": "^5.0.1",
     "express": "^4.16.3",
@@ -29,6 +29,6 @@
   "devDependencies": {
     "babel-eslint": "^8.2.3",
     "eslint": "^4.19.1",
-    "nodemon": "^1.17.2"
+    "nodemon": "^1.18.9"
   }
 }
