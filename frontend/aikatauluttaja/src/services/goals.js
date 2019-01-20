@@ -1,51 +1,54 @@
-import axios from "axios"
-const baseUrl = "/api/goals"
+import axios from "axios";
+const baseUrl = "/api/goals";
 
+let token = null;
 
-let token = null
-
-const setToken = (newToken) => {
-    token = `bearer ${newToken}`
-}
+const setToken = newToken => {
+  token = `bearer ${newToken}`;
+};
 
 const getAll = () => {
-    const request = axios.get(baseUrl)
-    return request.then(response => response.data)
-}
+  const request = axios.get(baseUrl);
+  return request.then(response => response.data);
+};
 
-const get = (id) => {
-    const request = axios.get(`${baseUrl}/${id}`)
-    return request.then(response => response.data)
-}
+const get = id => {
+  const request = axios.get(`${baseUrl}/${id}`);
+  return request.then(response => response.data);
+};
 
-const create = async (newObject) => {
-    const config = {
-        headers: { 'Authorization': token }
-    }
+const create = async newObject => {
+  const config = {
+    headers: { Authorization: token }
+  };
 
-    const response = await axios.post(baseUrl, newObject, config)
-    return response
-}
+  const response = await axios.post(baseUrl, newObject, config);
+  return response;
+};
 
 const update = (id, newObject) => {
-    const request = axios.put(`${baseUrl}/${id}`, newObject)
-    return request.then(response => response.data)
-}
+  const request = axios.put(`${baseUrl}/${id}`, newObject);
+  return request.then(response => response.data);
+};
 
-const removeById = (id) => {
-    axios.delete(`${baseUrl}/${id}`)
-
-}
+const removeById = id => {
+  axios.delete(`${baseUrl}/${id}`);
+};
 
 const deleteAllGoals = async () => {
-    const allGoals = await getAll()
+  const allGoals = await getAll();
 
+  allGoals.forEach(goal => {
+    removeById(goal._id);
+  });
+};
 
-    allGoals.forEach(goal => {
-        removeById(goal._id)
-    });
-
-}
-
-
-export default { getAll, create, update, get, removeById, setToken, deleteAllGoals }
+export default {
+  getAll,
+  create,
+  update,
+  get,
+  removeById,
+  setToken,
+  deleteAllGoals
+};
