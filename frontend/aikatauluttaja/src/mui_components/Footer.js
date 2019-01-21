@@ -5,8 +5,16 @@ export default class Footer extends Component {
   constructor(props) {
     super(props)
 
-    this.state = {}
+    this.state = {
+      visibility: 'visible',
+    }
   }
+
+  hide = () => [
+    this.setState({
+      visibility: 'hidden',
+    }),
+  ]
 
   render() {
     return (
@@ -21,6 +29,7 @@ export default class Footer extends Component {
             bottom: 0,
             left: 0,
             position: 'fixed',
+            visibility: this.state.visibility,
           }}
         >
           <Typography variant="body1" style={{ color: 'white' }}>
@@ -38,6 +47,12 @@ export default class Footer extends Component {
             >
               GITHUB
             </a>
+            <span
+              onClick={() => this.hide()}
+              style={{ float: 'right', color: 'white', cursor: 'pointer' }}
+            >
+              hide (x)
+            </span>
           </Typography>
         </Paper>
       </Fragment>
