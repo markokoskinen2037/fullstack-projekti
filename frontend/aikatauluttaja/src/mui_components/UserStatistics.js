@@ -1,4 +1,5 @@
 import React, { Component, Fragment } from 'react'
+import { Link } from 'react-router-dom'
 
 import Paper from '@material-ui/core/Paper'
 import Typography from '@material-ui/core/Typography'
@@ -53,6 +54,25 @@ class UserStatistics extends Component {
                 </Typography>
               </div>
             </Paper>
+          </Grid>
+
+          <Grid item md={6} xs={12}>
+            <div
+              style={{
+                padding: 10,
+                marginTop: 10,
+                marginRight: 10,
+                height: 60,
+              }}
+            >
+              <Link
+                style={{ backgroundColor: '#3955af', float: 'left' }}
+                className="Link"
+                to="/courses"
+              >
+                Takaisin kurssilistaukseen
+              </Link>
+            </div>
           </Grid>
         </Fragment>
       )
