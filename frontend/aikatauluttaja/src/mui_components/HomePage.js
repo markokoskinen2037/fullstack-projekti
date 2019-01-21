@@ -67,7 +67,7 @@ class HomePage extends React.Component {
               }}
               elevation={4}
             >
-              <Typography style={{ padding: '10px' }} variant="headline">
+              <Typography style={{ padding: '10px' }} variant="display1">
                 Tervetuloa suunnitelemaan opintojasi!
               </Typography>
 
