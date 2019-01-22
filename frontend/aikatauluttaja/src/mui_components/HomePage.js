@@ -79,9 +79,9 @@ class HomePage extends React.Component {
                 Ennen kuin pääset aloittamaan tulee sinun rekisteröityä
                 järjestelmään. Rekisteröityminen vaatii vain käyttäjätunnuksen,
                 salasanan ja sähköpostin. Rekisteröitymisen jälkeen voit
-                kirjautua sisään ja testata seuraavia ominaisuuksia: Kurssin
-                lisäys, muokkaus ja poisto. Kurssilistauksen tarkastelu, haku ja
-                aktiivisuuden perusteella filtteröinti. Kurssikohtaisten
+                kirjautua sisään ja testata seuraavia omiasasdnaisuuksia:
+                Kurssin lisäys, muokkaus ja poisto. Kurssilistauksen tarkastelu,
+                haku ja aktiivisuuden perusteella filtteröinti. Kurssikohtaisten
                 tavoitteiden asettaminen ja haastavuuksien määrittäminen ja
                 muokkaus. Automaattiset opintoaikasuositukset kurssille
                 asettaman vaikeusasteen perusteella

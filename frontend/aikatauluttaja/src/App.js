@@ -1,5 +1,6 @@
 import React, { Fragment } from 'react'
 import { BrowserRouter as Router, Route } from 'react-router-dom'
+import { hot } from 'react-hot-loader'
 import {
   Grid,
   List,
@@ -386,4 +387,4 @@ class App extends React.Component {
   }
 }
 
-export default App
+export default hot(module)(App)
