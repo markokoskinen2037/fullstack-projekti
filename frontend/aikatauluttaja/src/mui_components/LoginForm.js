@@ -59,6 +59,7 @@ class LoginForm extends React.Component {
         const greeting =
           'Kirjauduit sisään käyttäjällä: ' + dataFromBackEnd.user.username
         this.props.showAlert(greeting)
+        this.props.toggleActive()
 
         this.props.history.push('/courses')
       } catch (exception) {

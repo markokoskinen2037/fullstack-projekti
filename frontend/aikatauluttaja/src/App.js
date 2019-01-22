@@ -24,6 +24,7 @@ import Footer from './mui_components/Footer'
 import { Typography } from '@material-ui/core'
 import UserStatistics from './mui_components/UserStatistics'
 import AdminPage from './mui_components/AdminPage'
+import Progress from './mui_components/Progress'
 
 import courseService from './services/courses'
 import userService from './services/users'
@@ -43,6 +44,7 @@ class App extends React.Component {
       filter: '',
       showOnlyActiveCourses: false,
       timeoutFunction: undefined,
+      opintopisteet: 0,
     }
   }
 
@@ -74,14 +76,17 @@ class App extends React.Component {
     })
   }
 
-  toggleActive = courseid => {
-    const course = this.findCourse(courseid)
-    const userid = this.state.user.id
-
-    userService.update(userid, course)
+  getOpintopisteet = () => {
+    return this.state.opintopisteet
   }
 
-  componentDidMount() {
+  toggleActive = courseid => {
+    const uudet = this.countTotalCreditsMarkedAsActive()
+    this.setState({ opintopisteet: uudet })
+    console.log('ree')
+  }
+
+  async componentDidMount() {
     courseService.getAll().then(courses => {
       this.setState({ courses })
     })
@@ -94,11 +99,18 @@ class App extends React.Component {
     if (userJSON) {
       let user = JSON.parse(userJSON)
 
-      userService.get(user._id).then(upToDateUser => {
+      await userService.get(user._id).then(upToDateUser => {
+        console.log('...')
         this.setState({ user: upToDateUser })
       })
+      console.log('done')
+      console.log(this.state.user)
 
       courseService.setToken(user.token)
+
+      this.toggleActive()
+    } else if (this.state.user !== null) {
+      console.log('NOT NULL')
     }
   }
 
@@ -200,6 +212,17 @@ class App extends React.Component {
     this.setState({ alert: '' })
   }
 
+  countTotalCreditsMarkedAsActive = () => {
+    console.log('countTotalCreditsMarkedAsActive in App called')
+    //console.log(this.state.user)
+    let completed = 0
+    this.state.user.activeCourses.forEach(course => {
+      completed += course.credits
+    })
+
+    return completed
+  }
+
   render() {
     if (this.state.courses === null) {
       this.reloadCoursesFromBackend()
@@ -238,6 +261,7 @@ class App extends React.Component {
                   path="/"
                   render={() => (
                     <LoginForm
+                      toggleActive={this.toggleActive}
                       reloadCoursesFromBackend={this.reloadCoursesFromBackend}
                       showAlert={this.showAlert}
                       clearState={this.clearState}
@@ -267,7 +291,17 @@ class App extends React.Component {
                     return (
                       <Fragment>
                         <Grid style={{ margin: '20px' }} item xs={12}>
-                          <Typography variant="display1">Kurssit</Typography>
+                          <Typography
+                            style={{ textAlign: 'center', marginBottom: 50 }}
+                            variant="display1"
+                          >
+                            Olet suorittanut {this.state.opintopisteet}/60
+                            opintopistettä
+                          </Typography>
+                          <Progress
+                            getOpintopisteet={this.getOpintopisteet}
+                            opintopisteet={this.state.opintopisteet}
+                          />
 
                           <List style={{ marginLeft: 10, marginRight: 10 }}>
                             <FormControl

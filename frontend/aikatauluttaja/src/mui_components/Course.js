@@ -84,6 +84,7 @@ class Course extends React.Component {
     const populatedUser = await userService.get(this.props.user._id)
 
     this.props.updateUserState(populatedUser)
+    this.props.toggleActive()
   }
 
   createNewGoal = async () => {
