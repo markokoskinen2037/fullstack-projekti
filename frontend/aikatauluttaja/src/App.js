@@ -40,6 +40,7 @@ class App extends React.Component {
       newCourseLength: '',
       user: null,
       alert: '',
+      goals: null,
       inProgress: undefined,
       filter: '',
       showOnlyActiveCourses: false,
@@ -83,7 +84,6 @@ class App extends React.Component {
   toggleActive = courseid => {
     const uudet = this.countTotalCreditsMarkedAsActive()
     this.setState({ opintopisteet: uudet })
-    console.log('ree')
   }
 
   async componentDidMount() {
@@ -100,17 +100,12 @@ class App extends React.Component {
       let user = JSON.parse(userJSON)
 
       await userService.get(user._id).then(upToDateUser => {
-        console.log('...')
         this.setState({ user: upToDateUser })
       })
-      console.log('done')
-      console.log(this.state.user)
 
       courseService.setToken(user.token)
 
       this.toggleActive()
-    } else if (this.state.user !== null) {
-      console.log('NOT NULL')
     }
   }
 
@@ -193,7 +188,7 @@ class App extends React.Component {
   clearState = () => {
     this.setState({
       user: null,
-      courses: null,
+      opintopisteet: 0,
     })
   }
 
@@ -213,8 +208,6 @@ class App extends React.Component {
   }
 
   countTotalCreditsMarkedAsActive = () => {
-    console.log('countTotalCreditsMarkedAsActive in App called')
-    //console.log(this.state.user)
     let completed = 0
     this.state.user.activeCourses.forEach(course => {
       completed += course.credits
