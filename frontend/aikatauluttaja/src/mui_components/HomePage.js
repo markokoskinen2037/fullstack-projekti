@@ -26,7 +26,6 @@ class HomePage extends React.Component {
           .get(userFromLocalStorage._id)
           .then(user => {
             this.setState({ user })
-            console.table(this.state.user)
           })
           .then(res => {
             //Lasketaan paljonko on aktiivisten kurssien opintopisteiden summa ja tallennetaan tulos stateen
@@ -101,38 +100,62 @@ class HomePage extends React.Component {
             Moi, {this.state.user.username}!
           </Typography>
 
-          <Grid item md={6} xs={12} style={{ margin: 'auto' }}>
+          <Grid item md={10} xs={12} style={{ margin: 'auto' }}>
             <Paper style={{ padding: 30, marginTop: 20 }} elevation={1}>
               <Typography paragraph={true} variant="body1">
-                Sinulla on {this.props.user.activeCourses.length} aktiivista
-                kurssia.
+                Olet merkinnyt{' '}
+                <span style={{ fontWeight: 600, textDecoration: 'underline' }}>
+                  {this.props.user.activeCourses.length}
+                </span>{' '}
+                kurssia suoritetuiksi.
                 <br />
-                Kyseiset kurssit suorittamalla ansaitset yhteensä{' '}
-                {this.state.totalCredits} opintopistettä.
+                Näistä kursseista olet ansainnut yhteensä{' '}
+                <span style={{ fontWeight: 600, textDecoration: 'underline' }}>
+                  {this.state.totalCredits}{' '}
+                </span>
+                opintopistettä.
                 <br />
-                Olet määrittänyt {
-                  this.state.user.goals.length
-                } kurssitavoitetta{' '}
+                Olet määrittänyt{' '}
+                <span style={{ fontWeight: 600, textDecoration: 'underline' }}>
+                  {this.state.user.goals.length}
+                </span>{' '}
+                kurssitavoitetta{' '}
               </Typography>
             </Paper>
           </Grid>
 
-          <Grid item md={6} xs={12} style={{ margin: 'auto' }}>
+          <Grid item md={10} xs={12} style={{ margin: 'auto' }}>
             <Paper style={{ padding: 30, marginTop: 20 }} elevation={1}>
               <Typography paragraph={true} variant="body1">
                 Vuosittainen tavoiteopintopistemäärä on 60 op. <br />
                 Pakollinen opintojen suoritusmäärä lukuvuotta kohden 1.8-31.7 on
                 20 op. <br />
-                {this.state.totalCredits < 60 &&
-                  'Vaikuttaa siltä, että et ole vielä suunnitellut 60 opintopisteen edestä opintoja tälle vuodelle.'}
+                {this.state.totalCredits < 60 && (
+                  <span
+                    style={{
+                      textDecoration: 'underline',
+                    }}
+                  >
+                    Vaikuttaa siltä, että et ole vielä suorittanut 60
+                    opintopistettä tänävuonna.
+                  </span>
+                )}
                 <br />
-                {this.state.totalCredits < 20 &&
-                  ' Vaikuttaa siltä, että opintosi eivät riitä 20 opintopisteen tavoitteeseen.'}
+                {this.state.totalCredits < 20 && (
+                  <span
+                    style={{
+                      textDecoration: 'underline',
+                    }}
+                  >
+                    Vaikuttaa siltä, että suorituksesi eivät täytä kelan 20
+                    opintopisteen minimivaatimusta.
+                  </span>
+                )}
               </Typography>
             </Paper>
           </Grid>
 
-          <Grid item md={6} xs={12} style={{ margin: 'auto' }}>
+          <Grid item md={10} xs={12} style={{ margin: 'auto' }}>
             <Paper style={{ padding: 30, marginTop: 20 }} elevation={1}>
               <Typography paragraph={true} variant="body1">
                 <a
