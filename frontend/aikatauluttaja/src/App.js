@@ -46,6 +46,7 @@ class App extends React.Component {
       showOnlyActiveCourses: false,
       timeoutFunction: undefined,
       opintopisteet: 0,
+      fanfarePlayed: false,
     }
   }
 
@@ -84,6 +85,12 @@ class App extends React.Component {
   toggleActive = courseid => {
     const uudet = this.countTotalCreditsMarkedAsActive()
     this.setState({ opintopisteet: uudet })
+    if (this.state.opintopisteet > 60 && this.state.fanfarePlayed === false) {
+      this.setState({
+        fanfarePlayed: true,
+      })
+      alert('Erinomaista, olet suorittanut 60 opintopistettä!')
+    }
   }
 
   async componentDidMount() {
@@ -186,10 +193,7 @@ class App extends React.Component {
   }
 
   clearState = () => {
-    this.setState({
-      user: null,
-      opintopisteet: 0,
-    })
+    this.setState({ user: null, opintopisteet: 0, fanfarePlayed: false })
   }
 
   showAlert = (content, inProgress) => {
@@ -324,7 +328,7 @@ class App extends React.Component {
                                   onClick={() => this.toggleActiveCourses()}
                                 />
                               }
-                              label="Näytä vain aktiiviset kurssit"
+                              label="Näytä vain suoritetut kurssit"
                             />
 
                             {this.state.courses.map(course => (
