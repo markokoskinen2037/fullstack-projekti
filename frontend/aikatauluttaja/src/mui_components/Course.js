@@ -222,8 +222,6 @@ class Course extends React.Component {
   }
 
   render() {
-    //console.info("Rendering a course.")
-
     if (
       this.props.course.title
         .toLowerCase()
@@ -383,7 +381,7 @@ class Course extends React.Component {
                   </Tooltip>
 
                   {this.isActive() ? (
-                    <Tooltip title="Deaktivoi">
+                    <Tooltip title="Poista suoritusmerkintä">
                       <i
                         style={{
                           cursor: 'pointer',
@@ -399,7 +397,7 @@ class Course extends React.Component {
                       </i>
                     </Tooltip>
                   ) : (
-                    <Tooltip title="Aktivoi">
+                    <Tooltip title="Merkitse suoritetuksi">
                       <i
                         style={{
                           cursor: 'pointer',
