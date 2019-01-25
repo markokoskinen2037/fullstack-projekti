@@ -27,32 +27,28 @@ export default class Footer extends Component {
             padding: 2,
             textAlign: 'center',
             bottom: 0,
+            height: 100,
             left: 0,
-            position: 'fixed',
+            position: 'relative',
             visibility: this.state.visibility,
           }}
         >
-          <Typography variant="body1" style={{ color: 'white' }}>
-            Author: Marko Koskinen | Contact information:{' '}
+          <Typography variant="body1" style={{ color: 'white', marginTop: 19 }}>
+            Marko Koskinen
+            <br />
             <a
               style={{ color: 'white' }}
               href="mailto:marko.j.koskinen@helsinki.fi"
             >
               marko.j.koskinen@helsinki.fi
-            </a>{' '}
-            |{' '}
+              <br />
+            </a>
             <a
               style={{ color: 'white' }}
               href="https://github.com/markokoskinen2037/fullstack-projekti"
             >
-              GITHUB
+              Github-repository
             </a>
-            <span
-              onClick={() => this.hide()}
-              style={{ float: 'right', color: 'white', cursor: 'pointer' }}
-            >
-              hide (x)
-            </span>
           </Typography>
         </Paper>
       </Fragment>

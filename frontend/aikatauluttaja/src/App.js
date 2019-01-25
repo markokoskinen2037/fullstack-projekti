@@ -408,11 +408,10 @@ class App extends React.Component {
                   />
                 )}
               />
-
-              <Footer />
             </div>
           </Grid>
         </Router>
+        <Footer />
       </Fragment>
     )
   }
