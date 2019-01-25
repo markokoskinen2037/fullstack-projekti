@@ -229,7 +229,7 @@ class App extends React.Component {
       <Fragment>
         <CssBaseline />
         <Router>
-          <Grid container spacing={16}>
+          <Grid container spacing={15}>
             <NavBar
               showAlert={this.showAlert}
               clearState={this.clearState}
