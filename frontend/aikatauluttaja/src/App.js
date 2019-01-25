@@ -30,6 +30,8 @@ import courseService from './services/courses'
 import userService from './services/users'
 import goalService from './services/goals'
 
+import './styles/core.css'
+
 class App extends React.Component {
   constructor(props) {
     super(props)
