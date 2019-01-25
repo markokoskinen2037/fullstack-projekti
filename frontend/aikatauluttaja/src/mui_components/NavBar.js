@@ -29,7 +29,7 @@ class NavBar extends React.Component {
   render() {
     return (
       <AppBar position="static">
-        <Toolbar style={{ marginTop: 10 }}>
+        <Toolbar>
           <Typography variant="title" color="inherit">
             <Link className="Link" to="/">
               Opintojen aikatauluttaja
