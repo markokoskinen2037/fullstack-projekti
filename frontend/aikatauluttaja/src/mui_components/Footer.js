@@ -21,16 +21,13 @@ export default class Footer extends Component {
       <Fragment>
         <Paper
           style={{
-            backgroundColor: '#4056b6',
-            marginTop: 100,
-            width: '100%',
-            padding: 2,
-            textAlign: 'center',
+            position: 'absolute',
             bottom: 0,
+            width: '100%',
+            backgroundColor: '#4056b6',
+            borderRadius: 0,
+            textAlign: 'center',
             height: 100,
-            left: 0,
-            position: 'relative',
-            visibility: this.state.visibility,
           }}
         >
           <Typography variant="body1" style={{ color: 'white', marginTop: 19 }}>
