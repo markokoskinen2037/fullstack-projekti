@@ -27,10 +27,10 @@ export default class Footer extends Component {
             backgroundColor: '#4056b6',
             borderRadius: 0,
             textAlign: 'center',
-            height: 100,
+            height: 70,
           }}
         >
-          <Typography variant="body1" style={{ color: 'white', marginTop: 19 }}>
+          <Typography variant="body1" style={{ color: 'white', marginTop: 5 }}>
             Marko Koskinen
             <br />
             <a
