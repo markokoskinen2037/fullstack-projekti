@@ -6,6 +6,8 @@ import Grid from '@material-ui/core/Grid'
 
 import userService from '../services/users'
 
+import '../styles/homePage.css'
+
 class HomePage extends React.Component {
   constructor(props) {
     super(props)
@@ -56,16 +58,7 @@ class HomePage extends React.Component {
       return (
         <Fragment>
           <Grid item xs={12} md={8} style={{ margin: 'auto' }}>
-            <Paper
-              style={{
-                margin: 'auto',
-                padding: 10,
-                marginTop: 10,
-                marginLeft: 10,
-                marginRight: 10,
-              }}
-              elevation={4}
-            >
+            <Paper className="simplePaper" elevation={4}>
               <Typography style={{ padding: '10px' }} variant="display1">
                 Tervetuloa suunnitelemaan opintojasi!
               </Typography>
@@ -93,70 +86,53 @@ class HomePage extends React.Component {
       //Jos käyttäjä ole olemassa, rendöidään sen tiedot ja suosituksia yms.
       return (
         <Fragment>
-          <Typography
-            style={{ textAlign: 'center', marginBottom: 20 }}
-            variant="display1"
-          >
+          <Typography className="greeting" variant="display1">
             Moi, {this.state.user.username}!
           </Typography>
 
-          <Grid item md={10} xs={12} style={{ margin: 'auto' }}>
-            <Paper style={{ padding: 30, marginTop: 20 }} elevation={1}>
+          <div className="infoContainer">
+            <Paper className="paperContent" elevation={1}>
               <Typography paragraph={true} variant="body1">
                 Olet merkinnyt{' '}
-                <span style={{ fontWeight: 600, textDecoration: 'underline' }}>
+                <span className="strongText">
                   {this.props.user.activeCourses.length}
                 </span>{' '}
                 kurssia suoritetuiksi.
                 <br />
                 Näistä kursseista olet ansainnut yhteensä{' '}
-                <span style={{ fontWeight: 600, textDecoration: 'underline' }}>
-                  {this.state.totalCredits}{' '}
-                </span>
+                <span className="strongText">{this.state.totalCredits} </span>
                 opintopistettä.
                 <br />
                 Olet määrittänyt{' '}
-                <span style={{ fontWeight: 600, textDecoration: 'underline' }}>
+                <span className="strongText">
                   {this.state.user.goals.length}
                 </span>{' '}
                 kurssitavoitetta{' '}
               </Typography>
             </Paper>
-          </Grid>
 
-          <Grid item md={10} xs={12} style={{ margin: 'auto' }}>
-            <Paper style={{ padding: 30, marginTop: 20 }} elevation={1}>
+            <Paper className="infoContainer2" elevation={1}>
               <Typography paragraph={true} variant="body1">
                 Vuosittainen tavoiteopintopistemäärä on 60 op. <br />
                 Pakollinen opintojen suoritusmäärä lukuvuotta kohden 1.8-31.7 on
                 20 op. <br />
                 {this.state.totalCredits < 60 && (
-                  <span
-                    style={{
-                      textDecoration: 'underline',
-                    }}
-                  >
+                  <span style={{ textDecoration: 'underline' }}>
                     Vaikuttaa siltä, että et ole vielä suorittanut 60
                     opintopistettä tänävuonna.
                   </span>
                 )}
                 <br />
                 {this.state.totalCredits < 20 && (
-                  <span
-                    style={{
-                      textDecoration: 'underline',
-                    }}
-                  >
+                  <span className="strongText">
                     Vaikuttaa siltä, että suorituksesi eivät täytä kelan 20
                     opintopisteen minimivaatimusta.
                   </span>
                 )}
               </Typography>
             </Paper>
-          </Grid>
 
-          <Grid item md={10} xs={12} style={{ margin: 'auto' }}>
-            <Paper style={{ padding: 30, marginTop: 20 }} elevation={1}>
+            <Paper className="infoContainer2" elevation={1}>
               <Typography paragraph={true} variant="body1">
                 <a
                   target="_blank"
@@ -175,7 +151,7 @@ class HomePage extends React.Component {
                 </a>
               </Typography>
             </Paper>
-          </Grid>
+          </div>
         </Fragment>
       )
     } else {
