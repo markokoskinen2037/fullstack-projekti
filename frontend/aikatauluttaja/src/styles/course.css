@@ -1,0 +1,41 @@
+.courseContainer {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.part1 {
+  margin-left: 10px;
+  margin-right: 10px;
+  flex: 5%;
+}
+
+.part2 {
+  margin-left: 10px;
+  margin-right: 10px;
+  flex: 10%;
+}
+
+.setGoal {
+  margin-left: 10px;
+  margin-right: 10px;
+  flex: 30%;
+}
+
+.goalDetails {
+  margin-left: 10px;
+  margin-right: 10px;
+  flex: 30%;
+}
+
+.estimates {
+  margin-left: 10px;
+  margin-right: 10px;
+  flex: 30%;
+}
+
+.large {
+  margin-left: 10px;
+  margin-right: 10px;
+  flex: 50%;
+}

@@ -1,6 +1,6 @@
-import React, { Component, Fragment } from 'react'
+import React, { Component } from 'react'
 
-import { Typography, Tooltip } from '@material-ui/core'
+import { span, Tooltip } from '@material-ui/core'
 
 export class DifficultyDisplay extends Component {
   constructor(props) {
@@ -30,25 +30,13 @@ export class DifficultyDisplay extends Component {
     }
 
     return (
-      <Fragment>
+      <span className="part1">
         <Tooltip title="Oma vaikeustaso / Vaikeustason keskiarvo (otoksen koko)">
-          <Typography
-            style={{
-              marginRight: 10,
-              borderRadius: 20,
-              padding: 10,
-              width: 200,
-              textAlign: 'center',
-              color: 'black',
-              backgroundColor: color,
-              fontWeight: 100,
-            }}
-            variant="body1"
-          >
+          <span>
             {this.props.difficulty} / {this.props.courseMedian}
-          </Typography>
+          </span>
         </Tooltip>
-      </Fragment>
+      </span>
     )
   }
 }

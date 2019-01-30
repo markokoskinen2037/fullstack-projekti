@@ -333,29 +333,44 @@ class App extends React.Component {
                               label="Näytä vain suoritetut kurssit"
                             />
 
-                            {this.state.courses.map(course => (
-                              <Course
-                                toggleActive={this.toggleActive}
-                                findCourse={this.findCourse}
-                                user={this.state.user}
-                                reloadCoursesFromBackend={this.reloadCoursesFromBackend.bind(
-                                  this
-                                )}
-                                updateUserState={this.updateUserState}
-                                key={course._id}
-                                removeCourseFromCourseListState={
-                                  this.removeCourseFromCourseListState
-                                }
-                                addGoalToUserState={this.addGoalToUserState}
-                                filter={this.state.filter}
-                                goals={this.state.goals}
-                                showAlert={this.showAlert}
-                                showOnlyActiveCourses={
-                                  this.state.showOnlyActiveCourses
-                                }
-                                course={course}
-                              />
-                            ))}
+
+
+
+                            <div style={{display:"flex", flexDirection:"column"}}>
+                              {this.state.courses.map(course => (
+                                <Course
+                                  toggleActive={this.toggleActive}
+                                  findCourse={this.findCourse}
+                                  user={this.state.user}
+                                  reloadCoursesFromBackend={this.reloadCoursesFromBackend.bind(
+                                    this
+                                  )}
+                                  updateUserState={this.updateUserState}
+                                  key={course._id}
+                                  removeCourseFromCourseListState={
+                                    this.removeCourseFromCourseListState
+                                  }
+                                  addGoalToUserState={this.addGoalToUserState}
+                                  filter={this.state.filter}
+                                  goals={this.state.goals}
+                                  showAlert={this.showAlert}
+                                  showOnlyActiveCourses={
+                                    this.state.showOnlyActiveCourses
+                                  }
+                                  course={course}
+                                />
+                              ))}
+                            </div>
+
+
+
+
+
+
+
+
+
+
                           </List>
                         </Grid>
 
