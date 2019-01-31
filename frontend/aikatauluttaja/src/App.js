@@ -11,7 +11,6 @@ import {
   Checkbox,
   FormControlLabel,
 } from '@material-ui/core/'
-import $ from 'jquery'
 
 import Course from './mui_components/Course'
 import HomePage from './mui_components/HomePage'
@@ -92,7 +91,7 @@ class App extends React.Component {
       this.setState({
         fanfarePlayed: true,
       })
-      //alert('Erinomaista, olet suorittanut 60 opintopistettä!')
+      alert('Erinomaista, olet suorittanut 60 opintopistettä!')
     }
   }
 
@@ -232,7 +231,7 @@ class App extends React.Component {
       <Fragment>
         <CssBaseline />
         <Router>
-          <div>
+          <Grid container spacing={15}>
             <NavBar
               showAlert={this.showAlert}
               clearState={this.clearState}
@@ -412,7 +411,7 @@ class App extends React.Component {
                 )}
               />
             </div>
-          </div>
+          </Grid>
         </Router>
         <Footer />
       </Fragment>
