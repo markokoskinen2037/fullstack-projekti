@@ -11,6 +11,7 @@ import {
   Checkbox,
   FormControlLabel,
 } from '@material-ui/core/'
+import $ from 'jquery'
 
 import Course from './mui_components/Course'
 import HomePage from './mui_components/HomePage'
