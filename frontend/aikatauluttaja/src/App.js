@@ -91,7 +91,7 @@ class App extends React.Component {
       this.setState({
         fanfarePlayed: true,
       })
-      alert('Erinomaista, olet suorittanut 60 opintopistettä!')
+      //alert('Erinomaista, olet suorittanut 60 opintopistettä!')
     }
   }
 
@@ -231,7 +231,7 @@ class App extends React.Component {
       <Fragment>
         <CssBaseline />
         <Router>
-          <Grid container spacing={15}>
+          <div>
             <NavBar
               showAlert={this.showAlert}
               clearState={this.clearState}
@@ -333,44 +333,29 @@ class App extends React.Component {
                               label="Näytä vain suoritetut kurssit"
                             />
 
-
-
-
-                            <div style={{display:"flex", flexDirection:"column"}}>
-                              {this.state.courses.map(course => (
-                                <Course
-                                  toggleActive={this.toggleActive}
-                                  findCourse={this.findCourse}
-                                  user={this.state.user}
-                                  reloadCoursesFromBackend={this.reloadCoursesFromBackend.bind(
-                                    this
-                                  )}
-                                  updateUserState={this.updateUserState}
-                                  key={course._id}
-                                  removeCourseFromCourseListState={
-                                    this.removeCourseFromCourseListState
-                                  }
-                                  addGoalToUserState={this.addGoalToUserState}
-                                  filter={this.state.filter}
-                                  goals={this.state.goals}
-                                  showAlert={this.showAlert}
-                                  showOnlyActiveCourses={
-                                    this.state.showOnlyActiveCourses
-                                  }
-                                  course={course}
-                                />
-                              ))}
-                            </div>
-
-
-
-
-
-
-
-
-
-
+                            {this.state.courses.map(course => (
+                              <Course
+                                toggleActive={this.toggleActive}
+                                findCourse={this.findCourse}
+                                user={this.state.user}
+                                reloadCoursesFromBackend={this.reloadCoursesFromBackend.bind(
+                                  this
+                                )}
+                                updateUserState={this.updateUserState}
+                                key={course._id}
+                                removeCourseFromCourseListState={
+                                  this.removeCourseFromCourseListState
+                                }
+                                addGoalToUserState={this.addGoalToUserState}
+                                filter={this.state.filter}
+                                goals={this.state.goals}
+                                showAlert={this.showAlert}
+                                showOnlyActiveCourses={
+                                  this.state.showOnlyActiveCourses
+                                }
+                                course={course}
+                              />
+                            ))}
                           </List>
                         </Grid>
 
@@ -426,7 +411,7 @@ class App extends React.Component {
                 )}
               />
             </div>
-          </Grid>
+          </div>
         </Router>
         <Footer />
       </Fragment>
