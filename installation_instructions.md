@@ -7,8 +7,8 @@ Asennetaan ensin **backend** seuraavasti:
 1. Kloonaa tämä repositio omalle koneellesi
 2. Navigoi kansioon `fullstack-projekti/backend`
 3. Suorita komento `npm install`
-4. Luo kansioon jossa juuri olet (fullstack-projekti/backend) tiedosto `.env` ja aseta sinne **oman MONGODB tietokantasi osoite** ja **mikä tahansa** arvo ympäristömuuttujalle SECRET.
-   **Alla esimerkki .env tiedoston sisällöstä:**
+4. Luo kansioon jossa juuri olet (fullstack-projekti/backend) tiedosto `.env` ja aseta sinne **oman MONGODB tietokantasi osoite** (Jos sinulla ei vielä ole MONGODB tietokantaa, voit luoda sellaisen esim. osoitteessa https://mlab.com/) Lisää vielä **mikä tahansa** arvo ympäristömuuttujalle SECRET.
+   Alla esimerkki .env tiedoston sisällöstä:
 
 ```
 MONGODB_URI=mongodb://username:password1@databaseAddress:port/databaseName
