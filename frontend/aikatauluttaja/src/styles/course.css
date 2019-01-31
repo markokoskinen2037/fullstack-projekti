@@ -10,6 +10,12 @@
   flex: 5%;
 }
 
+.small {
+  margin-left: 10px;
+  margin-right: 10px;
+  flex: 1%;
+}
+
 .part2 {
   margin-left: 10px;
   margin-right: 10px;
@@ -38,4 +44,83 @@
   margin-left: 10px;
   margin-right: 10px;
   flex: 50%;
+}
+
+.clickable {
+  cursor: pointer;
+}
+
+.icon {
+  color: black;
+  padding: 5px;
+  border-radius: 25px;
+  margin-left: 10px;
+}
+
+.workloadEstimate {
+  margin-left: 10px;
+  margin-right: 10px;
+  flex: 5%;
+  min-width: 90px;
+}
+
+/* This should take the same space as workloadEstimate */
+.placeHolder {
+  margin-left: 10px;
+  margin-right: 10px;
+  flex: 5%;
+  min-width: 90px;
+}
+
+.buttons {
+  margin-right: 10px;
+  min-width: 132px;
+}
+
+.courseContainer {
+  margin-bottom: 15px;
+  height: 70px;
+  display: flex;
+  flex-basis: 100%;
+  align-items: center;
+}
+
+.courseName {
+  width: 150px;
+  margin-left: 10px;
+  font-size: 17px;
+}
+
+@media only screen and (max-width: 712px) {
+  .icon {
+    margin-left: 1px;
+  }
+  .courseContainer {
+    height: 85px;
+  }
+}
+
+@media only screen and (min-width: 1200px) {
+  .courseName {
+    width: 340px;
+  }
+}
+
+.completed {
+  color: #00bb36;
+}
+
+.not_completed {
+  color: black;
+}
+
+.saveButton {
+  margin-left: 0px;
+}
+
+.arrow {
+  position: relative;
+  top: 6px;
+  margin-left: 3px;
+  margin-right: 3px;
 }
