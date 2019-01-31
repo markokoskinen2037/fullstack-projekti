@@ -1,6 +1,8 @@
-import React, { Component } from 'react'
+import React, { Component, Fragment } from 'react'
 
 import { span, Tooltip } from '@material-ui/core'
+
+import '../styles/difficultyDisplay.css'
 
 export class DifficultyDisplay extends Component {
   constructor(props) {
@@ -10,33 +12,39 @@ export class DifficultyDisplay extends Component {
   }
 
   render() {
-    let color = undefined
+    let background_Color = undefined
 
+    // Choose according difficulty color
     switch (this.props.difficulty) {
       case 'Helppo':
-        color = '#00bf00'
+        background_Color = '#00bf00c2'
         break
       case 'Normaali':
-        color = 'yellow'
+        background_Color = '#ffff00b8'
         break
       case 'Haastava':
-        color = '#ff8100'
+        background_Color = '#ff8d00c7'
         break
       case 'Vaikea':
-        color = 'red'
+        background_Color = '#ff0000bf'
         break
       default:
-        color = 'black'
+        background_Color = 'white'
     }
 
     return (
-      <span className="part1">
+      <Fragment>
         <Tooltip title="Oma vaikeustaso / Vaikeustason keskiarvo (otoksen koko)">
-          <span>
+          <span
+            className="difficultyDisplay"
+            style={{
+              backgroundColor: background_Color,
+            }}
+          >
             {this.props.difficulty} / {this.props.courseMedian}
           </span>
         </Tooltip>
-      </span>
+      </Fragment>
     )
   }
 }
