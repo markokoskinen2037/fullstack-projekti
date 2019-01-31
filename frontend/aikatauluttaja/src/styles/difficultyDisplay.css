@@ -5,9 +5,3 @@
   text-align: center;
   min-width: 200px;
 }
-
-@media only screen and (max-width: 875px) {
-  .difficultyDisplay {
-    display: none;
-  }
-}

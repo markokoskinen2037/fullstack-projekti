@@ -234,6 +234,18 @@ class Course extends React.Component {
             <Paper className="courseContainer">
               <span className="courseName">{this.props.course.title}</span>
 
+              <Tooltip title="Kurssista saatavat opintopisteet">
+                <span className="small" variant="body1">
+                  {this.props.course.credits} op
+                </span>
+              </Tooltip>
+
+              <Tooltip title="Kurssin pituus">
+                <span className="small" variant="body1">
+                  {this.props.course.length} periodia
+                </span>
+              </Tooltip>
+
               {this.goalExists() ? ( //Jos goal on olemassa, renderöidään sen tiedot:
                 <Fragment>
                   <span className="workloadEstimate">
@@ -328,18 +340,6 @@ class Course extends React.Component {
                   </Tooltip>
                 </Fragment>
               )}
-
-              <Tooltip title="Kurssista saatavat opintopisteet">
-                <span className="small" variant="body1">
-                  {this.props.course.credits} op
-                </span>
-              </Tooltip>
-
-              <Tooltip title="Kurssin pituus">
-                <span className="small" variant="body1">
-                  {this.props.course.length} periodia
-                </span>
-              </Tooltip>
 
               <span className="buttons">
                 <Tooltip title="Muokkaa kurssia">

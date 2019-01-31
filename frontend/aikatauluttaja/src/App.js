@@ -239,7 +239,7 @@ class App extends React.Component {
               removeUserInfoFromState={this.removeCourseFromCourseListState}
             />
 
-            <div style={{ margin: 'auto', width: '90%', marginTop: 50 }}>
+            <div className="app">
               {this.state.alert && (
                 <SimpleSnackbar
                   resetAlert={this.resetAlert}
@@ -289,9 +289,13 @@ class App extends React.Component {
                   if (this.state.user != null) {
                     return (
                       <Fragment>
-                        <Grid style={{ margin: '20px' }} item xs={12}>
+                        <Grid className="container" item xs={12}>
                           <Typography
-                            style={{ textAlign: 'center', marginBottom: 50 }}
+                            style={{
+                              textAlign: 'center',
+                              marginBottom: 50,
+                              marginTop: 50,
+                            }}
                             variant="display1"
                           >
                             Olet suorittanut {this.state.opintopisteet}/60
@@ -304,7 +308,11 @@ class App extends React.Component {
 
                           <List style={{ marginLeft: 10, marginRight: 10 }}>
                             <FormControl
-                              style={{ marginLeft: 10, marginBottom: 15 }}
+                              style={{
+                                maxWidth: '50%',
+                                marginLeft: 10,
+                                marginBottom: 15,
+                              }}
                             >
                               <InputLabel htmlFor="name-simple">
                                 Hae kurssia nimeltä
@@ -322,7 +330,7 @@ class App extends React.Component {
                               style={{
                                 position: 'absolute',
                                 float: 'right',
-                                right: '5px',
+                                maxWidth: '50%',
                               }}
                               control={
                                 <Checkbox
@@ -360,7 +368,13 @@ class App extends React.Component {
                         </Grid>
 
                         <Typography
-                          style={{ marginLeft: '30px', width: '100%' }}
+                          style={{
+                            margin: '0 auto',
+                            marginBottom: 20,
+                            marginTop: 30,
+                            textAlign: 'center',
+                            width: '100%',
+                          }}
                           variant="display1"
                         >
                           Kurssin lisäys

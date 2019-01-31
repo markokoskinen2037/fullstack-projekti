@@ -78,16 +78,8 @@ class CourseForm extends React.Component {
     } else {
       return (
         <Fragment>
-          <Grid style={{ margin: '20px', marginBottom: 100 }} item xs={12}>
-            <Paper
-              style={{
-                padding: 0,
-                marginTop: 10,
-                marginLeft: 10,
-                marginRight: 10,
-                paddingTop: 10,
-              }}
-            >
+          <Grid style={{ margin: '0 auto', maxWidth: 670 }} item xs={12}>
+            <Paper style={{ padding: 10 }}>
               <FormControl
                 onKeyPress={e => this.handleEnter(e)}
                 style={{ marginLeft: 10 }}

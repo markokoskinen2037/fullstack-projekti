@@ -30,41 +30,33 @@ class NavBar extends React.Component {
     return (
       <AppBar position="static">
         <Toolbar>
-          <Typography variant="title" color="inherit">
-            <Link className="Link" to="/">
-              Opintojen aikatauluttaja
-            </Link>
-          </Typography>
+          <Link className="Link navBarItem" to="/">
+            Home
+          </Link>
 
           {this.props.user !== null && (
-            <Link className="Link" to="/courses">
-              Kurssilistaus
+            <Link className="Link navBarItem" to="/courses">
+              Courses
             </Link>
           )}
 
           {this.props.user !== null && this.props.user.username === 'admin' && (
-            <Link className="Link" to="/supersecretadminpage">
+            <Link className="Link nabBarItem" to="/supersecretadminpage">
               SUPERSECRETADMINPAGE
             </Link>
           )}
 
           {this.props.user ? (
             <Fragment>
-              <Grid item style={{ position: 'absolute', right: '20px' }}>
-                <Typography align="right">
-                  <Link className="Link_username" to="/userinfo">
-                    {this.props.user.username}
-                  </Link>
-                  <Button
-                    onClick={e => this.handleLogOut(e)}
-                    variant="raised"
-                    color="default"
-                  >
-                    {' '}
-                    Kirjaudu ulos
-                  </Button>
-                </Typography>
-              </Grid>
+              <Link className="navBarItem" to="/userinfo">
+                Profile
+              </Link>
+              <span
+                style={{ position: 'absolute', right: 10 }}
+                onClick={e => this.handleLogOut(e)}
+              >
+                Logout
+              </span>
             </Fragment>
           ) : null}
         </Toolbar>

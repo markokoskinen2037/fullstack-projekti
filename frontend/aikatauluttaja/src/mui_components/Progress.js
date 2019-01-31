@@ -36,7 +36,7 @@ class ProgressBar extends React.Component {
 
     const { classes } = this.props
     return (
-      <div className={classes.root}>
+      <div style={{ width: '90%', margin: '0 auto' }} className={classes.root}>
         <LinearProgress
           variant="determinate"
           value={this.state.completed * (100 / 60)}

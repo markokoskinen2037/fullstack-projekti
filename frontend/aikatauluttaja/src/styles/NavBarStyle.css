@@ -9,24 +9,10 @@
   text-decoration: none;
 }
 
-.Link:hover {
-  background-color: #3a4c9a;
-}
-
-.Link_username {
-  padding-left: 20px;
-  padding-right: 20px;
-  padding-top: 10px;
-  padding-bottom: 10px;
+.navBarItem {
+  padding: 0;
   margin-left: 10px;
-  margin-right: 10px;
-  border-radius: 20px;
-  font-family: 'Roboto';
   color: white;
-  background-color: #283673;
-  text-decoration: none;
-}
-
-.Link_username:hover {
-  background-color: #1c2652;
+  text-decoration: underline;
+  cursor: pointer;
 }

@@ -13,3 +13,22 @@ body {
   position: relative;
   padding-bottom: 100px; /* height of your footer */
 }
+
+.appContainer {
+  margin: auto;
+  width: 90%;
+  margin-top: 50px;
+}
+
+@media only screen and (max-width: 900px) {
+  .appContainer {
+    width: 100%;
+  }
+}
+
+@media only screen and (min-width: 1200px) {
+  .app {
+    max-width: 90%;
+    margin: 0 auto;
+  }
+}
