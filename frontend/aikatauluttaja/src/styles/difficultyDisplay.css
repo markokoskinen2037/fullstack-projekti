@@ -1,0 +1,13 @@
+.difficultyDisplay {
+  padding: 8px;
+  border-radius: 31px;
+  color: black;
+  text-align: center;
+  min-width: 200px;
+}
+
+@media only screen and (max-width: 875px) {
+  .difficultyDisplay {
+    display: none;
+  }
+}
