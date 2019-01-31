@@ -231,66 +231,60 @@ class Course extends React.Component {
         //(2) Jos halutaan näyttää kaikki kurssit, jatketaan renderöintiä...
         return (
           <Fragment>
-            <div>
-              <Paper
-                style={{
-                  marginBottom: 15,
-                  height: 70,
-                  display: 'flex',
-                  flexBasis: '100%',
-                  alignItems: 'center',
-                }}
-              >
-                <span style={{ minWidth: 150 }} className="part1">
-                  {this.props.course.title}
-                </span>
+            <Paper className="courseContainer">
+              <span className="courseName">{this.props.course.title}</span>
 
-                {this.goalExists() ? ( //Jos goal on olemassa, renderöidään sen tiedot:
-                  <span className="large">
-                    <span className="part1">
-                      <span style={{ minWidth: '15%' }}>
-                        <Tooltip title="Laskettu aika, eli päiväkohtainen opiskeluaika (20h/opintopiste)">
-                          <span>
-                            {Math.floor(
-                              ((this.props.course.credits * 20) /
-                                (this.props.course.length * 7 * 5)) *
-                                10
-                            ) / 10}
-                            h
-                          </span>
-                        </Tooltip>
-
+              {this.goalExists() ? ( //Jos goal on olemassa, renderöidään sen tiedot:
+                <Fragment>
+                  <span className="workloadEstimate">
+                    <span style={{ minWidth: '15%' }}>
+                      <Tooltip title="Laskettu aika, eli päiväkohtainen opiskeluaika (20h/opintopiste)">
                         <span>
-                          <i className="material-icons">arrow_right_alt</i>
+                          {Math.floor(
+                            ((this.props.course.credits * 20) /
+                              (this.props.course.length * 7 * 5)) *
+                              10
+                          ) / 10}
+                          h
                         </span>
-                        <Tooltip title="Henkilökohtainen haastavuuden perusteella painotettu opiskeluaika">
-                          <span variant="body1">
-                            {Math.floor(
-                              ((this.props.course.credits *
-                                this.getCourseHourValue()) /
-                                (this.props.course.length * 7 * 5)) *
-                                10
-                            ) / 10}
-                            h
-                          </span>
-                        </Tooltip>
+                      </Tooltip>
+
+                      <span>
+                        <i className="material-icons arrow">arrow_right_alt</i>
                       </span>
+                      <Tooltip title="Henkilökohtainen haastavuuden perusteella painotettu opiskeluaika">
+                        <span variant="body1">
+                          {Math.floor(
+                            ((this.props.course.credits *
+                              this.getCourseHourValue()) /
+                              (this.props.course.length * 7 * 5)) *
+                              10
+                          ) / 10}
+                          h
+                        </span>
+                      </Tooltip>
                     </span>
+                  </span>
 
-                    <DifficultyDisplay
-                      difficulty={this.getGoal().difficulty}
-                      courseMedian={this.state.courseMedian}
-                    />
+                  <DifficultyDisplay
+                    difficulty={this.getGoal().difficulty}
+                    courseMedian={this.state.courseMedian}
+                  />
 
+                  <span className="small">
                     <Tooltip title="Tavoitearvosana">
                       <span className="part1" variant="body1">
-                        {this.getGoal().target}
+                        Tavoite: {this.getGoal().target}
                       </span>
                     </Tooltip>
                   </span>
-                ) : (
-                  //Jos goalia ei ole olemassa, renderöidään kentät tavoitearvosanalle ja vaikeusarviolle. Sekä lisäyspainikkeelle
-                  <span className="large">
+                </Fragment>
+              ) : (
+                //Jos goalia ei ole olemassa, renderöidään kentät tavoitearvosanalle ja vaikeusarviolle. Sekä lisäyspainikkeelle
+                <Fragment>
+                  <span className="placeHolder" />
+
+                  <span className="difficultyDisplay">
                     <FormControl
                       style={{ width: 100 }}
                       onKeyPress={e => this.handleEnter(e)}
@@ -323,69 +317,66 @@ class Course extends React.Component {
                         <option value="Vaikea">Vaikea</option>
                       </Select>
                     </FormControl>
-
-                    <Tooltip title="Tallenna henkilökohtainen tavoite">
-                      <Button
-                        mini={true}
-                        size="small"
-                        color="inherit"
-                        onClick={() => this.createNewGoal()}
-                      >
-                        <i className="material-icons">save</i>
-                      </Button>
-                    </Tooltip>
                   </span>
-                )}
-
-                <Tooltip title="Kurssista saatavat opintopisteet">
-                  <span className="part1" variant="body1">
-                    {this.props.course.credits} op
-                  </span>
-                </Tooltip>
-
-                <Tooltip title="Kurssin pituus">
-                  <span className="part1" variant="body1">
-                    {this.props.course.length} periodia
-                  </span>
-                </Tooltip>
-
-                <span className="part2">
-                  <Tooltip title="Muokkaa kurssia">
-                    <Link to={`/courses/${this.props.course._id}`}>
-                      <i className="material-icons">edit</i>
-                    </Link>
-                  </Tooltip>
-                  <Tooltip title="Poista kurssi">
+                  <Tooltip title="Tallenna henkilökohtainen tavoite">
                     <i
-                      className="material-icons part"
-                      onClick={() => this.deleteCourse(this.props.course._id)}
+                      onClick={() => this.createNewGoal()}
+                      className="material-icons small  clickable saveButton"
                     >
-                      delete
+                      save
                     </i>
                   </Tooltip>
+                </Fragment>
+              )}
 
-                  {this.isActive() ? (
-                    <Tooltip title="Poista suoritusmerkintä">
-                      <i
-                        onClick={() => this.toggleActive(this.props.course._id)}
-                        className="material-icons"
-                      >
-                        check_circle
-                      </i>
-                    </Tooltip>
-                  ) : (
-                    <Tooltip title="Merkitse suoritetuksi">
-                      <i
-                        onClick={() => this.toggleActive(this.props.course._id)}
-                        className="material-icons"
-                      >
-                        check_circle_outline
-                      </i>
-                    </Tooltip>
-                  )}
+              <Tooltip title="Kurssista saatavat opintopisteet">
+                <span className="small" variant="body1">
+                  {this.props.course.credits} op
                 </span>
-              </Paper>
-            </div>
+              </Tooltip>
+
+              <Tooltip title="Kurssin pituus">
+                <span className="small" variant="body1">
+                  {this.props.course.length} periodia
+                </span>
+              </Tooltip>
+
+              <span className="buttons">
+                <Tooltip title="Muokkaa kurssia">
+                  <Link to={`/courses/${this.props.course._id}`}>
+                    <i className="material-icons icon">edit</i>
+                  </Link>
+                </Tooltip>
+                <Tooltip title="Poista kurssi">
+                  <i
+                    className="material-icons icon clickable"
+                    onClick={() => this.deleteCourse(this.props.course._id)}
+                  >
+                    delete
+                  </i>
+                </Tooltip>
+
+                {this.isActive() ? (
+                  <Tooltip title="Poista suoritusmerkintä">
+                    <i
+                      onClick={() => this.toggleActive(this.props.course._id)}
+                      className="material-icons icon clickable completed"
+                    >
+                      check_circle
+                    </i>
+                  </Tooltip>
+                ) : (
+                  <Tooltip title="Merkitse suoritetuksi">
+                    <i
+                      onClick={() => this.toggleActive(this.props.course._id)}
+                      className="material-icons icon clickable not_completed"
+                    >
+                      check_circle_outline
+                    </i>
+                  </Tooltip>
+                )}
+              </span>
+            </Paper>
           </Fragment>
         )
       }
