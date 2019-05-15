@@ -15,5 +15,8 @@ cache:
     - ~/.cache
 install:
   - npm ci
+
+script:
+  - bash travis.sh
 script:
   - $(npm bin)/cypress run --record
