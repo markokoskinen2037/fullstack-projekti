@@ -32,4 +32,4 @@ script:
    - ls
    - cd frontend/aikatauluttaja/node_modules/.bin/
    - ls
-   - cypress run --record
+   - ./cypress run --record
