@@ -1,27 +1,30 @@
 language: node_js
 node_js:
-  - 10
+- 10
 addons:
   apt:
     packages:
-      # Ubuntu 16+ does not install this dependency by default, so we need to install it ourselves
-      - libgconf-2-4
+    - libgconf-2-4
 cache:
   npm: true
   directories:
-    # we also need to cache folder with Cypress binary
-    - ~/.cache
-
-
+  - "~/.cache"
 script:
-   - echo Starting back- and frontend, then running tests...
-   - cd backend/
-   - npm install
-   - npm start &
-   - echo Backend started....................
-   - cd ..
-   - cd frontend/aikatauluttaja
-   - npm install
-   - npm start &
-   - echo Frontend started..................
-   - $(npm bin)/cypress run --record --key=8d934730-49e2-46ac-946b-63e79d9e1797 && cd .. && cd .. && ./buildnewandpushtoheroku.sh
+- echo Starting back- and frontend, then running tests...
+- cd backend/
+- npm install
+- npm start &
+- echo Backend started....................
+- cd ..
+- cd frontend/aikatauluttaja
+- npm install
+- npm start &
+- echo Frontend started..................
+- "$(npm bin)/cypress run --record --key=8d934730-49e2-46ac-946b-63e79d9e1797 && cd
+  .. && cd .. && ./buildnewandpushtoheroku.sh"
+- pwd
+deploy:
+  provider: heroku
+  api_key:
+    secure: KnBjbGA+5oZcYDnNuDU6Grjm3itqvyKkZNybMJXceEhERotgbQSe8lAr2EIvopaE6U0QcMPNcZnPzAdNBeqnT38MoGfp/Lx+xixdZKoWv+zZKkNme5iKHfwsdLIulJQUzU2G+AJuSMDDt/qDDz/DOlBDToeePBss32ZLwNIlXLycemfYJbPT67p1UWLonFjMN7nd8IjZ/eH/9QninzV8Zc2yPMxb07UuzGrT1S+mWQfY3fNLRIfWiENJX4VBOAMNRAl9Qh5V0JvPYfQdiKYQrWBz298NGH0AWlyFBza96r5phQHhuB/b4yOo1m1D7X9Kg3vozAltEsNHG1R7r0/0tBWUZ1QDSwpl8Cub9KHlg2mHUbLUqolfaUCKF03gmkWlsM8NSy0z/cUA11wTVnzHfjKHQzYpOxZjRNFC9BK7/1ET32LdOFTSl2tLOIPF/sPZjKrwIJ6Dib4rnU/g+hLUSxsUeAKyQq68OkMlwsGkuIWm2owZQmyyo0TGPAjP4LJxLKvay0NJguayzfIpR9odhlhL3bmAbgpoQBWGee9DaEsXGeAEav1uRoR049ZZ6mWNuvH6VQWgW8K3S7UM98IqhD7vPlDIIAcDwU7PruCIf/hxiUVxG8kiFXqSuPa1x2JZzLEf604qUSKJ+R+HLoRRrwDYpWtxQJ4bADOW+B4GSoo=
+  skip_cleanup: true
