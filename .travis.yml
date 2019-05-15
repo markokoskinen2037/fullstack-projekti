@@ -23,7 +23,7 @@ script:
 - "$(npm bin)/cypress run --record --key=8d934730-49e2-46ac-946b-63e79d9e1797 && cd
   .. && cd .. && ./buildnewandpushtoheroku.sh"
 
-before_deploy: "pwd && cd pushmetoheroku"
+before_deploy: "pwd && cd opintojenaikatauluttaja"
 deploy:
   provider: heroku
   api_key:
