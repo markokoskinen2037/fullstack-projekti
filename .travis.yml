@@ -7,18 +7,14 @@ addons:
       # Ubuntu 16+ does not install this dependency by default, so we need to install it ourselves
       - libgconf-2-4
 cache:
-  # Caches $HOME/.npm when npm ci is default script command
-  # Caches node_modules in all other cases
   npm: true
   directories:
     # we also need to cache folder with Cypress binary
     - ~/.cache
-# install:
-#   - npm ci
 
 
 script:
-   - echo HEREEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE
+   - echo Starting back- and frontend, then running tests...
    - cd backend/
    - npm install
    - npm start &
@@ -28,6 +24,4 @@ script:
    - npm install
    - npm start &
    - echo Frontend started..................
-   - pwd 
-   - npm bin
    - $(npm bin)/cypress run --record --key=8d934730-49e2-46ac-946b-63e79d9e1797
