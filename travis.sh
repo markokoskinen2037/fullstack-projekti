@@ -1,16 +1,16 @@
 #!/bin/sh
 echo RUNNING TRAVIS.SH SCRIPT
-mkdir pushmetoheroku
+
+#Asennetaan frontin ja backin vaatimat setit...
 cd frontend/aikatauluttaja/
 npm install
-npm run build
-cp -r build ../../backend/
 cd ../../backend
-npm install
-cp -r . ../../pushmetoheroku/
-cd ../../pushmetoheroku
-echo Ollaan kansiossa:
-pwd
-npm install
-npm start
+npm install 
+cd ..
+
+#Käynnistetään frontend ja backend
+cd backend/ && npm start & cd frontend/aikatauluttaja/ && npm start
+#Ajetaan cypress testit
+
+
 echo TRAVIS.SH SCRIPT FINISHED!
