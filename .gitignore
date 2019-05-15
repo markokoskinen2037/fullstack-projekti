@@ -3,3 +3,4 @@ node_modules
 /backend/build
 frontend/aikatauluttaja/build/
 .vscode/
+backend/npm-debug.log
