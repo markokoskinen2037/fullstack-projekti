@@ -29,5 +29,4 @@ script:
    - npm start &
    - echo Frontend started..................
    - pwd 
-   - cd /home/travis/.cache/Cypress/3.2.0/Cypress/
-   - ls -la
+   - /home/travis/.cache/Cypress/3.2.0/Cypress/Cypress run
