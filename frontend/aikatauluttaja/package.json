@@ -65,7 +65,7 @@
     "watch": "nodemon index.js",
     "cypress:open":"cypress open"
   },
-  "proxy": "http://backend:3001",
+  "proxy": "http://localhost:3001",
   "devDependencies": {
     "cypress": "^3.2.0",
     "nodemon": "^1.18.1",
