@@ -22,4 +22,4 @@ script:
    - bash travis.sh
    - pwd 
    - ls
-   - /home/travis/build/markokoskinen2037/fullstack-projekti/frontend/aikatauluttaja/node_modules/.bin/cypress run --record
+   - ./frontend/aikatauluttaja/node_modules/.bin/cypress run --record
