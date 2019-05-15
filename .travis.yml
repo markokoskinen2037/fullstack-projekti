@@ -20,4 +20,6 @@ script:
   - bash travis.sh
 script:
    - echo HEREEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE
+   - pwd 
+   - ls
    - /home/travis/build/markokoskinen2037/fullstack-projekti/frontend/aikatauluttaja/node_modules/.bin/cypress run --record
