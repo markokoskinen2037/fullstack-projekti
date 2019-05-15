@@ -4,7 +4,7 @@ cd pushmetoheroku
 git init
 heroku git:remote -a opintojenaikatauluttaja
 cd ..
-cd ../frontend/aikatauluttaja/
+cd frontend/aikatauluttaja/
 npm run build
 cp -r build ../../backend/
 cd ../../backend
