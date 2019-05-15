@@ -7,6 +7,6 @@ cp -r build ../../backend/
 cd ../../backend
 cp -r . ../../pushmetoheroku/
 cd ../../pushmetoheroku
-npm start & wait-on http://localhost:8080
+npm install && npm start && wait-on http://localhost:8080
 cypress run
 echo TRAVIS.SH SCRIPT FINISHED!
