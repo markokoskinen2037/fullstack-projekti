@@ -19,7 +19,15 @@ cache:
 
 script:
    - echo HEREEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE
-   - bash travis.sh
+   - cd backend/
+   - npm install
+   - npm start
+   - echo Backend started....................
+   - cd ..
+   - cd frontend/aikatauluttaja
+   - npm install
+   - npm start
+   - echo Frontend started..................
    - pwd 
    - ls
    - ./frontend/aikatauluttaja/node_modules/.bin/cypress run --record
