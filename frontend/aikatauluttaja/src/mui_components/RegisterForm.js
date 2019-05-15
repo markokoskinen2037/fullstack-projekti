@@ -165,6 +165,7 @@ class RegisterForm extends React.Component {
                   paddingLeft: 30,
                   paddingRight: 30,
                 }}
+                id="register-button"
                 size="small"
                 variant="contained"
                 color="primary"
