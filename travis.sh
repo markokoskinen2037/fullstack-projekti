@@ -8,10 +8,9 @@ cd ../../backend
 #npm install 
 cd ..
 
-#Käynnistetään frontend ja backend ja ajetaan cypress testit
+#Käynnistetään frontend ja backend
 cd backend/ && npm install && npm start &
 cd frontend/aikatauluttaja/ && npm install && npm start &
-cd frontend/aikatauluttaja/ && pwd &&  ./node_modules/.bin/cypress run
 
 
 
