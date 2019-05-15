@@ -29,4 +29,5 @@ script:
    - npm start &
    - echo Frontend started..................
    - pwd 
-   - /home/travis/.cache/Cypress/3.2.0/Cypress/Cypress run --record --key=8d934730-49e2-46ac-946b-63e79d9e1797
+   - npm bin
+   - $(npm bin)/cypress run --record --key=8d934730-49e2-46ac-946b-63e79d9e1797
