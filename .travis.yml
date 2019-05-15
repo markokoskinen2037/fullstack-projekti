@@ -21,12 +21,12 @@ script:
    - echo HEREEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE
    - cd backend/
    - npm install
-   - npm start
+   - npm start &
    - echo Backend started....................
    - cd ..
    - cd frontend/aikatauluttaja
    - npm install
-   - npm start
+   - npm start &
    - echo Frontend started..................
    - pwd 
    - ls
