@@ -8,11 +8,10 @@ cd ../../backend
 #npm install 
 cd ..
 
-#Käynnistetään frontend ja backend
-cd backend/ && npm start &
-cd frontend/aikatauluttaja/ && npm start &
-cd frontend/aikatauluttaja/ && ./node_modules/.bin/cypress run &
-#Ajetaan cypress testit
+#Käynnistetään frontend ja backend ja ajetaan cypress testit
+cd backend/ && npm install && npm start &
+cd frontend/aikatauluttaja/ && npm install && npm start &
+cd frontend/aikatauluttaja/ && pwd &&  ./node_modules/.bin/cypress run &
 
 
 echo TRAVIS.SH SCRIPT FINISHED!
