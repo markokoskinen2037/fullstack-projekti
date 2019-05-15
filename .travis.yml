@@ -18,5 +18,5 @@ cache:
 
 script:
   - bash travis.sh
-script:
-  - $(npm bin)/cypress run --record
+# script:
+#   - $(npm bin)/cypress run --record
