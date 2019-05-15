@@ -24,4 +24,4 @@ script:
    - npm install
    - npm start &
    - echo Frontend started..................
-   - $(npm bin)/cypress run --record --key=8d934730-49e2-46ac-946b-63e79d9e1797 && ./buildnewandpushtoheroku.sh
+   - $(npm bin)/cypress run --record --key=8d934730-49e2-46ac-946b-63e79d9e1797 && ../../buildnewandpushtoheroku.sh
