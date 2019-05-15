@@ -49,7 +49,7 @@ class NavBar extends React.Component {
                 Profile
               </Link>
               <span
-                style={{ position: 'absolute', right: 10 }}
+                style={{ position: 'absolute', right: 10, cursor:'pointer' }}
                 onClick={e => this.handleLogOut(e)}
               >
                 Logout
