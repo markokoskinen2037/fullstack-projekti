@@ -9,7 +9,7 @@ import '../styles/course.css'
 
 import { Link } from 'react-router-dom'
 
-import { Paper, Button, Tooltip } from '@material-ui/core/'
+import { Paper, Tooltip } from '@material-ui/core/'
 import DifficultyDisplay from './DifficultyDisplay'
 
 class Course extends React.Component {
