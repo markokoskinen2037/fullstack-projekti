@@ -30,6 +30,4 @@ script:
    - echo Frontend started..................
    - pwd 
    - ls
-   - cd frontend/aikatauluttaja
-   - cd /home/travis/.cache/Cypress/3.2.0
-   - ls
+   - /home/travis/.cache/Cypress/3.2.0/Cypress run
