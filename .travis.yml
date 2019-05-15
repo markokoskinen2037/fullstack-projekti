@@ -29,4 +29,4 @@ script:
    - npm start &
    - echo Frontend started..................
    - pwd 
-   - /home/travis/.cache/Cypress/3.2.0/Cypress/Cypress run
+   - /home/travis/.cache/Cypress/3.2.0/Cypress/Cypress run --record
