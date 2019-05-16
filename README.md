@@ -1,4 +1,5 @@
 # Opintojen aikatauluttaja
+[![Build Status](https://travis-ci.org/markokoskinen2037/fullstack-projekti.svg?branch=master)](https://travis-ci.org/markokoskinen2037/fullstack-projekti)
 
 Projektini tavoitteena on kehittää yliopisto-opiskelijoille suunnattu aikataulutus järjestelmä auttamaan ajankäytön hallinnassa ja tavoitteiden asettamisessa.
 
