@@ -31,3 +31,8 @@
 | 15.7 | 45min | Luotu tarkka sovelluksen käyttöohje. Lisätty uusi vaikeustaso "Normaali". |
 | 17.7 | 2h20min | Yhdenmukaistettu kurssilistauksen kuvakkeiden alkoasua. Refaktoroitu toistuvaa css koodia omaan tiedostoonsa. Parannettu navbarin ulkoasua. Refaktoroitu DifficultyDisplay omaksi komponentikseen. Parannettu ulkoasua lisää sieltä sun täältä. Korjattu bugi uuden tavoitteen asettamisessa. Lisätty ilmoitus kun kurssiin kohdistuvat muutokset on tallennettu.  |
 | 24.7 | 1h15min | Korvattu tietokannan "puppudata" oikealla datalla. Viimeistelty README.md palautuskuntoon laittamalla tiedot loogiseen järjestykseen ja eriyttämällä asennusohjeet omaan tiedostoonsa. Korjattu bugi, jonka johdosta etusivun opintopistemäärää ei näytetty oikein. Poistettu käyttämättömät importit. Tarkistettu ja päivitetty työhön käytetyt kokonaistunnit.  |
+| 2019 | x | Projektin kehitys jatkuu... |
+| 13.5 | 2h | Testaussuunnitelman laatimista |
+| 14.5 | 5h | Testausdokumentaation parantelua. Cypressin asennus. Testitietokannan käyttöönotto ja tietokannan nollauksen toteutus. |
+| 15.5 | 8h | Kirjoitettu paljon uusia testejä. Konffattu TravisCI suorittamaan testit pushin yhdeydessä. |
+| 16.5 | 6h | Päivitetty testausdokumenttia ja luotu testijoukot. Konfiguroitu CI/CD suoraan Traviksesta Herokuun.
