@@ -8,6 +8,13 @@ describe("Kirjautuminen", function () {
         cy.get("#loginButton").click()
         cy.contains("Kirjauduit sisään käyttäjällä: testi")
     })
+
+    it("uloskirjautuminen toimii", function () {
+        cy.contains("Logout").click()
+        expect(window.localStorage.length).to.equal(0)
+        cy.contains("Uloskirjautuminen onnistui!")
+    })
+
     it("ei toimi virheellisellä käyttäjätunnuksella", function () {
         cy.visit("http://localhost:3000")
         cy.get('input[name="username"]').first().type("kissa")
@@ -32,5 +39,7 @@ describe("Kirjautuminen", function () {
         cy.get("#loginButton").click()
         cy.contains("Älä jätä mitään kenttää tyhjäksi!")
     })
+
+
 
 })
