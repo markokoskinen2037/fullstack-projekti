@@ -1,5 +1,106 @@
 /// <reference types="Cypress" />
 
+
+//Testsuite2: Aloitustestit
+describe('Aloitustoimenpiteet ja tarkistukset', function () {
+    it('Sivusto on pystyssä', function () {
+        cy.visit("http://localhost:3000/")
+    })
+    it("Sivusto sisältää oikeita elementtejä", function () {
+        cy.contains("Tervetuloa suunnitelemaan opintojasi!")
+        cy.contains("Kirjaudu sisään")
+        cy.contains("Rekisteröidy")
+    })
+    it("Alustetaan tietokanta testejä varten", function () {
+        cy.task("deleteAllUsers")
+        cy.task("deleteAllCourses")
+    })
+})
+
+// Testsuite2: Rekisteröinti
+describe("Rekisteröinti", function () {
+    it("onnistuu oikeilla tiedoilla", function () {
+        cy.visit("http://localhost:3000")
+        cy.get("#registerName-simple").type("testi")
+        cy.get("#password-simple").type("salasana")
+        cy.get("#email-simple").type("testiemail@gmail.com")
+        cy.get("#register-button").click()
+        cy.contains("Logout").click()
+    })
+
+    it("ei onnistu jos salasana on liian lyhyt", function () {
+        cy.visit("http://localhost:3000")
+        cy.get("#registerName-simple").type("testi")
+        cy.get("#password-simple").type("a")
+        cy.get("#email-simple").type("testiemail@gmail.com")
+        cy.get("#register-button").click()
+        cy.contains("Salasanan tulee olla ainakin 5 merkkiä pitkä!")
+    })
+
+    it("ei onnistu jos email on virheellinen", function () {
+        cy.visit("http://localhost:3000")
+        cy.get("#registerName-simple").type("testi_teuvo")
+        cy.get("#password-simple").type("salasana")
+        cy.get("#email-simple").type("testiemail.gmail.com")
+        cy.get("#register-button").click()
+        cy.contains("Sähköpostiosoitteesi ei kelvannut.")
+    })
+
+    it("kirjaa käyttäjän sisään jos hän yrittää rekisteröityä olemassaolevilla tunnuksilla", function () {
+        cy.visit("http://localhost:3000")
+        cy.get("#registerName-simple").type("testi")
+        cy.get("#password-simple").type("salasana")
+        cy.get("#email-simple").type("testiemail@gmail.com")
+        cy.get("#register-button").click()
+        cy.contains("Kirjauduit sisään käyttäjällä: testi")
+        cy.contains("Logout").click()
+    })
+})
+
+//Testsuite3: Kirjautuminen
+describe("Kirjautuminen", function () {
+    it("toimii oikealla salasanalla ja käyttäjätunnuksella", function () {
+        cy.visit("http://localhost:3000")
+        cy.get('input[name="username"]').first().type("testi")
+        cy.get("#loginPassword-simple").type("salasana")
+        cy.get("#loginButton").click()
+        cy.contains("Kirjauduit sisään käyttäjällä: testi")
+    })
+
+    it("uloskirjautuminen toimii", function () {
+        cy.contains("Logout").click()
+        expect(window.localStorage.length).to.equal(0)
+        cy.contains("Uloskirjautuminen onnistui!")
+    })
+
+    it("ei toimi virheellisellä käyttäjätunnuksella", function () {
+        cy.visit("http://localhost:3000")
+        cy.get('input[name="username"]').first().type("kissa")
+        cy.get("#loginPassword-simple").type("salasana")
+        cy.get("#loginButton").click()
+        cy.contains("Virheellinen käyttäjätunnus tai salasana.")
+    })
+    it("ei toimi ilman käyttäjätunnusta", function () {
+        cy.visit("http://localhost:3000")
+        cy.get("#loginPassword-simple").type("salasana")
+        cy.get("#loginButton").click()
+        cy.contains("Älä jätä mitään kenttää tyhjäksi!")
+    })
+    it("ei toimi ilman salasanaa", function () {
+        cy.visit("http://localhost:3000")
+        cy.get('input[name="username"]').first().type("kissa")
+        cy.get("#loginButton").click()
+        cy.contains("Älä jätä mitään kenttää tyhjäksi!")
+    })
+    it("ei toimi ilman käyttäjätunnusta ja salasanaa", function () {
+        cy.visit("http://localhost:3000")
+        cy.get("#loginButton").click()
+        cy.contains("Älä jätä mitään kenttää tyhjäksi!")
+    })
+
+})
+
+//Testsuite4: Kurssin CRUD-toiminnallisuudet
 describe("Kurssin CRUD toiminnallisuus", function () {
 
 
