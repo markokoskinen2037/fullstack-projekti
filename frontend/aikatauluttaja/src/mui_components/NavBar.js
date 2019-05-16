@@ -1,9 +1,9 @@
 import React, { Fragment } from 'react'
 import { Link } from 'react-router-dom'
 
-import AppBar from '@material-ui/core/AppBar'
-import Toolbar from '@material-ui/core/Toolbar'
+import { AppBar, Button, Toolbar } from '@material-ui/core'
 import { withRouter } from 'react-router-dom'
+
 
 import '../styles/NavBarStyle.css'
 
@@ -45,15 +45,16 @@ class NavBar extends React.Component {
 
           {this.props.user ? (
             <Fragment>
-              <Link className="navBarItem" to="/userinfo">
+              <Link className="Link navBarItem" to="/userinfo">
                 Profile
               </Link>
-              <span
-                style={{ position: 'absolute', right: 10, cursor:'pointer' }}
-                onClick={e => this.handleLogOut(e)}
-              >
+
+              <Link style={{ position: "absolute", right: 10 }} className="Link navBarItem" to="/" onClick={e => this.handleLogOut(e)}>
                 Logout
-              </span>
+              </Link>
+
+
+
             </Fragment>
           ) : null}
         </Toolbar>

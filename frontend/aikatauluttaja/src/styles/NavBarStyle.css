@@ -10,9 +10,16 @@
 }
 
 .navBarItem {
-  padding: 0;
-  margin-left: 10px;
-  color: white;
-  text-decoration: underline;
-  cursor: pointer;
+    padding: 0;
+    margin-left: 10px;
+    color: black;
+    cursor: pointer;
+    background-color: #ffffff;
+    border-radius: 42px;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    font-size: medium;
 }
+
