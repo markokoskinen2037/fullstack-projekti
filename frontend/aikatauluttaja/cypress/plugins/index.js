@@ -32,7 +32,7 @@ module.exports = (on, config) => {
         db.collection("users", function (err, collection) {
           if (err) throw err;
           // delete the mongodb collection
-          collection.remove({}, function (err, result) {
+          collection.deleteMany({}, function (err, result) {
             // handle the error if any
             if (err) throw err;
             console.log("Collection is deleted!");
@@ -58,7 +58,7 @@ module.exports = (on, config) => {
         db.collection("courses", function (err, collection) {
           if (err) throw err;
           // delete the mongodb collection
-          collection.remove({}, function (err, result) {
+          collection.deleteMany({}, function (err, result) {
             // handle the error if any
             if (err) throw err;
             console.log("Collection is deleted!");
