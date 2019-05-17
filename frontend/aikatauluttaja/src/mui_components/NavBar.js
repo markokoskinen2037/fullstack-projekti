@@ -1,7 +1,7 @@
 import React, { Fragment } from 'react'
 import { Link } from 'react-router-dom'
 
-import { AppBar, Button, Toolbar } from '@material-ui/core'
+import { AppBar, Toolbar } from '@material-ui/core'
 import { withRouter } from 'react-router-dom'
 
 
