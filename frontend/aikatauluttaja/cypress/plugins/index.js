@@ -20,24 +20,24 @@ module.exports = (on, config) => {
 
   on('task', {
     // deconstruct the individual properties
-    deleteAllUsers () {
+    deleteAllUsers() {
       console.log("Deleting all contents from test-database")
 
       var uri = "mongodb://testiuser:testisalasana1@ds155606.mlab.com:55606/fullstackprojekti_testi";
-      
-      mongodb.MongoClient.connect(uri, function(err,client){
-        if(err) throw err;
+
+      mongodb.MongoClient.connect(uri, { useNewUrlParser: true }, function (err, client) {
+        if (err) throw err;
         let db = client.db("fullstackprojekti_testi")
 
-        db.collection("users", function(err,collection){
+        db.collection("users", function (err, collection) {
           if (err) throw err;
           // delete the mongodb collection
-          collection.remove({}, function(err, result){
-              // handle the error if any
-              if (err) throw err;
-              console.log("Collection is deleted!");
-              });
-  
+          collection.remove({}, function (err, result) {
+            // handle the error if any
+            if (err) throw err;
+            console.log("Collection is deleted!");
+          });
+
         })
         console.log("Closing clients connection to db.")
         client.close()
@@ -46,24 +46,24 @@ module.exports = (on, config) => {
 
       return null
     },
-    deleteAllCourses () {
+    deleteAllCourses() {
       console.log("Deleting all contents from test-database")
 
       var uri = "mongodb://testiuser:testisalasana1@ds155606.mlab.com:55606/fullstackprojekti_testi";
-      
-      mongodb.MongoClient.connect(uri, function(err,client){
-        if(err) throw err;
+
+      mongodb.MongoClient.connect(uri, { useNewUrlParser: true }, function (err, client) {
+        if (err) throw err;
         let db = client.db("fullstackprojekti_testi")
 
-        db.collection("courses", function(err,collection){
+        db.collection("courses", function (err, collection) {
           if (err) throw err;
           // delete the mongodb collection
-          collection.remove({}, function(err, result){
-              // handle the error if any
-              if (err) throw err;
-              console.log("Collection is deleted!");
-              });
-  
+          collection.remove({}, function (err, result) {
+            // handle the error if any
+            if (err) throw err;
+            console.log("Collection is deleted!");
+          });
+
         })
         console.log("Closing clients connection to db.")
         client.close()
@@ -73,6 +73,6 @@ module.exports = (on, config) => {
       return null
     }
   })
-  
+
 }
 
