@@ -63,7 +63,7 @@
     "build": "node scripts/build.js",
     "test": "node scripts/test.js --env=jsdom",
     "watch": "nodemon index.js",
-    "cypress:open":"cypress open"
+    "cypress:open": "cypress open"
   },
   "proxy": "http://localhost:3001",
   "devDependencies": {
