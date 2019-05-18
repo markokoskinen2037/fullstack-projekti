@@ -36,3 +36,5 @@
 | 14.5 | 5h | Testausdokumentaation parantelua. Cypressin asennus. Testitietokannan käyttöönotto ja tietokannan nollauksen toteutus. |
 | 15.5 | 8h | Kirjoitettu paljon uusia testejä. Konffattu TravisCI suorittamaan testit pushin yhdeydessä. |
 | 16.5 | 6h | Päivitetty testausdokumenttia ja luotu testijoukot. Konfiguroitu CI/CD suoraan Traviksesta Herokuun.
+| 17.5 | 1h | Poistettu turhia importteja. Korjattu kaikki npm auditin alittamat tietoturvaongelmat. Korjattu metodeja käyttämää uusia komentoja deprekoitujen sijasta. |
+| 18.5 | 1h | Valittu sopiva lisenssi koko projektille. Parannettu projektin kansiorakennetta siirtämällä frontend kansio suoraan projektin roottiin ja korjattu uuden kansiorakenteen rikkomat asiat. Disabloitu cypress-testien tallennus (koska ilmaiset ajot loppu). |
