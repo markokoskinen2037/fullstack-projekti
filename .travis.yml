@@ -20,7 +20,7 @@ script:
 - npm install
 - npm start &
 - echo Frontend started..................
-- "$(npm bin)/cypress run --record --key=8d934730-49e2-46ac-946b-63e79d9e1797 && cd
+- "$(npm bin)/cypress run && cd
   .. && cd .. && ./buildnewandpushtoheroku.sh"
 
 before_deploy: "pwd && cd opintojenaikatauluttaja"
