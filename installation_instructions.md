@@ -20,7 +20,7 @@ SECRET=Mikä tahansa oma keksimä merkkijono
 
 Käyttäen **samaa** juuri kloonaamaasi repositiota, asennetaan myös **frontend** seuraavasti:
 
-1. Mene hakemistossa ylös kansioon `../fullstack-projekti/frontend/aikatauluttaja`
+1. Mene hakemistossa ylös kansioon `../fullstack-projekti/frontend/`
 2. Aja komento `npm install`
 3. Aja komento `npm start`
 4. Jos kaikki meni hyvin, näkyy konsolissa ilmoitus `"Compiled successfully!"`, ja aiemmin asentamaasi backendia käyttävä React sovellus aukeaa oletusselaimessasi automaattisesti.

@@ -16,12 +16,12 @@ script:
 - npm start &
 - echo Backend started....................
 - cd ..
-- cd frontend/aikatauluttaja
+- cd frontend/
 - npm install
 - npm start &
 - echo Frontend started..................
 - "$(npm bin)/cypress run && cd
-  .. && cd .. && ./buildnewandpushtoheroku.sh"
+  .. && ./buildnewandpushtoheroku.sh"
 
 before_deploy: "pwd && cd opintojenaikatauluttaja"
 deploy:
