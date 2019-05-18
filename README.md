@@ -20,4 +20,4 @@ Projektini tavoitteena on kehittää yliopisto-opiskelijoille suunnattu aikataul
 - Sovellus löytyy osoitteesta: https://opintojenaikatauluttaja.herokuapp.com/
 - ja sen backend: https://opintojenaikatauluttaja.herokuapp.com/api/
 
-![Kurssilistaus](https://github.com/markokoskinen2037/fullstack-projekti/blob/master/readme_images/kurssilistaus.png?raw=true)
+![Kurssilistaus](/readme_images/kurssilistaus.png)
