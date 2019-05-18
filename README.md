@@ -11,6 +11,11 @@ Projektini tavoitteena on kehittää yliopisto-opiskelijoille suunnattu aikataul
 - Kurssikohtainen vaikeustason ja tavoitteiden määrittely
 - Automaattiset työpäiväkohtaiset tuntiarviot jotka painotetaan käyttäjän kurssille asettaman vaikeustason perusteella.
 
+#### Testit
+- Sovellukseen on toteutettu cypress end-to-end testejä, jotka löytyvät kansiosta `frontend/cypress/`
+- Testit voidaan ajaa npm scriptillä frontend-kansiosta, komennolla `npm run test`
+- Testit tuottavat html muotoisen, kauniisti formatoidun raportti tiedoston, joka löytyy kansiosta `/frontend/cypress/results/mochawesome-report/`
+
 #### Huomioita lukijalle:
 
 - [Linkki asennusohjeisiin (npm + node)](https://github.com/markokoskinen2037/fullstack-projekti/blob/master/installation_instructions.md)
