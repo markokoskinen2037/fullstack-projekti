@@ -1,3 +1,10 @@
 {
-  "projectId": "u892nz"
+  "projectId": "u892nz",
+  "reporter": "mochawesome",
+  "reporterOptions": {
+    "reportDir": "cypress/results",
+    "overwrite": false,
+    "html": false,
+    "json": true
+  }
 }
