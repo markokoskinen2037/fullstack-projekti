@@ -22,10 +22,11 @@ script:
 - echo Frontend started..................
 - $(npm bin)/cypress run
 - npx mochawesome-merge --reportDir cypress/results > mochawesome.json
-- cd cypress/results/ && npx mochawesome-report-generator mochawesome.json
+- cd cypress/results/
+- npx mochawesome-report-generator mochawesome.json
 - rm mochawesome.json
-- cd .. && cd ..
-- ./buildnewandpushtoheroku.sh"
+- cd .. && cd .. && cd .. && pwd
+- ./buildnewandpushtoheroku.sh
 
 
 
