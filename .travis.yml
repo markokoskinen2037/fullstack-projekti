@@ -20,11 +20,12 @@ script:
 - npm install
 - npm start &
 - echo Frontend started..................
-- "$(npm bin)/cypress run &&
-  npx mochawesome-merge --reportDir cypress/results > mochawesome.json &&
-  cd cypress/results/ && npx mochawesome-report-generator cypress/results/mochawesome.json &&
-  cd .. &&
-  ./buildnewandpushtoheroku.sh"
+- $(npm bin)/cypress run
+- npx mochawesome-merge --reportDir cypress/results > mochawesome.json
+- cd cypress/results/ && npx mochawesome-report-generator mochawesome.json
+- rm mochawesome.json
+- cd .. && cd ..
+- ./buildnewandpushtoheroku.sh"
 
 
 
