@@ -18,7 +18,7 @@ Projektini tavoitteena on kehittää yliopisto-opiskelijoille suunnattu aikataul
 - Testit tuottavat html muotoisen, kauniisti formatoidun raportti tiedoston, joka löytyy kansiosta `/frontend/cypress/results/mochawesome-report/`
 
 #### Huomioita lukijalle:
-
+- [Linkki testausdokumentaatioon](testausdokumentti.pdf)
 - [Linkki asennusohjeisiin (npm + node)](https://github.com/markokoskinen2037/fullstack-projekti/blob/master/installation_instructions.md)
 - [Vaihtoehtoinen asennusohje (docker)](https://github.com/markokoskinen2037/fullstack-projekti/blob/master/docker_instructions.md)
 - [Tuntikirjanpito](https://github.com/markokoskinen2037/fullstack-projekti/blob/master/tuntikirjanpito.md)
